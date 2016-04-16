@@ -1,6 +1,9 @@
 @import "../Bootstrapping/Variables";
 
 .footer{
+    position: absolute;
+    bottom:0;
+    width:100%;
     .above{
         position: relative;
         background-color: @firstLevelColor;
@@ -13,6 +16,9 @@
         font-size: @tinyFont;
         font-weight: bold;
         color: @footerColor;
+        a{
+            color: @footerColor;
+        }
     }
     .menu{
         position: relative;

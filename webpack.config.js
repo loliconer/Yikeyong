@@ -4,7 +4,7 @@ module.exports = {
     context: __dirname,
     devtool: false,
     entry: {
-        index: './src/public/js/index.js'
+        // index: './src/public/js/index.js'
     },
     output: {
         path: __dirname + "/src/public/js",

@@ -1,0 +1,20 @@
+body {
+  background: url(../img/bg.jpg) fixed;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+.container .box-normal {
+  width: 21%;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+.container .box-normal:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.container .box-normal:hover .block-a-full {
+  color: #fff;
+}

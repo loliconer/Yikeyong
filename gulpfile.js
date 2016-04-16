@@ -24,11 +24,11 @@ gulp.task('build',function () {
 
 gulp.task( 'liveless', function () {
     gulp.src( 'src/public/less/*.less' )
-        .pipe( modified( 'less' ) )
+        // .pipe( modified( 'less' ) )
         .pipe( less() )
-        .pipe( minifyCss() )
+        // .pipe( minifyCss() )
         .pipe( gulp.dest( 'src/public/css' ) )
-        .pipe( livereload() );
+        // .pipe( livereload() );
 } );
 
 gulp.task( 'livejs', function () {
@@ -41,8 +41,8 @@ gulp.task( 'watch', function () {
     livereload.listen( {
         start: true
     } );
-    gulp.watch( 'public/less/**/*.less', [ 'liveless' ] );
-    gulp.watch( 'public/js/*.js', [ 'livejs' ] );
+    gulp.watch( 'src/public/less/**/*.less', [ 'liveless' ] );
+    gulp.watch( 'src/public/js/*.js', [ 'livejs' ] );
 } );
 
 gulp.task( 'default', function () {
