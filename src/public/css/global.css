@@ -1685,6 +1685,14 @@ hr {
   font-size: 12px;
   color: #bfbfbf;
 }
+.bg-body-main {
+  background: url(../img/bg.jpg) fixed;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
 .flex {
   display: -webkit-box;
   display: flex;
