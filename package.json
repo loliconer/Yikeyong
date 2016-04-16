@@ -1,0 +1,28 @@
+{
+  "name": "yikeyong",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.10.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-changed": "^1.3.0",
+    "gulp-dest-clean": "^0.5.0",
+    "gulp-less": "^3.0.5",
+    "gulp-minify-css": "^1.2.2",
+    "gulp-modified": "^0.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.1",
+    "less": "^2.6.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-tinypng": "^1.0.2",
+    "webpack": "^1.12.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lolicon",
+  "license": "MIT"
+}

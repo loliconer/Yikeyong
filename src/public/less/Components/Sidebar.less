@@ -1,0 +1,76 @@
+@import "../Bootstrapping/Variables";
+
+.sidebar {
+    width: 280px;
+    text-align: center;
+    .item {
+        display: block;
+        height: 54px;
+        line-height: 54px;
+        border-bottom: 1px solid @lineColor;
+        color: @firstLevelColor;
+        font-size: @normalFont;
+        svg {
+            width: 20px;
+            height: 20px;
+            vertical-align: sub;
+            margin-right: 16px;
+            margin-left: 20px;
+        }
+    }
+    .item:last-child {
+        border-bottom: none;
+    }
+    .item.focus {
+        background-color: @firstLevelColor;
+        color: @whiteColor;
+    }
+}
+
+.sidebar-v2 {
+    float: left;
+    width: 280px;
+    min-height: 100%;
+    background-color: @firstLevelColor;
+    padding: 30px 0 30px 30px;
+    text-align: center;
+    a {
+        display: inline-block;
+        color: @whiteColor;
+    }
+    .menu {
+        line-height: normal;
+        .item {
+            border-radius: @border-radius 0 0 @border-radius;
+            margin-left: 0;
+            a {
+                line-height: 60px;
+                font-size: 2.2rem;
+            }
+        }
+        .item.focus {
+            background-color: @whiteColor;
+            a {
+                color: @firstLevelColor;
+            }
+        }
+    }
+    .sub-menu {
+        padding-bottom: 10px;
+        .item {
+            a {
+                font-size: 1.8rem;
+                line-height: normal;
+                width: auto;
+                padding: 10px;
+                border-radius: @border-radius;
+            }
+        }
+        .item.focus{
+            a{
+                background-color: @firstLevelColor;
+                color: @whiteColor;
+            }
+        }
+    }
+}

@@ -1,0 +1,250 @@
+@import "../Bootstrapping/Variables";
+@import "../Bootstrapping/Mixins";
+
+.event {
+    border-radius: @border-radius;
+    /*box-shadow: 0 0 4px 0 #666;*/
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    //margin: 0 5px 10px 5px;
+    overflow: hidden;
+    //below are 3 solutions to solve the webkit overflow issue on border radius and transform
+
+    //below 2 will cover the box-shadow
+    //-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+    //-webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+
+    //this is the perfect one
+    -webkit-transform: translateZ(0);
+
+    use {
+        color: @dateTimeColor;
+    }
+    use.e-liked {
+        color: #f24b5f;
+    }
+
+    .e-img {
+        img {
+            cursor: pointer;
+            width: 100%;
+        }
+    }
+
+    .e-content {
+        position: relative;
+        padding: 10px;
+        background-color: @whiteColor;
+    }
+
+    .e-name {
+        margin-bottom: 10px;
+        color: @firstLevelColor;
+        font-weight: bold;
+        font-size: @normalFont;
+        letter-spacing: 2px;
+    }
+
+    .e-addr {
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+        color: @secondLevelColor;
+    }
+
+    .e-tags {
+        margin-bottom: 15px;
+        > li {
+            display: inline-block;
+            font-size: 1.2rem;
+            color: #999;
+        }
+    }
+
+    .e-data {
+        float: right;
+        height: 30px;
+        line-height: 30px;
+        font-size: @smallFont;
+        color: #BFBFBF;
+
+        > div {
+            float: left;
+            margin-left: 20px;
+        }
+    }
+
+    /*.icon {
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        margin-right: 2px;
+    }*/
+
+    .e-date {
+        svg {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    .e-liker {
+        svg {
+            width: 15px;
+            height: 12px;
+        }
+        svg.popup {
+            position: relative;
+            top: 0;
+            animation-name: liker-popup;
+            animation-duration: 1s;
+        }
+    }
+
+    .e-concern {
+        svg {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    .e-act {
+        position: relative;
+        padding: 25px 0 5px 0;
+        height: 80px;
+
+        > div {
+            display: inline-block;
+            float: left;
+        }
+    }
+
+    .e-share {
+        margin: 13px 45px 0 33px;
+        float: left;
+        cursor: pointer;
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .e-like {
+        margin: 13px 45px 0 0;
+        cursor: pointer;
+        display: inline-block;
+        svg {
+            width: 26px;
+            height: 24px;
+        }
+    }
+
+    /*.e-chat {
+        position: absolute;
+        right: 5px;
+        width: 135px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: @whiteColor;
+        font-size: 1.8rem;
+        background-color: #333;
+        border-radius: 10px;
+        cursor: pointer;
+    }*/
+}
+
+@keyframes liker-popup {
+    100% {
+        transform: scale(2);
+        opacity: 0;
+        top: -10px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .event {
+        width: 300px;
+        transition: box-shadow .6s, transform .6s;
+
+        .e-content {
+            transition: transform .6s;
+        }
+    }
+
+    .event:hover {
+        box-shadow: 0 5px 10px rgba(67, 72, 84, .3);
+        //box-shadow: 0 9px 12px rgba(0, 0, 0, .35);
+        transform: translateY(-5px);
+    }
+
+    .event:hover .e-content {
+        transform: translateY(-80px);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .event {
+        width: 370px;
+        .e-avatar {
+            width: 40px;
+            height: 40px;
+        }
+
+        .e-data {
+            font-size: 1rem;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .e-date {
+            svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        .e-liker {
+            svg {
+                width: 20px;
+                height: 16px;
+            }
+        }
+
+        .e-concern {
+            svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        .icon {
+            top: 0;
+        }
+
+        .e-act {
+            display: block;
+            height: 105px;
+            padding-bottom: 20px;
+        }
+
+        .e-share {
+            svg {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        .e-like {
+            svg {
+                width: 39px;
+                height: 36px;
+            }
+        }
+
+        .e-chat {
+            height: 60px;
+            line-height: 60px;
+            width: 150px;
+            font-size: 1.2rem;
+        }
+    }
+}

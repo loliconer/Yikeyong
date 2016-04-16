@@ -1,0 +1,27 @@
+@import "../Bootstrapping/Variables";
+
+.event-v3 {
+    position: relative;
+    margin-bottom: 10px;
+    height: 165px;
+    padding:15px;
+    background-color: @whiteColor;
+    border-top: 1px solid @lineColor;
+    border-bottom: 1px solid @lineColor;
+    .e-poster {
+        position: absolute;
+        width: 110px;
+        min-height: 135px;
+        border-radius: @border-radius-small;
+    }
+    .e-data {
+        margin-left: 120px;
+        .e-name {
+            display: block;
+            margin: 0 0 10px 0;
+        }
+        .e-date {
+            margin-bottom: 10px;
+        }
+    }
+}

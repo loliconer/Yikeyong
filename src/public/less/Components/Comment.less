@@ -1,0 +1,62 @@
+@import "../Bootstrapping/Variables";
+
+//活动详情页的评论
+.comment-e {
+    position: relative;
+    display: block;
+    border-bottom: 1px solid @borderColor;
+    padding: 20px 20px 20px 0;
+    .c-critic {
+        position: absolute;
+        width: 130px;
+        text-align: center;
+        .avatar {
+            width: 70px;
+            height: 70px;
+        }
+        span {
+            font-size: @smallFont;
+            color: @firstLevelColor;
+            font-weight: bold;
+        }
+    }
+    .c-content {
+        margin-left: 130px;
+        min-height: 100px;
+        img {
+            border-radius: @border-radius-small;
+        }
+        p {
+            text-indent: 0;
+            margin: 0 auto 20px;
+            color: @firstLevelColor;
+        }
+    }
+    .c-footer {
+        height: 16px;
+        font-size: @tinyFont;
+        color: @firstLevelColor;
+        a {
+            color: @firstLevelColor;
+        }
+    }
+}
+
+@media only screen and (min-width: 769px){
+    .comment-e{
+        .dc-btn-report{
+            display: none;
+            margin-right: 10px;
+            padding-right: 10px;
+            border-right: 1px solid @borderColor;
+            cursor: pointer;
+        }
+    }
+    .comment-e:hover .dc-btn-report{
+        display: inline;
+    }
+}
+
+@media only screen and (max-width: 768px){
+
+}

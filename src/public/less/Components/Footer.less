@@ -1,0 +1,74 @@
+@import "../Bootstrapping/Variables";
+
+.footer{
+    .above{
+        position: relative;
+        background-color: @firstLevelColor;
+        padding: 30px 0 20px;
+    }
+    .below{
+        text-align: center;
+        background-color: #000;
+        padding: 10px 0;
+        font-size: @tinyFont;
+        font-weight: bold;
+        color: @footerColor;
+    }
+    .menu{
+        position: relative;
+        left: 70px;
+        width: 570px;
+        margin: 0 auto;
+        li {
+            margin-top: 10px;
+        }
+        a {
+            color: @footerColor;
+            font-size: @smallFont;
+        }
+        > ul {
+            > li {
+                text-align: left;
+                color: @whiteColor;
+                > ul {
+                    margin-top: 20px;
+                }
+            }
+        }
+
+        .logo{
+            position: absolute;
+            left: -175px;
+            top: 16px;
+            width: 60px;
+            text-align: center;
+            svg {
+                width: 60px;
+                height: 52px;
+            }
+            span {
+                color: @whiteColor;
+                font-size: @smallFont;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 769px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+    .footer{
+        .menu{
+            .logo {
+                left: -140px;
+                span {
+                    position: relative;
+                    top: -10px;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
