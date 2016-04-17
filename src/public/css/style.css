@@ -1,3 +1,6 @@
+.container {
+  overflow: hidden;
+}
 .page-index .container .box-normal {
   width: 21%;
   height: 100px;
@@ -24,4 +27,11 @@
 }
 .page-article .container article li {
   line-height: 26px;
+}
+.page-article .container article blockquote {
+  border-left: 10px solid rgba(102, 128, 153, 0.075);
+  background-color: rgba(102, 128, 153, 0.05);
+  padding: 15px 20px;
+  color: #2c3f51;
+  margin-bottom: 18px;
 }

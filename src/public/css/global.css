@@ -1698,6 +1698,10 @@ hr {
   margin: 0 auto;
   padding-top: 20px;
 }
+body {
+  min-height: 100%;
+  height: auto;
+}
 .flex {
   display: -webkit-box;
   display: flex;
