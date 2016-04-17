@@ -23,7 +23,7 @@ body {
   padding: 0;
 }
 body {
-  color: black;
+  color: #333;
   font-size: 1.6rem;
 }
 blockquote,
@@ -165,10 +165,16 @@ label.edui-combobox-item-label {
 }
 .box-normal {
   background-color: #fff;
-  border-radius: 5px;
   overflow: hidden;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
+}
+.box-hover:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+.box-hover:hover a {
+  color: inherit;
 }
 .box-m {
   background-color: #fff;
@@ -216,7 +222,6 @@ label.edui-combobox-item-label {
   border: none;
   text-align: center;
   cursor: pointer;
-  border-radius: 5px;
 }
 .btn-login {
   background-color: #333;
@@ -1686,7 +1691,7 @@ hr {
   color: #bfbfbf;
 }
 .bg-body-main {
-  background: url(../img/bg.jpg) fixed;
+  background: url(/public/img/bg.jpg) fixed;
 }
 .container {
   width: 1200px;
@@ -1730,9 +1735,6 @@ hr {
 }
 .navigator a {
   color: #fff;
-}
-.navigator a:hover {
-  background-color: rgba(0, 0, 0, 0.2);
 }
 .overlay {
   position: fixed;

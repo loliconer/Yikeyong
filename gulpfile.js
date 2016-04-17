@@ -16,10 +16,14 @@ gulp.task('build',function () {
         .pipe(changed('dist/public/css'))
         .pipe(gulp.dest('dist/public/css'));
     
-    gulp.src('public/img/**/*')
+    gulp.src('src/public/img/**/*')
         .pipe(clean('dist/public/img'))
         .pipe(changed('dist/public/img'))
         .pipe(gulp.dest('dist/public/img'));
+    
+    gulp.src('src/**/*.html')
+        .pipe(changed('dist/**/*'))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task( 'liveless', function () {

@@ -34,10 +34,18 @@
 
 .box-normal {
     background-color: @whiteColor;
-    border-radius: @border-radius;
+    //border-radius: @border-radius;
     overflow: hidden;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
+}
+
+.box-hover:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+    color: @whiteColor;
+    a {
+        color: inherit;
+    }
 }
 
 .box-m {

@@ -1,16 +1,42 @@
 @import "Bootstrapping/Variables";
 
-.container{
-    .box-normal{
-        width:21%;
-        height:100px;
-        line-height: 100px;
-        text-align: center;
+.page-index {
+    .container {
+        .box-normal {
+            width: 21%;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
     }
-    .box-normal:hover{
-        background-color: rgba(0, 0, 0, 0.2);
-        .block-a-full{
-            color: @whiteColor;
+}
+
+.page-article {
+    .container {
+        header {
+            .btn {
+                height: 60px;
+                line-height: 60px;
+                font-size:20px;
+            }
+        }
+        .list{
+            .box-normal{
+                height:100px;
+                line-height: 100px;
+                text-align: center;
+            }
+        }
+        article{
+            width:680px;
+            margin:0 auto;
+            padding:20px 20px 20px 40px;
+            ul{
+                list-style-type: disc;
+            }
+            li{
+                line-height: 26px;
+            }
         }
     }
 }

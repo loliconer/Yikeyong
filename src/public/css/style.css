@@ -1,12 +1,27 @@
-.container .box-normal {
+.page-index .container .box-normal {
   width: 21%;
   height: 100px;
   line-height: 100px;
   text-align: center;
 }
-.container .box-normal:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+.page-article .container header .btn {
+  height: 60px;
+  line-height: 60px;
+  font-size: 20px;
 }
-.container .box-normal:hover .block-a-full {
-  color: #fff;
+.page-article .container .list .box-normal {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+.page-article .container article {
+  width: 680px;
+  margin: 0 auto;
+  padding: 20px 20px 20px 40px;
+}
+.page-article .container article ul {
+  list-style-type: disc;
+}
+.page-article .container article li {
+  line-height: 26px;
 }
