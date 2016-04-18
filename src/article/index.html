@@ -9,8 +9,8 @@
 <body class="bg-body-main page-article">
 <div class="container">
     <header class="flex flex-average box-normal">
-        <div class="btn box-hover">英文</div>
-        <div class="btn box-hover">中文</div>
+        <div class="btn box-hover js-toggle" data-type="en">英文</div>
+        <div class="btn box-hover js-toggle" data-type="zh">中文</div>
     </header>
     <section class="list list-en">
         <div class="box-normal box-hover">
@@ -79,9 +79,21 @@
     </section>
     <section class="list list-zh disnone">
         <div class="box-normal box-hover">
-            <a class="block-a-full" href="en/rosetta/1-1-1.html">1-1-1</a>
+            <a class="block-a-full" href="zh/web-linker.html">web-linker技术点</a>
         </div>
     </section>
 </div>
+<script>
+    !function () {
+        var toggles = document.querySelectorAll( '.js-toggle' ),
+                listen = document.querySelector( '.list-en' ),
+                listzh = document.querySelector( '.list-zh' );
+
+        toggles.addEventListener('click',function(){
+            //
+        })
+
+    }();
+</script>
 </body>
 </html>
