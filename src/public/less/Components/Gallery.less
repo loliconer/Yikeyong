@@ -1,0 +1,89 @@
+.viewer-container {
+    .grab {
+        cursor: -webkit-grab;
+        cursor: -moz-grab;
+        cursor: grab;
+    }
+
+    .grabbing {
+        cursor: -webkit-grabbing;
+        cursor: -moz-grabbing;
+        cursor: grabbing;
+    }
+    .viewer-canvas {
+        text-align: center;
+        height: 100%;
+        .img-wrap {
+            transition: all .3s ease-out;
+            animation-name: fade-in;
+            animation-duration: .5s;
+            height:100%;
+        }
+    }
+    .viewer-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+
+        .viewer-toolbar {
+            display: inline-block;
+            margin: 0 auto;
+
+            li {
+                float: left;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                border-radius: 50%;
+                background-color: rgba(0, 0, 0, .4);
+                cursor: pointer;
+                color: #fff;
+                transition: background-color .25s;
+            }
+            li + li {
+                margin-left: 5px;
+            }
+            li:hover {
+                background-color: rgba(0, 0, 0, .8);
+            }
+            .viewer-play {
+                width: 80px;
+                height: 80px;
+                line-height: 80px;
+                margin-top: -12px;
+            }
+        }
+        .viewer-navbar {
+            height: 52px;
+            background-color: rgba(0, 0, 0, .5);
+        }
+    }
+    .viewer-close {
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, .5);
+        color: #fff;
+    }
+
+    .viewer-close:before {
+        content: 'X';
+        position: absolute;
+        bottom: 13px;
+        left: 19px;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

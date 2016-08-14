@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="萌Me使用HTML5的Canvas特性，利用WebGL技术实现在线3D环境中自定义3D模型，并结合3D打印技术让用户订购自己组合的模型。">
+    <!--<meta name="baidu-site-verification" content="HuWxHd2OR1"/>-->
+    <!--<meta name="sogou_site_verification" content="ISwp7txnoC"/>-->
+    <!--    优先使用最新版本的IE和Chrome-->
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1">
+    <title data-localize="pageTitle.index">萌Me</title>
+<!--    <link href="//cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/vendor/vue.js"></script>
+    <script src="/js/vendor/three.js"></script>
+    <script src="/js/vendor/threex.js"></script>
+    <script src="/js/vendor/OrbitControls.js"></script>
+    <script src="/js/vendor/farbtastic.js"></script>
+    <script src="/js/vendor/interface.js"></script>
+    <script src="/js/mengme.bundle.js" defer></script>
+</head>
+<body>
+<!--[if lte IE 9]>
+<div class="hvcenter">您的浏览器版本过低，不支持WebGL，请升级。支持的浏览器有：IE11+、Firefox、Chrome、Safari、Opera以及最新版的QQ、百度、360极速、傲游云浏览器。</div>
+<![endif]-->
+
+<div class="content">
+    <div class="modellist"></div>
+</div>
+
+<div id="pickeroverlay" class="overlay disnone">
+    <div class="close title"><i class="fa fa-chevron-left"></i></div>
+    <div id="picker-area">
+        <div id="confirm-area">
+            <input id="selected-color" type="text" readonly>
+
+            <div class="button-action" id="picker-confirm">确认</div>
+        </div>
+    </div>
+</div>
+
+<div id="spinner"><i class="fa fa-spinner fa-4x"></i></div>
+
+<div class="dock" id="dock">
+    <div class="dock-container">
+        <a class="dock-item" data-part="head"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="hair"><img src="/img/hair.png"></a>
+        <a class="dock-item" data-part="haircolor"><img src="/img/haircolor.png"></a>
+        <a class="dock-item" data-part="eyebrow"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="eye"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="glasses"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="nose"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="beard"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="mouth"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="skin"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="body"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="clothstyle"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="clothcolor"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="trousers"><img src="/img/head.png"></a>
+        <a class="dock-item" data-part="shoes"><img src="/img/head.png"></a>
+    </div>
+</div>
+
+<div id="templist" class="disnone"></div>
+
+<div class="progressbar disnone hvcenter">
+    <div class="warning textcenter"></div>
+</div>
+
+<div id="webgl-error-message" class="hvcenter"></div>
+
+
+<footer class="fontsize14 not-small">
+    Copyright © 2016 <a href="http://www.yikeyong.com">Yikeyong</a> All right reserved. <a href="http://www.miitbeian.gov.cn/">粤ICP备15037960号</a>
+</footer>
+</body>
+</html>
