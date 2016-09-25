@@ -5,6 +5,7 @@ var clean = require( 'gulp-dest-clean' );
 var less = require( 'gulp-less' );
 var livereload = require( 'gulp-livereload' );
 var modified = require( 'gulp-modified' );
+var cached = require( 'gulp-cached' );
 
 gulp.task( 'build', function () {
     gulp.src( 'src/public/js/*.js' )
@@ -31,7 +32,10 @@ gulp.task( 'build', function () {
 
 gulp.task( 'liveless', function () {
     gulp.src( 'src/public/less/*.less' )
-        .pipe( less() )
+        .pipe( less( {
+            strictMath: "on"
+        } ) )
+        .pipe( cached( 'less' ) )
         .pipe( cleanCSS() )
         .pipe( gulp.dest( 'src/public/css' ) )
         .pipe( livereload() );
