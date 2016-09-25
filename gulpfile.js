@@ -12,8 +12,8 @@ gulp.task( 'build', function () {
         .pipe( gulp.dest( 'dist/public/js' ) );
 
     gulp.src( 'src/public/js/vendor/*.js' )
-            .pipe( changed( 'dist/public/js/vendor' ) )
-            .pipe( gulp.dest( 'dist/public/js/vendor' ) );
+        .pipe( changed( 'dist/public/js/vendor' ) )
+        .pipe( gulp.dest( 'dist/public/js/vendor' ) );
 
     gulp.src( 'src/public/css/*.css' )
         .pipe( changed( 'dist/public/css' ) )
@@ -43,12 +43,19 @@ gulp.task( 'livejs', function () {
         .pipe( livereload() );
 } );
 
+gulp.task( 'livehtml', function () {
+    gulp.src( 'src/blog/**/*.html' )
+        .pipe( modified( 'html' ) )
+        .pipe( livereload() );
+} );
+
 gulp.task( 'watch', function () {
     livereload.listen( {
         start: true
     } );
     gulp.watch( 'src/public/less/**/*.less', [ 'liveless' ] );
     gulp.watch( 'src/public/js/*.js', [ 'livejs' ] );
+    gulp.watch( 'src/blog/**/*.html', [ 'livehtml' ] );
 } );
 
 gulp.task( 'default', function () {
