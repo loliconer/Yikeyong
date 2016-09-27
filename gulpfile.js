@@ -26,7 +26,7 @@ gulp.task( 'build', function () {
         .pipe( gulp.dest( 'dist/public/img' ) );
 
     gulp.src( 'src/**/*.html' )
-        .pipe( changed( 'dist/**/*' ) )
+        .pipe( changed( 'dist' ) )
         .pipe( gulp.dest( 'dist' ) );
 } );
 
@@ -39,6 +39,15 @@ gulp.task( 'liveless', function () {
         .pipe( cleanCSS() )
         .pipe( gulp.dest( 'src/public/css' ) )
         .pipe( livereload() );
+} );
+
+gulp.task( 'less', function () {
+    gulp.src( 'src/public/less/blog.less' )
+        .pipe( less( {
+            strictMath: "on"
+        } ) )
+        .pipe( cleanCSS() )
+        .pipe( gulp.dest( 'src/public/css' ) );
 } );
 
 gulp.task( 'livejs', function () {
