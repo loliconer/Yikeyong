@@ -40,7 +40,7 @@ blockquote {
 a {
     color: #4fa1db;
     text-decoration: none;
-    transition: background-color ease-in-out .15s, color ease-in-out .15s, border-color ease-in-out .15s;
+    transition: color ease-in-out .15s, border-color ease-in-out .15s;
 }
 
 a:hover {
@@ -54,21 +54,158 @@ table {
     max-width: 100%;
     background-color: transparent;
     margin-bottom: 20px;
-}
-
-table th, table td {
-    padding: 8px;
-    line-height: 20px;
-}
-
-table td {
-    border-top: 1px solid #ddd;
+    th, td {
+        padding: 8px;
+        line-height: 20px;
+    }
+    td {
+        border-top: 1px solid #ddd;
+    }
 }
 
 ul {
     list-style-type: disc;
     padding-left: 40px;
     margin-bottom: 1.1em;
+}
+
+pre {
+    font-size: 18px;
+}
+
+code[class*=language-], pre[class*=language-] {
+    color: #f8f8f2;
+    text-shadow: 0 -.1em .2em #000;
+    font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none
+}
+
+pre[class*=language-] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+    border: .3em solid #7a6652;
+    border-radius: .5em;
+    box-shadow: 1px 1px .5em #000 inset
+}
+
+:not(pre) > code[class*=language-], pre[class*=language-] {
+    background: #4d4033
+}
+
+:not(pre) > code[class*=language-] {
+    padding: .1em;
+    border-radius: .3em
+}
+
+.token.cdata, .token.comment, .token.doctype, .token.prolog {
+    color: gray
+}
+
+.token.punctuation {
+    color: #f8f8f2
+}
+
+.namespace {
+    opacity: .7
+}
+
+.token.constant, .token.deleted, .token.property, .token.symbol, .token.tag {
+    color: #f92672
+}
+
+.token.number {
+    color: #5d97bb
+}
+
+.token.attr-name, .token.builtin, .token.char, .token.inserted, .token.selector, .token.string {
+    color: #5f8759
+}
+
+.language-css .token.string, .style .token.string, .token.entity, .token.url, .token.variable {
+    color: #9876aa
+}
+
+.token.operator {
+    color: #f8f8f2
+}
+
+.token.selector, .token.atrule, .token.attr-value, .token.function {
+    color: #ffc66d
+}
+
+.token.boolean, .token.keyword, .token.delimiter {
+    color: #cc7832;
+    font-weight: 700
+}
+
+.token.important, .token.regex {
+    color: #fd971f
+}
+
+.token.bold, .token.important {
+    font-weight: 700
+}
+
+.token.italic {
+    font-style: italic
+}
+
+.token.entity {
+    cursor: help
+}
+
+.wrap {
+    padding: 10px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.answer {
+    font-family: 'Courier New', sans-serif;
+    background-color: #F2F4F6;
+    border: 2px solid #E7ECEE;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.block-posts {
+    .post {
+        background-color: #fff;
+        //box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
+        padding: 9px;
+        border: 1px solid #F3F3F5;
+        margin-bottom: 15px;
+        .p-title {
+            margin-bottom: 10px;
+        }
+        .p-info {
+            border-bottom: 1px solid #EDEFF0;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 12px;
+            color: #bfbfbf;
+        }
+        .p-intro {
+            color: #888a8c;
+            font-size: 16px;
+        }
+    }
 }
 
 .container {
@@ -108,32 +245,6 @@ ul {
                     color: #E6390E;
                 }
             }
-        }
-    }
-}
-
-.block-posts {
-    .post {
-        background-color: #fff;
-        //box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
-        padding: 9px;
-        border: 1px solid #F3F3F5;
-        margin-bottom: 15px;
-        .p-title {
-            margin-bottom: 10px;
-        }
-        .p-info {
-            border-bottom: 1px solid #EDEFF0;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-            font-size: 12px;
-            color: #bfbfbf;
-        }
-        .p-intro {
-            color: #888a8c;
-            font-size: 16px;
         }
     }
 }
