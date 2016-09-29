@@ -29,7 +29,6 @@ gulp.task( 'build', function () {
         .pipe( gulp.dest( 'dist/public/img' ) );
 
     gulp.src( 'src/**/*.html' )
-        .pipe( clean( 'dist' ) )
         .pipe( changed( 'dist' ) )
         .pipe( gulp.dest( 'dist' ) );
 } );
