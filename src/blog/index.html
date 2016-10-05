@@ -6,6 +6,7 @@
     <title>亦可用的博客</title>
     <link href="/public/css/global.css" rel="stylesheet">
     <link href="/public/css/blog.css" rel="stylesheet">
+    <script src="/public/js/template.js"></script>
 </head>
 <body>
 <nav class="nav">
@@ -20,62 +21,86 @@
     </div>
 </nav>
 <div class="container">
-    <div class="block-posts">
-        <div class="post">
-            <div class="p-title">
-                <a href="post/20160929002.html" target="_blank">网站优化原则</a>
-            </div>
-            <div class="p-info">
-                <div class="item">创建时间：2016-09-29</div>
-            </div>
-            <div class="p-intro">网站优化原则</div>
-        </div>
-        <div class="post">
-            <div class="p-title">
-                <a href="post/20160929001.html" target="_blank">Web-linker技术点</a>
-            </div>
-            <div class="p-info">
-                <div class="item">创建时间：2016-09-29</div>
-            </div>
-            <div class="p-intro">Web-linker站点上收集的一些Web开发相关的知识点。</div>
-        </div>
-        <div class="post">
-            <div class="p-title">
-                <a href="post/20160927002.html" target="_blank">Three.js学习笔记（一）</a>
-            </div>
-            <div class="p-info">
-                <div class="item">创建时间：2016-09-27</div>
-            </div>
-            <div class="p-intro">Three.js的基本概念以及一个简单的例子。</div>
-        </div>
-        <div class="post">
-            <div class="p-title">
-                <a href="post/20160927001.html" target="_blank">Web开发实用查询文档</a>
-            </div>
-            <div class="p-info">
-                <div class="item">创建时间：2016-09-27</div>
-            </div>
-            <div class="p-intro">Mozilla上的部分文档入口，方便直接查阅。</div>
-        </div>
-        <div class="post">
-            <div class="p-title">
-                <a href="post/20160926001.html" target="_blank">Ubuntu清除无用的内核文件</a>
-            </div>
-            <div class="p-info">
-                <div class="item">创建时间：2016-09-26</div>
-            </div>
-            <div class="p-intro">Ubuntu在更新系统的时候，有时会由于/boot分区空间不足导致更新失败，此时需要将过期无用的内核文件清除。</div>
-        </div>
-        <div class="post">
-            <div class="p-title">
-                <a href="post/20160925001.html" target="_blank">Ubuntu安装Nginx</a>
-            </div>
-            <div class="p-info">
-                <div class="item">创建时间：2016-09-25</div>
-            </div>
-            <div class="p-intro">Ubuntu系统从下载到启动Nginx的整个操作过程，简单明了，一看就懂，直接执行命令即可。</div>
-        </div>
-    </div>
+    <div class="block-posts" id="posts"></div>
 </div>
+<script id="tpl" type="text/html">
+    <% for(var i = 0; i < units.length; i++) { %>
+    <div class="post">
+        <div class="p-title">
+            <a href="post/<%= units[i].url %>.html" target="_blank"><%= units[i].title %></a>
+        </div>
+        <div class="p-info">
+            <div class="item">创建时间：<%= units[i].time %></div>
+        </div>
+        <div class="p-intro"><%= units[i].intro %></div>
+    </div>
+    <% } %>
+</script>
+<script>
+    posts.innerHTML = template( tpl.innerHTML, {
+        units: [
+            /*{
+                url: "",
+                title: "",
+                time: "",
+                intro: ""
+            },*/
+            {
+                url: "20161005003",
+                title: "Three.js学习笔记（四）",
+                time: "2016-10-05",
+                intro: "Three.js中可以使用的3D模型文件类型。"
+            },
+            {
+                url: "20161005002",
+                title: "Three.js学习笔记（三）",
+                time: "2016-10-05",
+                intro: "三大基本要素的分类"
+            },
+            {
+                url: "20161005001",
+                title: "Three.js学习笔记（二）",
+                time: "2016-10-05",
+                intro: "一些基本用法"
+            },
+            {
+                url: "20160929002",
+                title: "网站优化原则",
+                time: "2016-09-29",
+                intro: "网站优化原则"
+            },
+            {
+                url: "20160929001",
+                title: "Web-linker技术点",
+                time: "2016-09-29",
+                intro: "Web-linker站点上收集的一些Web开发相关的知识点。"
+            },
+            {
+                url: "20160927002",
+                title: "Three.js学习笔记（一）",
+                time: "2016-09-27",
+                intro: "Three.js的基本概念以及一个简单的例子。"
+            },
+            {
+                url: "20160927001",
+                title: "Web开发实用查询文档",
+                time: "2016-09-27",
+                intro: "Mozilla上的部分文档入口，方便直接查阅。"
+            },
+            {
+                url: "20160926001",
+                title: "Ubuntu清除无用的内核文件",
+                time: "2016-09-26",
+                intro: "Ubuntu在更新系统的时候，有时会由于/boot分区空间不足导致更新失败，此时需要将过期无用的内核文件清除。"
+            },
+            {
+                url: "20160925001",
+                title: "Ubuntu安装Nginx",
+                time: "2016-09-25",
+                intro: "Ubuntu系统从下载到启动Nginx的整个操作过程，简单明了，一看就懂，直接执行命令即可。"
+            }
+        ]
+    })
+</script>
 </body>
 </html>

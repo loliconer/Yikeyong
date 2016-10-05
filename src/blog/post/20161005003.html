@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh" class="lang-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js学习笔记（四）</title>
+    <link href="/public/css/global.css" rel="stylesheet">
+    <link href="/public/css/blog.css" rel="stylesheet">
+</head>
+<body>
+<div class="container page-post">
+    <h3 class="post-title">Three.js学习笔记（四）</h3>
+    <h2>一、Collada模型文件</h2>
+
+    <p>后缀：dae，使用ColladaLoader.js</p>
+    <pre><code>var loader = new THREE.ColladaLoader();
+loader.options.convertUpAxis = true;
+loader.load( 'name.dae', function( collada ) {
+    dae = collada.scene;
+    dae.traverse( function( child ) {
+        if( child instanceof THREE.SkinnedMesh ) {
+            var animation = new THREE.Animation(child, child.geometry.animation);
+            animation.play();
+        }
+    });
+    dae.scale.x = dae.scale.y = dae.scale.z = 0.002;
+    dae.updateMatrix();
+    init();
+    animate();
+});
+function init() {
+    var loader = new THREE.JSONLoader();
+    loader.load('name.js', function(geometry, materials){
+        ...
+    });
+    scene.add(dae);
+}</code></pre>
+
+    <h2>二、DDS文件</h2>
+
+    <p>Direct Draw Surface，用photoshop打开</p>
+
+
+    <h2>三、MTL文件</h2>
+
+    <p>材质库文件，使用DDSLoader.js, MTLLoader.js, OBJMTLLoader.js</p>
+    <pre><code>THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+var loader = new THREE.OBJMTLLoader();
+loader.load('name.obj', 'name.mtl', function(object){
+    scene.add(object);
+}, onProgress, onError);</code></pre>
+
+    <h2>四、OBJ文件</h2>
+
+    <p>3D模型文件，不包含动画、材质、贴图、粒子、动力学信息，使用OBJLoader.js</p>
+    <pre><code>var manager = new THREE.LoadingManager();
+manager.onProgress = function(){};
+var loader = new THREE.ImageLoader(manager);
+loader.load('name.jpg', function(image){
+    texture.image = image;
+    texture.needsUpdate = true;
+});
+var loader = new THREE.OBJLoader(manager);
+loader.load('name.obj', function(object){
+    object.traverse(fuction(child){
+        if(child instanceof THREE.Mesh){
+            child.material.map = texture;
+        }
+    });
+    scene.add(object);
+}, onProgress, onError);</code></pre>
+
+    <h2>五、PLY文件</h2>
+
+    <p>3D Mesh模型数据文件，使用PLYLoader.js</p>
+    <pre><code>var loader = new THREE.PLYLoader();
+loader.addEventListener('load', function(event){
+    var geometry = event.content;
+    ...
+});
+loader.load('name.ply');</code></pre>
+
+    <h2>六、STL文件</h2>
+
+    <p>3D模型文件，使用STLLoader.js</p>
+    <pre><code>var loader = new THREE.STLLoader();
+loader.addEventListener('load', function(event){
+    var geometry = event.content;
+    ...
+});
+loader.load('name.stl');</code></pre>
+
+    <h2>七、VRML文件</h2>
+
+    <p>使用VRMLLoader.js</p>
+    <pre><code>var loader = new THREE.VRMLLoader();
+loader.addEventListener('load', function(event){
+    scene.add(event.content);
+});
+loader.load('name.wrl');</code></pre>
+
+    <h2>八、VTK文件</h2>
+
+    <p>使用VTLLoader.js</p>
+    <pre><code>var loader = new THREE.VTKLoader();
+loader.load('name.vtk', function(geometry){});</code></pre>
+
+    <h2>九、UTF8</h2>
+
+    <p>使用UTF8Loader.js, MTLLoader.js, DDSLoader.js</p>
+    <pre><code>THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+var loader = new THREE.UTF8Loader();
+loader.load('utf8/name.js', function(object){});</code></pre>
+
+    <h2>十、PDB文件</h2>
+
+    <p>使用PDBLoader.js, CSS2DRenderer.js</p>
+    <pre><code>var loader = new THREE.PDBLoader();
+loader.load('name.pdb');</code></pre>
+
+    <h2>十一、CTM文件</h2>
+
+    <p>使用lzma.js, ctm.js, CTMLoader.js</p>
+
+    <h2>十二、AWD文件</h2>
+
+    <p>使用AWDLoader.js</p>
+    <pre><code>var loader = new THREE.AWDLoader();
+loader.materialFactory = createMaterial;
+loader.load('name.awd', function(_trunk){
+    trunk = _trunk;
+    init();
+});
+function createMaterial(name) {
+    return null;
+}
+function init() {
+    scene.add(trunk);
+}</code></pre>
+</div>
+<script src="/public/js/vendor/prism.js"></script>
+</body>
+</html>

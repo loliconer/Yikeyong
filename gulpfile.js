@@ -9,17 +9,14 @@ var cached = require( 'gulp-cached' );
 
 gulp.task( 'build', function () {
     gulp.src( 'src/public/js/*.js' )
-        .pipe( clean( 'dist/public/js' ) )
         .pipe( changed( 'dist/public/js' ) )
         .pipe( gulp.dest( 'dist/public/js' ) );
 
     gulp.src( 'src/public/js/vendor/*.js' )
-        .pipe( clean( 'dist/public/js/vendor' ) )
         .pipe( changed( 'dist/public/js/vendor' ) )
         .pipe( gulp.dest( 'dist/public/js/vendor' ) );
 
     gulp.src( 'src/public/css/*.css' )
-        .pipe( clean( 'dist/public/css' ) )
         .pipe( changed( 'dist/public/css' ) )
         .pipe( gulp.dest( 'dist/public/css' ) );
 

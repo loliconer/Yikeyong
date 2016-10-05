@@ -63,10 +63,17 @@ table {
     }
 }
 
-ul {
-    list-style-type: disc;
+ol, ul {
     padding-left: 40px;
     margin-bottom: 1.1em;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+ul {
+    list-style-type: disc;
 }
 
 pre {
@@ -269,8 +276,8 @@ pre[class*=language-] {
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .container {
-        width:100%;
+        width: 100%;
     }
 }
