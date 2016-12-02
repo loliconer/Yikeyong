@@ -1,4 +1,5 @@
 @import "../Bootstrapping/Variables";
+@import "../Bootstrapping/Mixins";
 
 .box {
     width: 410px;
@@ -33,11 +34,11 @@
 }
 
 .box-normal {
+    .shadow;
     background-color: @whiteColor;
-    //border-radius: @border-radius;
     overflow: hidden;
     margin-bottom: 20px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
+    //box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18);
 }
 
 .box-hover:hover{

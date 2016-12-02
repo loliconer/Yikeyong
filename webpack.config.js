@@ -1,14 +1,14 @@
-var webpack = require( 'webpack' );
+const webpack = require( 'webpack' );
 
 module.exports = {
     context: __dirname,
-    devtool: false,
+    // devtool: false,
     entry: {
         mengme: './src/public/js/src/mengme.js',
         pic: './src/public/js/src/pic.js'
     },
     output: {
-        path: __dirname + "/src/public/js",
+        path: "src/public/js",
         filename: '[name].bundle.js'
     },
     resolve: {
@@ -48,7 +48,8 @@ module.exports = {
         ]
     },
     babel: {
-        presets: [ 'es2015' ],
-        plugins: [ 'transform-runtime' ]
+        presets: [ 'es2015', 'stage-2' ],
+        plugins: [ 'transform-runtime' ],
+        comments: false
     }
 };

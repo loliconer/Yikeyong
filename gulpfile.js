@@ -1,15 +1,16 @@
-var gulp = require( 'gulp' );
-var cleanCSS = require( 'gulp-clean-css' );
-var changed = require( 'gulp-changed' );
-var clean = require( 'gulp-dest-clean' );
-var less = require( 'gulp-less' );
-var livereload = require( 'gulp-livereload' );
-var modified = require( 'gulp-modified' );
-var cached = require( 'gulp-cached' );
+const gulp = require( 'gulp' );
+const cleanCSS = require( 'gulp-clean-css' );
+const changed = require( 'gulp-changed' );
+const clean = require( 'gulp-dest-clean' );
+const less = require( 'gulp-less' );
+const livereload = require( 'gulp-livereload' );
+const cached = require( 'gulp-cached' );
 
-gulp.task( 'build', function () {
+gulp.task( 'build', () => {
     gulp.src( 'src/public/js/*.js' )
-        .pipe( changed( 'dist/public/js' ) )
+        .pipe( changed( 'dist/public/js', {
+            hasChanged: changed.compareSha1Digest
+        } ) )
         .pipe( gulp.dest( 'dist/public/js' ) );
 
     gulp.src( 'src/public/js/vendor/*.js' )
@@ -17,11 +18,12 @@ gulp.task( 'build', function () {
         .pipe( gulp.dest( 'dist/public/js/vendor' ) );
 
     gulp.src( 'src/public/css/*.css' )
-        .pipe( changed( 'dist/public/css' ) )
+        .pipe( changed( 'dist/public/css', {
+            hasChanged: changed.compareSha1Digest
+        } ) )
         .pipe( gulp.dest( 'dist/public/css' ) );
 
     gulp.src( 'src/public/img/**/*' )
-        .pipe( clean( 'dist/public/img' ) )
         .pipe( changed( 'dist/public/img' ) )
         .pipe( gulp.dest( 'dist/public/img' ) );
 
@@ -30,7 +32,7 @@ gulp.task( 'build', function () {
         .pipe( gulp.dest( 'dist' ) );
 } );
 
-gulp.task( 'liveless', function () {
+gulp.task( 'liveless', () => {
     gulp.src( 'src/public/less/*.less' )
         .pipe( less( {
             strictMath: "on"
@@ -41,7 +43,7 @@ gulp.task( 'liveless', function () {
         .pipe( livereload() );
 } );
 
-gulp.task( 'less', function () {
+gulp.task( 'less', () => {
     gulp.src( 'src/public/less/blog.less' )
         .pipe( less( {
             strictMath: "on"
@@ -50,19 +52,19 @@ gulp.task( 'less', function () {
         .pipe( gulp.dest( 'src/public/css' ) );
 } );
 
-gulp.task( 'livejs', function () {
+gulp.task( 'livejs', () => {
     gulp.src( 'src/public/js/*.js' )
-        .pipe( modified( 'js' ) )
+        .pipe( cached( 'js' ) )
         .pipe( livereload() );
 } );
 
-gulp.task( 'livehtml', function () {
+gulp.task( 'livehtml', () => {
     gulp.src( 'src/blog/**/*.html' )
-        .pipe( modified( 'html' ) )
+        .pipe( cached( 'html' ) )
         .pipe( livereload() );
 } );
 
-gulp.task( 'watch', function () {
+gulp.task( 'watch', () => {
     livereload.listen( {
         start: true
     } );
@@ -71,6 +73,6 @@ gulp.task( 'watch', function () {
     gulp.watch( 'src/blog/**/*.html', [ 'livehtml' ] );
 } );
 
-gulp.task( 'default', function () {
+gulp.task( 'default', () => {
     gulp.start( 'watch' );
 } );
