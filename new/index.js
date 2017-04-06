@@ -7,7 +7,7 @@ fs.readFile('new/html.html', 'utf8', (err, data) => {
   data = data.replace('index.bundle.js', `${app}.bundle.js`)
   data = data.replace('page-', `page-${app}`)
 
-  fs.writeFile(`page/${app}.html`, data, err => {
+  fs.writeFile(`html/${app}.html`, data, err => {
     if (err) throw err
   })
 })

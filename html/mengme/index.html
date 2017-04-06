@@ -11,13 +11,13 @@
 <!--    <link href="//cdn.bootcss.com/sweetalert/1.1.0/sweetalert.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="/public/css/global.css">
     <link rel="stylesheet" href="/public/css/style.css">
-    <script src="/public/js/vendor/vue.js"></script>
-    <script src="/public/js/vendor/three.js"></script>
-    <script src="/public/js/vendor/threex.js"></script>
-    <script src="/public/js/vendor/OrbitControls.js"></script>
-    <!--<script src="/public/js/vendor/farbtastic.js"></script>-->
-    <!--<script src="/public/js/vendor/interface.js"></script>-->
-    <script src="/public/js/mengme.bundle.js" defer></script>
+    <script src="/js/vendor/vue.js"></script>
+    <script src="/js/vendor/three.js"></script>
+    <script src="/js/vendor/threex.js"></script>
+    <script src="/js/vendor/OrbitControls.js"></script>
+    <!--<script src="/js/vendor/farbtastic.js"></script>-->
+    <!--<script src="/js/vendor/interface.js"></script>-->
+    <script src="/js/mengme.bundle.js" defer></script>
 </head>
 <body class="page-mengme">
 <!--[if lte IE 9]>
@@ -31,7 +31,7 @@
 
     <div class="dock" id="dock">
         <div class="dock-container">
-            <a class="dock-item" v-for="part of parts"><img :src="`/public/img/mengme/${part}.png`"></a>
+            <a class="dock-item" v-for="part of parts"><img :src="`/img/mengme/${part}.png`"></a>
         </div>
     </div>
 </div>
