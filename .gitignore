@@ -1,6 +1,5 @@
 .idea
 dist
 node_modules
-src/spa/img
-src/public/img/mengme
-src/public/js/*.bundle.js
+public/img/mengme
+public/js/*.bundle.js
