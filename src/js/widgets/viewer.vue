@@ -21,7 +21,7 @@
 </template>
 
 <script>
-    import utils from "../utils";
+    import utils from "../lib/utils";
 
     var prototype = {};
     var EVENT_MOUSEDOWN = "mousedown touchstart pointerdown MSPointerDown",

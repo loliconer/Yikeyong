@@ -9,9 +9,8 @@ function entries() {
 
   files.forEach(file => {
     let stat = fs.statSync(basePath + '/' + file)
-    let name = file.slice(0, -3)
-
-    if (stat.isFile() && name !== 'admin') {
+    if (stat.isFile()) {
+      let name = file.slice(0, -3)
       obj[name] = basePath + '/' + file
     }
   })
@@ -21,7 +20,6 @@ function entries() {
 
 module.exports = {
   context: __dirname,
-  // devtool: false,
   entry: entries(),
   output: {
     path: "public/js",
@@ -33,6 +31,25 @@ module.exports = {
     extensions: ['', '.json', '.js'],
     fallback: [path.join(__dirname, './node_modules')]
   },
+  plugins: [
+    // new webpack.HotModuleReplacementPlugin(),
+    // new webpack.NoErrorsPlugin(),
+    // new webpack.IgnorePlugin( /^\.\/locale$/, /moment$/ ),
+    // new webpack.optimize.DedupePlugin(),
+    new webpack.DefinePlugin({
+      "process.env": {
+        "NODE_ENV": JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: false,
+      sourcemap: false,
+      compress: {
+        warnings: false
+      }
+    })
+  ],
   module: {
     loaders: [
       {

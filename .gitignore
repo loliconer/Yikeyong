@@ -1,5 +1,10 @@
+# Logs
+logs
+*.log
+npm-debug.log*
 .idea
 dist
 node_modules
 public/img/mengme
 public/js/*.bundle.js
+public/css

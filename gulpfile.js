@@ -7,59 +7,56 @@ const livereload = require('gulp-livereload')
 const cached = require('gulp-cached')
 
 gulp.task('build', () => {
-  gulp.src('src/public/js/*.js')
-    .pipe(changed('dist/public/js', {
+  gulp.src('public/js/*.*')
+    .pipe(changed('www/public/js', {
       hasChanged: changed.compareSha1Digest
     }))
-    .pipe(gulp.dest('dist/public/js'))
+    .pipe(gulp.dest('www/public/js'))
 
-  gulp.src('src/public/js/vendor/*.js')
-    .pipe(changed('dist/public/js/vendor'))
-    .pipe(gulp.dest('dist/public/js/vendor'))
-
-  gulp.src('src/public/css/*.css')
-    .pipe(changed('dist/public/css', {
+  gulp.src('public/css/*.css')
+    .pipe(changed('www/public/css', {
       hasChanged: changed.compareSha1Digest
     }))
-    .pipe(gulp.dest('dist/public/css'))
+    .pipe(gulp.dest('www/public/css'))
 
-  gulp.src('src/public/img/**/*')
-    .pipe(changed('dist/public/img'))
-    .pipe(gulp.dest('dist/public/img'))
+  gulp.src('public/js/vendor/*.js')
+    .pipe(changed('www/public/js/vendor'))
+    .pipe(gulp.dest('www/public/js/vendor'))
 
-  gulp.src('pages/**/*.html')
-    .pipe(changed('dist/pages'))
-    .pipe(gulp.dest('dist/pages'))
+  gulp.src('public/img/**/*')
+    .pipe(changed('www/public/img'))
+    .pipe(gulp.dest('www/public/img'))
+
+  gulp.src('html/**/*.html')
+    .pipe(clean('www/html', {
+      force: true
+    }))
+    .pipe(replace(/js\/vendor\/(echarts|vue)\.js/g, 'js/vendor/$1.min.js'))
+    .pipe(changed('www/html', {
+      hasChanged: changed.compareSha1Digest
+    }))
+    .pipe(gulp.dest('www/html'))
 })
 
-gulp.task('liveless', () => {
-  gulp.src('src/public/less/*.less')
+gulp.task('less', () => {
+  gulp.src('src/less/*.less')
     .pipe(less({
       strictMath: "on"
     }))
     .pipe(cached('less'))
     .pipe(cleanCSS())
-    .pipe(gulp.dest('src/public/css'))
+    .pipe(gulp.dest('public/css'))
     .pipe(livereload())
 })
 
-gulp.task('less', () => {
-  gulp.src('src/public/less/blog.less')
-    .pipe(less({
-      strictMath: "on"
-    }))
-    .pipe(cleanCSS())
-    .pipe(gulp.dest('src/public/css'))
-})
-
-gulp.task('livejs', () => {
-  gulp.src('src/public/js/*.js')
+gulp.task('js', () => {
+  gulp.src('public/js/*.*')
     .pipe(cached('js'))
     .pipe(livereload())
 })
 
-gulp.task('livehtml', () => {
-  gulp.src('src/blog/**/*.html')
+gulp.task('html', () => {
+  gulp.src('html/**/*.html')
     .pipe(cached('html'))
     .pipe(livereload())
 })
@@ -67,12 +64,11 @@ gulp.task('livehtml', () => {
 gulp.task('watch', () => {
   livereload.listen({
     start: true
-  });
-  gulp.watch('src/public/less/**/*.less', ['liveless'])
-  gulp.watch('src/public/js/*.js', ['livejs'])
-  gulp.watch('src/blog/**/*.html', ['livehtml'])
+  })
+
+  gulp.watch('src/less/**/*.less', ['less'])
+  gulp.watch('public/js/*.*', ['js'])
+  gulp.watch('html/**/*.html', ['html'])
 })
 
-gulp.task('default', () => {
-  gulp.start('watch')
-})
+gulp.task('default', () => gulp.start('watch'))
