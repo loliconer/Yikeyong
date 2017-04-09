@@ -56,7 +56,7 @@ gulp.task('js', () => {
 })
 
 gulp.task('html', () => {
-  gulp.src('html/**/*.html')
+  gulp.src('html/**/*.*')
     .pipe(cached('html'))
     .pipe(livereload())
 })

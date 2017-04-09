@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>英语学习篇 | 亦可用</title>
+  <script src="/js/vendor/vue.js"></script>
+  <script src="/js/vendor/yikeyong.min.js"></script>
+  <script src="/js/template.js"></script>
+</head>
+<body class="page-article">
+<!--#include file="/common/nav.html"-->
+
+<div class="container" id="app">
+  <nav class="nav-article">
+    <button class="btn-ghost" type="button" @click="chapter = 1">第一章</button>
+    <button class="btn-ghost" type="button" @click="chapter = 2">第二章</button>
+    <button class="btn-ghost" type="button" @click="chapter = 3">第三章</button>
+    <button class="btn-ghost" type="button" @click="chapter = 4">第四章</button>
+  </nav>
+
+  <section class="nav-chapter" v-if="chapter === 1">
+    <ul class="list">
+      <li>
+        <button class="btn-ghost" type="button">1-1-1</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">1-1-2</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">1-1-3</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">1-1-4</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">1-2-1</button>
+      </li>
+    </ul>
+  </section>
+
+  <section class="nav-chapter" v-if="chapter === 4">
+    <ul class="list">
+      <li>
+        <button class="btn-ghost" type="button">4-1-1</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-1-2</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-1-3</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-1-4</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-2-1</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-2-2</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-2-3</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-2-4</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-3-1</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-3-2</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-3-3</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-3-4</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-4-1</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-4-2</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-4-3</button>
+      </li>
+      <li>
+        <button class="btn-ghost" type="button">4-4-4</button>
+      </li>
+    </ul>
+  </section>
+
+  <article></article>
+</div>
+
+<!--#include file="/common/footer.html"-->
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      chapter: 1
+    }
+  })
+</script>
+</body>
+</html>
