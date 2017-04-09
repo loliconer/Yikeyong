@@ -1,3 +1,7 @@
+body {
+  margin-bottom: 40px;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -5,6 +9,7 @@
   height: 50px;
   border-bottom: 1px solid @border-color;
   padding: 0 10px;
+  background-color: @white-color;
 
   .logo {
     .link {
@@ -29,6 +34,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: -1;
 
   >.below {
     line-height: 40px;
@@ -39,6 +45,7 @@
 }
 
 @import "Pages/index";
+@import "Pages/blog";
 
 .container {
     .panel-left {

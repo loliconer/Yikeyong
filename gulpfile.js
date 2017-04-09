@@ -27,7 +27,7 @@ gulp.task('build', () => {
     .pipe(changed('www/public/img'))
     .pipe(gulp.dest('www/public/img'))
 
-  gulp.src('html/**/*.html')
+  gulp.src('html/**/*')
     .pipe(clean('www/html', {
       force: true
     }))
@@ -68,7 +68,7 @@ gulp.task('watch', () => {
 
   gulp.watch('src/less/**/*.less', ['less'])
   gulp.watch('public/js/*.*', ['js'])
-  gulp.watch('html/**/*.html', ['html'])
+  gulp.watch('html/**/*.*', ['html'])
 })
 
 gulp.task('default', () => gulp.start('watch'))
