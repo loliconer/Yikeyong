@@ -1,94 +1,81 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ubuntu清除无用的内核文件</title>
-    <link href="/css/global.css" rel="stylesheet">
-    <link href="/css/blog.css" rel="stylesheet">
+  <!--#include file="/common/head.html"-->
+  <title>Ubuntu清除无用的内核文件</title>
 </head>
-<body>
-<div class="container page-post">
-    <h3 class="post-title">Ubuntu清除无用的内核文件</h3>
-<p>Ubuntu在更新系统的时候，有时会由于/boot分区空间不足导致更新失败，此时需要将过期无用的内核文件清除。</p>
+<body class="page-post">
+<div class="container blog">
+  <h3 class="post-title">Ubuntu清除无用的内核文件</h3>
+  <p>Ubuntu在更新系统的时候，有时会由于/boot分区空间不足导致更新失败，此时需要将过期无用的内核文件清除。</p>
 
-<h4>1、查看当前内核版本</h4>
+  <h4>1、查看当前内核版本</h4>
 
-<blockquote>
+  <blockquote>
     <p>uname -a</p>
-</blockquote>
+  </blockquote>
 
-<p>得到类似如下的信息，记下版本号，比如4.4.0-36。</p>
+  <p>得到类似如下的信息，记下版本号，比如4.4.0-36。</p>
 
-<blockquote>
+  <blockquote>
     <p>Linux scott-HaSee 4.4.0-36-generic #55-Ubuntu SMP Thu Aug 11 18:01:55 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</p>
-</blockquote>
+  </blockquote>
 
-<h4>2、列出已存在的内核</h4>
+  <h4>2、列出已存在的内核</h4>
 
-<blockquote>
+  <blockquote>
     <p>dpkg –get-selections | grep linux</p>
-</blockquote>
+  </blockquote>
 
-<p>该命令列出系统中存在的所有版本的内核文件，其中版本号小于上一步查到的版本号的文件就是我们要删除的。</p>
+  <p>该命令列出系统中存在的所有版本的内核文件，其中版本号小于上一步查到的版本号的文件就是我们要删除的。</p>
 
-<h4>3、删除内核文件</h4>
+  <h4>3、删除内核文件</h4>
 
-<blockquote>
-    <p>apt-get remove linux-image-4.4.0-21-generic <br>
-        apt-get remove linux-headers-4.4.0-21-generic</p>
-</blockquote>
-
-<p>依次方法删除其他过期的内核文件</p>
-
-
-<h4>4、删除状态为deinstall的内核文件</h4>
-
-<p>删除内核文件之后，再一次查询所有已存在的内核时会发现，刚刚删除的内核文件仍然存在，只是状态变成“deinstall”，此时可以使用下面的命令彻底清除。</p>
-
-<blockquote>
+  <blockquote>
     <p>apt-get purge linux-image-4.4.0-21-generic <br>
-        apt-get purge linux-headers-4.4.0-21-generic</p>
-</blockquote>
+      apt-get purge linux-headers-4.4.0-21-generic</p>
+  </blockquote>
 
-<h4>5、更新GRUB启动菜单配置文件</h4>
+  <p>依次方法删除其他过期的内核文件</p>
 
-<blockquote>
+  <h4>4、更新GRUB启动菜单配置文件</h4>
+
+  <blockquote>
     <p>update-grub</p>
-</blockquote>
+  </blockquote>
 
 
-<h3>附录：</h3>
+  <h3>附录：</h3>
 
-<blockquote>
+  <blockquote>
     <p>uname [option]</p>
-</blockquote>
+  </blockquote>
 
-<p>作用：获取电脑和操作系统的相关信息</p>
+  <p>作用：获取电脑和操作系统的相关信息</p>
 
-<ul>
+  <ul>
     <li><strong>-a, - -all</strong>：输出详细信息，格式：内核名称，主机名，内核版本号，内核版本，内核编译时间，处理器类型，硬件平台类型，操作系统名称 <br>
-        eg: Linux scott-HaSee 4.4.0-36-generic #55-Ubuntu SMP Thu Aug 11 18:01:55 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+      eg: Linux scott-HaSee 4.4.0-36-generic #55-Ubuntu SMP Thu Aug 11 18:01:55 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
     </li>
     <li><strong>-m, - -machine</strong>：硬件平台类型 <br>
-        eg: x86_64
+      eg: x86_64
     </li>
     <li><strong>-r, - -release</strong>：内核版本号 <br>
-        eg: 4.4.0-36-generic
+      eg: 4.4.0-36-generic
     </li>
     <li><strong>-s, - -sysname</strong>：内核名称 <br>
-        eg: Linux
+      eg: Linux
     </li>
     <li><strong>-v, - -version</strong>：内核是第几个版本以及编译时间 <br>
-        eg: #55-Ubuntu SMP Thu Aug 11 18:01:55 UTC 2016
+      eg: #55-Ubuntu SMP Thu Aug 11 18:01:55 UTC 2016
     </li>
     <li><strong>-p</strong>：处理器类型 <br>
-        eg: x86_64
+      eg: x86_64
     </li>
     <li><strong>-o</strong>：操作系统名称 <br>
-        eg: GNU/Linux
+      eg: GNU/Linux
     </li>
-</ul>
+  </ul>
 </div>
 </body>
 </html>

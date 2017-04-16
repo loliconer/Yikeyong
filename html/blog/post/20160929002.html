@@ -1,78 +1,75 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网站优化原则</title>
-    <link href="/css/global.css" rel="stylesheet">
-    <link href="/css/blog.css" rel="stylesheet">
+  <!--#include file="/common/head.html"-->
+  <title>网站优化原则</title>
 </head>
-<body>
-<div class="container page-post">
-    <h3 class="post-title">网站优化原则</h3>
-    <h4>一、减少HTTP请求</h4>
-    <ul>
-        <li>合并文件：合并JS文件和CSS文件；</li>
-        <li>使用CSS Sprites；</li>
-        <li>将图片转换为Base64编码格式嵌入到文档或者CSS文件中。</li>
-    </ul>
+<body class="page-post">
+<div class="container blog">
+  <h3 class="post-title">网站优化原则</h3>
+  <h4>一、减少HTTP请求</h4>
+  <ul>
+    <li>合并文件：合并JS文件和CSS文件；</li>
+    <li>使用CSS Sprites；</li>
+    <li>将图片转换为Base64编码格式嵌入到文档或者CSS文件中。</li>
+  </ul>
 
-    <h4>二、使用CDN</h4>
-    <p>将静态资源部署到CDN上。</p>
+  <h4>二、使用CDN</h4>
+  <p>将静态资源部署到CDN上。</p>
 
-    <h4>三、请求头设置过期时间</h4>
-    <p>静态资源设置长过期时间</p>
+  <h4>三、请求头设置过期时间</h4>
+  <p>静态资源设置长过期时间</p>
 
-    <h4>四、服务器开启Gzip压缩</h4>
-    <p>压缩文本类型资源，图片资源不压缩。</p>
-    <p>nginx.conf:gzip_types添加application/octet-stream text/xml</p>
+  <h4>四、服务器开启Gzip压缩</h4>
+  <p>压缩文本类型资源，图片资源不压缩。</p>
+  <p>nginx.conf:gzip_types添加application/octet-stream text/xml</p>
 
-    <h4>五、CSS文件引用放在head部分</h4>
+  <h4>五、CSS文件引用放在head部分</h4>
 
-    <h4>六、JS文件引用放在body底部</h4>
+  <h4>六、JS文件引用放在body底部</h4>
 
-    <h4>七、避免使用CSS表达式</h4>
+  <h4>七、避免使用CSS表达式</h4>
 
-    <h4>八、通过外部文件引用JavaScript和CSS代码</h4>
+  <h4>八、通过外部文件引用JavaScript和CSS代码</h4>
 
-    <h4>九、减少DNS查询</h4>
+  <h4>九、减少DNS查询</h4>
 
-    <h4>十、压缩JS文件和CSS文件</h4>
+  <h4>十、压缩JS文件和CSS文件</h4>
 
-    <h4>十一、避免重定向</h4>
+  <h4>十一、避免重定向</h4>
 
-    <h4>十二、清除重复的脚本</h4>
+  <h4>十二、清除重复的脚本</h4>
 
-    <h4>十三、配置ETag</h4>
-    <p>多台服务器部署时关闭ETag。</p>
+  <h4>十三、配置ETag</h4>
+  <p>多台服务器部署时关闭ETag。</p>
 
-    <h4>十四、缓存Ajax请求</h4>
+  <h4>十四、缓存Ajax请求</h4>
 
-    <h4>十五、优先使用GET类型的Ajax请求</h4>
+  <h4>十五、优先使用GET类型的Ajax请求</h4>
 
-    <h4>十六、减少DOM元素的数量</h4>
+  <h4>十六、减少DOM元素的数量</h4>
 
-    <h4>十七、将静态资源部署在独立的域名下</h4>
+  <h4>十七、将静态资源部署在独立的域名下</h4>
 
-    <h4>十八、尽可能少用iframe</h4>
+  <h4>十八、尽可能少用iframe</h4>
 
-    <h4>十九、避免发生404请求</h4>
+  <h4>十九、避免发生404请求</h4>
 
-    <h4>二十、减少cookie大小</h4>
+  <h4>二十、减少cookie大小</h4>
 
-    <h4>二十一、使用免cookie域名部署静态资源</h4>
+  <h4>二十一、使用免cookie域名部署静态资源</h4>
 
-    <h4>二十二、JS代码中尽量少访问DOM元素</h4>
+  <h4>二十二、JS代码中尽量少访问DOM元素</h4>
 
-    <h4>二十三、使用事件代理代替直接事件绑定</h4>
+  <h4>二十三、使用事件代理代替直接事件绑定</h4>
 
-    <h4>二十四、避免使用CSS滤镜</h4>
+  <h4>二十四、避免使用CSS滤镜</h4>
 
-    <h4>二十五、优化图片大小</h4>
+  <h4>二十五、优化图片大小</h4>
 
-    <h4>二十六、尽量不要在HTML中缩放图片</h4>
+  <h4>二十六、尽量不要在HTML中缩放图片</h4>
 
-    <h4>二十七、避免img元素的src属性为空</h4>
+  <h4>二十七、避免img元素的src属性为空</h4>
 </div>
 <script src="/js/vendor/prism.js"></script>
 </body>

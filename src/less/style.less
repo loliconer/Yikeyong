@@ -1,12 +1,16 @@
+@import "Bootstrapping/Variables";
+@import "Bootstrapping/Mixins";
+
 body {
   margin-bottom: 40px;
+  background-color: @white-color;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  height: @bar-height;
   border-bottom: 1px solid @border-color;
   padding: 0 10px;
   background-color: @white-color;
@@ -44,6 +48,7 @@ body {
   }
 }
 
+@import "Layout/Blog";
 @import "Pages/index";
 @import "Pages/blog";
 @import "Pages/article";

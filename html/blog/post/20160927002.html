@@ -1,71 +1,68 @@
 <!DOCTYPE html>
 <html lang="zh" class="language-javascript">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three.js学习笔记（一）</title>
-    <link href="/css/global.css" rel="stylesheet">
-    <link href="/css/blog.css" rel="stylesheet">
+  <!--#include file="/common/head.html"-->
+  <title>Three.js学习笔记（一）</title>
 </head>
-<body>
-<div class="container page-post">
-    <h3 class="post-title">Three.js学习笔记（一）</h3>
-    <h2>一、概念单词</h2>
+<body class="page-post">
+<div class="container blog">
+  <h3 class="post-title">Three.js学习笔记（一）</h3>
+  <h2>一、概念单词</h2>
 
-    <ul>
-        <li>Scene</li>
-        <li>Camera</li>
-        <li>Renderer：渲染引擎有WebGL，调用显卡的GPU，使用硬件加速，渲染速度最快；Canvas，浏览器支持程度最好，主流浏览器均支持，尤其是IE、Opera只支持Canvas；SVG。</li>
-        <li>Material</li>
-        <li>Geometry</li>
-        <li>Mesh</li>
-        <li>Shader</li>
-        <li>Light</li>
-    </ul>
+  <ul>
+    <li>Scene</li>
+    <li>Camera</li>
+    <li>Renderer：渲染引擎有WebGL，调用显卡的GPU，使用硬件加速，渲染速度最快；Canvas，浏览器支持程度最好，主流浏览器均支持，尤其是IE、Opera只支持Canvas；SVG。</li>
+    <li>Material</li>
+    <li>Geometry</li>
+    <li>Mesh</li>
+    <li>Shader</li>
+    <li>Light</li>
+  </ul>
 
-    <h2>二、基础框架</h2>
+  <h2>二、基础框架</h2>
 
-    <h4>Scene</h4>
+  <h4>Scene</h4>
 
-    <p>所有的对象都需要加到场景中，如Camera，Mesh，Light等。</p>
+  <p>所有的对象都需要加到场景中，如Camera，Mesh，Light等。</p>
 
-    <pre><code>var scene = new THREE.Scene();</code></pre>
+  <pre><code>var scene = new THREE.Scene();</code></pre>
 
-    <h4>Camera</h4>
-    <pre><code>//PerspectiveCamera
+  <h4>Camera</h4>
+  <pre><code>//PerspectiveCamera
 var camera = new THREE.PerspectiveCamera(angle, width/height, near, far);</code></pre>
 
-    <h4>Renderer</h4>
-    <pre><code>//WebGLRenderer
+  <h4>Renderer</h4>
+  <pre><code>//WebGLRenderer
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(width, height);
 document.body.appendChild(renderer.domElement);</code></pre>
 
-    <h4>Material</h4>
-    <pre><code>//MeshBasicMaterial
+  <h4>Material</h4>
+  <pre><code>//MeshBasicMaterial
 var material = new THREE.MeshBashMaterial({
     color: 0x0f0
 });</code></pre>
 
-    <h4>Geometry</h4>
-    <pre><code>//CubeGeometry
+  <h4>Geometry</h4>
+  <pre><code>//CubeGeometry
 var geometry = new THREE.CubeGeometry(x, y, z, [segmentsX], [segmentsY], [segmentsZ], [materials], [sides]);</code></pre>
 
-    <h4>Mesh</h4>
-    <pre><code>var mesh = new THREE.Mesh(geometry, material);</code></pre>
+  <h4>Mesh</h4>
+  <pre><code>var mesh = new THREE.Mesh(geometry, material);</code></pre>
 
-    <h4>Light</h4>
-    <pre><code>//DirectionalLight
+  <h4>Light</h4>
+  <pre><code>//DirectionalLight
 var light= new THREE.DirectionalLight(color, intensity);
 light.position.set(x, y, z);</code></pre>
 
-    <h4>渲染</h4>
-    <pre><code>renderer.render(scene, camera, [renderTarget], [forceClear]);</code></pre>
+  <h4>渲染</h4>
+  <pre><code>renderer.render(scene, camera, [renderTarget], [forceClear]);</code></pre>
 
-    <p>renderTarget：渲染的目标，默认是渲染到前面定义的render中。 forceClear：每次绘制之前都将画布的内容清除，即使autoClear设置为false，也会清除。</p>
+  <p>renderTarget：渲染的目标，默认是渲染到前面定义的render中。 forceClear：每次绘制之前都将画布的内容清除，即使autoClear设置为false，也会清除。</p>
 
-    <h4>完整的代码如下：</h4>
-    <pre><code>var scene, camera, renderer;
+  <h4>完整的代码如下：</h4>
+  <pre><code>var scene, camera, renderer;
 var geometry, material, mesh;
 init();
 animate();

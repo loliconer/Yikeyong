@@ -6,19 +6,24 @@
     .mixin-content-width;
     padding-top: 20px;
 
-    .nav-article {
+    > .nav-article {
       display: flex;
       justify-content: space-between;
       margin-bottom: 40px;
 
-      >.btn-ghost {
+      > .btn-ghost {
         width: 20%;
         height: 40px;
         font-size: @normal-font;
+
+        &.focus {
+          background-color: @blue-color;
+          color: @white-color;
+        }
       }
     }
 
-    .nav-chapter {
+    >.nav-chapter {
       padding: 20px 10px 0;
       border: 1px solid @border-color;
 
@@ -35,8 +40,18 @@
           &:hover {
             color: @blue-color;
           }
+
+          .btn-ghost.focus {
+            background-color: @blue-color;
+            color: @white-color;
+          }
         }
       }
+    }
+
+    >.content {
+      padding: 10px;
+      margin-top: 40px;
     }
   }
 }

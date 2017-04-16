@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's encrypt 实现全站https访问</title>
-    <link href="/css/global.css" rel="stylesheet">
-    <link href="/css/blog.css" rel="stylesheet">
+  <!--#include file="/common/head.html"-->
+  <title>Let's encrypt 实现全站https访问</title>
 </head>
-<body>
-<div class="container page-post">
-    <h3 class="post-title">Let's encrypt 实现全站https访问</h3>
+<body class="page-post">
+<div class="container blog">
+  <h3 class="post-title">Let's encrypt 实现全站https访问</h3>
 
-    <h4>1、安装并配置Let's Encrypt</h4>
-    <pre class="lang-bash"><code>apt-get install letsencrypt
+  <h4>1、安装并配置Let's Encrypt</h4>
+  <pre class="lang-bash"><code>apt-get install letsencrypt
 letsencrypt certonly - -webroot -w /home/www -d yikeyong.com -d www.yikeyong.com
 letsencrypt renew --dry-run --agree-tos</code></pre>
-    <p>添加自动刷新授权定时任务</p>
-    <blockquote>
-        <p>crontab -e <br>
-            #每周一2:30分执行命令 <br>
-            30 2 * * 1 letsencrypt renew</p>
-    </blockquote>
+  <p>添加自动刷新授权定时任务</p>
+  <blockquote>
+    <p>crontab -e <br>
+      #每周一2:30分执行命令 <br>
+      30 2 * * 1 letsencrypt renew</p>
+  </blockquote>
 
-    <h4>2、修改nginx.conf</h4>
-    <pre class="lang-nginx"><code>server {
+  <h4>2、修改nginx.conf</h4>
+  <pre class="lang-nginx"><code>server {
     listen 443;
     server_name  localhost;
 
@@ -40,7 +37,7 @@ server {
     return 301 https://$host$request_uri;
 }</code></pre>
 
-    <h4>3、重启Nginx</h4>
+  <h4>3、重启Nginx</h4>
 
 </div>
 <script src="/js/vendor/prism.js"></script>

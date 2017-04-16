@@ -12,86 +12,24 @@
 
 <div class="container" id="app">
   <nav class="nav-article">
-    <button class="btn-ghost" type="button" @click="chapter = 1">第一章</button>
-    <button class="btn-ghost" type="button" @click="chapter = 2">第二章</button>
-    <button class="btn-ghost" type="button" @click="chapter = 3">第三章</button>
-    <button class="btn-ghost" type="button" @click="chapter = 4">第四章</button>
+    <button class="btn-ghost" :class="{focus: cIndex === i}" type="button" v-for="(chapter, i) of chapters" @click="cIndex = i">{{chapter.name}}</button>
   </nav>
 
-  <section class="nav-chapter" v-if="chapter === 1">
+  <section class="nav-chapter" v-for="(chapter, i) of chapters" v-if="cIndex === i">
     <ul class="list">
-      <li>
-        <button class="btn-ghost" type="button">1-1-1</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">1-1-2</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">1-1-3</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">1-1-4</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">1-2-1</button>
+      <li v-for="(section, j) of chapter.sections">
+        <button class="btn-ghost" :class="{focus: sIndex === j}" type="button" @click="sIndex = j">{{section.name}}</button>
       </li>
     </ul>
   </section>
 
-  <section class="nav-chapter" v-if="chapter === 4">
-    <ul class="list">
-      <li>
-        <button class="btn-ghost" type="button">4-1-1</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-1-2</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-1-3</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-1-4</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-2-1</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-2-2</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-2-3</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-2-4</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-3-1</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-3-2</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-3-3</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-3-4</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-4-1</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-4-2</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-4-3</button>
-      </li>
-      <li>
-        <button class="btn-ghost" type="button">4-4-4</button>
-      </li>
-    </ul>
-  </section>
-
-  <article></article>
+  <div class="content" v-if="chapters[cIndex]">
+    <article class="blog">
+      <ul>
+        <li v-for="p of chapters[cIndex].sections[sIndex].content">{{p}}</li>
+      </ul>
+    </article>
+  </div>
 </div>
 
 <!--#include file="/common/footer.html"-->
@@ -100,7 +38,24 @@
   new Vue({
     el: '#app',
     data: {
-      chapter: 1
+      chapters: [],
+      cIndex: 0,
+      sIndex: 0
+    },
+    watch: {
+      cIndex() {
+        this.sIndex = 0
+      }
+    },
+    created() {
+      utils.fetch('/js/data/rosetta.json')
+        .then(body => {
+          this.chapters = body
+        })
+        .catch(error => this.$msg({
+          type: 'error',
+          message: error
+        }))
     }
   })
 </script>

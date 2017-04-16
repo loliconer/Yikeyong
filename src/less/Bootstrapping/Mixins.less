@@ -203,3 +203,27 @@
   min-width: 1080px;
   margin: 0 auto;
 }
+
+.flex {
+  display: flex;
+}
+
+.flex-start {
+  .flex;
+  align-items: center;
+}
+
+.flex-center {
+  .flex-start;
+  justify-content: center;
+}
+
+.flex-between {
+  .flex-start;
+  justify-content: space-between;
+}
+
+.flex-around {
+  .flex-start;
+  justify-content: space-around;
+}

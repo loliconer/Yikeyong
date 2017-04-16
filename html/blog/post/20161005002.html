@@ -1,172 +1,170 @@
 <!DOCTYPE html>
 <html lang="zh" class="lang-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three.js学习笔记（三）</title>
-    <link href="/css/global.css" rel="stylesheet">
-    <link href="/css/blog.css" rel="stylesheet">
+  <!--#include file="/common/head.html"-->
+  <title>Three.js学习笔记（三）</title>
 </head>
-<body>
-<div class="container page-post">
-    <h3 class="post-title">Three.js学习笔记（三）</h3>
-    <h2>一、Camera分类</h2>
+<body class="page-post">
+<div class="container blog">
+  <h3 class="post-title">Three.js学习笔记（三）</h3>
+  <h2>一、Camera分类</h2>
 
-    <ol>
-        <li>正交投影Camera
-            <pre><code>OrthographicCamera(left, right, top, bottom, near, far);</code></pre>
-        </li>
-        <li>透视投影Camera
-            <pre><code>PerspectiveCamera(fov, width/height, near, far);</code></pre>
-        </li>
-        <li>混合Camera
-            <pre><code>CombinedCamera(width, height, fov, near, far, orthoNear, orthoFar);</code></pre>
-            <p>同时初始化正交投影Camera和透视投影Camera，默认为透视投影Camera。</p>
-        </li>
-        <li>CameraHelper
-            <pre><code>Camerahelper(camera);</code></pre>
-        </li>
-    </ol>
+  <ol>
+    <li>正交投影Camera
+      <pre><code>OrthographicCamera(left, right, top, bottom, near, far);</code></pre>
+    </li>
+    <li>透视投影Camera
+      <pre><code>PerspectiveCamera(fov, width/height, near, far);</code></pre>
+    </li>
+    <li>混合Camera
+      <pre><code>CombinedCamera(width, height, fov, near, far, orthoNear, orthoFar);</code></pre>
+      <p>同时初始化正交投影Camera和透视投影Camera，默认为透视投影Camera。</p>
+    </li>
+    <li>CameraHelper
+      <pre><code>Camerahelper(camera);</code></pre>
+    </li>
+  </ol>
 
-    <h2>二、Light分类</h2>
+  <h2>二、Light分类</h2>
 
-    <ol>
-        <li>Light
-            <pre><code>Light(hex);</code></pre>
-        </li>
-        <li>Ambient
-            <pre><code>AmbientLight(hex);</code></pre>
-        </li>
-        <li>Point
-            <pre><code>PointLight(hex, intensity, distance);</code></pre>
-            <p>intensity：光强，默认为1。 distance：光从intensity衰减到0的距离。</p>
-        </li>
-        <li>Spot
-            <pre><code>SpotLight(hex, intensity, distance, angle, exponent);</code></pre>
-            <p>angle：弧度为单位。 exponent：衰减参数，越大衰减越快。</p>
-        </li>
-        <li>Directional
-            <pre><code>DirectionalLight(hex, intensity);</code></pre>
-            <p>光的方向为光的位置指向原点。</p>
-        </li>
-        <li>Hemisphere
-            <pre><code>Hemisphere(skyColorHex, groundColorHex, intensity);</code></pre>
-        </li>
-        <li>Area
-            <pre><code>AreaLight(hex, intensity);</code></pre>
-            <p>只用于deferredrenderer。</p>
-        </li>
-    </ol>
-
-
-    <h2>三、Geometry分类</h2>
-
-    <ol>
-        <li>Geometry
-            <pre><code>Geometry();</code></pre>
-        </li>
-        <li>Cylinder
-            <pre><code>CylinderGeometry(radiusTop=20, radiusBottom=20, height=100, radiusSegments=8, heightSegments=1, openEnded=false);</code></pre>
-        </li>
-        <li>Sphere
-            <pre><code>SphereGeometry(radius=50, widthSegments=8, heightSegments=6, phiStart=0, phiLength=2*PI, thetaStart=0, thetaLength=PI);</code></pre>
-        </li>
-        <li>Box
-            <pre><code>BoxGeometry(width, height, depth, widthSegmens=1, heightSegments=1, depthSegments=1);</code></pre>
-        </li>
-        <li>Circle
-            <pre><code>CircleGeometry(radius=50, segments=8, thetaStart=0, thetaLength=2*PI); //Cube renamed to Box</code></pre>
-        </li>
-        <li>Extrude
-            <pre><code>ExtrudeGeometry(shapes, options);</code></pre>
-            <p>shapes: shape or an array of shapes options: object, parameters: curveSegments, steps, amount, bevelEnabled, bevelThickness, bevelSize, bevelSegments, extrudePath, frames, material, extrudeMaterial, uvGenerator</p>
-        </li>
-        <li>Icosahedron
-            <pre><code>IcosahedronGeometry(radius=1, detail=0);</code></pre>
-            <p>detail：大于1时，该几何体趋向于球体。</p>
-        </li>
-        <li>Lathe
-            <pre><code>LatheGeometry(points, segments=12, phiStart=0, phiLength=2*PI);</code></pre>
-        </li>
-        <li>Octahedron
-            <pre><code>OctahedronGeometry(radius=1, detail=0);</code></pre>
-        </li>
-        <li>Plane
-            <pre><code>PlaneGeometry(width, height, widthSegments=1, heightSegments=1);</code></pre>
-        </li>
-        <li>Ring
-            <pre><code>RingGeometry(innerRadius=0, outerRadius=50, thetaSegments=8, phiSegments=8, thetaStart=0, thetaLength=2*PI);</code></pre>
-            <p>二维圆环，innerRadius为0时无效，所以必须给一个大于0的值。</p>
-        </li>
-        <li>Tetrahedron
-            <pre><code>TetrahedronGeometry(radius=1, detail=0);</code></pre>
-        </li>
-        <li>Text
-            <pre><code>TextGeometry(text, parameters);</code></pre>
-            <p>parameters: size, height=50, curveSegments, font, weight, style, bevelEnabled=false, bevelThickness=10, bevelSize=8</p>
-        </li>
-        <li>Torus
-            <pre><code>TorusGeometry(radius=100, tube=40, radialSegments=8, tubularSegments=6, arc=2*PI);</code></pre>
-        </li>
-        <li>TorusKnot
-            <pre><code>TorusKnotGeometry(radius=100, tube=40, radialSegments=8, tubularSegments=6, p=2, q=3, heightScale=1);</code></pre>
-            <p>p、q：互质的整数</p>
-        </li>
-    </ol>
+  <ol>
+    <li>Light
+      <pre><code>Light(hex);</code></pre>
+    </li>
+    <li>Ambient
+      <pre><code>AmbientLight(hex);</code></pre>
+    </li>
+    <li>Point
+      <pre><code>PointLight(hex, intensity, distance);</code></pre>
+      <p>intensity：光强，默认为1。 distance：光从intensity衰减到0的距离。</p>
+    </li>
+    <li>Spot
+      <pre><code>SpotLight(hex, intensity, distance, angle, exponent);</code></pre>
+      <p>angle：弧度为单位。 exponent：衰减参数，越大衰减越快。</p>
+    </li>
+    <li>Directional
+      <pre><code>DirectionalLight(hex, intensity);</code></pre>
+      <p>光的方向为光的位置指向原点。</p>
+    </li>
+    <li>Hemisphere
+      <pre><code>Hemisphere(skyColorHex, groundColorHex, intensity);</code></pre>
+    </li>
+    <li>Area
+      <pre><code>AreaLight(hex, intensity);</code></pre>
+      <p>只用于deferredrenderer。</p>
+    </li>
+  </ol>
 
 
-    <h2>四、Material分类</h2>
+  <h2>三、Geometry分类</h2>
 
-    <ol>
-        <li>Material
-            <pre><code>Material();</code></pre>
-        </li>
-        <li>LineBasic
-            <pre><code>LineBasicMaterial(parameters);</code></pre>
-            <p>parameters: color=0xffffff, linewidth=1, linecap=’round’, linejoin=’round’, vertexColors=THREE.NoColors, fog=false</p>
-        </li>
-        <li>LineDashed
-            <pre><code>LineDashedMaterial(parameters);</code></pre>
-            <p>parameters: color=0xffffff, linewidth=1, scale=1, dashSize=3, gapSize=1, vertexColors=THREE.NoColors, fog=false</p>
-        </li>
-        <li>MeshBasic
-            <pre><code>MeshBasicMaterial(parameters);</code></pre>
-            <p>parameters: color=0xffffff, wireframe=false, wireframeLinewidth=1, wireframeLineCap=’round’, wireframeLinejoin=’round’,
-                shading=THREE.SmoothShading, vertexColors=THREE.NoColors, fog=true, lightMap=null, specularMap=null, alphaMap=null, envMap=null,
-                skinning=false,
-                morphTargets=false</p>
-            <p>不受光照影响，用来显示固定的颜色或wireframe。</p>
-        </li>
-        <li>MeshNormal
-            <pre><code>MeshNormalMaterial(parameters);</code></pre>
-            <p>parameters: morphTargets=false, shading=THREE.SmoothShading, wireframe=false, wireframeLinewidth-1</p>
-        </li>
-        <li>MeshDepth
-            <pre><code>MeshDepthMaterial(parameters);</code></pre>
-            <p>parameters: wireframe=false, wireframeLinewidth=1</p>
-            <p>不会被照亮，只显示灰色。</p>
-        </li>
-        <li>MeshLambert
-            <pre><code>MeshLambertMaterial(parameters);</code></pre>
-            <p>受光照影响，但没有光泽。</p>
-        </li>
-        <li>MeshPhong
-            <pre><code>MeshPhongMaterial(parameters);</code></pre>
-            <p>受光照影响，可以有光泽。</p>
-        </li>
-        <li>MeshFace
-            <pre><code>MeshFaceMaterial(materials);</code></pre>
-            <p>用于将多个材质映射到多个表面。</p>
-        </li>
-        <li>PointCloud
-            <pre><code>PointCloudMaterial(parameters);</code></pre>
-            <p>粒子系统使用的默认Material。</p>
-            <p>parameters: color=0xffffff, map=null, size=1.0, sizeAttenuation, vertexColors=false, fog=true</p>
-        </li>
-        <li>Shader
-            <pre><code>ShaderMaterial(parameters);</code></pre>
-        </li>
-    </ol>
+  <ol>
+    <li>Geometry
+      <pre><code>Geometry();</code></pre>
+    </li>
+    <li>Cylinder
+      <pre><code>CylinderGeometry(radiusTop=20, radiusBottom=20, height=100, radiusSegments=8, heightSegments=1, openEnded=false);</code></pre>
+    </li>
+    <li>Sphere
+      <pre><code>SphereGeometry(radius=50, widthSegments=8, heightSegments=6, phiStart=0, phiLength=2*PI, thetaStart=0, thetaLength=PI);</code></pre>
+    </li>
+    <li>Box
+      <pre><code>BoxGeometry(width, height, depth, widthSegmens=1, heightSegments=1, depthSegments=1);</code></pre>
+    </li>
+    <li>Circle
+      <pre><code>CircleGeometry(radius=50, segments=8, thetaStart=0, thetaLength=2*PI); //Cube renamed to Box</code></pre>
+    </li>
+    <li>Extrude
+      <pre><code>ExtrudeGeometry(shapes, options);</code></pre>
+      <p>shapes: shape or an array of shapes options: object, parameters: curveSegments, steps, amount, bevelEnabled, bevelThickness, bevelSize, bevelSegments,
+        extrudePath, frames, material, extrudeMaterial, uvGenerator</p>
+    </li>
+    <li>Icosahedron
+      <pre><code>IcosahedronGeometry(radius=1, detail=0);</code></pre>
+      <p>detail：大于1时，该几何体趋向于球体。</p>
+    </li>
+    <li>Lathe
+      <pre><code>LatheGeometry(points, segments=12, phiStart=0, phiLength=2*PI);</code></pre>
+    </li>
+    <li>Octahedron
+      <pre><code>OctahedronGeometry(radius=1, detail=0);</code></pre>
+    </li>
+    <li>Plane
+      <pre><code>PlaneGeometry(width, height, widthSegments=1, heightSegments=1);</code></pre>
+    </li>
+    <li>Ring
+      <pre><code>RingGeometry(innerRadius=0, outerRadius=50, thetaSegments=8, phiSegments=8, thetaStart=0, thetaLength=2*PI);</code></pre>
+      <p>二维圆环，innerRadius为0时无效，所以必须给一个大于0的值。</p>
+    </li>
+    <li>Tetrahedron
+      <pre><code>TetrahedronGeometry(radius=1, detail=0);</code></pre>
+    </li>
+    <li>Text
+      <pre><code>TextGeometry(text, parameters);</code></pre>
+      <p>parameters: size, height=50, curveSegments, font, weight, style, bevelEnabled=false, bevelThickness=10, bevelSize=8</p>
+    </li>
+    <li>Torus
+      <pre><code>TorusGeometry(radius=100, tube=40, radialSegments=8, tubularSegments=6, arc=2*PI);</code></pre>
+    </li>
+    <li>TorusKnot
+      <pre><code>TorusKnotGeometry(radius=100, tube=40, radialSegments=8, tubularSegments=6, p=2, q=3, heightScale=1);</code></pre>
+      <p>p、q：互质的整数</p>
+    </li>
+  </ol>
+
+
+  <h2>四、Material分类</h2>
+
+  <ol>
+    <li>Material
+      <pre><code>Material();</code></pre>
+    </li>
+    <li>LineBasic
+      <pre><code>LineBasicMaterial(parameters);</code></pre>
+      <p>parameters: color=0xffffff, linewidth=1, linecap=’round’, linejoin=’round’, vertexColors=THREE.NoColors, fog=false</p>
+    </li>
+    <li>LineDashed
+      <pre><code>LineDashedMaterial(parameters);</code></pre>
+      <p>parameters: color=0xffffff, linewidth=1, scale=1, dashSize=3, gapSize=1, vertexColors=THREE.NoColors, fog=false</p>
+    </li>
+    <li>MeshBasic
+      <pre><code>MeshBasicMaterial(parameters);</code></pre>
+      <p>parameters: color=0xffffff, wireframe=false, wireframeLinewidth=1, wireframeLineCap=’round’, wireframeLinejoin=’round’,
+        shading=THREE.SmoothShading, vertexColors=THREE.NoColors, fog=true, lightMap=null, specularMap=null, alphaMap=null, envMap=null,
+        skinning=false,
+        morphTargets=false</p>
+      <p>不受光照影响，用来显示固定的颜色或wireframe。</p>
+    </li>
+    <li>MeshNormal
+      <pre><code>MeshNormalMaterial(parameters);</code></pre>
+      <p>parameters: morphTargets=false, shading=THREE.SmoothShading, wireframe=false, wireframeLinewidth-1</p>
+    </li>
+    <li>MeshDepth
+      <pre><code>MeshDepthMaterial(parameters);</code></pre>
+      <p>parameters: wireframe=false, wireframeLinewidth=1</p>
+      <p>不会被照亮，只显示灰色。</p>
+    </li>
+    <li>MeshLambert
+      <pre><code>MeshLambertMaterial(parameters);</code></pre>
+      <p>受光照影响，但没有光泽。</p>
+    </li>
+    <li>MeshPhong
+      <pre><code>MeshPhongMaterial(parameters);</code></pre>
+      <p>受光照影响，可以有光泽。</p>
+    </li>
+    <li>MeshFace
+      <pre><code>MeshFaceMaterial(materials);</code></pre>
+      <p>用于将多个材质映射到多个表面。</p>
+    </li>
+    <li>PointCloud
+      <pre><code>PointCloudMaterial(parameters);</code></pre>
+      <p>粒子系统使用的默认Material。</p>
+      <p>parameters: color=0xffffff, map=null, size=1.0, sizeAttenuation, vertexColors=false, fog=true</p>
+    </li>
+    <li>Shader
+      <pre><code>ShaderMaterial(parameters);</code></pre>
+    </li>
+  </ol>
 
 </div>
 <script src="/js/vendor/prism.js"></script>

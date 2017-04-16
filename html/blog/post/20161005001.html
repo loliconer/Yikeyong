@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh" class="lang-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three.js学习笔记（二）</title>
-    <link href="/css/global.css" rel="stylesheet">
-    <link href="/css/blog.css" rel="stylesheet">
+  <!--#include file="/common/head.html"-->
+  <title>Three.js学习笔记（二）</title>
 </head>
-<body>
-<div class="container page-post">
-    <h3 class="post-title">Three.js学习笔记（二）</h3>
-    <h2>一、点与线</h2>
+<body class="page-post">
+<div class="container blog">
+  <h3 class="post-title">Three.js学习笔记（二）</h3>
+  <h2>一、点与线</h2>
 
-    <h4>点</h4>
+  <h4>点</h4>
 
-    <p>Three.js中使用的是右手坐标系，空间中的点可以用一个向量来表示。 </p>
-    <p>定义方法1：</p>
-    <pre><code>var point = new THREE.Vector3(x, y, z);</code></pre>
-    <p>定义方法2：</p>
-    <pre><code>var point = new THREE.Vector3();
+  <p>Three.js中使用的是右手坐标系，空间中的点可以用一个向量来表示。 </p>
+  <p>定义方法1：</p>
+  <pre><code>var point = new THREE.Vector3(x, y, z);</code></pre>
+  <p>定义方法2：</p>
+  <pre><code>var point = new THREE.Vector3();
 point.set(x, y, z);</code></pre>
 
-    <h4>线</h4>
+  <h4>线</h4>
 
-    <p>线由点组成。</p>
-    <pre><code>var geometry = new THREE.Geometry();
+  <p>线由点组成。</p>
+  <pre><code>var geometry = new THREE.Geometry();
 var material = new THREE.LineBasicMaterial({
     vertexColor: THREE.VertexColors
 });
@@ -38,28 +35,30 @@ geometry.colors.push(color1, color2);
 var line = new THREE.Line(geometry, material, THREE.LinePieces);
 scene.add(line);</code></pre>
 
-    <h2>二、性能监视器的使用</h2>
+  <h2>二、性能监视器的使用</h2>
 
-    <ol>
-        <li>引入js文件</li>
-        <li>初始化
-            <pre><code>var stats = new Stats();
+  <ol>
+    <li>引入js文件</li>
+    <li>初始化
+      <pre><code>var stats = new Stats();
 stats.setMode(0); //0:fps mode; 1:ms mode
 stats.domElement.style.position = 'absolute';
 stats.domElement.style.left = '0px';
 stats.domElement.style.top = '0px';
-document.body.appendChild(stats.domElement);</code></pre></li>
-        <li>在animation函数中调用update();</li>
-    </ol>
+document.body.appendChild(stats.domElement);</code></pre>
+    </li>
+    <li>在animation函数中调用update();</li>
+  </ol>
 
-    <h2>三、使用Tween引擎创建动画</h2>
+  <h2>三、使用Tween引擎创建动画</h2>
 
-    <ol>
-        <li>引入min.js文件</li>
-        <li>初始化
-            <pre><code>new TWEEN.Tween(mesh.position).to({x: -400}, 3000).repeat(Infinity).start();</code></pre></li>
-        <li>在animation函数中调用update();</li>
-    </ol>
+  <ol>
+    <li>引入min.js文件</li>
+    <li>初始化
+      <pre><code>new TWEEN.Tween(mesh.position).to({x: -400}, 3000).repeat(Infinity).start();</code></pre>
+    </li>
+    <li>在animation函数中调用update();</li>
+  </ol>
 
 </div>
 <script src="/js/vendor/prism.js"></script>
