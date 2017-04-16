@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>一切皆可用 | 亦可用</title>
+</head>
+<body class="page-spa">
+<!--#include file="/common/nav.html"-->
+
+<section class="flex flex-gap container">
+  <div class="box-normal">
+    <a href="/spa/pic.html" target="_blank">
+      <img src="/img/flow_sm.jpg">
+    </a>
+  </div>
+  <div class="box-normal">
+    <a href="/spa/whale.html" target="_blank">
+      <img src="/img/whale.jpg">
+    </a>
+  </div>
+  <div class="box-normal">
+    <a href="/spa/3dflower.html" target="_blank">
+      <img src="/img/3dflower.jpg">
+    </a>
+  </div>
+  <div class="box-normal">
+    <a href="/spa/dockmenu.html" target="_blank">
+      <img src="/img/dockmenu.jpg">
+    </a>
+  </div>
+</section>
+
+<!--#include file="/common/footer.html"-->
+</body>
+</html>

@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <!--#include file="/common/head.html"-->
+  <meta name="description" content="Rosetta英语学习笔记">
   <title>英语学习篇 | 亦可用</title>
   <script src="/js/vendor/vue.js"></script>
   <script src="/js/vendor/yikeyong.min.js"></script>
-  <script src="/js/template.js"></script>
 </head>
 <body class="page-article">
 <!--#include file="/common/nav.html"-->

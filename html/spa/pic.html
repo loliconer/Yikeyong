@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>极品美图展示</title>
-    <link rel="stylesheet" href="/css/global.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <script src="/js/vendor/vue.js"></script>
-    <script src="/js/pic.bundle.js" defer></script>
+  <!--#include file="/common/head.html"-->
+  <title>极品美图展示</title>
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <script src="/js/vendor/vue.js"></script>
+  <script src="/js/pic.bundle.js" defer></script>
 </head>
 <body class="page-waterfall">
 <div id="app">
-    <viewer ref="viewer"></viewer>
-    <navbar></navbar>
+  <viewer ref="viewer"></viewer>
+  <navbar></navbar>
 
-    <div class="container">
-        <div class="content">
-            <img class="item" src="img/beauty/可爱/Lovelydoll/Lovelydoll_车模0001.jpg" @click="view('lovelydoll')">
-            <img class="item" src="img/beauty/可爱/kawaii0001.jpg" @click="view('kawaii')">
-            <img class="item" src="img/beauty/校园女生/nvsheng0001.jpg" @click="view('nvsheng')">
-            <img class="item" src="img/beauty/真女神/nvshen0001.jpg" @click="view('nvshen')">
-            <img class="item" src="img/beauty/知名美女/warmmemory0001.jpg">
-            <img class="item" src="img/beauty/网络红人/SNH48鞠婧祎0001.jpg">
-            <img class="item" src="img/beauty/自拍/zipai0001.jpg">
-            <img class="item" src="img/beauty/街拍/jp0001.jpg">
-            <img class="item" src="img/beauty/caogen0001.jpg">
-            <!--<img src="img/clothes/clothes0001.jpg" class="item">-->
-            <img class="item" src="img/favorite/favorite0001.jpg">
-            <img class="item" src="img/cos/cosplay0001.jpg">
-            <img class="item" src="img/cos/miyuko/coser0001.jpg">
-            <img class="item" src="img/cos/下限少女/xiaxiangirl0001.jpg">
-            <img class="item" src="img/cos/仙剑五/唐雨柔0001.jpg">
-            <img class="item" src="img/cos/初音家族/初音未来超美COS0001.jpg">
-            <img class="item" src="img/cos/古剑奇谭/gjqt0001.jpg">
-            <img class="item" src="img/cos/女仆/maid0001.jpg">
-            <img class="item" src="img/cos/女校生/nvxiaosheng0001.jpg">
-            <img class="item" src="img/cos/女狐忍者与女机械人/HotaruTrixie0001.jpg">
-            <img class="item" src="img/cos/寒月/魔兽世界暗夜精灵0001.jpg">
-            <img class="item" src="img/cos/小乔cosplay/xiaoqiao0001.jpg">
-            <img class="item" src="img/cos/柳侑绮/eva0001.jpg">
-            <img class="item" src="img/cos/猫子_猫梓/猫子_猫梓001.jpg">
-            <img class="item" src="img/cos/穿越火线/crossfire0001.jpg">
-            <img class="item" src="img/cos/绝对领域/absolutearea0001.jpg">
-            <img class="item" src="img/cos/美萌浅浅/美萌浅浅0001.jpg">
-        </div>
+  <div class="container">
+    <div class="content">
+      <img class="item" src="img/beauty/可爱/Lovelydoll/Lovelydoll_车模0001.jpg" @click="view('lovelydoll')">
+      <img class="item" src="img/beauty/可爱/kawaii0001.jpg" @click="view('kawaii')">
+      <img class="item" src="img/beauty/校园女生/nvsheng0001.jpg" @click="view('nvsheng')">
+      <img class="item" src="img/beauty/真女神/nvshen0001.jpg" @click="view('nvshen')">
+      <img class="item" src="img/beauty/知名美女/warmmemory0001.jpg">
+      <img class="item" src="img/beauty/网络红人/SNH48鞠婧祎0001.jpg">
+      <img class="item" src="img/beauty/自拍/zipai0001.jpg">
+      <img class="item" src="img/beauty/街拍/jp0001.jpg">
+      <img class="item" src="img/beauty/caogen0001.jpg">
+      <!--<img src="img/clothes/clothes0001.jpg" class="item">-->
+      <img class="item" src="img/favorite/favorite0001.jpg">
+      <img class="item" src="img/cos/cosplay0001.jpg">
+      <img class="item" src="img/cos/miyuko/coser0001.jpg">
+      <img class="item" src="img/cos/下限少女/xiaxiangirl0001.jpg">
+      <img class="item" src="img/cos/仙剑五/唐雨柔0001.jpg">
+      <img class="item" src="img/cos/初音家族/初音未来超美COS0001.jpg">
+      <img class="item" src="img/cos/古剑奇谭/gjqt0001.jpg">
+      <img class="item" src="img/cos/女仆/maid0001.jpg">
+      <img class="item" src="img/cos/女校生/nvxiaosheng0001.jpg">
+      <img class="item" src="img/cos/女狐忍者与女机械人/HotaruTrixie0001.jpg">
+      <img class="item" src="img/cos/寒月/魔兽世界暗夜精灵0001.jpg">
+      <img class="item" src="img/cos/小乔cosplay/xiaoqiao0001.jpg">
+      <img class="item" src="img/cos/柳侑绮/eva0001.jpg">
+      <img class="item" src="img/cos/猫子_猫梓/猫子_猫梓001.jpg">
+      <img class="item" src="img/cos/穿越火线/crossfire0001.jpg">
+      <img class="item" src="img/cos/绝对领域/absolutearea0001.jpg">
+      <img class="item" src="img/cos/美萌浅浅/美萌浅浅0001.jpg">
     </div>
+  </div>
 </div>
 </body>
 </html>
