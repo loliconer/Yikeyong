@@ -1,2 +1,20 @@
 @import "../Bootstrapping/Variables";
 @import "../Bootstrapping/Mixins";
+
+.page-index {
+  .container {
+    .mixin-content-width;
+    padding-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+
+    >.cell {
+      flex: 1;
+
+      .link {
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+}

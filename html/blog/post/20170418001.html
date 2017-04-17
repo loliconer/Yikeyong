@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>Web front end stacks</title>
+  <style>
+    ul > li {
+      list-style-type: none;
+      background: url(data:image/gif;base64,R0lGODlhDQAFAKIAAKOjo6GhoampqYSEhJWVlZ2dnZmZmXx8fCH5BAAAAAAALAAAAAANAAUAAAMVKLfcB6PIScsZJuttLvlgSByK4wQJADs=) no-repeat 0 8px;
+      padding-left: 20px;
+    }
+    .disnone {
+      display: none;
+    }
+    .title {
+      cursor: pointer;
+      -webkit-user-select: none;
+    }
+  </style>
+</head>
+<body class="page-post">
+<div class="container blog">
+  <h3 class="post-title">Web front end stacks</h3>
+  <ul>
+    <li>
+      <h3 class="title">Browser</h3>
+      <ol>
+        <li>Internet Explorer</li>
+        <li>Chrome</li>
+        <li>Firefox</li>
+        <li>Safari</li>
+        <li>Opera</li>
+        <li>Edge</li>
+        <li>Netscape</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Protocol</h3>
+      <ol>
+        <li>
+          HTTP/1.1
+          <ol type="a">
+            <li>URI</li>
+            <li>Session</li>
+            <li>Authentication</li>
+            <li>Request</li>
+            <li>Response</li>
+          </ol>
+        </li>
+        <li>
+          HTTP/2
+          <ol type="a">
+            <li>Compression</li>
+            <li>Minification</li>
+            <li>Server Push</li>
+          </ol>
+        </li>
+        <li>WebSocket</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Language</h3>
+      <ol>
+        <li>
+          HTML
+          <ol type="a">
+            <li>DOM</li>
+            <li>Element</li>
+            <li>Attribute</li>
+          </ol>
+        </li>
+        <li>
+          CSS
+          <ol type="a">
+            <li>Selector</li>
+            <li>Priority</li>
+            <li>Sepecificity</li>
+            <li>Box Model</li>
+          </ol>
+        </li>
+        <li>
+          JavaScript
+          <ol type="a">
+            <li>Prototype</li>
+            <li>Scope</li>
+            <li>Closure</li>
+            <li>JSON</li>
+            <li>AJAX</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Rendering Engine</h3>
+      <ol>
+        <li>Trident</li>
+        <li>Blink</li>
+        <li>Gecko</li>
+        <li>Webkit</li>
+        <li>EdgeHTML</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">JavaScript Engine</h3>
+      <ol>
+        <li>Chakra</li>
+        <li>V8</li>
+        <li>SpiderMonkey</li>
+        <li>Nitro</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Runtime</h3>
+      <ol>
+        <li>Cookie</li>
+        <li>Local Cache</li>
+        <li>Session Storage</li>
+        <li>Components</li>
+        <li>Resources</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Editors</h3>
+      <ol>
+        <li>Sublime Text</li>
+        <li>WebStorm</li>
+        <li>Atom</li>
+        <li>Vim</li>
+        <li>Emacs</li>
+        <li>Brackets</li>
+        <li>Light Table</li>
+        <li>Visual Studio</li>
+        <li>Visual Studio Code</li>
+        <li>Dreamweaver</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Build Tasks</h3>
+      <ol>
+        <li>Minification</li>
+        <li>Compilation</li>
+        <li>Concatenation</li>
+        <li>Uglification</li>
+        <li>Image Optimization</li>
+        <li>Unit Testing</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Build Tools</h3>
+      <ol>
+        <li>Grunt</li>
+        <li>Gulp</li>
+        <li>Brunch</li>
+        <li>Yeoman</li>
+        <li>Broccoli</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Debug</h3>
+      <ol>
+        <li>Developer Tools</li>
+        <li>Firebug</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Base Tools</h3>
+      <ol>
+        <li>Node.js</li>
+        <li>Phantom.js</li>
+        <li>SpiderMonkey</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Quality</h3>
+      <ol>
+        <li>JSLint</li>
+        <li>JSHint</li>
+        <li>Closure</li>
+        <li>ESLint</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Package</h3>
+      <ol>
+        <li>npm</li>
+        <li>Bower</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Modular</h3>
+      <ol>
+        <li>ES6 Module</li>
+        <li>
+          CommonJS
+          <ol type="a">
+            <li>webpack</li>
+            <li>browserify</li>
+          </ol>
+        </li>
+        <li>
+          AMD
+          <ol type="a">
+            <li>RequireJS</li>
+          </ol>
+        </li>
+        <li>
+          UMD
+          <ol type="a">
+            <li>umd</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Libraries</h3>
+      <ol>
+        <li>jQuery</li>
+        <li>Prototype</li>
+        <li>Zepto</li>
+        <li>MooTool</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Framework</h3>
+      <ol>
+        <li>AngularJS</li>
+        <li>Backbone</li>
+        <li>Knockout</li>
+        <li>Ember</li>
+        <li>React</li>
+        <li>Polymer</li>
+        <li>Deft.js</li>
+        <li>Vue.js</li>
+        <li>Riot</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">UI framework</h3>
+      <ol>
+        <li>Bootstrap</li>
+        <li>Semantic UI</li>
+        <li>Foundation</li>
+        <li>Material UI</li>
+        <li>WinJS</li>
+        <li>Pure</li>
+        <li>Amaze UI</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">WebSocket</h3>
+      <ol>
+        <li>Socket.io</li>
+        <li>web-socket-js</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Data Visualization</h3>
+      <ol>
+        <li>D3</li>
+        <li>Echarts</li>
+        <li>HighCharts</li>
+        <li>Vis.js</li>
+        <li>Flot</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">WebGL</h3>
+      <ol>
+        <li>Three.js</li>
+        <li>Babylon.js</li>
+        <li>Pixi.js</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">CSS3 Animation</h3>
+      <ol>
+        <li>Animate.css</li>
+        <li>bounce.js</li>
+        <li>Effeckt.css</li>
+        <li>move.js</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Flow Controller</h3>
+      <ol>
+        <li>ES6/Promise</li>
+        <li>ES6/Generator</li>
+        <li>ES7/yield</li>
+        <li>ES7/await</li>
+        <li>async</li>
+        <li>co</li>
+        <li>
+          Promise
+          <ol type="a">
+            <li>Bluebird</li>
+            <li>q</li>
+            <li>when.js</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Functional</h3>
+      <ol>
+        <li>bacon.js</li>
+        <li>immutable.js</li>
+        <li>ramda</li>
+        <li>underscore.js</li>
+        <li>lodash</li>
+        <li>ReactiveX</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Mobile UI</h3>
+      <ol>
+        <li>jQuery Mobile</li>
+        <li>Jo</li>
+        <li>Dojo</li>
+        <li>Lungo</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">CSS Pre-processor</h3>
+      <ol>
+        <li>LESS</li>
+        <li>Sass</li>
+        <li>Stylus</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Template</h3>
+      <ol>
+        <li>Handlebars</li>
+        <li>Haml</li>
+        <li>Slim</li>
+        <li>Jade</li>
+        <li>Ejs</li>
+        <li>Spacebars</li>
+        <li>mustache</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Best Practices</h3>
+      <ol>
+        <li>SEO</li>
+        <li>Responsive</li>
+        <li>CDN</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Security</h3>
+      <ol>
+        <li>Sandbox</li>
+        <li>XSS</li>
+        <li>CORS</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">JS pre-processor</h3>
+      <ol>
+        <li>CoffeeScript</li>
+        <li>TypeScript</li>
+        <li>ClojureScript</li>
+        <li>JSX</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Mobile Application</h3>
+      <ol>
+        <li>PhoneGap/Cordova</li>
+        <li>MUI</li>
+        <li>React Native</li>
+        <li>Ionic</li>
+      </ol>
+    </li>
+    <li>
+      <h3 class="title">Desktop Application</h3>
+      <ol>
+        <li>Electron</li>
+        <li>NW.js</li>
+      </ol>
+    </li>
+  </ul>
+</div>
+<script>
+  document.querySelectorAll('.title').forEach(elem => {
+    elem.addEventListener('click', () => {
+      elem.nextElementSibling.classList.toggle('disnone')
+    })
+  })
+</script>
+</body>
+</html>
