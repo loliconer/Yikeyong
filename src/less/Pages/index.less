@@ -9,11 +9,53 @@
     flex-wrap: wrap;
 
     >.cell {
-      flex: 1;
+      width: 50%;
+      margin-bottom: 20px;
 
       .link {
         display: block;
         text-align: center;
+        border: 1px solid @border-color;
+        width: 80%;
+        padding: 10px 0;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.page-css-shape {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 100px 20px 0;
+
+    >.cell {
+      .shadow;
+      width: 24%;
+      margin-bottom: 20px;
+
+      >.title {
+        line-height: 40px;
+        background-color: @bg-color;
+        text-align: center;
+        font-size: @big-font;
+        margin-bottom: 10px;
+      }
+
+      >.shape-box {
+        margin-bottom: 10px;
+      }
+
+      >.css-code {
+        pre[class*=language-] {
+          margin: 0;
+          border-radius: 0;
+          border: none;
+          box-shadow: none;
+          font-size: @normal-font;
+        }
       }
     }
   }
