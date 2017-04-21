@@ -6,7 +6,6 @@
   <title>CSS Shapes</title>
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/vendor/vue.js"></script>
 </head>
 <body class="page-css-shape">
 <div class="container blog">
@@ -599,7 +598,14 @@
       <div class="shape tv-screen"></div>
     </div>
     <footer class="css-code">
-<pre><code class="lang-css">.tv-screen:before{
+<pre><code class="lang-css">.tv-screen {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  background-color: red;
+  border-radius: 50% / 10%;
+}
+.tv-screen:before{
   content: '';
   position: absolute;
   top: 10%;

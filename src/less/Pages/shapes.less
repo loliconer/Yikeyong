@@ -1,2 +1,496 @@
 @import "../Bootstrapping/Variables";
 @import "../Bootstrapping/Mixins";
+
+.shape {
+  &.square {
+    width: 100px;
+    height: 100px;
+    background-color: @pink-color;
+  }
+
+  &.rectangle {
+    width: 200px;
+    height: 100px;
+    background-color: @pink-color;
+  }
+
+  &.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: @pink-color;
+  }
+
+  &.oval {
+    width: 200px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: @pink-color;
+  }
+
+  &.triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid @pink-color;
+  }
+
+  &.triangle-top-left {
+    width: 0;
+    height: 0;
+    border-top: 100px solid @pink-color;
+    border-right: 100px solid transparent;
+  }
+
+  &.curved-tail-arrow {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-top: 9px solid transparent;
+    border-right: 9px solid @pink-color;
+    transform: rotate(10deg);
+
+    &:after {
+      content: '';
+      position: absolute;
+      border: 0 solid transparent;
+      border-top: 3px solid @pink-color;
+      border-radius: 20px 0 0 0;
+      top: -12px;
+      left: -9px;
+      width: 12px;
+      height: 12px;
+      transform: rotate(45deg);
+    }
+  }
+
+  &.trapezoid {
+    width: 100px;
+    height: 0;
+    border-bottom: 100px solid @pink-color;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    box-sizing: content-box;
+  }
+
+  &.parallelogram {
+    width: 150px;
+    height: 100px;
+    transform: skew(20deg);
+    background-color: @pink-color;
+  }
+
+  &.star-6points {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid @pink-color;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: -50px;
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-top: 100px solid @pink-color;
+    }
+  }
+
+  &.star-5points {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid @pink-color;
+    border-left: 100px solid transparent;
+    transform: rotate(35deg);
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -45px;
+      left: -65px;
+      border-bottom: 80px solid @pink-color;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      transform: rotate(-35deg);
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: -105px;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 70px solid @pink-color;
+      transform: rotate(-70deg);
+    }
+  }
+
+  &.pentagon {
+    position: relative;
+    width: 54px;
+    border-width: 50px 18px 0;
+    border-style: solid;
+    border-color: @pink-color transparent;
+    box-sizing: content-box;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -85px;
+      left: -18px;
+      width: 0;
+      height: 0;
+      border-width: 0 45px 35px;
+      border-style: solid;
+      border-color: transparent transparent @pink-color;
+    }
+  }
+
+  &.hexagon {
+    position: relative;
+    width: 100px;
+    height: 55px;
+    background-color: @pink-color;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -25px;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 25px solid @pink-color;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -25px;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-top: 25px solid @pink-color;
+    }
+  }
+
+  &.octagon {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: @pink-color;
+
+    &:before {
+      content: '';
+      position: absolute;
+      border-bottom: 29px solid @pink-color;
+      border-left: 29px solid #fff;
+      border-right: 29px solid #fff;
+      width: 42px;
+      box-sizing: content-box;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      border-top: 29px solid @pink-color;
+      border-left: 29px solid #fff;
+      border-right: 29px solid #fff;
+      width: 42px;
+      box-sizing: content-box;
+    }
+  }
+
+  &.heart {
+    position: relative;
+    width: 100px;
+    height: 90px;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50px;
+      width: 50px;
+      height: 80px;
+      background-color: @pink-color;
+      border-radius: 50px 50px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    &:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+  }
+
+  &.infinity {
+    position: relative;
+    width: 212px;
+    height: 100px;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 20px solid @pink-color;
+      border-radius: 50px 50px 0 50px;
+      transform: rotate(-45deg);
+      box-sizing: content-box;
+    }
+    &:after {
+      right: 0;
+      border-radius: 50px 50px 50px 0;
+      transform: rotate(45deg);
+      box-sizing: content-box;
+    }
+  }
+
+  &.diamond-shield {
+    width: 0;
+    height: 0;
+    position: relative;
+    top: -50px;
+    border: 50px solid transparent;
+    border-bottom: 20px solid @pink-color;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: -50px;
+      top: 20px;
+      border: 50px solid transparent;
+      border-top: 70px solid @pink-color;
+    }
+  }
+
+  &.egg {
+    width: 126px;
+    height: 180px;
+    background-color: @pink-color;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  }
+
+  &.pac-man {
+    width: 0;
+    border: 60px solid;
+    border-color: @pink-color transparent @pink-color @pink-color;
+    border-radius: 60px;
+  }
+
+  .talk-bubble {
+    position: relative;
+    width: 120px;
+    height: 80px;
+    background-color: @pink-color;
+    border-radius: 10px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 26px;
+      right: 100%;
+      border-top: 13px solid transparent;
+      border-right: 26px solid @pink-color;
+      border-bottom: 13px solid transparent;
+    }
+  }
+
+  &.burst-12 {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-color: @pink-color;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      height: 80px;
+      width: 80px;
+      background-color: @pink-color;
+    }
+    &:before {
+      transform: rotate(30deg);
+    }
+    &:after {
+      transform: rotate(60deg);
+    }
+  }
+
+  &.yin-yang {
+    position: relative;
+    width: 96px;
+    height: 48px;
+    border: 2px solid @pink-color;
+    border-bottom-width: 50px;
+    border-radius: 100%;
+    box-sizing: content-box;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      background-color: #fff;
+      border: 18px solid @pink-color;
+      border-radius: 100%;
+      width: 12px;
+      height: 12px;
+      box-sizing: content-box;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: @pink-color;
+      border: 18px solid #fff;
+      border-radius: 100%;
+      width: 12px;
+      height: 12px;
+      box-sizing: content-box;
+    }
+  }
+
+  &.badge-ribbon {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: @pink-color;
+    border-radius: 100%;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      border-left: 40px solid transparent;
+      border-right: 40px solid transparent;
+      border-bottom: 70px solid @pink-color;
+      top: 70px;
+      left: -10px;
+      transform: rotate(-140deg);
+    }
+    &:after {
+      left: auto;
+      right: -10px;
+      transform: rotate(140deg);
+    }
+  }
+
+  &.space-invader {
+    box-shadow: 0 0 0 14px @pink-color,
+    0 14px 0 14px @pink-color,
+    -35px 21px 0 7px @pink-color,
+    35px 21px 0 7px @pink-color,
+      -42px -42px 0 0 @pink-color,
+      42px -42px 0 0 @pink-color,
+      -28px -28px 0 0 @pink-color,
+      28px -28px 0 0 @pink-color,
+      -42px -14px 0 0 @pink-color,
+      -28px -14px 0 0 @pink-color,
+      28px -14px 0 0 @pink-color,
+      42px -14px 0 0 @pink-color,
+    -56px 0 0 0 @pink-color,
+    -42px 0 0 0 @pink-color,
+    42px 0 0 0 @pink-color,
+    56px 0 0 0 @pink-color,
+    -70px 14px 0 0 @pink-color,
+    -56px 14px 0 0 @pink-color,
+    56px 14px 0 0 @pink-color,
+    70px 14px 0 0 @pink-color,
+    -70px 28px 0 0 @pink-color,
+    70px 28px 0 0 @pink-color,
+    -70px 42px 0 0 @pink-color,
+    -42px 42px 0 0 @pink-color,
+    42px 42px 0 0 @pink-color,
+    70px 42px 0 0 @pink-color,
+    -28px 56px 0 0 @pink-color,
+    -14px 56px 0 0 @pink-color,
+    14px 56px 0 0 @pink-color,
+    28px 56px 0 0 @pink-color;
+    width: 14px;
+    height: 14px;
+    background-color: @pink-color;
+    overflow: hidden;
+    margin: 50px 0 70px 170px;
+  }
+
+  &.tv-screen {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    background-color: red;
+    border-radius: 50% / 10%;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      bottom: 10%;
+      right: -5%;
+      left: -5%;
+      background-color: @pink-color;
+      border-radius: 5% / 50%;
+    }
+  }
+
+  &.moon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 15px 15px 0 0 @pink-color;
+  }
+
+  &.cone {
+    width: 0;
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-top: 100px solid @pink-color;
+    border-radius: 50%;
+  }
+
+  &.cross {
+    position: relative;
+    width: 20px;
+    height: 100px;
+    background-color: @pink-color;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: -40px;
+      width: 100px;
+      height: 20px;
+      background-color: @pink-color;
+    }
+  }
+
+  &.base {
+    position: relative;
+    width: 100px;
+    height: 55px;
+    background-color: @pink-color;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -35px;
+      width: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 35px solid @pink-color;
+    }
+  }
+}
