@@ -8,3 +8,4 @@ node_modules
 public/img/mengme
 public/js/*.bundle.js
 public/css
+/public/media

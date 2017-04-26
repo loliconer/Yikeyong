@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>500px布局</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/vendor/vue.js"></script>
+  <style>
+    .container {
+      /*margin: 40px auto 0;*/
+    }
+
+    .waterfall {
+      display: flex;
+      flex-wrap: wrap;
+      /*justify-content: space-between;*/
+    }
+
+    .waterfall > .cell {
+      height: 200px;
+      margin: 2px;
+      flex-grow: 1;
+    }
+
+    .waterfall>.cell-last {
+      margin: 2px;
+      flex-grow: 1000;
+    }
+
+    .waterfall > .cell img {
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="container">
+    <div class="waterfall">
+      <div class="cell" v-for="n of 9"><img :src=`/pictures/sexy/av/封面/美人搜查官00${n}.jpg`></div>
+      <div class="cell"><img src="/pictures/sexy/av/さくらえな.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/愛乃なみ.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/本田岬.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/本田岬2.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/倉持結愛.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/長谷川.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/大場ゆい.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/大槻ひびき.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/河合紗里.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/鈴木心春.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/秋山祥子.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/山川青空.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/西川ゆいが.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/夏希アンジュ.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/緒川りお.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/桜木凛.jpg"></div>
+      <div class="cell"><img src="/pictures/sexy/av/永瀬里美.jpg"></div>
+
+      <div class="cell" v-for="n of 9"><img :src=`/pictures/favorite/favorite000${n}.jpg`></div>
+      <div class="cell"><img src="/pictures/favorite/白井黑子.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/北方工业大学校花奉奉.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/程琳.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/傅颖.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/高雅拉.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/何琢言.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/三井麻由.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/深田恭子.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/深渊传说COS.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/台湾超清秀校花璇璇.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/覃霓.jpg"></div>
+      <div class="cell"><img src="/pictures/favorite/诛仙陆雪琪COS.jpg"></div>
+
+      <div class="cell" v-for="n of 142"><img :src=`/pictures/sexy/lesbian/lesbian${('000'+n).slice(-4)}.jpg`></div>
+      <div class="cell-last"></div>
+    </div>
+  </div>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    methods: {
+      updateCell(elem, width, height) {
+        elem.style.flexGrow = width / height
+        setTimeout(() => {
+          elem.style.height = elem.offsetWidth * height / width + 'px'
+        }, 100)
+      }
+    },
+    mounted() {
+      this.$el.querySelectorAll('.cell img').forEach(img => {
+        if (img.complete) {
+          this.updateCell(img.parentNode, img.naturalWidth, img.naturalHeight)
+        } else {
+          img.onload = ev => {
+            this.updateCell(ev.target.parentNode, ev.target.naturalWidth, ev.target.naturalHeight)
+          }
+        }
+      })
+    }
+  })
+</script>
+</body>
+</html>
