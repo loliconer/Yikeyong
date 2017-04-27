@@ -229,3 +229,30 @@
     }
   }
 }
+
+.fiction-loader {
+  /*animation: 2s steps(49, end) 0s normal none infinite play;*/
+  /*animation: duration, , delay, direction, fill-mode, iteration-count, name*/
+  animation-name: move-bg;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(49, end);
+  background-image: url(/img/loader-sprite.png);
+  width: 115px;
+  height: 116px;
+  display: block;
+  text-align: center;
+}
+
+@keyframes move-bg {
+  0% {
+    background-position: 0 center;
+  }
+
+  100% {
+    background-position: -5586px center;
+  }
+}

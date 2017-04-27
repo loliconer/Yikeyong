@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>WebGL 初始化场景</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      margin-bottom: 0;
+    }
+  </style>
+  <!--<script src="/js/vendor/vue.js"></script>-->
+</head>
+<body>
+<script src="/js/vendor/three.js"></script>
+<script src="/js/vendor/OrbitControls.js"></script>
+<script>
+  !function () {
+    let scene, camera, renderer, light, controls, effect
+    let clock = new THREE.Clock()
+
+    init()
+    animate()
+
+    function init() {
+      scene = new THREE.Scene()
+      scene.fog = new THREE.FogExp2(0xffffff, 0.00025)
+
+      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 20000)
+      camera.position.set(0, 650, 1100)
+      camera.lookAt(scene.position)
+
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: false
+      })
+      renderer.setSize(window.innerWidth, window.innerHeight)
+      renderer.setClearColor(0x777777, 1)
+      renderer.gammaInput = true
+      renderer.gammaOutput = true
+      document.body.appendChild(renderer.domElement)
+
+      light = new THREE.AmbientLight(0xffffff)
+      scene.add(light)
+
+      let light2 = new THREE.SpotLight(0xffffff, 1)
+      light2.position.set(500, 2000, 1000)
+      light2.castShadow = false
+      scene.add(light2)
+
+      let tFloor = THREE.ImageUtils.loadTexture('/img/grass.jpg')
+      tFloor.wrapS = tFloor.wrapT = THREE.RepeatWrapping
+      tFloor.repeat.set(10, 10)
+      tFloor.anisotropy = 16
+      let mFloor = new THREE.MeshBasicMaterial({
+          map: tFloor
+        }),
+        gFloor = new THREE.PlaneBufferGeometry(2048 * 10, 2048 * 10),
+        floor = new THREE.Mesh(gFloor, mFloor)
+      floor.rotation.x = -Math.PI / 2
+      scene.add(floor)
+
+      window.addEventListener('resize', onWindowResize, false)
+      controls = new THREE.OrbitControls(camera, renderer.domElement)
+    }
+
+    function animate() {
+      requestAnimationFrame(animate)
+      renderer.render(scene, camera)
+      controls.update()
+    }
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize(window.innerWidth, window.innerHeight)
+    }
+  }()
+</script>
+</body>
+</html>
