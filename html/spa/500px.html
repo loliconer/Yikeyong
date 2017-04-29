@@ -7,37 +7,11 @@
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/vendor/vue.js"></script>
-  <style>
-    .container {
-      /*margin: 40px auto 0;*/
-    }
-
-    .waterfall {
-      display: flex;
-      flex-wrap: wrap;
-      /*justify-content: space-between;*/
-    }
-
-    .waterfall > .cell {
-      height: 200px;
-      margin: 2px;
-      flex-grow: 1;
-    }
-
-    .waterfall>.cell-last {
-      margin: 2px;
-      flex-grow: 1000;
-    }
-
-    .waterfall > .cell img {
-      height: 100%;
-    }
-  </style>
 </head>
 <body>
 <div id="app">
   <div class="container">
-    <div class="waterfall">
+    <div class="px-500">
       <div class="cell" v-for="n of 9"><img :src=`/pictures/sexy/av/封面/美人搜查官00${n}.jpg`></div>
       <div class="cell"><img src="/pictures/sexy/av/さくらえな.jpg"></div>
       <div class="cell"><img src="/pictures/sexy/av/愛乃なみ.jpg"></div>

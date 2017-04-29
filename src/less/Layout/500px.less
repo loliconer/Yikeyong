@@ -1,0 +1,22 @@
+@import "../Bootstrapping/Variables";
+@import "../Bootstrapping/Mixins";
+
+.px-500 {
+  display: flex;
+  flex-wrap: wrap;
+
+  >.cell {
+    height: 200px;
+    margin: 2px;
+    flex-grow: 1;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  > .cell-last {
+    margin: 2px;
+    flex-grow: 1000;
+  }
+}

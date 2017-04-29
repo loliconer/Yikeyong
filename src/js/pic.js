@@ -1,12 +1,11 @@
-import Viewer from "./widgets/viewer.vue";
-import Navbar from "./widgets/navbar.vue";
+import Viewer from "./widgets/viewer.vue"
 
 new Vue({
   el: "#app",
   data: {
     type: null
   },
-  components: { Viewer, Navbar },
+  components: { Viewer },
   methods: {
     view (type) {
       this.$refs.viewer.show(type);

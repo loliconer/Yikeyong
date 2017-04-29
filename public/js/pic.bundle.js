@@ -50,10 +50,6 @@
 
 	var _viewer2 = _interopRequireDefault(_viewer);
 
-	var _navbar = __webpack_require__(73);
-
-	var _navbar2 = _interopRequireDefault(_navbar);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	new Vue({
@@ -61,7 +57,7 @@
 	  data: {
 	    type: null
 	  },
-	  components: { Viewer: _viewer2.default, Navbar: _navbar2.default },
+	  components: { Viewer: _viewer2.default },
 	  methods: {
 	    view: function view(type) {
 	      this.$refs.viewer.show(type);
@@ -163,7 +159,7 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _utils = __webpack_require__(4);
@@ -179,66 +175,67 @@
 	    EVENT_WHEEL = "wheel mousewheel DOMMouseScroll";
 
 	exports.default = {
-	    data: function data() {
-	        return {
-	            bShowViewer: false,
-	            index: 0,
-	            jsonData: null,
-	            type: "",
-	            images: {
-	                base: "beauty/校园女生",
-	                files: ["nvsheng0001.jpg"]
-	            },
-	            ratio: 1,
-	            degree: 0
-	        };
-	    },
+	  data: function data() {
+	    return {
+	      bShowViewer: false,
+	      index: 0,
+	      jsonData: null,
+	      type: "",
+	      images: {
+	        base: "beauty/校园女生",
+	        files: ["nvsheng0001.jpg"]
+	      },
+	      ratio: 1,
+	      degree: 0
+	    };
+	  },
 
-	    computed: {
-	        imgStyle: function imgStyle() {
-	            return {
-	                transform: "scale(" + this.ratio + ") rotate(" + this.degree + "deg)",
-	                background: "url(/spa/img/" + this.images.base + "/" + this.images.files[this.index] + ") no-repeat center"
-	            };
-	        }
-	    },
-	    methods: {
-	        show: function show(type) {
-	            var _this = this;
-	            this.type = type;
-	            if (this.jsonData) {
-	                this.images = this.jsonData[this.type];
-	            } else {
-	                _utils2.default.fetchGet('/public/js/images.json', function (body) {
-	                    _this.jsonData = body;
-	                    _this.images = _this.jsonData[_this.type];
-	                });
-	            }
-
-	            this.bShowViewer = true;
-	        },
-	        close: function close() {
-	            this.index = 0;
-	            this.reset();
-	            this.bShowViewer = false;
-	        },
-	        prev: function prev() {
-	            if (this.index === 0) return;
-
-	            this.reset();
-	            this.index--;
-	        },
-	        next: function next() {
-	            if (this.index === this.images.files.length - 1) return;
-
-	            this.reset();
-	            this.index++;
-	        },
-	        reset: function reset() {
-	            this.ratio = 1;
-	            this.degree = 0;
-	        }
+	  computed: {
+	    imgStyle: function imgStyle() {
+	      return {
+	        transform: "scale(" + this.ratio + ") rotate(" + this.degree + "deg)",
+	        background: "url(/spa/img/" + this.images.base + "/" + this.images.files[this.index] + ") no-repeat center"
+	      };
 	    }
+	  },
+	  methods: {
+	    show: function show(type) {
+	      var _this = this;
+
+	      this.type = type;
+	      if (this.jsonData) {
+	        this.images = this.jsonData[this.type];
+	      } else {
+	        _utils2.default.fetch('/js/images.json').then(function (body) {
+	          _this.jsonData = body;
+	          _this.images = body[type];
+	        });
+	      }
+
+	      this.bShowViewer = true;
+	    },
+	    close: function close() {
+	      this.index = 0;
+	      this.reset();
+	      this.bShowViewer = false;
+	    },
+	    prev: function prev() {
+	      if (this.index === 0) return;
+
+	      this.reset();
+	      this.index--;
+	    },
+	    next: function next() {
+	      if (this.index === this.images.files.length - 1) return;
+
+	      this.reset();
+	      this.index++;
+	    },
+	    reset: function reset() {
+	      this.ratio = 1;
+	      this.degree = 0;
+	    }
+	  }
 	};
 
 /***/ },
@@ -2097,78 +2094,6 @@
 	  module.hot.accept()
 	  if (module.hot.data) {
 	     require("vue-hot-reload-api").rerender("data-v-6502ca65", module.exports)
-	  }
-	}
-
-/***/ },
-/* 73 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Component = __webpack_require__(2)(
-	  /* script */
-	  null,
-	  /* template */
-	  __webpack_require__(74),
-	  /* scopeId */
-	  null,
-	  /* cssModules */
-	  null
-	)
-	Component.options.__file = "D:\\360\\workspace\\Yikeyong\\src\\js\\widgets\\navbar.vue"
-	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-	if (Component.options.functional) {console.error("[vue-loader] navbar.vue: functional components are not supported with templates, they should use render functions.")}
-
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-ae5cf53a", Component.options)
-	  } else {
-	    hotAPI.reload("data-v-ae5cf53a", Component.options)
-	  }
-	})()}
-
-	module.exports = Component.exports
-
-
-/***/ },
-/* 74 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _vm._m(0)
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', {
-	    staticClass: "vue-navbar"
-	  }, [_c('nav', {
-	    staticClass: "flex flex-average navigator"
-	  }, [_c('a', {
-	    staticClass: "box-hover",
-	    attrs: {
-	      "href": "http://www.yikeyong.com"
-	    }
-	  }, [_vm._v("首页")]), _vm._v(" "), _c('a', {
-	    staticClass: "box-hover",
-	    attrs: {
-	      "href": "/blog",
-	      "target": "_blank"
-	    }
-	  }, [_vm._v("博客")]), _vm._v(" "), _c('a', {
-	    staticClass: "box-hover",
-	    attrs: {
-	      "href": "https://github.com/loliconer",
-	      "target": "_blank"
-	    }
-	  }, [_vm._v("Github")])])])
-	}]}
-	module.exports.render._withStripped = true
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-ae5cf53a", module.exports)
 	  }
 	}
 
