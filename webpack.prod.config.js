@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const webpack = require('webpack')
+const UglifyEsPlugin = require('uglify-es-webpack-plugin')
 
 function entries() {
   let basePath = './src/js',
@@ -9,8 +10,9 @@ function entries() {
 
   files.forEach(file => {
     let stat = fs.statSync(basePath + '/' + file)
-    if (stat.isFile()) {
-      let name = file.slice(0, -3)
+    let name = file.slice(0, -3)
+
+    if (stat.isFile() && name !== 'admin') {
       obj[name] = basePath + '/' + file
     }
   })
@@ -19,51 +21,36 @@ function entries() {
 }
 
 module.exports = {
-  context: __dirname,
   entry: entries(),
   output: {
-    path: "public/js",
+    path: __dirname + '/public/js',
     publicPath: '/',
     filename: '[name].bundle.js'
   },
   resolve: {
-    /*自动扩展文件名后缀，require模块的时候可以省略后缀*/
-    extensions: ['', '.json', '.js'],
-    fallback: [path.join(__dirname, './node_modules')]
+    modules: [
+      path.join(__dirname, 'src'),
+      'node_modules'
+    ]
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        use: [{ loader: 'vue-loader' }]
+      },
+      {
+        test: /\.js$/,
+        use: [{ loader: 'babel-loader' }]
+      }
+    ]
   },
   plugins: [
-    // new webpack.HotModuleReplacementPlugin(),
-    // new webpack.NoErrorsPlugin(),
-    // new webpack.IgnorePlugin( /^\.\/locale$/, /moment$/ ),
-    // new webpack.optimize.DedupePlugin(),
+    new UglifyEsPlugin({ compress: { warnings: false } }),
     new webpack.DefinePlugin({
       "process.env": {
         "NODE_ENV": JSON.stringify('production')
       }
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: false,
-      sourcemap: false,
-      compress: {
-        warnings: false
-      }
-    })
-  ],
-  module: {
-    loaders: [
-      {
-        test: /\.vue$/,
-        loader: 'vue'
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel'
-      }
-    ]
-  },
-  babel: {
-    plugins: ['transform-runtime']
-  }
+  ]
 };

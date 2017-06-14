@@ -1,9 +1,9 @@
 # Logs
 logs
 *.log
-npm-debug.log*
 .idea
 dist
+www
 node_modules
 public/img/mengme
 public/js/*.bundle.js

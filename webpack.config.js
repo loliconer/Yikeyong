@@ -20,33 +20,29 @@ function entries() {
 }
 
 module.exports = {
-  context: __dirname,
   // devtool: false,
   entry: entries(),
   output: {
-    path: "public/js",
+    path: __dirname + '/public/js',
     publicPath: '/',
     filename: '[name].bundle.js'
   },
   resolve: {
-    /*自动扩展文件名后缀，require模块的时候可以省略后缀*/
-    extensions: ['', '.json', '.js'],
-    fallback: [path.join(__dirname, './node_modules')]
+    modules: [
+      path.join(__dirname, 'src'),
+      'node_modules'
+    ]
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.vue$/,
-        loader: 'vue'
+        use: [{ loader: 'vue-loader' }]
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel'
+        use: [{ loader: 'babel-loader' }]
       }
     ]
-  },
-  babel: {
-    plugins: ['transform-runtime']
   }
 };
