@@ -3,28 +3,58 @@
 <head>
   <!--#include file="/common/head.html"-->
   <title>一切皆可用 | 亦可用</title>
+  <style>
+    .container {
+      width: 80vw;
+      margin: 0 auto;
+      padding-top: 40px;
+    }
+  </style>
 </head>
 <body class="page-spa">
 <!--#include file="/common/nav.html"-->
 
-<section class="flex flex-gap container">
-  <div class="box-normal">
-    <a href="/spa/pic.html" target="_blank">
-      <img src="/img/flow_sm.jpg">
-    </a>
-  </div>
-  <div class="box-normal">
-    <a href="/spa/whale.html" target="_blank">
-      <img src="/img/whale.jpg">
-    </a>
-  </div>
-  <div class="box-normal">
-    <a href="/spa/3dflower.html" target="_blank">
-      <img src="/img/3dflower.jpg">
-    </a>
-  </div>
-</section>
+<div class="container">
+  <section class="px-500">
+    <div class="cell">
+      <a href="/spa/pic.html" target="_blank">
+        <img src="/img/flow_sm.jpg">
+      </a>
+    </div>
+    <div class="cell">
+      <a href="/spa/whale.html" target="_blank">
+        <img src="/img/whale.jpg">
+      </a>
+    </div>
+    <div class="cell">
+      <a href="/spa/3dflower.html" target="_blank">
+        <img src="/img/3dflower.jpg">
+      </a>
+    </div>
+  </section>
+</div>
 
 <!--#include file="/common/footer.html"-->
+
+<script>
+  !function () {
+    function updateCell(elem, width, height) {
+      elem.style.flexGrow = width / height
+      setTimeout(() => {
+        elem.style.height = elem.offsetWidth * height / width + 'px'
+      }, 100)
+    }
+
+    document.querySelectorAll('.px-500 img').forEach(img => {
+      if(img.complete) {
+        updateCell(img.parentNode.parentNode, img.naturalWidth, img.naturalHeight)
+      } else {
+        img.onload = ev => {
+          updateCell(ev.target.parentNode.parentNode, ev.target.naturalWidth, ev.target.naturalHeight)
+        }
+      }
+    })
+  }()
+</script>
 </body>
 </html>
