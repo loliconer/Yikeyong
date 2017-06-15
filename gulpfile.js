@@ -62,7 +62,7 @@ gulp.task('html', () => {
     .pipe(livereload())
 })
 
-gulp.task('watch', () => {
+gulp.task('watch', ['less'], () => {
   livereload.listen({
     start: true
   })

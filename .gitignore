@@ -7,5 +7,6 @@ www
 node_modules
 public/img/mengme
 public/js/*.bundle.js
-public/css
+public/css/*.css
+!public/css/global.css
 /public/media
