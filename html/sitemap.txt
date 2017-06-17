@@ -1,6 +1,9 @@
 https://www.yikeyong.com
 https://www.yikeyong.com/blog
-https://www.yikeyong.com/ui
+https://www.yikeyong.com/spa/vue-components.html
+https://www.yikeyong.com/spa/css-filter.html
+https://www.yikeyong.com/spa/css-shapes.html
+https://www.yikeyong.com/spa/html5-features.html
 https://www.yikeyong.com/blog/post/20161017001.html
 https://www.yikeyong.com/blog/post/20161005003.html
 https://www.yikeyong.com/blog/post/20161005002.html
