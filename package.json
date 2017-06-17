@@ -41,14 +41,14 @@
     "vue-template-compiler": "^2.3.4",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.2.0",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "uglify-es": "^3.0.15",
+    "uglify-es-webpack-plugin": "^0.0.2"
   },
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
   },
   "dependencies": {
-    "uglify-es": "^3.0.15",
-    "uglify-es-webpack-plugin": "^0.0.2"
   }
 }
