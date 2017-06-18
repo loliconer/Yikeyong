@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
-    "deploy": "gulp build"
+    "deploy": "gulp build",
+    "webpack": "webpack --watch",
+    "gulp": "gulp watch"
   },
   "author": "lolicon",
   "license": "MIT",

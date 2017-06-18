@@ -1,46 +1,6 @@
 module.exports = {
-  init() {
-    return new Promise((resolve, reject) => {
-      this.asyncFetch({
-        type: 'get',
-        url: 'user'
-      }).then(body => {
-        let path = location.pathname, allow = false
-        let urls = []
-
-        if (path === '/') {
-          allow = true
-        } else {
-          body.menu.forEach(menu => {
-            if (menu.url) {
-              urls.push(menu.url)
-            } else if (menu.submenu) {
-              menu.submenu.forEach(submenu => {
-                urls.push(submenu.url)
-              })
-            }
-          })
-
-          allow = urls.includes(path)
-        }
-
-        if (allow) {
-          resolve(body)
-          sessionStorage.csrf = body.csrf
-        } else {
-          document.write('无权限访问')
-        }
-      }).catch(error => {
-        if (error === 401) {
-          location.href = '/login.html'
-        } else {
-          console.log(error)
-        }
-      })
-    })
-  },
   fetch(option) {
-    if(typeof option === 'string') {
+    if (typeof option === 'string') {
       option = {
         type: 'get',
         url: option
@@ -87,14 +47,17 @@ module.exports = {
       requestOption.headers['X-CSRFToken'] = sessionStorage.csrf
     }
 
-    let request = new Request(`/api/v1/${option.url}`, requestOption)
+    let url = option.url.startsWith('/') ? option.url : `/api/v1/${option.url}`
+    let request = new Request(url, requestOption)
 
     return new Promise((resolve, reject) => {
       fetch(request).then(res => {
         if (res.ok) return res.json()
         throw res
       }).then(body => {
-        if (body.code === 0) {
+        if (!body.code) {
+          resolve(body)
+        } else if (body.code === 0) {
           resolve(body.data)
         } else {
           throw body
