@@ -7,12 +7,18 @@ const livereload = require('gulp-livereload')
 const cached = require('gulp-cached')
 const replace = require('gulp-replace')
 
-gulp.task('build', () => {
+gulp.task('build', ['less'], () => {
   gulp.src('public/js/*.*')
     .pipe(changed('www/public/js', {
       hasChanged: changed.compareSha1Digest
     }))
     .pipe(gulp.dest('www/public/js'))
+
+  gulp.src('public/js/data/*.*')
+    .pipe(changed('www/public/js/data', {
+      hasChanged: changed.compareSha1Digest
+    }))
+    .pipe(gulp.dest('www/public/js/data'))
 
   gulp.src('public/js/vendor/*.js')
     .pipe(changed('www/public/js/vendor'))
