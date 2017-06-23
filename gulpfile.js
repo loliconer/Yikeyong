@@ -14,11 +14,11 @@ gulp.task('build', ['less'], () => {
     }))
     .pipe(gulp.dest('www/public/js'))
 
-  gulp.src('public/js/data/*.*')
-    .pipe(changed('www/public/js/data', {
+  gulp.src('public/js/@(data|lib)/*.*')
+    .pipe(changed('www/public/js', {
       hasChanged: changed.compareSha1Digest
     }))
-    .pipe(gulp.dest('www/public/js/data'))
+    .pipe(gulp.dest('www/public/js'))
 
   gulp.src('public/js/vendor/*.js')
     .pipe(changed('www/public/js/vendor'))
