@@ -10,13 +10,13 @@ const replace = require('gulp-replace')
 gulp.task('build', ['less'], () => {
   gulp.src('public/js/*.*')
     .pipe(changed('www/public/js', {
-      hasChanged: changed.compareSha1Digest
+      hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/public/js'))
 
   gulp.src('public/js/@(data|lib)/*.*')
     .pipe(changed('www/public/js', {
-      hasChanged: changed.compareSha1Digest
+      hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/public/js'))
 
@@ -26,7 +26,7 @@ gulp.task('build', ['less'], () => {
 
   gulp.src('public/css/*.css')
     .pipe(changed('www/public/css', {
-      hasChanged: changed.compareSha1Digest
+      hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/public/css'))
 
@@ -40,7 +40,7 @@ gulp.task('build', ['less'], () => {
     }))
     .pipe(replace(/js\/vendor\/(echarts|vue|three|yikeyong)\.js/g, 'js/vendor/$1.min.js'))
     .pipe(changed('www/html', {
-      hasChanged: changed.compareSha1Digest
+      hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/html'))
 })
