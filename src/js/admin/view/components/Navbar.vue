@@ -26,7 +26,6 @@
 </template>
 <script>
   import {mapState, mapMutations} from 'vuex'
-  import utils from '../../../lib/utils'
 
   export default {
     data() {
