@@ -22,7 +22,7 @@
   export default {
     components: { Navbar, Sidebar, NProgress },
     created() {
-      this.$router.push(sessionStorage.currentRoute)
+      sessionStorage.currentRoute && this.$router.push(sessionStorage.currentRoute)
     }
   }
 </script>
