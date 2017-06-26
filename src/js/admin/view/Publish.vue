@@ -43,24 +43,21 @@
         this.canSubmit = false
         this.bShowAddLoading = true
 
-        // utils.fetch({
-        //   type: this.current.id ? 'putForm' : 'form',
-        //   url: this.current.id ? `user/${this.current.id}` : 'admin/user',
-        //   data: new FormData(ev.target)
-        // }, body => {
-        //   this.canSubmit = true
-        //   this.bShowAddLoading = false
-        //
-        //   this.$msg('保存成功')
-        //   this.bShowAddForm = false
-        //   ev.target.reset()
-        //   this.getUsers()
-        // }, error => {
-        //   this.canSubmit = true
-        //   this.bShowAddLoading = false
-        //
-        //   this.error(error.error)
-        // })
+        utils.fetch({
+          type: 'form',
+          url: '/api/blog',
+          data: new FormData(ev.target)
+        }).then(body => {
+          this.canSubmit = true
+          this.bShowAddLoading = false
+
+          this.$msg('保存成功')
+          ev.target.reset()
+        }).catch(error => {
+          this.canSubmit = true
+          this.bShowAddLoading = false
+          this.error(error.error)
+        })
       }
     },
     created() {
