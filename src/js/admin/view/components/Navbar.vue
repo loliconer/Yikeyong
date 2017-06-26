@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="left">
       <div class="logo">
-        <a href="/"><img src="/static/platform/img/logo-3.png">BSS</a>
+        <a href="/"><img src="/img/logo.png"></a>
       </div>
     </div>
     <div class="right">
@@ -26,7 +26,6 @@
 </template>
 <script>
   import {mapState, mapMutations} from 'vuex'
-  import utils from '../../../lib/utils'
 
   export default {
     data() {

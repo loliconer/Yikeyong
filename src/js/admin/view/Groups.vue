@@ -106,10 +106,6 @@
   </div>
 </template>
 <script>
-  import utils from '../../lib/utils'
-  import VueDataTables from 'vue-data-tables'
-  import VueLoading from '../../../components/Loading.vue'
-
   export default {
     data() {
       return {
@@ -134,7 +130,6 @@
         return this.makingTree(this.addedMenus)
       }
     },
-    components: { VueDataTables, VueLoading },
     methods: {
       error(text) {
         this.$msg({
@@ -165,7 +160,7 @@
       },
       getGroups() {
         this.bShowTableLoading = true
-        utils.asyncFetch({
+        utils.fetch({
           type: 'get',
           url: 'groups'
         }).then(body => {
@@ -174,7 +169,7 @@
         })
       },
       getMenus() {
-        utils.asyncFetch({
+        utils.fetch({
           type: 'get',
           url: 'menus'
         }).then(body => this.menus = body)
@@ -243,7 +238,7 @@
         this.bShowAddLoading = true
         this.canSubmit = false
 
-        utils.asyncFetch({
+        utils.fetch({
           type: 'form',
           url: 'group',
           data: new FormData(ev.target)

@@ -1,4 +1,3 @@
-import VueRouter from 'vue-router'
 import store from '../store'
 
 import Login from '../view/Login.vue'
@@ -6,6 +5,7 @@ import Main from '../view/Main.vue'
 import Users from '../view/Users.vue'
 import Groups from '../view/Groups.vue'
 import Menus from '../view/Menus.vue'
+import Publish from '../view/Publish.vue'
 
 Vue.use(VueRouter)
 
@@ -40,6 +40,16 @@ const routes = [
     ]
   },
   {
+    path: '/sys',
+    component: Main,
+    children: [
+      {
+        path: 'publish.html',
+        component: Publish
+      }
+    ]
+  },
+  {
     path: '*',
     component: {
       render(h) {
@@ -67,6 +77,9 @@ const router = new VueRouter({
 
 export function hook(userPromise) {
   router.beforeEach((to, from, next) => {
+    if(to.path !== '/index.html') {
+      sessionStorage.currentRoute = to.path
+    }
     userPromise.then(() => {
       if (store.getters.isAdmin || to.path === '/login.html') {
         next()

@@ -11,7 +11,7 @@ function entries() {
     let stat = fs.statSync(basePath + '/' + file)
     let name = file.slice(0, -3)
 
-    if (stat.isFile() && name !== 'admin') {
+    if (stat.isFile()) {
       obj[name] = basePath + '/' + file
     }
   })

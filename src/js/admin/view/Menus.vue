@@ -24,20 +24,10 @@
     </div>
 
     <div class="panel">
-      <vue-data-tables :data="menus" :search-def="getSearchDef()" :row-action-def="getRowActionsDef()">
-        <el-table-column prop="id" label="ID"></el-table-column>
-        <el-table-column prop="name" label="名称"></el-table-column>
-        <el-table-column prop="url" label="路径"></el-table-column>
-        <el-table-column prop="father" label="父级ID"></el-table-column>
-      </vue-data-tables>
     </div>
   </div>
 </template>
 <script>
-  import VueDataTables from 'vue-data-tables'
-  import utils from '../../lib/utils'
-  import VueLoading from '../../../components/Loading.vue'
-
   export default {
     data() {
       return {
@@ -49,7 +39,6 @@
         current: {}
       }
     },
-    components: { VueDataTables, VueLoading },
     methods: {
       error(text) {
         this.$msg({
@@ -58,7 +47,7 @@
         })
       },
       getMenus() {
-        utils.asyncFetch({
+        utils.fetch({
           type: 'get',
           url: 'menus'
         }).then(body => {
