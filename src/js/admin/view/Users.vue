@@ -25,20 +25,10 @@
     </div>
 
     <div class="panel">
-      <vue-data-tables :data="users" :search-def="getSearchDef()" :row-action-def="getRowActionsDef()">
-        <el-table-column prop="id" label="ID"></el-table-column>
-        <el-table-column prop="username" label="用户名"></el-table-column>
-        <el-table-column prop="email" label="邮箱"></el-table-column>
-        <el-table-column prop="group" label="组"></el-table-column>
-      </vue-data-tables>
     </div>
   </div>
 </template>
 <script>
-  import utils from '../../lib/utils'
-  import VueDataTables from 'vue-data-tables'
-  import VueLoading from '../../../components/Loading.vue'
-
   export default {
     data() {
       return {
@@ -50,7 +40,6 @@
         current: {}
       }
     },
-    components: { VueDataTables, VueLoading },
     methods: {
       error(text) {
         this.$msg({
@@ -59,7 +48,7 @@
         })
       },
       getUsers() {
-        utils.asyncFetch({
+        utils.fetch({
           type: 'get',
           url: 'users'
         }).then(body => {
@@ -67,7 +56,7 @@
         }).catch(error => this.error(error))
       },
       getGroups() {
-        utils.asyncFetch({
+        utils.fetch({
           type: 'get',
           url: 'groups'
         }).then(body => this.groups = body)

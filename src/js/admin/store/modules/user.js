@@ -1,9 +1,9 @@
 const state = {
   id: '',
-  admin: false,
-  username: '',
+  admin: true,
+  username: 'Lolicon',
   nickname: '',
-  avatar: '',
+  avatar: '/img/loli.png',
   csrf: ''
 }
 
@@ -28,22 +28,23 @@ const mutations = {
 const actions = {
   initUserInfo({ commit }) {
     return new Promise((resolve, reject) => {
-      fetch(new Request('/api/v1/user', {
-        headers: {
-          'Accept': 'application/json'
-        },
-        credentials: 'same-origin'
-      })).then(res => {
-        if (res.ok) return res.json()
-      }).then(body => {
-        if (body.code === 0) {
-          commit('SET_USER_INFO', body.data)
-          sessionStorage.csrf = body.data.csrf
-        }
-        resolve()
-      }).catch(err => {
-        reject(err)
-      })
+      resolve()
+      // fetch(new Request('/api/user', {
+      //   headers: {
+      //     'Accept': 'application/json'
+      //   },
+      //   credentials: 'same-origin'
+      // })).then(res => {
+      //   if (res.ok) return res.json()
+      // }).then(body => {
+      //   if (body.code === 0) {
+      //     commit('SET_USER_INFO', body.data)
+      //     sessionStorage.csrf = body.data.csrf
+      //   }
+      //   resolve()
+      // }).catch(err => {
+      //   reject(err)
+      // })
     })
   }
 }

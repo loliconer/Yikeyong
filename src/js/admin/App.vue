@@ -5,12 +5,9 @@
   </div>
 </template>
 <script>
-  import VueBeautyAlert from '../../components/BeautyAlert.vue'
-
   export default {
     data() {
       return {}
-    },
-    components: { VueBeautyAlert }
+    }
   }
 </script>
