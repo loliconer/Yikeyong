@@ -13,7 +13,7 @@
 
 .view-login {
   min-height: 100vh;
-  background: url(/static/platform/img/login-body.jpg) no-repeat fixed;
+  background: url(/img/grey_wash_wall.png) repeat center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,6 +37,10 @@
       height: 42px;
       transition: all .3s;
       color: @white-color;
+
+      &::-webkit-input-placeholder {
+        color: @date-color;
+      }
     }
 
     hr {
