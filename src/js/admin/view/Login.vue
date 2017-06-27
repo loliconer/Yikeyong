@@ -1,6 +1,6 @@
 <template>
   <div class="view-login">
-    <header class="title">茂源资本后台管理系统</header>
+    <header class="title">后台管理系统</header>
     <form class="form" @submit.prevent="login">
       <div class="row">
         <div class="input-effect">
@@ -22,7 +22,6 @@
 </template>
 <script>
   import {mapMutations, mapGetters} from 'vuex'
-  import utils from '../../lib/utils'
 
   export default {
     data() {
@@ -38,27 +37,27 @@
           type: 'form',
           url: 'session',
           data: new FormData(ev.target)
-        }, body => {
+        }).then(body => {
           this.setUserInfo(body)
-          sessionStorage.csrf = body.csrf
+//          sessionStorage.csrf = body.csrf
 
-          if(this.isAdmin) {
+          if (this.isAdmin) {
             this.$router.replace('/index.html')
           } else {
             this.$root.$refs.alert.show('该用户无权限', () => location.reload())
           }
-        }, error => {
+        }).catch(error => {
           this.$root.$refs.alert.show(error.error)
         })
       }
     },
     mounted() {
-      utils.fetch({
+      /*utils.fetch({
         type: 'get',
         url: 'csrf'
       }, body => {
         sessionStorage.csrf = body
-      })
+      })*/
     }
   }
 </script>

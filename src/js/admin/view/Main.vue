@@ -22,7 +22,9 @@
   export default {
     components: { Navbar, Sidebar, NProgress },
     created() {
-      this.$router.push(sessionStorage.currentRoute)
+      if(sessionStorage.currentRoute && sessionStorage.currentRoute !== '/login.html') {
+        this.$router.push(sessionStorage.currentRoute)
+      }
     }
   }
 </script>

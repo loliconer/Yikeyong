@@ -1,0 +1,6 @@
+# robots.txt for https://www.yikeyong.com
+User-agent: *
+Disallow: /admin/
+Disallow: /img/
+Disallow: /log/
+Disallow: /login/

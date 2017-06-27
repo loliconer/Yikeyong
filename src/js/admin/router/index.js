@@ -7,8 +7,6 @@ import Groups from '../view/Groups.vue'
 import Menus from '../view/Menus.vue'
 import Publish from '../view/Publish.vue'
 
-Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/login.html',
