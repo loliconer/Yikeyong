@@ -4,48 +4,43 @@ new Vue({
     boughtTicker: {},
     bought: [
       {
-        name: 'ktc',
-        cost: 4.12,
-        count: 120
+        name: 'xrp',
+        cost: 2.25,
+        count: 6073.82
       },
       {
         name: 'ifc',
-        cost: 0.001161,
-        count: 499500
+        cost: 0.001265,
+        count: 3496500
       },
       {
-        name: 'doge',
-        cost: 0.0233,
-        count: 49950
-      },
-      {
-        name: 'peb',
-        cost: 0.284,
-        count: 1998
-      },
-      {
-        name: 'xrp',
-        cost: 2.25,
-        count: 3990
+        name: 'etc',
+        cost: 156,
+        count: 20.48
       },
       {
         name: 'bts',
         cost: 2.284,
-        count: 999
+        count: 1398.6
       },
       {
-        name: 'met',
-        cost: 0.178,
-        count: 9990
+        name: 'doge',
+        cost: 0.0233,
+        count: 89910
       },
       {
-        name: 'ytc',
-        cost: 0.256,
-        count: 3996
+        name: 'vtc',
+        cost: 4.7,
+        count: 99.9
+      },
+      {
+        name: 'ktc',
+        cost: 4.12,
+        count: 120
       }
     ],
     asset: 0,
-    cash: 1403.57,
+    cash: 1564,
     coins: ['btc', 'eth', 'ltc', 'etc', 'ans', 'game', 'lsk', 'ppc', 'vrc', 'vtc', 'rss',
     'xpm', 'fz', 'xas', 'ktc', 'blk', 'tfc', 'bts', 'rio', 'xrp', 'pgc', 'wdc', 'nxt',
     'max', 'zcc', 'mryc', 'qec', 'lkc', 'gooc', 'plc', 'hlb', 'skt', 'zet', 'ytc', 'peb',
