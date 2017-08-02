@@ -12,16 +12,18 @@
 <body class="page-coin">
 <div id="app">
   <table class="table">
-    <caption>总资产：{{asset}} 元</caption>
+    <caption>基准资产：{{baseAsset}}元，总资产：{{asset}} 元</caption>
     <thead>
     <tr>
       <th>Coin</th>
       <th>Cost</th>
+      <th>基准价</th>
       <th>Price</th>
+      <th>Count</th>
+      <th>亏损</th>
       <th>涨幅</th>
       <th>最高价</th>
       <th>最低价</th>
-      <th>Count</th>
     </tr>
     </thead>
 
@@ -29,11 +31,13 @@
     <tr v-for="coin of bought" v-if="boughtTicker[coin.name]">
       <td>{{coin.name}}</td>
       <td>{{coin.cost}}</td>
-      <td>{{boughtTicker[coin.name].sell}}</td>
-      <td>{{((boughtTicker[coin.name].sell - coin.cost)/coin.cost*100).toFixed(2)}}%</td>
+      <td>{{coin.basePrice}}</td>
+      <td>{{boughtTicker[coin.name].last}}</td>
+      <td>{{coin.count}}</td>
+      <td>{{((boughtTicker[coin.name].last - coin.basePrice) * coin.count).toFixed(2)}}</td>
+      <td>{{((boughtTicker[coin.name].last - coin.cost)/coin.cost*100).toFixed(2)}}%</td>
       <td>{{boughtTicker[coin.name].high}}</td>
       <td>{{boughtTicker[coin.name].low}}</td>
-      <td>{{coin.count}}</td>
     </tr>
     </tbody>
   </table>

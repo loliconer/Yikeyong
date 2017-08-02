@@ -6,41 +6,37 @@ new Vue({
       {
         name: 'xrp',
         cost: 2.25,
-        count: 6073.82
+        count: 7997.491,
+        basePrice: 1.2378
       },
       {
         name: 'ifc',
         cost: 0.001265,
-        count: 3496500
+        count: 5000000,
+        basePrice: 0.00072
       },
       {
         name: 'etc',
-        cost: 156,
-        count: 20.48
+        cost: 138.1,
+        count: 39.94,
+        basePrice: 105.22
       },
       {
         name: 'bts',
         cost: 2.284,
-        count: 1398.6
+        count: 7987,
+        basePrice: 0.848
       },
       {
-        name: 'doge',
-        cost: 0.0233,
-        count: 89910
-      },
-      {
-        name: 'vtc',
-        cost: 4.7,
-        count: 99.9
-      },
-      {
-        name: 'ktc',
-        cost: 4.12,
-        count: 120
+        name: 'pgc',
+        cost: 1.6,
+        count: 3498.5,
+        basePrice: 1.022
       }
     ],
     asset: 0,
-    cash: 1564,
+    baseAsset: 36989.80,
+    cash: 9046.04,
     coins: ['btc', 'eth', 'ltc', 'etc', 'ans', 'game', 'lsk', 'ppc', 'vrc', 'vtc', 'rss',
     'xpm', 'fz', 'xas', 'ktc', 'blk', 'tfc', 'bts', 'rio', 'xrp', 'pgc', 'wdc', 'nxt',
     'max', 'zcc', 'mryc', 'qec', 'lkc', 'gooc', 'plc', 'hlb', 'skt', 'zet', 'ytc', 'peb',
@@ -60,13 +56,13 @@ new Vue({
       xpm: { name: '质数币' },
       fz: { name: '冰河币' },
       xas: { name: '阿希币' },
-      ktc: { name: '肯特币', bought: true },
+      ktc: { name: '肯特币' },
       blk: { name: '黑币' },
       tfc: { name: '传送币' },
       bts: { name: '比特股', bought: true },
       rio: { name: '里约币' },
       xrp: { name: '瑞波币', bought: true },
-      pgc: { name: '乐园通' },
+      pgc: { name: '乐园通', bought: true },
       wdc: { name: '世界币' },
       nxt: { name: '未来币' },
       max: { name: '最大币' },
@@ -79,13 +75,13 @@ new Vue({
       hlb: { name: '活力币' },
       skt: { name: '鲨之信' },
       zet: { name: '泽塔币' },
-      ytc: { name: '一号币', bought: true },
-      peb: { name: '普银', bought: true },
+      ytc: { name: '一号币' },
+      peb: { name: '普银' },
       mtc: { name: '猴宝币' },
       jbc: { name: '聚宝币' },
-      met: { name: '美通币', bought: true },
+      met: { name: '美通币' },
       dnc: { name: '暗网币' },
-      doge: { name: '狗狗币', bought: true },
+      doge: { name: '狗狗币' },
       eac: { name: '地球币' },
       ifc: { name: '无限币', bought: true }
     },
@@ -119,7 +115,8 @@ new Vue({
         let sum = this.cash
         this.bought.forEach(c => {
           if (this.boughtTicker[c.name]) {
-            sum += Number((c.count * this.boughtTicker[c.name].sell).toFixed(2))
+            console.log(Number((c.count * this.boughtTicker[c.name].last).toFixed(2)))
+            sum += Number((c.count * this.boughtTicker[c.name].last).toFixed(2))
           }
         })
         this.asset = Number(sum.toFixed(2))
