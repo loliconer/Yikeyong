@@ -10,7 +10,7 @@
 <body class="page-article">
 <!--#include file="/common/nav.html"-->
 
-<div class="container" id="app">
+<div class="container" id="app" v-cloak>
   <nav class="nav-article">
     <button class="btn-ghost" :class="{focus: cIndex === i}" type="button" v-for="(chapter, i) of chapters" @click="cIndex = i">{{chapter.name}}</button>
   </nav>
