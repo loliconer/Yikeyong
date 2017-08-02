@@ -67,7 +67,7 @@
         if (this.jsonData) {
           this.images = this.jsonData[this.type];
         } else {
-          utils.fetch('/js/images.json')
+          utils.fetch('/js/data/images.json')
             .then(body => {
               this.jsonData = body
               this.images = body[type]
