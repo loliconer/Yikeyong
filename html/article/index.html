@@ -52,10 +52,7 @@
         .then(body => {
           this.chapters = body
         })
-        .catch(error => this.$msg({
-          type: 'error',
-          message: error
-        }))
+        .catch(this.error)
     }
   })
 </script>

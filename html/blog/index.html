@@ -30,7 +30,6 @@
 <script>
   utils.fetch('/api/blogs')
     .then(body => {
-      console.log(body)
       posts.innerHTML = template(tpl.innerHTML, {
         units: body
       })
