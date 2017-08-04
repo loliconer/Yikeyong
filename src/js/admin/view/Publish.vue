@@ -16,7 +16,7 @@
 
         <div class="row row-submit-left">
           <button class="btn" type="submit">保存</button>
-          <vue-loading v-show="bShowAddLoading"></vue-loading>
+          <vue-loading v-show="loading"></vue-loading>
         </div>
       </form>
     </div>
@@ -26,36 +26,27 @@
   export default {
     data() {
       return {
-        bShowAddLoading: false,
+        loading: false,
         canSubmit: true
       }
     },
     methods: {
-      error(text) {
-        this.$msg({
-          message: text,
-          type: 'error'
-        })
-      },
       addBlog(ev) {
-        if(!this.canSubmit) return
+        if(this.loading) return
 
-        this.canSubmit = false
-        this.bShowAddLoading = true
+        this.loading = true
 
         utils.fetch({
           type: 'form',
           url: '/api/blog',
           data: new FormData(ev.target)
         }).then(body => {
-          this.canSubmit = true
-          this.bShowAddLoading = false
+          this.loading = false
 
-          this.$msg('保存成功')
+          this.success('保存成功')
           ev.target.reset()
         }).catch(error => {
-          this.canSubmit = true
-          this.bShowAddLoading = false
+          this.loading = false
           this.error(error.error)
         })
       }
