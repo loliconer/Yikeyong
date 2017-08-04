@@ -6,6 +6,9 @@ const less = require('gulp-less')
 const livereload = require('gulp-livereload')
 const cached = require('gulp-cached')
 const replace = require('gulp-replace')
+const fs = require('fs')
+const path = require('path')
+let md = require('./src/js/lib/md.js')
 
 gulp.task('build', ['less'], () => {
   gulp.src('public/js/*.*')
@@ -68,12 +71,28 @@ gulp.task('html', () => {
     .pipe(livereload())
 })
 
+gulp.task('md', () => {
+  let srcPath = './src/md'
+  let destPath = './html/blog/post'
+
+  let files = fs.readdirSync(srcPath)
+
+  files.forEach(file => {
+    md(path.resolve(`${srcPath}/${file}`))
+  })
+})
+
+
+
 gulp.task('watch', ['less'], () => {
   livereload.listen({
     start: true
   })
 
   gulp.watch('src/less/**/*.less', ['less'])
+  gulp.watch('src/md/*.md', ev => {
+    md(ev.path)
+  })
   gulp.watch('public/js/*.*', ['js'])
   gulp.watch('html/**/*.*', ['html'])
 })

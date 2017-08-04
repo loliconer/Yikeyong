@@ -40,12 +40,6 @@
       }
     },
     methods: {
-      error(text) {
-        this.$msg({
-          message: text,
-          type: 'error'
-        })
-      },
       getMenus() {
         utils.fetch({
           type: 'get',
@@ -62,57 +56,7 @@
               }
             }
           }
-        }).catch(error => this.error(error))
-      },
-      getRowActionsDef() {
-        let self = this
-        let { menus, fathers } = this
-
-        return [{
-          type: 'btn',
-          handler(row) {
-            self.bShowAddForm = true
-            self.current = Object.assign({}, row)
-            document.querySelector('.content-wrapper').scrollTop = 0
-          },
-          name: '修改'
-        }, {
-          type: 'primary',
-          handler(row) {
-            self.$root.$refs.alert.show({
-              type: 'confirm',
-              text: '确认删除？'
-            }, () => {
-              utils.asyncFetch({
-                type: 'delete',
-                url: `menu/${row.id}`
-              }).then(() => {
-                self.$msg('删除成功')
-
-                for (let i = 0, l = menus.length; i < l; i++) {
-                  if (menus[i].id === row.id) {
-                    menus.splice(i, 1)
-                  }
-                }
-
-                if (!row.father) {
-                  for (i = 0, l = fathers.length; i < l; i++) {
-                    if (fathers[i].id === row.id) {
-                      fathers.splice(i, 1)
-                    }
-                  }
-                }
-              }).catch(error => self.error(error))
-            })
-          },
-          name: '删除'
-        }]
-      },
-      getSearchDef() {
-        return {
-          offset: 0,
-          props: ['name']
-        }
+        }).catch(this.error)
       },
       openAddForm() {
         this.bShowAddForm = true
@@ -127,12 +71,12 @@
         this.bShowSaveLoading = true
 
         if (current.id) {
-          utils.asyncFetch({
+          utils.fetch({
             type: 'put',
             url: `menu/${current.id}`,
             data: current
           }).then(body => {
-            this.$msg('保存成功')
+            this.success('保存成功')
             this.canSubmit = true
             this.bShowSaveLoading = false
             this.bShowAddForm = false
@@ -142,26 +86,25 @@
                 this.menus.splice(i, 1, body)
               }
             }
-          }).catch(error => this.error(error))
+          }).catch(this.error)
         } else {
-          utils.asyncFetch({
+          utils.fetch({
             type: 'form',
             url: 'menu',
-            data: new FormData(ev.target),
-            vm: this
+            data: new FormData(ev.target)
           }).then(body => {
-            this.$msg('保存成功')
+            this.success('保存成功')
             this.canSubmit = true
             this.bShowSaveLoading = false
             this.bShowAddForm = false
             ev.target.reset()
             this.menus.push(body)
-          }).catch(error => this.error(error))
+          }).catch(this.error)
         }
       }
     },
     created() {
-      this.getMenus()
+      // this.getMenus()
     }
   }
 </script>
