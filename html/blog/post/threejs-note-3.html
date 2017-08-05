@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>Three.js学习笔记（三）</title>
+</head>
+<body class="page-post">
+<div class="container blog">
+<h3 class="post-title">Three.js学习笔记（三）</h3>
+<h4>一、Camera分类</h4>
+<ol>
+  <li>
+    <p>正交投影Camera</p>
+    <pre><code class="lang-js">OrthographicCamera(left, right, top, bottom, near, far)
+</code></pre>
+  </li>
+  <li>
+    <p>透视投影Camera</p>
+    <pre><code class="lang-js">PerspectiveCamera(fov, width/height, near, far)
+</code></pre>
+  </li>
+  <li>
+    <p>混合Camera</p>
+    <pre><code class="lang-js">CombinedCamera(width, height, fov, near, far, orthoNear, orthoFar)
+</code></pre>
+    <p>同时初始化正交投影Camera和透视投影Camera，默认为透视投影Camera。</p>
+  </li>
+  <li>
+    <p>CameraHelper</p>
+    <pre><code class="lang-js">Camerahelper(camera)
+</code></pre>
+  </li>
+</ol>
+<h4>二、Light分类</h4>
+<ol>
+  <li>
+    <p>Light</p>
+    <pre><code class="lang-js">Light(hex)
+</code></pre>
+  </li>
+  <li>
+    <p>Ambient</p>
+    <pre><code class="lang-js">AmbientLight(hex)
+</code></pre>
+  </li>
+  <li>
+    <p>Point</p>
+    <pre><code class="lang-js">PointLight(hex, intensity, distance)
+`
+</code></pre>
+    <p>intensity：光强，默认为1。 distance：光从intensity衰减到0的距离。</p>
+  </li>
+  <li>
+    <p>Spot</p>
+    <pre><code class="lang-js">SpotLight(hex, intensity, distance, angle, exponent)
+</code></pre>
+    <p>angle：弧度为单位。 exponent：衰减参数，越大衰减越快。</p>
+  </li>
+  <li>
+    <p>Directional</p>
+    <pre><code class="lang-js">DirectionalLight(hex, intensity)
+</code></pre>
+    <p>光的方向为光的位置指向原点。</p>
+  </li>
+  <li>
+    <p>Hemisphere</p>
+    <pre><code class="lang-js">Hemisphere(skyColorHex, groundColorHex, intensity)
+</code></pre>
+  </li>
+  <li>
+    <p>Area</p>
+    <pre><code class="lang-js">AreaLight(hex, intensity)
+</code></pre>
+    <p>只用于deferredrenderer。</p>
+  </li>
+</ol>
+<h4>三、Geometry分类</h4>
+<ol>
+  <li>
+    <p>Geometry</p>
+    <pre><code class="lang-js">Geometry()
+</code></pre>
+  </li>
+  <li>
+    <p>Cylinder</p>
+    <pre><code class="lang-js">CylinderGeometry(radiusTop=20, radiusBottom=20, height=100, radiusSegments=8, heightSegments=1, openEnded=false)
+</code></pre>
+  </li>
+  <li>
+    <p>Sphere</p>
+    <pre><code class="lang-js">SphereGeometry(radius=50, widthSegments=8, heightSegments=6, phiStart=0, phiLength=2*PI, thetaStart=0, thetaLength=PI)
+</code></pre>
+  </li>
+  <li>
+    <p>Box</p>
+    <pre><code class="lang-js">BoxGeometry(width, height, depth, widthSegmens=1, heightSegments=1, depthSegments=1)
+</code></pre>
+  </li>
+  <li>
+    <p>Circle</p>
+    <pre><code class="lang-js">CircleGeometry(radius=50, segments=8, thetaStart=0, thetaLength=2*PI) //Cube renamed to Box
+</code></pre>
+  </li>
+  <li>
+    <p>Extrude</p>
+    <pre><code class="lang-js">ExtrudeGeometry(shapes, options)
+</code></pre>
+    <p>shapes: shape or an array of shapes options: object, parameters: curveSegments, steps, amount, bevelEnabled, bevelThickness, bevelSize, bevelSegments, extrudePath, frames, material, extrudeMaterial, uvGenerator</p>
+  </li>
+  <li>
+    <p>Icosahedron</p>
+    <pre><code class="lang-js">IcosahedronGeometry(radius=1, detail=0)
+</code></pre>
+    <p>detail：大于1时，该几何体趋向于球体。</p>
+  </li>
+  <li>
+    <p>Lathe</p>
+    <pre><code class="lang-js">LatheGeometry(points, segments=12, phiStart=0, phiLength=2*PI)
+</code></pre>
+  </li>
+  <li>
+    <p>Octahedron</p>
+    <pre><code class="lang-js">OctahedronGeometry(radius=1, detail=0)
+</code></pre>
+  </li>
+  <li>
+    <p>Plane</p>
+    <pre><code class="lang-js">PlaneGeometry(width, height, widthSegments=1, heightSegments=1)
+</code></pre>
+  </li>
+  <li>
+    <p>Ring</p>
+    <pre><code class="lang-js">RingGeometry(innerRadius=0, outerRadius=50, thetaSegments=8, phiSegments=8, thetaStart=0, thetaLength=2*PI)
+</code></pre>
+    <p>二维圆环，innerRadius为0时无效，所以必须给一个大于0的值。</p>
+  </li>
+  <li>
+    <p>Tetrahedron</p>
+    <pre><code class="lang-js">TetrahedronGeometry(radius=1, detail=0)
+</code></pre>
+  </li>
+  <li>
+    <p>Text</p>
+    <pre><code class="lang-js">TextGeometry(text, parameters)
+</code></pre>
+    <p>parameters: size, height=50, curveSegments, font, weight, style, bevelEnabled=false, bevelThickness=10, bevelSize=8</p>
+  </li>
+  <li>
+    <p>Torus</p>
+    <pre><code class="lang-js">TorusGeometry(radius=100, tube=40, radialSegments=8, tubularSegments=6, arc=2*PI)
+</code></pre>
+  </li>
+  <li>
+    <p>TorusKnot</p>
+    <pre><code class="lang-js">TorusKnotGeometry(radius=100, tube=40, radialSegments=8, tubularSegments=6, p=2, q=3, heightScale=1)
+</code></pre>
+    <p>p、q：互质的整数</p>
+  </li>
+</ol>
+<h4>四、Material分类</h4>
+<ol>
+  <li>
+    <p>Material</p>
+    <pre><code class="lang-js">Material()
+</code></pre>
+  </li>
+  <li>
+    <p>LineBasic</p>
+    <pre><code class="lang-js">LineBasicMaterial(parameters)
+</code></pre>
+    <p>parameters: color=0xffffff, linewidth=1, linecap=’round’, linejoin=’round’, vertexColors=THREE.NoColors, fog=false</p>
+  </li>
+  <li>
+    <p>LineDashed</p>
+    <pre><code class="lang-js">LineDashedMaterial(parameters)
+</code></pre>
+    <p>parameters: color=0xffffff, linewidth=1, scale=1, dashSize=3, gapSize=1, vertexColors=THREE.NoColors, fog=false</p>
+  </li>
+  <li>
+    <p>MeshBasic</p>
+    <pre><code class="lang-js">MeshBasicMaterial(parameters)
+</code></pre>
+    <p>parameters: color=0xffffff, wireframe=false, wireframeLinewidth=1, wireframeLineCap=’round’, wireframeLinejoin=’round’, shading=THREE.SmoothShading, vertexColors=THREE.NoColors, fog=true, lightMap=null, specularMap=null, alphaMap=null, envMap=null,
+      skinning=false, morphTargets=false</p>
+    <p>不受光照影响，用来显示固定的颜色或wireframe。</p>
+  </li>
+  <li>
+    <p>MeshNormal</p>
+    <pre><code class="lang-js">MeshNormalMaterial(parameters)
+</code></pre>
+    <p>parameters: morphTargets=false, shading=THREE.SmoothShading, wireframe=false, wireframeLinewidth-1</p>
+  </li>
+  <li>
+    <p>MeshDepth</p>
+    <pre><code class="lang-js">MeshDepthMaterial(parameters)
+</code></pre>
+    <p>parameters: wireframe=false, wireframeLinewidth=1</p>
+    <p>不会被照亮，只显示灰色。</p>
+  </li>
+  <li>
+    <p>MeshLambert</p>
+    <pre><code class="lang-js">MeshLambertMaterial(parameters)
+</code></pre>
+    <p>受光照影响，但没有光泽。</p>
+  </li>
+  <li>
+    <p>MeshPhong</p>
+    <pre><code class="lang-js">MeshPhongMaterial(parameters)
+</code></pre>
+    <p>受光照影响，可以有光泽。</p>
+  </li>
+  <li>
+    <p>MeshFace</p>
+    <pre><code class="lang-js">MeshFaceMaterial(materials)
+</code></pre>
+    <p>用于将多个材质映射到多个表面。</p>
+  </li>
+  <li>
+    <p>PointCloud</p>
+    <pre><code class="lang-js">PointCloudMaterial(parameters)
+</code></pre>
+    <p>粒子系统使用的默认Material。</p>
+    <p>parameters: color=0xffffff, map=null, size=1.0, sizeAttenuation, vertexColors=false, fog=true</p>
+  </li>
+  <li>
+    <p>Shader</p>
+    <pre><code class="lang-js">ShaderMaterial(parameters)
+</code></pre>
+  </li>
+</ol>
+</div>
+<script src="/js/vendor/prism.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>Web-linker技术点</title>
+</head>
+<body class="page-post">
+<div class="container blog">
+<h3 class="post-title">Web-linker技术点</h3>
+<ul>
+  <li>CSS3：linear-gradient，IE10+</li>
+  <li>CSS3：transform，IE9+</li>
+  <li>CSS3：box-shadow，IE9+，IE9对于设置了collapse的table元素使用投影无效。</li>
+  <li>
+    <p>图片垂直居中显示：img标签自带一个空行</p>
+    <pre><code class="lang-less">div {
+  height: 200px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 0;
+  line-height: 200px;
+  img {
+    vertical-align: middle;
+  }
+}
+</code></pre>
+  </li>
+  <li>
+    <p>JavaScript：语句优先级，function和let定义优先执行，不管语句在哪里定义。</p>
+    <pre><code class="lang-js">//1.
+console.log(tmp)   //error
+
+//2.
+console.log(tmp)   //undefined
+let tmp
+
+//3.
+console.log(tmp);   //undefined
+if (0) {
+    let tmp
+}
+
+//4.
+console.log(tmp)   //undefined
+let tmp = 1    //=== let tmp; tmp = 1;
+
+//5.
+console.log(tmp)   //function tmp(){}
+function tmp() {}
+</code></pre>
+  </li>
+  <li>float元素撑开父容器的高度：父容器设置：overflow:hidden;</li>
+  <li>CSS：inline：多个inline属性的元素会尽量在同一行显示；block：具有该属性的元素可以定义大小。</li>
+  <li>命名代码块</li>
+  <li>JavaScript的new：new操作只是创建了一个空对象，但是默认执行了构造函数；没有直接分配内存，而是动态分配的；只支持不带构造函数的继承。</li>
+  <li>SEO：关键词：名词，有热度的名词，即有人搜索的词。title里放关键词；description包含对当前页面的描述，以及关键词；keywords可有可无。</li>
+  <li>使用JSONP跨域访问。</li>
+  <li>Chrome和FF上闭包的生存周期在所有接口都被释放掉时结束，IE上闭包的内存无法被释放。将变量设置为null可释放闭包的的内存。</li>
+  <li>placeholder：IE10+</li>
+  <li>表达式执行效率比较：
+    <blockquote>
+      <p>parseInt(3.14) &lt; 3.14 | 0<br>(3.14).toString() &lt; 3.14 + &quot;&quot;<br>&quot;3.14&quot;.valueOf() &gt; &quot;3.14&quot; * 1 //FF相反<br>new Object &lt; {}<br>new Array == [] //Chrome后者效率略高</p>
+    </blockquote>
+  </li>
+  <li>prototype与this的关系</li>
+  <li>JavaScript使用的是64位的IEEE754浮点数，0.1+0.2!=0.3; 0.2+0.3==0.5;</li>
+  <li>DOMContentLoaded，IE9+</li>
+  <li>鼠标滚轮事件的浏览器兼容性</li>
+  <li>Recalculate，Layout，Paint渲染事件。<br>Layout：计算元素的布局，即在文档中的位置和大小。<br>Recalculate Style：计算元素的样式。<br>Paint：绘制，任何界面上的显示变化都会触发Paint事件。</li>
+  <li>往元素中添加文本的几种方法：
+    <pre><code class="lang-js">element.innerHTML = &#39;text&#39; //IE8+
+element.textContent = &#39;text&#39; //IE9+
+element.innerText = &#39;text&#39; //IE8+,FF45+
+document.createTextNode( &#39;text&#39; ) //效率最高，全兼容
+document.createTextNode(&#39;&#39;).data = &#39;text&#39;
+</code></pre>
+  </li>
+  <li>触屏设备的touch事件：
+    <pre><code class="lang-js">elem.ontouchstart = function(e) {
+    console.log(e.touches)
+}
+elem.ontouchend = function(e) {}
+window.ontouchmove = function(e) {}
+</code></pre>
+  </li>
+  <li>beforeunload事件：关闭页面时触发的事件，函数的返回值作为显示的内容，但是Firefox不显示。</li>
+  <li>undefined：声明变量后没有初始化的值，是一个全局变量，且无法被用户修改。
+    <blockquote>
+      <p>null == undefined<br>null !== undefined<br>undefined + 2 == NaN<br>undefined + &#39;text&#39; == &#39;undefinedtext&#39;</p>
+    </blockquote>
+  </li>
+  <li>正则表达式使用多个预查代替“与”运算
+    <blockquote>
+      <p>/(?=.<em>?次)(?=.</em>?碳)(?=.<em>?酸)(?=.</em>?钴)/</p>
+    </blockquote>
+  </li>
+  <li>CSS3：text-shadow，IE10+</li>
+  <li>BASE64：把数字转换成64进制，包括a-z、A-Z、0-9、+、/。BASE64图片就是把图片数据转换成BASE64的格式，总位数是4的倍数，因为64^4=256^3，不足位数补“=”，然后前面加上前缀：data:image/png;base,。适用于小图片，减少HTTP请求。</li>
+  <li>代理IP与真实IP：真实IP》代理IP》服务器，REMOTE_ADDR：发起HTTP请求的IP，无法伪造，无代理时就是真实IP，使用代理时就是代理IP；HTTP_X_FORWARDED_FOR：代理前的IP，可以伪造，无代理时为空，使用代理时就是真实IP。</li>
+  <li>webkit原生不支持mouseenter和mouseleave事件。</li>
+  <li>动态页使用LastModified缓存：如果动态页的数据和程序文件都不变的话，返回304。</li>
+  <li>短连接，一般在一次HTTP请求中，服务器端会在所有的代码执行完才返回数据并断开连接，如果有长时间处理的任务，并且该任务不影响返回的数据时，可以在该任务之前就返回数据给客户端并断开连接，之后再处理该任务。</li>
+  <li>arguments：Function实例的属性，保存函数在运行期间的一些参数，这些参数在arguments中以拟数组的形式存储，即提供了length属性，但是没有数组的方法，但是可以用数组方法主动调用它，也可以当成数组作为apply的参数使用。arguments.callee指向函数本身，由于某些引擎对arguments的处理非常复杂，在需要高效的代码中尽量避免使用arguments。</li>
+  <li>caller：Function实例的对象，指函数被调用期间的调用者，没被调用时为null。</li>
+  <li>delete：删除对象的属性，返回是否删除成功。直接用let声明的变量无法删除，部分对象自带的属性无法删除，比如length。</li>
+  <li>强类型数组：Int8Array、Uint8Array、Int16Array、Uint16Array、Int32Array、Uint32Array、Float32Array、Float64Array。
+    <pre><code class="lang-js">let a = new Uint8Array( 3 ) //3个元素的数组，初始值为0
+let b = new Uint8Array( [1,2,3] )
+let buf = new ArrayBuffer( 4 ) //4个字节的内存空间
+let c = new Uint16Array( buf ) //数组有2个元素
+</code></pre>
+  </li>
+  <li>btoa和atob，Base64的编解码，IE10+</li>
+  <li>postMessage跨域通信</li>
+  <li>FileReader，IE10+，IE10、IE11不支持readAsBinaryString</li>
+  <li>querySelector与querySelectorAll：前者返回一个元素，后者返回一个列表，IE8+</li>
+  <li>function的语法问题
+    <pre><code class="lang-js">let a = function b() {} //error, b is not defined
+(function() {}) //warning
+function() {} //warning
+</code></pre>
+  </li>
+  <li>CSS：text-overflow:ellipsis; 溢出文本显示省略号</li>
+  <li>
+    <p>严格模式：必须是代码的第一个语句。</p>
+    <ol>
+      <li>变量必须声明才能使用</li>
+      <li>不允许在普通代码块中声明函数</li>
+      <li>闭包内的this不指向Global对象</li>
+      <li>对象属性和函数形参不能重复</li>
+      <li>eval拥有类似闭包的作用域</li>
+      <li>callee和caller属性无法使用</li>
+      <li>with语句无法使用</li>
+      <li>八进制数字无法使用</li>
+      <li>普通模式下的一些无效操作变成错误，比如delete不能删除的属性</li>
+    </ol>
+    <pre><code class="lang-js">&quot;use strict&quot;; //全局严格模式
+function f(){ &quot;use strict&quot;; } //局部严格模式
+; &quot;use strict&quot;; //无效
+</code></pre>
+  </li>
+  <li>时间格式：
+    <pre><code class="lang-js">new Date( &#39;2016-1-1 00:00:00&#39; ) //仅Chrome支持
+new Date( &#39;2016/1/1 00:00:00&#39; )
+new Date( &#39;Jan 1 2013 00:00:00&#39; )
+new Date( &#39;2013 Jan 1 00:00:00&#39; )
+new Date( &#39;2013(年) Jan(月) 1(日) 00:00:00 (时间)&#39; ) //Chrome下，00与时间之间必须有空格
+new Date( &#39;2013 Jan 1 00:00:00 GMT&#39; )
+new Date( &#39;2013/1/1 00:00:00 UTC&#39; )
+</code></pre>
+  </li>
+  <li>避免使用多端口同时做HTTP服务器</li>
+  <li>客户端操作SessinID实现用户切换</li>
+  <li>CSS：radial-gradient，IE10+</li>
+  <li>HTML5的manifest缓存</li>
+  <li>交错格式保存的图片加载时会从模糊到清晰加载</li>
+  <li>indexedDB</li>
+  <li>把canvas数据下载到本地，IE不支持
+    <pre><code class="lang-js">a.download = &#39;test.png&#39; //仅Chrome支持设置文件名
+a.href = canvas.toDataURL().replace(&#39;png&#39;,&#39;octet-stream&#39;)
+</code></pre>
+  </li>
+  <li>使用document.styleSheets操作样式表</li>
+  <li>函数的bind方法</li>
+  <li>JavaScript直接操作表格
+    <blockquote>
+      <p>createCaption, createTFoot, createTHead, deleteCaption, deleteRow, deleteTFoot, deleteTHead, tHead, tBodies, tFoot, rows</p>
+    </blockquote>
+  </li>
+  <li>重写prototype与修改prototype，前者会导致在该操作之前实例化的对象无法使用新的属性，后者可以访问。</li>
+</ul>
+</div>
+<script src="/js/vendor/prism.js"></script>
+</body>
+</html>

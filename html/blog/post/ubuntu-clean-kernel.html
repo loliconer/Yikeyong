@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>Ubuntu清除无用的内核文件</title>
+</head>
+<body class="page-post">
+<div class="container blog">
+<h3 class="post-title">Ubuntu清除无用的内核文件</h3>
+<p>Ubuntu在更新系统的时候，有时会由于/boot分区空间不足导致更新失败，此时需要将过期无用的内核文件清除。</p>
+<h4>1、查看当前内核版本</h4>
+<blockquote>
+  <p>uname -a</p>
+</blockquote>
+<p>得到类似如下的信息，记下版本号，比如4.4.0-36。</p>
+<blockquote>
+  <p>Linux scott-HaSee 4.4.0-36-generic #55-Ubuntu SMP Thu Aug 11 18:01:55 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</p>
+</blockquote>
+<h4>2、列出已存在的内核</h4>
+<blockquote>
+  <p>dpkg –get-selections | grep linux</p>
+</blockquote>
+<p>该命令列出系统中存在的所有版本的内核文件，其中版本号小于上一步查到的版本号的文件就是我们要删除的。</p>
+<h4>3、删除内核文件</h4>
+<blockquote>
+  <p>apt-get purge linux-image-4.4.0-21-generic apt-get purge linux-headers-4.4.0-21-generic</p>
+</blockquote>
+<p>依次方法删除其他过期的内核文件</p>
+<h4>4、更新GRUB启动菜单配置文件</h4>
+<blockquote>
+  <p>update-grub</p>
+</blockquote>
+<h3>附录：</h3>
+<blockquote>
+  <p>uname [option]</p>
+</blockquote>
+<p>作用：获取电脑和操作系统的相关信息</p>
+<ul>
+  <li><strong>-a, - -all</strong>：输出详细信息，格式：内核名称，主机名，内核版本号，内核版本，内核编译时间，处理器类型，硬件平台类型，操作系统名称 eg: Linux scott-HaSee 4.4.0-36-generic #55-Ubuntu SMP Thu Aug 11 18:01:55 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux</li>
+  <li><strong>-m, - -machine</strong>：硬件平台类型 eg: x86_64</li>
+  <li><strong>-r, - -release</strong>：内核版本号 eg: 4.4.0-36-generic</li>
+  <li><strong>-s, - -sysname</strong>：内核名称 eg: Linux</li>
+  <li><strong>-v, - -version</strong>：内核是第几个版本以及编译时间 eg: #55-Ubuntu SMP Thu Aug 11 18:01:55 UTC 2016</li>
+  <li><strong>-p</strong>：处理器类型 eg: x86_64</li>
+  <li><strong>-o</strong>：操作系统名称 eg: GNU/Linux</li>
+</ul>
+</div>
+<script src="/js/vendor/prism.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>Three.js学习笔记（一）</title>
+</head>
+<body class="page-post">
+<div class="container blog">
+<h3 class="post-title">Three.js学习笔记（一）</h3>
+<h4>一、概念单词</h4>
+<ul>
+  <li>Scene</li>
+  <li>Camera</li>
+  <li>Renderer：渲染引擎有WebGL，调用显卡的GPU，使用硬件加速，渲染速度最快；Canvas，浏览器支持程度最好，主流浏览器均支持，尤其是IE、Opera只支持Canvas；SVG。</li>
+  <li>Material</li>
+  <li>Geometry</li>
+  <li>Mesh</li>
+  <li>Shader</li>
+  <li>Light</li>
+</ul>
+<h4>二、基础框架</h4>
+<h5>Scene</h5>
+<p>所有的对象都需要加到场景中，如Camera，Mesh，Light等。</p>
+<pre><code class="lang-js">let scene = new THREE.Scene()
+</code></pre>
+<h5>Camera</h5>
+<pre><code class="lang-js">//PerspectiveCamera
+let camera = new THREE.PerspectiveCamera(angle, width/height, near, far)
+</code></pre>
+<h5>Renderer</h5>
+<pre><code class="lang-js">//WebGLRenderer
+let renderer = new THREE.WebGLRenderer()
+renderer.setSize(width, height)
+document.body.appendChild(renderer.domElement)
+</code></pre>
+<h5>Material</h5>
+<pre><code class="lang-js">//MeshBasicMaterial
+let material = new THREE.MeshBashMaterial({
+    color: 0x0f0
+})
+</code></pre>
+<h5>Geometry</h5>
+<pre><code class="lang-js">//CubeGeometry
+let geometry = new THREE.CubeGeometry(x, y, z, [segmentsX], [segmentsY], [segmentsZ], [materials], [sides])
+</code></pre>
+<h5>Mesh</h5>
+<pre><code class="lang-js">let mesh = new THREE.Mesh(geometry, material)
+</code></pre>
+<h5>Light</h5>
+<pre><code class="lang-js">//DirectionalLight
+let light= new THREE.DirectionalLight(color, intensity)
+light.position.set(x, y, z)
+</code></pre>
+<h5>渲染</h5>
+<pre><code class="lang-js">renderer.render(scene, camera, [renderTarget], [forceClear])
+</code></pre>
+<p>renderTarget：渲染的目标，默认是渲染到前面定义的render中。 forceClear：每次绘制之前都将画布的内容清除，即使autoClear设置为false，也会清除。</p>
+<h5>完整的代码如下：</h5>
+<pre><code class="lang-js">let scene, camera, renderer
+let geometry, material, mesh
+init()
+animate()
+function init() {
+  //初始化场景
+  scene = new THREE.Scene()
+  //初始化相机
+  camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 1e10 )
+  camera.position.z = 0.5
+  //初始化几何体
+  geometry = new THREE.CubeGeometry(1, 1, 1)
+  //初始化材质
+  material = new THREE.MeshBasicMaterial({
+  color: 0x0f0
+  })
+  //初始化网格体
+  mesh = new THREE.Mesh(geometry, material)
+  //初始化光源
+  let light = new THREE.DirectionalLight(0xffffff, 1) //平行光源
+  light.position.set(200, 200, 1000)
+  //初始化渲染器
+  renderer = new THREE.WebGLRenderer( { antialias: false } )
+  renderer.setSize(window.innerWidth, window.innerHeight)
+  //所有对象添加到场景中
+  //添加网格体
+  scene.add(mesh)
+  //添加光源
+  scene.add(light)
+  //将渲染器添加到网页中
+  document.body.appendChild(renderer.domElement)
+}
+function animate() {
+  requestAnimationFrame(animate)
+  mesh.rotation.x += 0.01
+  mesh.rotation.y += 0.02
+  //渲染场景
+  renderer.render(scene, camera)
+}
+</code></pre>
+</div>
+<script src="/js/vendor/prism.js"></script>
+</body>
+</html>
