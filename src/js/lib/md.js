@@ -1,11 +1,12 @@
 const fs = require('fs')
+const path = require('path')
 const marked = require('marked')
 const beautify = require('js-beautify').html
 
 //convert a md file to html and move it to destination
-module.exports = function(path) {
-  let name = path.split('/').pop().slice(0, -3)
-  fs.readFile(path, 'utf8', (err, data) => {
+module.exports = function(filePath) {
+  let name = path.basename(filePath, '.md')
+  fs.readFile(filePath, 'utf8', (err, data) => {
     if(err) throw err
 
     let title = data.match(/### (.*)\n/)[1]

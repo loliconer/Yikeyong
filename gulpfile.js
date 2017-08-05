@@ -73,7 +73,6 @@ gulp.task('html', () => {
 
 gulp.task('md', () => {
   let srcPath = './src/md'
-  let destPath = './html/blog/post'
 
   let files = fs.readdirSync(srcPath)
 

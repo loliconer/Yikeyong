@@ -5,7 +5,6 @@ import Main from '../view/Main.vue'
 import Users from '../view/Users.vue'
 import Groups from '../view/Groups.vue'
 import Menus from '../view/Menus.vue'
-import Publish from '../view/Publish.vue'
 import Blogs from '../view/Blogs.vue'
 
 const routes = [
@@ -49,10 +48,6 @@ const routes = [
       {
         path: 'blogs.html',
         component: Blogs
-      },
-      {
-        path: 'publish.html',
-        component: Publish
       }
     ]
   },

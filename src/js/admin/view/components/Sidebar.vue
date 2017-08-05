@@ -16,9 +16,6 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/sys/blogs.html">文章列表</router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/sys/publish.html">文章发布</router-link>
-        </li>
       </ul>
     </div>
     <div class="sidebar-nav">
