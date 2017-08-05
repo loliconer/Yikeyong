@@ -1,16 +1,28 @@
 <template>
   <div class="view-publish">
     <div class="panel">
-      <form class="form" @submit.prevent="addBlog">
-        <div class="row row-inline">
+      <form class="grid" @submit.prevent="addBlog">
+        <div class="row-inline">
           <div class="cell">
             <input class="input" type="text" name="title" placeholder="文章标题" required>
           </div>
         </div>
 
+        <div class="row-inline">
+          <div class="cell">
+            <input class="input" type="text" name="name" placeholder="文件名" required>
+          </div>
+        </div>
+
+        <div class="row-inline">
+          <div class="cell">
+            <input class="input" type="text" name="path" value="/blog/post" placeholder="路径" required>
+          </div>
+        </div>
+
         <div class="row">
           <div class="cell">
-            <textarea class="textarea" name="brief" rows="8" cols="80" placeholder="文章简介"></textarea>
+            <textarea class="textarea" name="intro" rows="8" cols="80" placeholder="文章简介"></textarea>
           </div>
         </div>
 

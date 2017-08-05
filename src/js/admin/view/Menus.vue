@@ -2,8 +2,8 @@
   <div class="view-users">
     <div class="panel">
       <button class="btn" type="button" @click="openAddForm">添加新菜单</button>
-      <form class="form" v-show="bShowAddForm" @submit.prevent="addMenu">
-        <div class="row row-inline">
+      <form class="grid" v-show="bShowAddForm" @submit.prevent="addMenu">
+        <div class="row-inline">
           <div class="cell">
             <input class="input" type="text" name="name" placeholder="菜单名" required v-model="current.name">
           </div>
@@ -15,7 +15,7 @@
               <option v-for="f of fathers" :value="f.id">{{f.name}}</option>
             </select>
           </div>
-          <div class="cell cell-h">
+          <div class="cell-h">
             <button class="btn" type="submit">保存</button>
             <vue-loading v-show="bShowSaveLoading"></vue-loading>
           </div>
