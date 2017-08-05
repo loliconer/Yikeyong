@@ -5,7 +5,6 @@ logs
 dist
 www
 node_modules
-public/img/mengme
 public/js/*.bundle.js
 public/css/*.css
 !public/css/global.css

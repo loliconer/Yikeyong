@@ -10,6 +10,10 @@ import Blogs from '../view/Blogs.vue'
 
 const routes = [
   {
+    path: '/',
+    redirect: '/index.html'
+  },
+  {
     path: '/login.html',
     component: Login,
     meta: {

@@ -20,11 +20,6 @@
   import NProgress from './components/NProgress.vue'
 
   export default {
-    components: { Navbar, Sidebar, NProgress },
-    created() {
-      if(sessionStorage.currentRoute && sessionStorage.currentRoute !== '/login.html') {
-        this.$router.push(sessionStorage.currentRoute)
-      }
-    }
+    components: { Navbar, Sidebar, NProgress }
   }
 </script>
