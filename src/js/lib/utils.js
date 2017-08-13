@@ -220,9 +220,9 @@ module.exports = {
   },
   reload () {
     if (this.isWeixin()) {
-      location.href = location.href + "?v=" + 10000 * Math.random();
+      location.href = location.href + "?v=" + 10000 * Math.random()
     } else {
-      location.reload();
+      location.reload()
     }
   }
 }
