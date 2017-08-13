@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>JavaScript的一些面试题</title>
+</head>
+<body class="page-post">
+<div class="container blog">
+<h3 class="post-title">JavaScript的一些面试题</h3>
+<pre><code class="lang-js">(function () {
+    return typeof arguments
+})()
+</code></pre>
+<blockquote>
+  <p>&#39;object&#39;</p>
+</blockquote>
+<p>arguments为函数的参数列表，是一个数组。</p>
+<hr>
+<pre><code class="lang-js">let f = function g() {
+    return 23
+}
+typeof g()
+</code></pre>
+<blockquote>
+  <p>ReferenceError: g is not defined</p>
+</blockquote>
+<hr>
+<pre><code class="lang-js">(function (x) {
+    delete x
+    return x
+})(1)
+</code></pre>
+<blockquote>
+  <p>1</p>
+</blockquote>
+<p>形参无法删除；当delete一个无法删除的对象时，delete语句返回false。</p>
+<hr>
+<pre><code class="lang-js">let y = 1,
+    x = y = typeof x
+x
+</code></pre>
+<blockquote>
+  <p>&#39;undefined&#39;</p>
+</blockquote>
+<hr>
+<pre><code class="lang-js">(function f(f) {
+    return typeof f()
+})(function () {
+    return 1
+})
+</code></pre>
+<blockquote>
+  <p>&#39;number&#39;</p>
+</blockquote>
+<p>先执行传进去的函数。</p>
+<hr>
+<pre><code class="lang-js">let foo = {
+    bar () {
+        return this.baz
+    },
+    baz: 1
+}
+(function () {
+    return typeof arguments[0]()
+})(foo.bar)
+</code></pre>
+<blockquote>
+  <p>&#39;undefined&#39;</p>
+</blockquote>
+<hr>
+<pre><code class="lang-js">let foo = {
+    bar () {
+        return this.baz
+    },
+    baz: 1
+}
+typeof (f = foo.bar)()
+</code></pre>
+<blockquote>
+  <p>&#39;undefined&#39;</p>
+</blockquote>
+<hr>
+<pre><code class="lang-js">let f = (function f() {
+    return &#39;1&#39;
+}, function g() {
+    return 2
+})()
+console.log(typeof f)
+</code></pre>
+<blockquote>
+  <p>&#39;number&#39;</p>
+</blockquote>
+<p>逗号表达式返回的是最后一个值。</p>
+<hr>
+<pre><code class="lang-js">let x = 1
+if (function f() {}) {
+    x += typeof f
+}
+console.log(x)
+</code></pre>
+<blockquote>
+  <p>&#39;1undefined&#39;</p>
+</blockquote>
+<hr>
+<pre><code class="lang-js">let x = [typeof x, typeof y][1]
+typeof typeof x
+</code></pre>
+<blockquote>
+  <p>&#39;string&#39;</p>
+</blockquote>
+<p>typeof x === &#39;undefined&#39;</p>
+<hr>
+<pre><code class="lang-js">(function (foo) {
+    return typeof foo.bar
+})({ foo: { bar: 1 } })
+</code></pre>
+<blockquote>
+  <p>&#39;undefined&#39;</p>
+</blockquote>
+<p>函数内部，foo = { foo: { bar: 1 } }</p>
+<hr>
+<pre><code class="lang-js">(function f() {
+    function f() {
+        return 1
+    }
+
+    return f()
+
+    function f() {
+        return 2
+    }
+})()
+</code></pre>
+<blockquote>
+  <p>2</p>
+</blockquote>
+<p>后声明的函数覆盖了前面声明的函数。</p>
+<hr>
+<pre><code class="lang-js">function f() {
+    return f
+}
+new f() instanceof f
+</code></pre>
+<blockquote>
+  <p>false</p>
+</blockquote>
+<p>此时new创建的实例为返回的函数而不是函数实例化的对象。</p>
+</div>
+<script src="/js/vendor/prism.js"></script>
+</body>
+</html>

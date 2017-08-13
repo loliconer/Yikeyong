@@ -9,6 +9,8 @@ module.exports = function(filePath) {
   fs.readFile(filePath, 'utf8', (err, data) => {
     if(err) throw err
 
+    if (data === '') return
+
     let title = data.match(/### (.*)\n/)[1]
     let content = marked(data)
     content = content.replace(/\sid=".*">/g, '>')
