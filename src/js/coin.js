@@ -38,9 +38,9 @@ new Vue({
     baseAsset: 36989.80,
     cash: 9046.04,
     coins: ['btc', 'eth', 'ltc', 'etc', 'ans', 'game', 'lsk', 'ppc', 'vrc', 'vtc', 'rss',
-    'xpm', 'fz', 'xas', 'ktc', 'blk', 'tfc', 'bts', 'rio', 'xrp', 'pgc', 'wdc', 'nxt',
-    'max', 'zcc', 'mryc', 'qec', 'lkc', 'gooc', 'plc', 'hlb', 'skt', 'zet', 'ytc', 'peb',
-    'mtc', 'jbc', 'met', 'dnc', 'doge', 'eac', 'ifc'],
+      'xpm', 'fz', 'xas', 'ktc', 'blk', 'tfc', 'bts', 'rio', 'xrp', 'pgc', 'wdc', 'nxt',
+      'max', 'zcc', 'mryc', 'qec', 'lkc', 'gooc', 'plc', 'hlb', 'skt', 'zet', 'ytc', 'peb',
+      'mtc', 'jbc', 'met', 'dnc', 'doge', 'eac', 'ifc'],
     infos: {
       btc: { name: '比特币' },
       eth: { name: '以太坊' },

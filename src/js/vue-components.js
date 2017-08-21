@@ -1,12 +1,12 @@
 new Vue({
-  el: "#app",
+  el: '#app',
   data: {
     diploma: {
-      chuzhong: "初中",
-      gaozhong: "高中",
-      benke: "本科",
-      shuoshi: "硕士",
-      boshi: "博士"
+      chuzhong: '初中',
+      gaozhong: '高中',
+      benke: '本科',
+      shuoshi: '硕士',
+      boshi: '博士'
     }
   },
   methods: {
@@ -15,8 +15,8 @@ new Vue({
     },
     alertTwo () {
       this.$refs.alert.show({
-        text: "这是提示内容",
-        type: "confirm"
+        text: '这是提示内容',
+        type: 'confirm'
       })
     }
   }

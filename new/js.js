@@ -6,7 +6,7 @@ utils.init().then(user => {
   new Vue({
     el: '#app',
     data: {
-      user: user
+      user
     },
     components: { BeautyAlert, Navbar },
     methods: {

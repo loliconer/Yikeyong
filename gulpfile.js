@@ -51,7 +51,7 @@ gulp.task('build', ['less'], () => {
 gulp.task('less', () => {
   gulp.src('src/less/*.less')
     .pipe(less({
-      strictMath: "on"
+      strictMath: 'on'
     }))
     .pipe(cached('less'))
     .pipe(cleanCSS())

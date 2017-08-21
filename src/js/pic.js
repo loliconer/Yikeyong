@@ -1,7 +1,7 @@
-import Viewer from "./widgets/viewer.vue"
+import Viewer from './widgets/viewer.vue'
 
 new Vue({
-  el: "#app",
+  el: '#app',
   data: {
     type: null
   },
