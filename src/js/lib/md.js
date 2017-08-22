@@ -3,11 +3,17 @@ const path = require('path')
 const marked = require('marked')
 const beautify = require('js-beautify').html
 
-//convert a md file to html and move it to destination
-module.exports = function(filePath) {
+/*
+* convert a md file to html and move it to destination.
+*
+* @access public
+* @function md
+* @param {string} filePath - A string represents a file's path
+*/
+function md(filePath) {
   let name = path.basename(filePath, '.md')
   fs.readFile(filePath, 'utf8', (err, data) => {
-    if(err) throw err
+    if (err) throw err
 
     if (data === '') return
 
@@ -33,8 +39,10 @@ ${content}
 </body>
 </html>`
 
-    fs.writeFile(`./html/blog/post/${name}.html`, str, err => {
-      if (err) throw err
+    fs.writeFile(`./html/blog/post/${name}.html`, str, err2 => {
+      if (err2) throw err2
     })
   })
 }
+
+module.exports = md
