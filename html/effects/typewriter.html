@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>打字特效</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      color: #00ff00;
+    }
+    .container p {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  </div>
+
+<script>
+  !function () {
+    function Typer(option) {
+      this.texts = option.texts || []
+      this.container = document.querySelector(option.selector || '.container')
+      this.initP = false
+      this.row = 0
+      this.column = 0
+      this.timer = null
+    }
+
+    Typer.prototype = {
+      getRandom() {
+        return (Math.random() * 100) | 0 + 40
+      },
+      append() {
+        if (!this.texts[this.row]) {
+          clearInterval(this.timer)
+          return
+        }
+        if (!this.initP) {
+          this.container.appendChild(document.createElement('p'))
+          this.initP = true
+        }
+        const elem = this.container.querySelectorAll('p')[this.row]
+        const letter = this.texts[this.row][this.column]
+        if (letter) {
+          elem.innerHTML += letter
+          this.column++
+        } else {
+          this.initP = false
+          this.column = 0
+          this.row++
+        }
+      },
+      type() {
+        this.append()
+
+        this.timer = setTimeout(() => {
+          this.type()
+        }, this.getRandom())
+      }
+    }
+
+    new Typer({
+      texts: [
+        'hello',
+        'world',
+        's',
+        'in',
+        'gle',
+        'a',
+        'b',
+        'this is a test',
+        'and',
+        'there will be more words',
+        'in the future'
+      ],
+      selector: '.container'
+    }).type()
+  }()
+</script>
+</body>
+</html>
