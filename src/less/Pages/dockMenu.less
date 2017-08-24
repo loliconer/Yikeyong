@@ -1,8 +1,57 @@
 @import "../Bootstrapping/Variables";
 @import "../Bootstrapping/Mixins";
 
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .page-dock-menu {
+  width: 100vw;
+  height: 100vh;
   background: url(/img/grey_wash_wall.png);
+  padding-top: 1px;
+  margin-bottom: 0;
+
+  .type-cursor {
+    opacity: 1;
+    animation: blink 0.7s infinite;
+  }
+
+  .mac-style-window {
+    margin: 100px auto 0;
+    width: 800px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0 20px 70px;
+    overflow: hidden;
+
+    .m-title {
+      height: 25px;
+      line-height: 25px;
+      background-image: -webkit-linear-gradient(top, #e8e8e8, #bcbbbc);
+      text-align: center;
+      box-shadow: inset rgba(255, 255, 255, 0.7) 0 1px 1px;
+    }
+
+    .m-content {
+      min-height: 400px;
+      padding: 6px;
+      background-color: @black-color;
+      color: #f0f0f0;
+      text-shadow: #000 0 1px 0;
+      font-family: "Consolas", "Courier New", "Courier", sans-serif;
+      font-size: 1.75em;
+    }
+  }
 
   > .dock-menu {
     position: absolute;
