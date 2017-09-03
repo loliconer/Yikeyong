@@ -1,11 +1,13 @@
 const fs = require('fs')
 
 let app = process.argv[2]
+let name = app.split('/').join('-')
+
 fs.readFile('new/html.html', 'utf8', (err, data) => {
   if (err) throw err
 
-  data = data.replace('index.bundle.js', `${app}.bundle.js`)
-  data = data.replace('page-', `page-${app}`)
+  data = data.replace('index.bundle.js', `${name}.bundle.js`)
+  data = data.replace('page-', `page-${name}`)
 
   fs.writeFile(`html/${app}.html`, data, err2 => {
     if (err2) throw err2
@@ -15,7 +17,7 @@ fs.readFile('new/html.html', 'utf8', (err, data) => {
 fs.readFile('new/js.js', (err, data) => {
   if (err) throw err
 
-  fs.writeFile(`src/js/${app}.js`, data, err2 => {
+  fs.writeFile(`src/js/${name}.js`, data, err2 => {
     if (err2) throw err2
   })
 })
@@ -23,9 +25,9 @@ fs.readFile('new/js.js', (err, data) => {
 fs.readFile('new/less.less', 'utf8', (err, data) => {
   if (err) throw err
 
-  data = data.replace('page-', `page-${app}`)
+  data = data.replace('page-', `page-${name}`)
 
-  fs.writeFile(`src/less/Pages/${app}.less`, data, err2 => {
+  fs.writeFile(`src/less/Pages/${name}.less`, data, err2 => {
     if (err2) throw err2
   })
 })

@@ -7,4 +7,4 @@ new Vue({
   created() {
     this.getInitData()
   }
-}).mount('#app')
+}).$mount('#app')

@@ -9,3 +9,5 @@ public/js/*.bundle.js
 public/css/*.css
 !public/css/global.css
 /public/media
+html/coin.html
+src/js/coin.js
