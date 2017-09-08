@@ -1,0 +1,26 @@
+@import "../Bootstrapping/Variables";
+@import (reference) "../Bootstrapping/Mixins";
+
+.menu-v {
+  .shadow;
+  min-width: 208px;
+  font-size: @small-font;
+  ul {
+    padding: 12px 0;
+    li {
+      height: 32px;
+      line-height: 32px;
+      transition: background .2s;
+
+      &:hover {
+        background-color: @bg-color;
+      }
+      
+      a {
+        display: block;
+        height:100%;
+        padding: 0 15px;
+      }
+    }
+  }
+}

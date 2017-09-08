@@ -1,0 +1,64 @@
+@import "../Bootstrapping/Variables";
+@import (reference) "../Bootstrapping/Mixins";
+
+.input {
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid @border-color;
+  border-radius: @border-radius;
+  font-size: @small-font;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  background-color: transparent;
+  transition: border .1s linear, background-color .1s linear;
+
+  &:focus {
+    color: @first-level-color;
+    border-color: @blue-color;
+  }
+
+  &.auto {
+    width: auto;
+    min-width: 165px;
+  }
+
+  &[readonly] {
+    padding-left: 10px;
+    border: none;
+  }
+}
+
+.textarea {
+  border-color: @border-color;
+  transition: border .1s linear, background-color .1s linear;
+
+  &:focus {
+    border-color: @blue-color;
+  }
+}
+
+.label {
+  font-size: @small-font;
+  white-space: nowrap;
+}
+
+.form {
+  font-size: @small-font;
+
+  .input,
+  .select {
+    width: 165px;
+  }
+
+  .cell {
+    .label {
+      margin-bottom: 5px;
+    }
+  }
+
+  .cell-h {
+    .label {
+      margin-right: 5px;
+    }
+  }
+}
