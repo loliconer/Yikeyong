@@ -10,14 +10,15 @@ const beautify = require('js-beautify').html
 * @function md
 * @param {string} filePath - A string represents a file's path
 */
-function md(filePath) {
+function md(filePath, option) {
   let name = path.basename(filePath, '.md')
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) throw err
 
     if (data === '') return
 
-    let title = data.match(/### (.*)\n/)[1]
+    let title
+    if (!option.onlyContent) title = data.match(/### (.*)\n/)[1]
     let content = marked(data)
     content = content.replace(/\sid=".*">/g, '>')
     content = content.replace('<h3>', '<h3 class="post-title">')
@@ -25,7 +26,7 @@ function md(filePath) {
       indent_size: 2
     })
 
-    let str =`<!DOCTYPE html>
+    let str = option.onlyContent ? content : `<!DOCTYPE html>
 <html lang="zh">
 <head>
   <!--#include file="/common/head.html"-->
@@ -39,7 +40,7 @@ ${content}
 </body>
 </html>`
 
-    fs.writeFile(`./html/blog/post/${name}.html`, str, err2 => {
+    fs.writeFile(`${option.dest}/${name}.html`, str, err2 => {
       if (err2) throw err2
     })
   })

@@ -77,7 +77,22 @@ gulp.task('md', () => {
   let files = fs.readdirSync(srcPath)
 
   files.forEach(file => {
-    md(path.resolve(`${srcPath}/${file}`))
+    md(path.resolve(`${srcPath}/${file}`), {
+      dest: './html/blog/post'
+    })
+  })
+})
+
+gulp.task('md-diy', () => {
+  let srcPath = './src/md-diy'
+
+  let files = fs.readdirSync(srcPath)
+
+  files.forEach(file => {
+    md(path.resolve(`${srcPath}/${file}`), {
+      dest: './html/article-diy',
+      onlyContent: true
+    })
   })
 })
 
@@ -90,7 +105,9 @@ gulp.task('watch', ['less'], () => {
 
   gulp.watch('src/less/**/*.less', ['less'])
   gulp.watch('src/md/*.md', ev => {
-    md(ev.path)
+    md(ev.path, {
+      dest: './html/blog/post'
+    })
   })
   gulp.watch('public/js/*.*', ['js'])
   gulp.watch('html/**/*.*', ['html'])

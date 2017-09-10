@@ -1,19 +1,19 @@
 <template>
-  <div class="view-main">
-    <vue-tab :titles="navs"></vue-tab>
-
-    <div class="container">
-      <router-view></router-view>
-    </div>
-  </div>
+  <div class="view-main blog"></div>
 </template>
 <script>
   export default {
     data() {
       return {
-        navs: ['CPU', '主板', '显卡', '内存', '硬盘', '电源', '机箱', '显示器']
       }
     },
-    components: {}
+    created() {
+      fetch('/article-diy/diy.html')
+        .then(res => {
+          if (res.ok) return res.text()
+        })
+        .then(body => this.$el.innerHTML = body)
+        .catch(this.error)
+    }
   }
 </script>

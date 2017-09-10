@@ -8,5 +8,5 @@ sync(store, router)
 new Vue({
   router,
   store,
-  ...App
+  components: { App }
 }).$mount('app')
