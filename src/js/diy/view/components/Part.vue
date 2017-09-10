@@ -5,9 +5,9 @@
       <vue-loading></vue-loading>
     </div>
     <div class="part-content" v-else>
-      <div class="panel panel-concept" v-if="tab === 1">
-        <div style="text-align: center;" v-if="concept === ''">暂无内容</div>
-        <div class="blog" v-html="concept" v-else></div>
+      <div class="panel panel-md" v-if="isMarkdown">
+        <div style="text-align: center;" v-if="mdContent === ''">暂无内容</div>
+        <div class="blog" v-html="mdContent" v-else></div>
       </div>
     </div>
   </div>
@@ -17,29 +17,42 @@
     data() {
       return {
         tab: -1,
-        concept: '',
+        mdContent: '',
         loading: false
       }
     },
     props: {
       titles: {
         type: Array,
-        'default': ['头条', '技术知识', '天梯']
+        'default': ['头条', '技术知识', '天梯', '品牌']
       },
       part: String
     },
+    computed: {
+      isMarkdown() {
+        return [1, 3].includes(this.tab)
+      }
+    },
     watch: {
       tab(val) {
-        if (val === 1) {
-          if (this.concept !== '') return
+        if (this.isMarkdown) {
+          //if (this.mdContent !== '') return
+
+          let url
+          if (val === 1) {
+            url = `/article-diy/${this.part}.html`
+          }
+          if (val === 3) {
+            url = `/article-diy/${this.part}-brands.html`
+          }
 
           this.loading = true
-          fetch(`/article-diy/${this.part}.html`)
+          fetch(url)
             .then(res => {
               if (res.ok) return res.text()
             })
             .then(body => {
-              this.concept = body
+              this.mdContent = body
               this.loading = false
             })
             .catch(error => {
