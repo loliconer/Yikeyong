@@ -4,7 +4,7 @@
 
     <header class="header">
       <nav class="nav">
-        <router-link class="nav-link" v-for="nav of navs" :to="nav.url">{{nav.name}}</router-link>
+        <router-link class="nav-link" v-for="(nav, i) of navs" :key="i" :to="nav.url">{{nav.name}}</router-link>
       </nav>
     </header>
     <div class="container">

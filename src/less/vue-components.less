@@ -1,0 +1,180 @@
+@import "Bootstrapping/Variables";
+@import (reference) "Bootstrapping/Mixins";
+@import "Layout/Blog";
+
+.c-left {
+  .shadow;
+  position: fixed;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: @bg-color;
+  overflow: auto;
+
+  .list {
+    margin-top: 80px;
+
+    li {
+      line-height: 42px;
+      border-bottom: 1px solid @border-color;
+
+      a {
+        display: block;
+        height: 100%;
+        padding-left: 40px;
+        transition: color .25s;
+
+        &:hover {
+          color: @hover-blue-color;
+        }
+
+        &.focus {
+          color: @blue-color;
+        }
+      }
+    }
+  }
+}
+
+.c-right {
+  margin-left: 300px;
+
+  .grid-demo {
+    width: 100%;
+
+    > .row,
+    > .row-inline {
+      min-height: 40px;
+      padding: 4px;
+      border: 1px solid red;
+
+      > .cell,
+      > .cell-h {
+        min-height: 30px;
+        padding: 4px;
+        border: 1px solid blue;
+
+        .seg {
+          min-height: 60px;
+          height: 20px;
+          border: 1px solid green;
+        }
+      }
+
+      > .cell .seg {
+        min-width: 60px;
+      }
+
+      > .cell-h .seg {
+        flex: 1;
+      }
+    }
+  }
+
+  .left-right-demo {
+    width: 100%;
+
+    > .left {
+      background-color: red;
+      width: 300px;
+      height: 60px;
+    }
+
+    > .right {
+      background-color: blue;
+      height: 60px;
+    }
+  }
+
+  .pwd-validity-demo {
+    position: relative;
+    padding-bottom: 30px;
+    width: 50%;
+  }
+}
+
+.panel {
+  border-bottom: 1px solid @border-color;
+
+  .title {
+    font-size: @big-font;
+    padding: 12px 16px;
+    line-height: 1.25;
+    letter-spacing: 1px;
+  }
+
+  .content {
+    min-height: 480px;
+    padding: 10px 10px 80px;
+  }
+
+  .content-cell {
+    margin-bottom: 20px;
+    border: 1px solid @border-color;
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    padding: 20px 10px;
+    border-bottom: 1px solid @border-color;
+
+    > * {
+      margin-right: 20px;
+    }
+  }
+
+  .source-code {
+    pre {
+      margin: 0;
+
+      .hljs {
+        font-family: @code-font;
+        line-height: 1.5;
+        padding: 20px 10px;
+        background-color: @black-color;
+      }
+    }
+  }
+}
+
+.container {
+  .cell {
+    .title {
+      font-size: 18px;
+      background-color: transparent;
+      padding: 12px 16px;
+    }
+    .content {
+      flex-wrap: wrap;
+      .hvcenter;
+      min-height: 480px;
+      > * {
+        margin-right: 20px;
+      }
+      .vue-html-editor {
+        margin: 20px 0;
+        width: 80%;
+      }
+      .table {
+        width: 80%;
+      }
+      .input-radio {
+        width: 100%;
+        padding-left: 40%;
+        margin-bottom: 20px;
+      }
+      .vue-tab {
+        margin-right: 0;
+      }
+      .vue-carousel {
+        flex-grow: 1;
+        margin-right: 0;
+      }
+      .vue-collapse {
+        margin-right: 0;
+        width: 80%;
+      }
+    }
+  }
+}
