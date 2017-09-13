@@ -17,53 +17,63 @@
     data() {
       return {
         tab: -1,
+        isMarkdown: false,
         mdContent: '',
-        loading: false
+        loading: false,
+        defaultTabs: {
+          headline: '头条',
+          base: '技术知识',
+          ladder: '天梯',
+          brands: '品牌'
+        },
+        tabs: {}
       }
     },
     props: {
-      titles: {
-        type: Array,
-        'default': ['头条', '技术知识', '天梯', '品牌']
-      },
+      extraTabs: Object,
       part: String
     },
     computed: {
-      isMarkdown() {
-        return [1, 3].includes(this.tab)
+      titles() {
+        return Object.values(this.tabs)
       }
     },
     watch: {
       tab(val) {
-        if (this.isMarkdown) {
-          //if (this.mdContent !== '') return
-
-          let url
-          if (val === 1) {
-            url = `/article-diy/${this.part}.html`
-          }
-          if (val === 3) {
-            url = `/article-diy/${this.part}-brands.html`
-          }
-
-          this.loading = true
-          fetch(url)
-            .then(res => {
-              if (res.ok) return res.text()
-            })
-            .then(body => {
-              this.mdContent = body
-              this.loading = false
-            })
-            .catch(error => {
-              this.error(error)
-              this.loading = true
-            })
+        this.isMarkdown = false
+        let url
+        let cur = Object.keys(this.tabs)[val]
+        if (cur === 'base') {
+          this.isMarkdown = true
+          url = `/article-diy/${this.part}.html`
         }
+        if (cur === 'brands') {
+          this.isMarkdown = true
+          url = `/article-diy/${this.part}-brands.html`
+        }
+        console.log(cur)
+        if (cur === 'overLock') {
+          this.isMarkdown = true
+          url = `/article-diy/${this.part}-over-lock.html`
+        }
+
+        this.loading = true
+        fetch(url)
+          .then(res => {
+            if (res.ok) return res.text()
+          })
+          .then(body => {
+            this.mdContent = body
+            this.loading = false
+          })
+          .catch(error => {
+            this.error(error)
+            this.loading = true
+          })
       }
     },
     created() {
-
+      this.tabs = Object.assign(this.defaultTabs, this.extraTabs)
     }
   }
 </script>
