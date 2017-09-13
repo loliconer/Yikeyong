@@ -29,6 +29,8 @@
   </div>
 </template>
 <script>
+  import { fetch as _fetch } from 'lovue-utils'
+
   export default {
     data() {
       return {
@@ -48,7 +50,7 @@
         })
       },
       getUsers() {
-        utils.fetch({
+        _fetch({
           type: 'get',
           url: 'users'
         }).then(body => {
@@ -56,7 +58,7 @@
         }).catch(error => this.error(error))
       },
       getGroups() {
-        utils.fetch({
+        _fetch({
           type: 'get',
           url: 'groups'
         }).then(body => this.groups = body)
@@ -114,7 +116,7 @@
         this.canSubmit = false
         this.bShowAddLoading = true
 
-        utils.fetch({
+        _fetch({
           type: this.current.id ? 'putForm' : 'form',
           url: this.current.id ? `user/${this.current.id}` : 'admin/user',
           data: new FormData(ev.target)

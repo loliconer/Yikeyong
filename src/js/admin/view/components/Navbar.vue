@@ -25,7 +25,8 @@
   </nav>
 </template>
 <script>
-  import {mapState, mapMutations} from 'vuex'
+  import { fetch as _fetch } from 'lovue-utils'
+  import { mapState, mapMutations } from 'vuex'
 
   export default {
     data() {
@@ -37,7 +38,7 @@
         clearUserInfo: 'LOGOUT'
       }),
       logout() {
-        utils.fetch({
+        _fetch({
           type: 'delete',
           url: 'session'
         }, () => {

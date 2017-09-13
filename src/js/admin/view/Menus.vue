@@ -28,6 +28,8 @@
   </div>
 </template>
 <script>
+  import { fetch as _fetch } from 'lovue-utils'
+
   export default {
     data() {
       return {
@@ -41,7 +43,7 @@
     },
     methods: {
       getMenus() {
-        utils.fetch({
+        _fetch({
           type: 'get',
           url: 'menus'
         }).then(body => {
@@ -71,7 +73,7 @@
         this.bShowSaveLoading = true
 
         if (current.id) {
-          utils.fetch({
+          _fetch({
             type: 'put',
             url: `menu/${current.id}`,
             data: current
@@ -88,7 +90,7 @@
             }
           }).catch(this.error)
         } else {
-          utils.fetch({
+          _fetch({
             type: 'form',
             url: 'menu',
             data: new FormData(ev.target)

@@ -11,6 +11,6 @@ userPromise.then(() => {
   new Vue({
     router,
     store,
-    ...App
+    components: { App }
   }).$mount('app')
 })

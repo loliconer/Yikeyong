@@ -10,14 +10,14 @@ const fs = require('fs')
 const path = require('path')
 let md = require('./src/js/lib/md.js')
 
-gulp.task('build', ['less'], () => {
+gulp.task('build', ['less', 'md', 'md-diy'], () => {
   gulp.src('public/js/*.*')
     .pipe(changed('www/public/js', {
       hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/public/js'))
 
-  gulp.src('public/js/@(data|lib)/*.*')
+  gulp.src('public/js/@(data)/*.*')
     .pipe(changed('www/public/js', {
       hasChanged: changed.compareContents
     }))

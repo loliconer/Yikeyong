@@ -106,6 +106,8 @@
   </div>
 </template>
 <script>
+import { fetch as _fetch } from 'lovue-utils'
+
   export default {
     data() {
       return {
@@ -160,7 +162,7 @@
       },
       getGroups() {
         this.bShowTableLoading = true
-        utils.fetch({
+        _fetch({
           type: 'get',
           url: 'groups'
         }).then(body => {
@@ -169,7 +171,7 @@
         })
       },
       getMenus() {
-        utils.fetch({
+        _fetch({
           type: 'get',
           url: 'menus'
         }).then(body => this.menus = body)
@@ -238,7 +240,7 @@
         this.bShowAddLoading = true
         this.canSubmit = false
 
-        utils.fetch({
+        _fetch({
           type: 'form',
           url: 'group',
           data: new FormData(ev.target)
@@ -280,7 +282,7 @@
         this.canSubmit = false
         this.bShowSaveLoading = true
 
-        utils.fetch({
+        _fetch({
           type: 'put',
           url: `group/${this.current.id}`,
           data: {

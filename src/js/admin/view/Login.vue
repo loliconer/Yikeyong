@@ -21,7 +21,8 @@
   </div>
 </template>
 <script>
-  import {mapMutations, mapGetters} from 'vuex'
+  import { fetch as _fetch } from 'lovue-utils'
+  import { mapMutations, mapGetters } from 'vuex'
 
   export default {
     data() {
@@ -33,7 +34,7 @@
     methods: {
       ...mapMutations({ setUserInfo: 'SET_USER_INFO' }),
       login(ev) {
-        utils.fetch({
+        _fetch({
           type: 'form',
           url: 'session',
           data: new FormData(ev.target)
@@ -52,7 +53,7 @@
       }
     },
     mounted() {
-      /*utils.fetch({
+      /*_fetch({
         type: 'get',
         url: 'csrf'
       }, body => {

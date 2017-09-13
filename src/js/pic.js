@@ -7,7 +7,7 @@ new Vue({
   },
   components: { Viewer },
   methods: {
-    view (type) {
+    view(type) {
       this.$refs.viewer.show(type)
     }
   }

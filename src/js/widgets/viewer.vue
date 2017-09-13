@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import utils from "../lib/utils"
+  import { fetch as _fetch } from 'lovue-utils'
 
   let prototype = {}
   let EVENT_MOUSEDOWN = "mousedown touchstart pointerdown MSPointerDown",
@@ -67,7 +67,7 @@
         if (this.jsonData) {
           this.images = this.jsonData[this.type];
         } else {
-          utils.fetch('/js/data/images.json')
+          _fetch('/js/data/images.json')
             .then(body => {
               this.jsonData = body
               this.images = body[type]

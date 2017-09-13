@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import { fetch as _fetch } from 'lovue-utils'
+
 export default {
   data() {
     return {
@@ -72,7 +74,7 @@ export default {
   },
   methods: {
     getBlogs() {
-      utils.fetch('/api/blogs')
+      _fetch('/api/blogs')
         .then(body => {
           this.blogs = body
         })
@@ -92,7 +94,7 @@ export default {
       if (this.loading) return
       this.loading = true
 
-      utils.fetch({
+      _fetch({
         type: this.current.rowid ? 'put' : 'post',
         url: this.current.rowid ? `/api/blog/${this.current.rowid}` : '/api/blog',
         data: this.current
@@ -111,7 +113,7 @@ export default {
         type: 'confirm',
         text: '确认删除？'
       }, () => {
-        utils.fetch({
+        _fetch({
           type: 'delete',
           url: `/api/blog/${id}`
         }).then(() => {
