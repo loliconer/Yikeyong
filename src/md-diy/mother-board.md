@@ -10,19 +10,19 @@
 - **扩展插槽**：PCI-E：最新的总线和接口标准，将全面取代现行的PCI和AGP，最终实现总线标准的统一。数据传输速率高，最新版本为3.0。有不同的传输通道数，如X8、X16等。
 - **板型**：根据主板上各元器件的布局排列方式、尺寸大小、形状、所使用的电源规格等制定出的通用标准，所有主板厂商都必须遵循。有EATX、ATX、Micro-ATX等。
 - **接口**：  
-![主板接口](http://ww2.sinaimg.cn/large/0060lm7Tly1fjey1bfmpgj30ku05pq7q.jpg)
+![主板接口](//ww2.sinaimg.cn/large/0060lm7Tly1fjey1bfmpgj30ku05pq7q.jpg)
   - USB2.0：传输速度更快，支持热插拔以及连接多个设备的特点，最高速度可达480Mbps半双工。
   - USB3.0：最新的USB规范，速度极快，高达5Gbps全双工；实现了更好的电源管理；能够使主机为器件提供更多的功率，从而实现USB充电、LED照明和迷你风扇等应用；能够使主机更快的识别器件；新的协议使得数据处理的效率更高。
   - SATA：硬盘接口规范，定义的数据传输率可达150MB/s，SATA II的数据传输率将达到300MB/s，SATA III将实现600MB/s的最高数据传输率。  
-  ![SATA接口](http://ww4.sinaimg.cn/large/0060lm7Tly1fjey0dd8qlj30hu0bbti9.jpg)
+  ![SATA接口](//ww4.sinaimg.cn/large/0060lm7Tly1fjey0dd8qlj30hu0bbti9.jpg)
   - eSATA：一种扩展SATA接口或外置式SATA II规范，是用来连接外部而不是内部SATA设备，可以将SATA II硬盘插到eSATA接口，而不用打开机箱更换SATA2硬盘。  
-  ![eSATA接口](http://ww1.sinaimg.cn/large/0060lm7Tly1fjexztql13j30c608tgr8.jpg)
+  ![eSATA接口](//ww1.sinaimg.cn/large/0060lm7Tly1fjexztql13j30c608tgr8.jpg)
   - IEEE1394：苹果公司开发的串行标准。同USB一样，IEEE1394也支持外设热插拔，可为外设提供电源，省去了外设自带的电源，能连接多个不同设备，支持同步数据传输。
   - 光纤接口：用来连接光纤的物理接口。接头类型：FC 圆型带螺纹(配线架上用的最多)、LC 小方头，直接连接设备SFP模块、ST 卡接式圆型、PC 微球面研磨抛光、APC 呈8度角并做微球面研磨抛光、SC 卡接式方型(路由器交换机上用的最多)、MT-RJ方型,一头双纤收发一体。  
   光纤模块：一般都支持热插拔，GBIC, 使用的光纤接口多为SC或ST型；SFP 小型封装GBIC,使用的光纤为LC型。
-  ![光纤接口](http://ww2.sinaimg.cn/large/0060lm7Tly1fjexydhr60j30a4061di3.jpg)
+  ![光纤接口](//ww2.sinaimg.cn/large/0060lm7Tly1fjexydhr60j30a4061di3.jpg)
   - HDMI接口：High Definition Multimedia Interface，高清晰度多媒体接口，一种数字化视频/音频接口技术，是适合影像传输的专用型数字化接口，其可同时传送音频和影音信号，最高数据传输速度为5Gbps，同时无需在信号传送前进行数/模或者模/数转换。  
-  ![HDMI接口](http://ww4.sinaimg.cn/large/0060lm7Tly1fjexxo4ym4j30cg09cn0x.jpg)
+  ![HDMI接口](//ww4.sinaimg.cn/large/0060lm7Tly1fjexxo4ym4j30cg09cn0x.jpg)
   - VGA接口：连接显示器，是显卡上输出模拟信号的接口。  
-  ![VGA接口](http://ww1.sinaimg.cn/large/0060lm7Tly1fjexvez5fej309q041tag.jpg)
+  ![VGA接口](//ww1.sinaimg.cn/large/0060lm7Tly1fjexvez5fej309q041tag.jpg)
   - DVI接口：分为DVI-A、DVI-D和DVI-I。DVI-A其实就是VGA接口标准，只是换汤不换药而已。所以带有DVI接口的液晶显示器也并不一定就是真正的数字液晶显示器。DVI-D则实现了真正的数字信号传输。而DVI-I通吃上述两个接口，当DVI-I接VGA设备时，就是起到了DVI-A的作用；当DVI-I接DVI-D设备时，便起了DVI-D的作用。为了兼容传统的模拟显示设备，现在的大部分显卡都采用了24只数字信号针脚和5只模拟信号针脚的DVI-I接口。
