@@ -25,7 +25,8 @@
           { name: '硬盘', url: '/hard-disk.html' },
           { name: '电源', url: '/power.html' },
           { name: '机箱', url: '/computer-case.html' },
-          { name: '显示器', url: '/monitor.html' }
+          { name: '显示器', url: '/monitor.html' },
+          { name: '维修与保养', url: '/maintenance.html'}
         ]
       }
     }

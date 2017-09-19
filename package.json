@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "push": "git add . && git commit -m 'Update' && git push origin master",
     "deploy": "webpack --config webpack.prod.config.js && gulp build",
     "webpack": "webpack --watch",
     "gulp": "gulp watch"

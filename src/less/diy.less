@@ -58,3 +58,42 @@ nav.nav {
   }
 }
 
+.view-maintenance {
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: @small-font;
+    padding: 10px;
+
+    .link {
+      display: inline-block;
+      padding: 4px 6px;
+      border: 1px solid @border-color;
+    }
+  }
+
+  .vm-content {
+    > header.above {
+      position: relative;
+      line-height: 50px;
+      border-bottom: 1px solid @border-color;
+      text-align: center;
+
+      .vm-back {
+        position: absolute;
+        left: 0;
+        line-height: 50px;
+        padding: 0 10px;
+      }
+    }
+
+    .vue-loading {
+      display: block;
+      margin-top: 20px;
+    }
+
+    > .below {
+      padding: 10px;
+    }
+  }
+}

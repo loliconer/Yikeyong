@@ -68,7 +68,7 @@
           })
           .catch(error => {
             this.error(error)
-            this.loading = true
+            this.loading = false
           })
       }
     },
