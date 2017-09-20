@@ -37,7 +37,7 @@ gulp.task('build', ['less', 'md', 'md-diy'], () => {
     .pipe(changed('www/public/img'))
     .pipe(gulp.dest('www/public/img'))
 
-  gulp.src('html/**/*')
+  gulp.src(['html/**/*', '!html/favicon.ico'])
     .pipe(clean('www/html', {
       force: true
     }))
@@ -45,6 +45,9 @@ gulp.task('build', ['less', 'md', 'md-diy'], () => {
     .pipe(changed('www/html', {
       hasChanged: changed.compareContents
     }))
+    .pipe(gulp.dest('www/html'))
+
+  gulp.src('html/favicon.ico')
     .pipe(gulp.dest('www/html'))
 })
 
