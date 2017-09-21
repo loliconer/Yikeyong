@@ -11,13 +11,7 @@ const path = require('path')
 let md = require('./src/js/lib/md.js')
 
 gulp.task('build', ['less', 'md', 'md-diy'], () => {
-  gulp.src('public/js/*.*')
-    .pipe(changed('www/public/js', {
-      hasChanged: changed.compareContents
-    }))
-    .pipe(gulp.dest('www/public/js'))
-
-  gulp.src('public/js/@(data)/*.*')
+  gulp.src(['public/js/*.*', 'public/js/@(data)/*.*'])
     .pipe(changed('www/public/js', {
       hasChanged: changed.compareContents
     }))
@@ -37,7 +31,7 @@ gulp.task('build', ['less', 'md', 'md-diy'], () => {
     .pipe(changed('www/public/img'))
     .pipe(gulp.dest('www/public/img'))
 
-  gulp.src(['html/**/*', '!html/favicon.ico'])
+  gulp.src('html/**/*')
     .pipe(clean('www/html', {
       force: true
     }))
@@ -45,9 +39,6 @@ gulp.task('build', ['less', 'md', 'md-diy'], () => {
     .pipe(changed('www/html', {
       hasChanged: changed.compareContents
     }))
-    .pipe(gulp.dest('www/html'))
-
-  gulp.src('html/favicon.ico')
     .pipe(gulp.dest('www/html'))
 })
 
