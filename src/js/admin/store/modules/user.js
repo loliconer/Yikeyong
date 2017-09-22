@@ -8,20 +8,20 @@ const state = {
 }
 
 const mutations = {
-  SET_USER_INFO(state, userInfo) {
+  SET_USER_INFO(_state, userInfo) {
     for (let key in userInfo) {
       if (userInfo.hasOwnProperty(key)) {
-        state[key] = userInfo[key]
+        _state[key] = userInfo[key]
       }
     }
   },
-  LOGOUT(state) {
-    state.id = ''
-    state.admin = false
-    state.username = ''
-    state.nickname = ''
-    state.avatar = ''
-    state.csrf = ''
+  LOGOUT(_state) {
+    _state.id = ''
+    _state.admin = false
+    _state.username = ''
+    _state.nickname = ''
+    _state.avatar = ''
+    _state.csrf = ''
   }
 }
 
@@ -49,8 +49,8 @@ const actions = {
 }
 
 const getters = {
-  isAdmin(state) {
-    return state.admin
+  isAdmin(_state) {
+    return _state.admin
   }
 }
 

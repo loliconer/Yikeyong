@@ -96,7 +96,7 @@ export default {
 
       _fetch({
         type: this.current.rowid ? 'put' : 'post',
-        url: this.current.rowid ? `/api/blog/${this.current.rowid}` : '/api/blog',
+        url: this.current.rowid ? `/api/blogs/${this.current.rowid}` : '/api/blogs',
         data: this.current
       }).then(() => {
         this.success(this.current.rowid ? '更新成功' : '添加成功')
@@ -115,7 +115,7 @@ export default {
       }, () => {
         _fetch({
           type: 'delete',
-          url: `/api/blog/${id}`
+          url: `/api/blogs/${id}`
         }).then(() => {
           this.success('删除成功')
           setTimeout(() => this.getBlogs(), 1000)
