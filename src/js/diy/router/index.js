@@ -7,6 +7,7 @@ import HardDisk from '../view/HardDisk.vue'
 import GraphicsCard from '../view/GraphicsCard.vue'
 import MotherBoard from '../view/MotherBoard.vue'
 import Maintenance from '../view/Maintenance.vue'
+import Computer from '../view/Computer.vue'
 
 const routes = [
   {
@@ -36,6 +37,10 @@ const routes = [
   {
     path: '/mother-board.html',
     component: MotherBoard
+  },
+  {
+    path: '/computer.html',
+    component: Computer
   },
   {
     path: '/maintenance.html',

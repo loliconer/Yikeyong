@@ -14,8 +14,15 @@ body {
   border-bottom: 1px solid @border-color;
   padding: 0 10px;
   background-color: @white-color;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .logo {
+    flex-shrink: 0;
+
     .link {
       font-family: Consolas, sans-serif;
       font-size: @big-font;
@@ -139,3 +146,4 @@ body {
 @import "Pages/controls";
 @import "Pages/shapes";
 @import "Pages/coin";
+@import "Pages/beauties";

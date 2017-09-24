@@ -102,7 +102,7 @@
       methods: {
         append() {
           let cell = this.cells[this.index]
-          if(!cell) return
+          if (!cell) return
 
           let i = this.heights.indexOf(Math.min.apply(null, this.heights))
           this.columns[i].appendChild(cell)

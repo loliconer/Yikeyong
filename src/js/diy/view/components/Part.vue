@@ -9,6 +9,7 @@
         <div style="text-align: center;" v-if="mdContent === ''">暂无内容</div>
         <div class="blog" v-html="mdContent" v-else></div>
       </div>
+      <slot name="headline" v-if="tab === 0"></slot>
     </div>
   </div>
 </template>

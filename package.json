@@ -49,6 +49,7 @@
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
     "lovue-utils": "^1.0.0",
+    "lozad": "^1.0.4",
     "marked": "^0.3.6",
     "mocha": "^3.5.3",
     "nprogress": "^0.2.0",

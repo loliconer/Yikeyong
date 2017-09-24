@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>精选女头</title>
+  <style>
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .img-wrap {
+      min-width: 10px;
+      height: 200px;
+      margin: 2px;
+      flex-grow: 1;
+    }
+
+    .img-wrap img {
+      height: 100%;
+    }
+
+    .img-blank {
+      margin: 2px;
+      flex-grow: 1000;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding-top: 10px;
+      }
+
+      .img-wrap {
+        width: 100%;
+      }
+    }
+  </style>
+  <script src="/js/vendor/vue.js"></script>
+  <script src="/js/vendor/lozad.min.js"></script>
+</head>
+<body>
+<!--#include file="/common/nav.html"-->
+
+<div id="app" v-cloak>
+  <div class="container">
+    <div class="img-wrap" v-for="img of imgs" :data-width="img.width" :data-height="img.height"><img class="lozad" :data-src=`/img/beauty/avatar/${img.name}`></div>
+    <div class="img-blank"></div>
+  </div>
+</div>
+
+<script>
+  !function () {
+    new Vue({
+      el: '#app',
+      data: {
+        imgs: [{
+          'name': 'null-2c85314ba726f4df.jpg',
+          'width': 400,
+          'height': 400
+        }, {
+          'name': 'null2b5b6ecc8533daf1.jpg',
+          'width': 400,
+          'height': 400
+        }, {
+          'name': 'null-2e51680a6fbeeee8.jpg',
+          'width': 638,
+          'height': 637
+        }, {
+          'name': 'null-3c6ac6c192c8ea79.jpg',
+          'width': 550,
+          'height': 550
+        }, {
+          'name': 'null3dabad6d61f84640.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null3d67efe56d4cd85e.jpg',
+          'width': 960,
+          'height': 924
+        }, {
+          'name': 'null3f2be926cc550388.jpg',
+          'width': 791,
+          'height': 759
+        }, {
+          'name': 'null4c0fc6f3b63cd1a.jpg',
+          'width': 791,
+          'height': 800
+        }, {
+          'name': 'null-4f5f8be844f184b.jpg',
+          'width': 550,
+          'height': 550
+        }, {
+          'name': 'null-5a20dbde1247c1ac.jpg',
+          'width': 480,
+          'height': 480
+        }, {
+          'name': 'null5ac69fba7e9e94a3.jpg',
+          'width': 400,
+          'height': 400
+        }, {
+          'name': 'null5b9a0645acde21f3.jpg',
+          'width': 929,
+          'height': 929
+        }, {
+          'name': 'null5b033e3c54336f90.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null-5dd26924bebb1ae8.jpg',
+          'width': 400,
+          'height': 400
+        }, {
+          'name': 'null-5f630289f63deb46.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null-6a296e185e075867.jpg',
+          'width': 720,
+          'height': 688
+        }, {
+          'name': 'null-6a034382631b3fcf.jpg',
+          'width': 400,
+          'height': 400
+        }, {
+          'name': 'null6d067b2cd065b5b8.jpg',
+          'width': 512,
+          'height': 512
+        }, {
+          'name': 'null6f0ad4655d7e7758.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null-7af88278406a724a.jpg',
+          'width': 400,
+          'height': 400
+        }, {
+          'name': 'null7d2c729215085889.jpg',
+          'width': 960,
+          'height': 959
+        }, {
+          'name': 'null-14faf374496b0e25.jpg',
+          'width': 512,
+          'height': 513
+        }, {
+          'name': 'null52bcfd6bdc23a282.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null-57a78d17f6a382ae.jpg',
+          'width': 280,
+          'height': 280
+        }, {
+          'name': 'null-57fd1eb86157c857.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null2a37098faea5a1cc.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null2f1c7d92c396845d.jpg',
+          'width': 1000,
+          'height': 1000
+        }, {
+          'name': 'null-2f13afc069cd99ea.jpg',
+          'width': 912,
+          'height': 912
+        }, {
+          'name': 'null-3adb10da818c99dd.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null79fa8c9a3365bdae.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null-4ca07a9a59d89c3d.jpg',
+          'width': 1000,
+          'height': 1000
+        }, {
+          'name': 'null4e594146f13303be.jpg',
+          'width': 750,
+          'height': 937
+        }, {
+          'name': 'null4ee5263637716465.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null-5b81e9483781ae2f.jpg',
+          'width': 797,
+          'height': 797
+        }, {
+          'name': 'null-5d651d5876c02e67.jpg',
+          'width': 657,
+          'height': 749
+        }, {
+          'name': 'null5bb3034855f37220.jpg',
+          'width': 938,
+          'height': 938
+        }, {
+          'name': 'null6cef60b160732b58.jpg',
+          'width': 1080,
+          'height': 1349
+        }, {
+          'name': 'null6eac23e457d828a4.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null7a0af14de5de6002.jpg',
+          'width': 640,
+          'height': 641
+        }, {
+          'name': 'null-7c6bcf096b25a85.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null-7c38c9cb7d33c016.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null-561181812de45a26.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null-7fccf7f8275841cf.jpg',
+          'width': 1000,
+          'height': 1000
+        }, {
+          'name': 'null8de05c0be268717.jpg',
+          'width': 883,
+          'height': 883
+        }, {
+          'name': 'null-10dc6bc547edff06.jpg',
+          'width': 1000,
+          'height': 1000
+        }, {
+          'name': 'null-51a80ee6ae4ffd6e.jpg',
+          'width': 690,
+          'height': 690
+        }, {
+          'name': 'null-55cc58a6d093134c.jpg',
+          'width': 1080,
+          'height': 1024
+        }, {
+          'name': 'null-62bf8f7307201cfc.jpg',
+          'width': 1000,
+          'height': 1000
+        }, {
+          'name': 'null66fd05f61017e11c.jpg',
+          'width': 750,
+          'height': 746
+        }, {
+          'name': 'null67e31502d058cf7f.jpg',
+          'width': 1000,
+          'height': 1000
+        }, {
+          'name': 'null-74a979e7160bef55.jpg',
+          'width': 966,
+          'height': 987
+        }, {
+          'name': 'null-757fefac4be3c7e6.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null74b572adcb5b1e17.jpg',
+          'width': 700,
+          'height': 700
+        }, {
+          'name': 'null-141ca019834ed2e2.jpg',
+          'width': 960,
+          'height': 951
+        }, {
+          'name': 'null3de18decc7a0d75b.jpg',
+          'width': 750,
+          'height': 1000
+        }, {
+          'name': 'null-253b783ae0d15cf3.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null72973879be9f08ca.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null29569b0c22de1944.jpg',
+          'width': 700,
+          'height': 700
+        }, {
+          'name': 'null77919f143cac5651.jpg',
+          'width': 621,
+          'height': 621
+        }, {
+          'name': 'null35491c30b8c97a9c.jpg',
+          'width': 400,
+          'height': 400
+        }, {
+          'name': 'null756ec54ed3baa8a6.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null-1fab7592b78138a2.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null227be97c8d66a732.jpg',
+          'width': 400,
+          'height': 400
+        }, {
+          'name': 'null-105114f00cfc4ee7.jpg',
+          'width': 638,
+          'height': 754
+        }, {
+          'name': 'null-492b83a3b8b78ea2.jpg',
+          'width': 883,
+          'height': 883
+        }, {
+          'name': 'nulld05b7802db49115.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null6aace9a878211c73.jpg',
+          'width': 1080,
+          'height': 1349
+        }, {
+          'name': 'null562921f4865e6f6c.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null-75672251703e1af.jpg',
+          'width': 1080,
+          'height': 1349
+        }, {
+          'name': 'null-26844289e1ae73a3.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null-362ee3d850d541ed.jpg',
+          'width': 668,
+          'height': 705
+        }, {
+          'name': 'null103330abd27d6bfc.jpg',
+          'width': 1000,
+          'height': 1000
+        }, {
+          'name': 'null705f3093d05bb21.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null1477fd8ecca28ccc.jpg',
+          'width': 720,
+          'height': 720
+        }, {
+          'name': 'null-1f396bde7015433b.jpg',
+          'width': 800,
+          'height': 800
+        }, {
+          'name': 'null-64835aeb8f54df4a.jpg',
+          'width': 750,
+          'height': 746
+        }, {
+          'name': 'null1f78d9e5db47aa1.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null60360acf85f10d0f.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null693650bdcfacc7ca.jpg',
+          'width': 1000,
+          'height': 1000
+        }, {
+          'name': 'null-382410311e7325f6.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null410418450a01c94b.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null-5014d9bbac9dd800.jpg',
+          'width': 957,
+          'height': 960
+        }, {
+          'name': 'null-1f27096841c1bb0e.jpg',
+          'width': 954,
+          'height': 954
+        }, {
+          'name': 'null30958e35e6b198c3.jpg',
+          'width': 800,
+          'height': 800
+        }, {
+          'name': 'null-1f602f63aaf2b370.jpg',
+          'width': 640,
+          'height': 640
+        }, {
+          'name': 'null1598b6384747f940.jpg',
+          'width': 722,
+          'height': 960
+        }, {
+          'name': 'null457849f76cd457b3.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null44870ac75119e62.jpg',
+          'width': 933,
+          'height': 960
+        }, {
+          'name': 'null-502d9a3f2d7d047.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null-384967d3fce47e8f.jpg',
+          'width': 938,
+          'height': 938
+        }, {
+          'name': 'null-1e628f4755dafa98.jpg',
+          'width': 540,
+          'height': 540
+        }, {
+          'name': 'null1314fdf5b0925e60.jpg',
+          'width': 750,
+          'height': 750
+        }, {
+          'name': 'null-f71df6eee720b42.jpg',
+          'width': 512,
+          'height': 473
+        }, {
+          'name': 'null56385819fefac16d.jpg',
+          'width': 1000,
+          'height': 999
+        }, {
+          'name': 'null643516fad19a5167.jpg',
+          'width': 580,
+          'height': 580
+        }, {
+          'name': 'null414f0ca2eb1db2bc.jpg',
+          'width': 425,
+          'height': 425
+        }, {
+          'name': 'null347bf0570b7b0065.jpg',
+          'width': 960,
+          'height': 960
+        }, {
+          'name': 'null-68906d0ea85c215f.jpg',
+          'width': 640,
+          'height': 617
+        }, {
+          'name': 'nullb6fa6eddee37189.jpg',
+          'width': 600,
+          'height': 600
+        }, {
+          'name': 'nullcee55c070242c.jpg',
+          'width': 720,
+          'height': 960
+        }]
+      },
+      mounted() {
+        const wraps = this.$el.querySelectorAll('.img-wrap')
+        wraps.forEach(wrap => {
+          const width = wrap.dataset.width
+          const height = wrap.dataset.height
+          wrap.style.width = width / height * 200 + 'px'
+          wrap.style.flexGrow = width / height
+          this.$nextTick(() => {
+            wrap.style.height = wrap.offsetWidth * height / width + 'px'
+          })
+        })
+
+        setTimeout(() => {
+          const observer = lozad()
+          observer.observe()
+        }, 100)
+      }
+    })
+  }()
+</script>
+</body>
+</html>

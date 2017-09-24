@@ -1,0 +1,43 @@
+@import "../Bootstrapping/Variables";
+@import "../Bootstrapping/Mixins";
+
+.page-beauties {
+  .container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-top: 20px;
+
+    .list {
+      li {
+        .shadow;
+        margin-bottom: 20px;
+
+        a.link {
+          display: flex;
+        }
+
+        .l-left {
+          width: 240px;
+        }
+
+        .l-right {
+          flex: 1;
+          flex-shrink: 0;
+          padding-left: 10px;
+        }
+
+        .l-title {
+          border-bottom: 1px solid @border-color;
+
+          h4 {
+            margin: 10px 0;
+          }
+        }
+
+        .l-intro {
+          text-indent: 0;
+        }
+      }
+    }
+  }
+}

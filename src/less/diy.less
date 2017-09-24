@@ -54,11 +54,13 @@ nav.nav {
   }
 
   .part-content {
-    padding: 10px;
+    .panel-md {
+      padding: 10px;
+    }
   }
 }
 
-.view-maintenance {
+.view-article-list {
   .list {
     display: flex;
     flex-wrap: wrap;
@@ -72,14 +74,14 @@ nav.nav {
     }
   }
 
-  .vm-content {
+  .va-content {
     > header.above {
       position: relative;
       line-height: 50px;
       border-bottom: 1px solid @border-color;
       text-align: center;
 
-      .vm-back {
+      .va-back {
         position: absolute;
         left: 0;
         line-height: 50px;
@@ -94,6 +96,22 @@ nav.nav {
 
     > .below {
       padding: 10px;
+    }
+  }
+}
+
+.view-computer {
+  //display: flex;
+  //flex-wrap: wrap;
+  //justify-content: space-between;
+
+  .img-wrap {
+    //min-height: 500px;
+    text-align: center;
+    margin: 10px;
+
+    img {
+      background-color: @bg-color;
     }
   }
 }

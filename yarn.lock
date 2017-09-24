@@ -3796,6 +3796,10 @@ lovue-utils@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lovue-utils/-/lovue-utils-1.0.0.tgz#cf482628fd87ceeb342df1d30ef5977a6d33a844"
 
+lozad@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/lozad/-/lozad-1.0.4.tgz#0e03e5f66a054172e74939c69190ebe70c236d01"
+
 lru-cache@2, lru-cache@2.2.x:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.2.4.tgz#6c658619becf14031d0d0b594b16042ce4dc063d"
