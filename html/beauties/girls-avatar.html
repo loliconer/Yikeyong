@@ -46,7 +46,9 @@
 
 <div id="app" v-cloak>
   <div class="container">
-    <div class="img-wrap" v-for="img of imgs" :data-width="img.width" :data-height="img.height"><img class="lozad" :data-src=`/img/beauty/avatar/${img.name}`></div>
+    <div class="img-wrap" v-for="img of imgs" :data-width="img.width" :data-height="img.height">
+      <img class="lozad" :data-src=`//guomy.oss-cn-shenzhen.aliyuncs.com/img/beauty/avatar/${img.name}`>
+    </div>
     <div class="img-blank"></div>
   </div>
 </div>
