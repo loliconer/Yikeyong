@@ -8,10 +8,6 @@
   .container {
     .mixin-content-width;
     padding-top: 20px;
-
-    @media screen and (max-width: 768px) {
-      width: 100%;
-    }
   }
 
   .block-posts {
@@ -24,7 +20,7 @@
 
       .p-title {
         margin-bottom: 10px;
-        font-size: 20px;
+        font-size: 2rem;
 
         a:hover {
           text-decoration: none;
@@ -37,12 +33,11 @@
         margin-bottom: 10px;
         display: flex;
         align-items: flex-start;
-        font-size: 12px;
+        font-size: @tiny-font;
         color: @date-color;
       }
       .p-intro {
         color: @assist-font-color;
-        font-size: 16px;
       }
     }
   }
@@ -54,17 +49,14 @@
   font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace, "Source Sans Pro", sans-serif;
   background-color: @bg-color;
   margin-bottom: 0;
-  font-size: 1.8rem;
   min-height: 100vh;
 
-  >.container {
-    width: 1200px;
-    margin: 0 auto;
+  > .container {
+    .mixin-content-width;
     padding: 10px;
   }
 
   .post-title {
-    font-size: 1.5em;
     text-align: center;
     padding-bottom: 20px;
     border-bottom: 1px solid @border-color;

@@ -7,6 +7,11 @@
     margin: 0 auto;
     padding-top: 20px;
 
+    @media (max-width: 1600px) {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
     .list {
       li {
         .shadow;
@@ -36,6 +41,30 @@
 
         .l-intro {
           text-indent: 0;
+        }
+      }
+    }
+
+    @media (max-width: 500px) {
+      margin-left: 0;
+      margin-right: 0;
+
+      .list {
+        li {
+          .l-left {
+            width: 160px;
+          }
+
+          .l-title {
+            h4 {
+              margin: 5px 0;
+            }
+          }
+
+          .l-intro {
+            margin: 5px 0;
+            font-size: @small-font;
+          }
         }
       }
     }

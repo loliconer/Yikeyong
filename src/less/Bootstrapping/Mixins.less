@@ -200,8 +200,17 @@
 
 .mixin-content-width {
   width: 60vw;
-  min-width: 1080px;
+  min-width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    width: 90%;
+    min-width: auto;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .flex {
