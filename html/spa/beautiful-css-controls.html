@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="/css/style.css">
   <style>
     .container {
-      width: 1200px;
+      width: 60vw;
+      min-width: 1200px;
       margin: 0 auto;
       padding-top: 100px;
       display: flex;
@@ -22,6 +23,23 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    @media (max-width: 1200px) {
+      .container {
+        width: 90%;
+        min-width: inherit;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 100%;
+      }
+
+      .container > .cell {
+        width: 100%;
+      }
     }
   </style>
 </head>

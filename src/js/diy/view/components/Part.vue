@@ -52,7 +52,6 @@
           this.isMarkdown = true
           url = `/article-diy/${this.part}-brands.html`
         }
-        console.log(cur)
         if (cur === 'overLock') {
           this.isMarkdown = true
           url = `/article-diy/${this.part}-over-lock.html`

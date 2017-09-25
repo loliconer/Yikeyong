@@ -1,0 +1,78 @@
+@import "../Bootstrapping/Variables";
+@import "../Bootstrapping/Mixins";
+
+.page-css-filter {
+  .container {
+    .mixin-content-width;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media (max-width: 544px) {
+      padding: 5px;
+    }
+
+    > .cell {
+      width: 175px;
+      text-align: center;
+      margin-bottom: 10px;
+
+      > img {
+        width: 175px;
+        height: 175px;
+      }
+    }
+  }
+
+  .normal {
+    filter: none;
+  }
+
+  .grayscale {
+    filter: grayscale(1);
+  }
+
+  .sepia {
+    filter: sepia(1);
+  }
+
+  .saturate1 {
+    filter: saturate(.5);
+  }
+
+  .saturate2 {
+    filter: saturate(3);
+  }
+
+  .hue-rotate {
+    filter: hue-rotate(90deg);
+  }
+
+  .invert {
+    filter: invert(1);
+  }
+
+  .opacity {
+    filter: opacity(.2);
+  }
+
+  .brightness {
+    filter: brightness(.5);
+  }
+
+  .contrast {
+    filter: contrast(2);
+  }
+
+  .blur {
+    filter: blur(3px);
+  }
+
+  .drop-shadow {
+    filter: drop-shadow(5px 5px 5px #ccc);
+  }
+
+  .composite {
+    filter: saturate(5) hue-rotate(90deg) grayscale(0.3) sepia(0.7) contrast(1.5) invert(0.2) brightness(0.9);
+  }
+}
