@@ -41,10 +41,10 @@
         _fetch({
           type: 'delete',
           url: 'session'
-        }, () => {
+        }).then(() => {
           this.clearUserInfo()
           this.$router.replace('/login.html')
-        })
+        }).catch(this.error)
       }
     }
   }
