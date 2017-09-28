@@ -47,9 +47,7 @@
           } else {
             this.$root.$refs.alert.show('该用户无权限', () => location.reload())
           }
-        }).catch(error => {
-          this.$root.$refs.alert.show(error.error)
-        })
+        }).catch(this.error)
       }
     },
     mounted() {
