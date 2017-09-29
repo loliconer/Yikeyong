@@ -11,6 +11,7 @@
 
 <div class="container">
   <div class="block-posts" id="posts"></div>
+  <div class="observer-target"></div>
 </div>
 
 <!--#include file="/common/footer.html"-->
@@ -28,12 +29,31 @@
   <% } %>
 </script>
 <script>
-  utils.fetch('/api/blogs')
-    .then(body => {
-      posts.innerHTML = template(tpl.innerHTML, {
-        units: body
+  !function () {
+    let offset = 0, has = true
+    const limit = 10
+
+    const observer = new IntersectionObserver((records, _observer) => {
+      records.forEach(record => {
+        if (record.intersectionRatio > 0 && has) {
+          utils.fetch(`/api/blogs?limit=${limit}&offset=${offset}`)
+            .then(body => {
+              if (body.length < limit) {
+                has = false
+              }
+
+              posts.innerHTML += template(tpl.innerHTML, {
+                units: body
+              })
+
+              offset += body.length
+            })
+        }
       })
     })
+
+    observer.observe(document.querySelector('.observer-target'))
+  }()
 </script>
 </body>
 </html>
