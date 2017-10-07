@@ -1,0 +1,90 @@
+@import "Bootstrapping/Variables";
+@import (reference) "Bootstrapping/Mixins";
+@import "Layout/Blog";
+
+.page-novel {
+  header.header {
+    .mixin-content-width;
+    padding-top: 60px;
+    margin-bottom: 20px;
+
+    > ul.list {
+      display: flex;
+      background-color: #E9FAFF;
+
+      li {
+        width: 100px;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        transition: color .2s;
+
+        &:hover {
+          color: @pink-color;
+        }
+      }
+    }
+  }
+
+  .container {
+    .mixin-content-width;
+
+    > .novels {
+      li {
+        line-height: 32px;
+        padding-left: 20px;
+        border-bottom: 1px dashed @border-color;
+      }
+    }
+
+    > .chapters {
+      > .above {
+        border-bottom: 1px solid @border-color;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
+
+        .icon-arrow-down {
+          width: 20px;
+          height: 60px;
+          cursor: pointer;
+          margin-left: 20px;
+        }
+      }
+
+      > .below {
+        padding: 10px;
+
+        > ul.list {
+          display: flex;
+          flex-wrap: wrap;
+
+          li {
+            width: 33%;
+            flex-grow: 1;
+            line-height: 36px;
+            border-bottom: 1px dashed @border-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-novel-chapter {
+  min-height: 100vh;
+  font-family: '楷体', sans-serif;
+  font-size: 1.8rem;
+  background-color: #FAFAD2;
+
+  .container {
+    .mixin-content-width;
+    padding-top: 60px;
+    padding-bottom: 1px;
+
+    p {
+      line-height: 1.5;
+    }
+  }
+}

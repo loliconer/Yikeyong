@@ -10,4 +10,5 @@ public/css/*.css
 !public/css/global.css
 /public/media
 html/coin.html
+html/novel
 src/js/coin.js
