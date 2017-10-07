@@ -39,17 +39,23 @@
 
     > .chapters {
       > .above {
+        position: relative;
         border-bottom: 1px solid @border-color;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 40px;
+
+
+        .ca-title {
+          line-height: 40px;
+          text-align: center;
+          margin: 0;
+          font-weight: normal;
+        }
 
         .icon-arrow-down {
-          width: 20px;
-          height: 60px;
+          position: absolute;
+          top: 10px;
+          width: 40px;
+          height: 20px;
           cursor: pointer;
-          margin-left: 20px;
         }
       }
 
