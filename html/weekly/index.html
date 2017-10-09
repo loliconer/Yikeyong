@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--#include file="/common/head.html"-->
+  <meta name="description" content="包含了来自Web Tools、Mobile Web、JavaScript、Pony Foo、Node、FrontEnd Focus、eWebDesign、Mozilla的周报精华，时刻走在技术的前沿。">
+  <title>Weekly | 亦可用</title>
+  <link rel="stylesheet" href="/css/weekly.css">
+  <script src="/js/vendor/vue.js"></script>
+</head>
+<body>
+<!--#include file="/common/nav.html"-->
+
+<div id="app" v-cloak>
+  <div class="container">
+    <header class="header">
+      <ul class="list">
+        <li v-for="site of sites" @click="selectSite(site)">{{site.name}}</li>
+      </ul>
+    </header>
+  
+    <section class="content"></section>
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      sites: [
+        { name: 'All', value: 'all' },
+        { name: 'Web Tools', value: 'webtools' },
+        { name: 'Mobile Web', value: 'mobileweb' },
+        { name: 'JavaScript', value: 'js' },
+        { name: 'Pony Foo', value: 'ponyfoo' },
+        { name: 'Node', value: 'node' },
+        { name: 'FrontEnd Focus', value: 'fefocus' },
+        { name: 'eWebDesign', value: 'ewebdesign' },
+        { name: 'Mozilla', value: 'mozilla' }
+      ],
+      curSite: {}
+    },
+    methods: {
+      selectSite(site) {
+        this.curSite = site
+      }
+    }
+  })
+</script>
+</body>
+</html>
