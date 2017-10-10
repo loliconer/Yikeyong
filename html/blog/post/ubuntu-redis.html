@@ -10,14 +10,26 @@
 <h4>安装</h4>
 <ol>
   <li><a href="http://redis.io/download">官网</a>下载tar.gz安装包安装
-    <pre><code class="lang-bash">tar -zxvf redis.tar.gz
-cd redis
+    <pre><code class="lang-bash">tar -zxvf redis-4.0.2.tar.gz
+cd redis-4.0.2
 make
-make install
+sudo make install
 </code></pre>
   </li>
-  <li>复制redis.conf到/etc/redis</li>
+  <li>复制redis.conf到/etc/redis
+    <pre><code class="lang-bash">cd ~
+mkdir redis
+cp redis-4.0.2/redis.conf redis
+sudo mv redis /etc
+</code></pre>
+  </li>
   <li>修改配置</li>
+  <li>创建日志文件
+    <pre><code class="lang-bash">cd ~
+touch redis.log
+sudo mv redis.log /var/log
+</code></pre>
+  </li>
   <li>启动
     <pre><code class="lang-bash">redis-server /etc/redis/redis.conf
 </code></pre>
