@@ -10,6 +10,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: @normal-font;
   height: @bar-height;
   border-bottom: 1px solid @border-color;
   padding: 0 10px;
@@ -24,11 +25,6 @@ body {
     flex-shrink: 0;
 
     .link {
-      font-family: Consolas, sans-serif;
-      font-size: @big-font;
-      color: @blue-color;
-      padding: 0 10px;
-
       > img {
         width: 32px;
       }
@@ -45,6 +41,10 @@ body {
       text-align: center;
     }
   }
+}
+
+.container {
+  font-size: @normal-font;
 }
 
 .footer {

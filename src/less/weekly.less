@@ -1,3 +1,31 @@
 @import "Bootstrapping/Variables";
 @import (reference) "Bootstrapping/Mixins";
 @import "Layout/Blog";
+
+.container {
+  .mixin-content-width;
+}
+
+.c-index {
+  padding-top: 20px;
+
+  .btn {
+    border: 1px solid transparent;
+    line-height: 28px;
+  }
+
+  header.header {
+    padding: 0 10px;
+
+    > ul.list {
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border-radius: @border-radius-small;
+      }
+    }
+  }
+}

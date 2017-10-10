@@ -11,10 +11,10 @@
 <!--#include file="/common/nav.html"-->
 
 <div id="app" v-cloak>
-  <div class="container">
+  <div class="container c-index">
     <header class="header">
       <ul class="list">
-        <li v-for="site of sites" @click="selectSite(site)">{{site.name}}</li>
+        <li :class="curSite.value === site.value ? 'btn' : 'btn-ghost'" v-for="site of sites" @click="selectSite(site)">{{site.name}}</li>
       </ul>
     </header>
   
@@ -43,6 +43,9 @@
       selectSite(site) {
         this.curSite = site
       }
+    },
+    created() {
+      this.selectSite(this.sites[0])
     }
   })
 </script>

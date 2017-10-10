@@ -55,6 +55,10 @@
 
 <script>
   !function () {
+    if (!NodeList.prototype.forEach) {
+      NodeList.prototype.forEach = Array.prototype.forEach
+    }
+    
     new Vue({
       el: '#app',
       data: {
