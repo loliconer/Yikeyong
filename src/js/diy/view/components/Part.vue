@@ -36,7 +36,13 @@
     },
     computed: {
       titles() {
-        return Object.values(this.tabs)
+        if (Object.values !== undefined) {
+          return Object.values(this.tabs)
+        }
+        
+        const arr = []
+        Object.keys(this.tabs).forEach(key => arr.push(this.tabs[key]))
+        return arr
       }
     },
     watch: {
