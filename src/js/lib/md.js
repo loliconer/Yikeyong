@@ -30,7 +30,7 @@ function md(filePath, option) {
 <html lang="zh">
 <head>
   <!--#include file="/common/head.html"-->
-  <title>${title}</title>
+  <title>${title} | 亦可用</title>
 </head>
 <body class="page-post">
 <div class="container blog">
