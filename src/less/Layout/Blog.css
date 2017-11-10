@@ -1,0 +1,304 @@
+.hvcenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+}
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.hyphenate {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+.truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.shadow-light {
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+}
+.shadow {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+.shadow-2 {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+.shadow-3 {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+}
+.shadow-4 {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+}
+.shadow-5 {
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+}
+.hoverable {
+  transition: box-shadow 0.25s;
+}
+.hoverable:hover {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.non-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.mixin-hidden {
+  display: none;
+}
+.mixin-visible {
+  display: block;
+}
+.mixin-base-button {
+  display: inline-block;
+  border: none;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 0 12px;
+  height: 30px;
+  line-height: 30px;
+  min-width: 72px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all .3s;
+}
+.mixin-button-solid {
+  background-color: #00C1DE;
+  border-radius: 0;
+  color: #fff;
+}
+.mixin-button-solid:hover {
+  background-color: #4AD3E8;
+}
+.mixin-button-solid:active {
+  background-color: #00AAC7;
+}
+.mixin-button-ghost {
+  border: 1px solid #00C1DE;
+  line-height: 28px;
+  color: #00C1DE;
+}
+.mixin-button-ghost:hover {
+  border-color: #4AD3E8;
+  color: #4AD3E8;
+}
+.mixin-button-ghost:active {
+  border-color: #00AAC7;
+  color: #00AAC7;
+}
+.mixin-content-width {
+  width: 60vw;
+  min-width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 1200px) {
+  .mixin-content-width {
+    width: 90%;
+    min-width: inherit;
+  }
+}
+@media (max-width: 768px) {
+  .mixin-content-width {
+    width: 100%;
+  }
+}
+.flex {
+  display: flex;
+}
+.flex-start {
+  display: flex;
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.flex-around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.blog h1,
+.blog h2,
+.blog h3,
+.blog h4,
+.blog h5,
+.blog h6 {
+  font-weight: 300;
+  line-height: 1.1;
+}
+.blog p,
+.blog pre,
+.blog blockquote {
+  margin: 0 0 1.1em;
+}
+.blog p {
+  text-indent: 0;
+}
+.blog img {
+  margin: 10px auto;
+  display: block;
+}
+.blog ol,
+.blog ul {
+  padding-left: 40px;
+  margin-bottom: 1.1em;
+}
+.blog ol {
+  list-style-type: decimal;
+}
+.blog ul {
+  list-style-type: disc;
+}
+.blog blockquote {
+  background-color: rgba(128, 128, 128, 0.05);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 15px 20px;
+  border-left: 10px solid rgba(128, 128, 128, 0.075);
+}
+.blog blockquote p:last-of-type {
+  margin-bottom: 0;
+}
+.blog a {
+  color: #4fa1db;
+  text-decoration: none;
+  transition: color ease-in-out 0.15s, border-color ease-in-out 0.15s;
+}
+.blog a:hover {
+  color: #216da3;
+  text-decoration: underline;
+}
+.blog table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  max-width: 100%;
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+.blog table th,
+.blog table td {
+  padding: 8px;
+  line-height: 20px;
+}
+.blog table td {
+  border-top: 1px solid #ddd;
+}
+.blog pre {
+  font-size: 18px;
+}
+.blog code[class*=language-],
+.blog pre[class*=language-] {
+  color: #f8f8f2;
+  text-shadow: 0 -0.1em 0.2em #000;
+  font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+.blog pre[class*=language-] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border: .3em solid #7a6652;
+  border-radius: .5em;
+  box-shadow: 1px 1px 0.5em #000 inset;
+}
+.blog :not(pre) > code[class*=language-],
+.blog pre[class*=language-] {
+  background: #4d4033;
+}
+.blog :not(pre) > code[class*=language-] {
+  padding: .1em;
+  border-radius: 0.3em;
+}
+.blog .token.cdata,
+.blog .token.comment,
+.blog .token.doctype,
+.blog .token.prolog {
+  color: gray;
+}
+.blog .token.punctuation {
+  color: #f8f8f2;
+}
+.blog .namespace {
+  opacity: 0.7;
+}
+.blog .token.constant,
+.blog .token.deleted,
+.blog .token.property,
+.blog .token.symbol,
+.blog .token.tag {
+  color: #f92672;
+}
+.blog .token.number {
+  color: #5d97bb;
+}
+.blog .token.attr-name,
+.blog .token.builtin,
+.blog .token.char,
+.blog .token.inserted,
+.blog .token.selector,
+.blog .token.string {
+  color: #5f8759;
+}
+.blog .language-css .token.string,
+.blog .style .token.string,
+.blog .token.entity,
+.blog .token.url,
+.blog .token.variable {
+  color: #9876aa;
+}
+.blog .token.operator {
+  color: #f8f8f2;
+}
+.blog .token.selector,
+.blog .token.atrule,
+.blog .token.attr-value,
+.blog .token.function {
+  color: #ffc66d;
+}
+.blog .token.boolean,
+.blog .token.keyword,
+.blog .token.delimiter {
+  color: #cc7832;
+  font-weight: 700;
+}
+.blog .token.important,
+.blog .token.regex {
+  color: #fd971f;
+}
+.blog .token.bold,
+.blog .token.important {
+  font-weight: 700;
+}
+.blog .token.italic {
+  font-style: italic;
+}
+.blog .token.entity {
+  cursor: help;
+}

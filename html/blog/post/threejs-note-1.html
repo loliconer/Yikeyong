@@ -6,8 +6,8 @@
 </head>
 <body class="page-post">
 <div class="container blog">
-<h3 class="post-title">Three.js学习笔记（一）</h3>
-<h4>一、概念单词</h4>
+<h1 class="post-title">Three.js学习笔记（一）</h1>
+<h2>一、概念单词</h2>
 <ul>
   <li>Scene</li>
   <li>Camera</li>
@@ -18,44 +18,44 @@
   <li>Shader</li>
   <li>Light</li>
 </ul>
-<h4>二、基础框架</h4>
-<h5>Scene</h5>
+<h2>二、基础框架</h2>
+<h3>Scene</h3>
 <p>所有的对象都需要加到场景中，如Camera，Mesh，Light等。</p>
 <pre><code class="lang-js">let scene = new THREE.Scene()
 </code></pre>
-<h5>Camera</h5>
+<h3>Camera</h3>
 <pre><code class="lang-js">//PerspectiveCamera
 let camera = new THREE.PerspectiveCamera(angle, width/height, near, far)
 </code></pre>
-<h5>Renderer</h5>
+<h3>Renderer</h3>
 <pre><code class="lang-js">//WebGLRenderer
 let renderer = new THREE.WebGLRenderer()
 renderer.setSize(width, height)
 document.body.appendChild(renderer.domElement)
 </code></pre>
-<h5>Material</h5>
+<h3>Material</h3>
 <pre><code class="lang-js">//MeshBasicMaterial
 let material = new THREE.MeshBashMaterial({
     color: 0x0f0
 })
 </code></pre>
-<h5>Geometry</h5>
+<h3>Geometry</h3>
 <pre><code class="lang-js">//CubeGeometry
 let geometry = new THREE.CubeGeometry(x, y, z, [segmentsX], [segmentsY], [segmentsZ], [materials], [sides])
 </code></pre>
-<h5>Mesh</h5>
+<h3>Mesh</h3>
 <pre><code class="lang-js">let mesh = new THREE.Mesh(geometry, material)
 </code></pre>
-<h5>Light</h5>
+<h3>Light</h3>
 <pre><code class="lang-js">//DirectionalLight
 let light= new THREE.DirectionalLight(color, intensity)
 light.position.set(x, y, z)
 </code></pre>
-<h5>渲染</h5>
+<h3>渲染</h3>
 <pre><code class="lang-js">renderer.render(scene, camera, [renderTarget], [forceClear])
 </code></pre>
 <p>renderTarget：渲染的目标，默认是渲染到前面定义的render中。 forceClear：每次绘制之前都将画布的内容清除，即使autoClear设置为false，也会清除。</p>
-<h5>完整的代码如下：</h5>
+<h3>完整的代码如下：</h3>
 <pre><code class="lang-js">let scene, camera, renderer
 let geometry, material, mesh
 init()
@@ -97,6 +97,7 @@ function animate() {
 }
 </code></pre>
 </div>
+<!--#include file="/common/footer.html"-->
 <script src="/js/vendor/prism.js"></script>
 </body>
 </html>

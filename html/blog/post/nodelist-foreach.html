@@ -6,7 +6,7 @@
 </head>
 <body class="page-post">
 <div class="container blog">
-<h3 class="post-title">NodeList的forEach方法的兼容性处理</h3>
+<h1 class="post-title">NodeList的forEach方法的兼容性处理</h1>
 <p>我们经常需要遍历<code>document.querySelectorAll</code>返回的结果，最理想的情况是直接使用forEach方法遍历，但是该结果是一个NodeList对象，而目前支持NodeList对象的forEach方法的浏览器只有：Chrome51+, Firefox50+, Safari10+，IE和Edge浏览器都不支持。对于这些浏览器，我们需要做一些兼容性处理，具体的方法有以下几种：</p>
 <pre><code class="lang-js">const elems = document.querySelectorAll(&#39;selector&#39;)
 </code></pre>
@@ -32,6 +32,7 @@ elems.forEach(elem =&gt; {
 </code></pre>
 <p>类似地，childNodes也是NodeList对象，同样可以用上面的方法处理。</p>
 </div>
+<!--#include file="/common/footer.html"-->
 <script src="/js/vendor/prism.js"></script>
 </body>
 </html>

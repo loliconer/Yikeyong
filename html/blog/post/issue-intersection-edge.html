@@ -6,7 +6,7 @@
 </head>
 <body class="page-post">
 <div class="container blog">
-<h3 class="post-title">IntersectionObserver在Edge15中无法观察空元素</h3>
+<h1 class="post-title">IntersectionObserver在Edge15中无法观察空元素</h1>
 <p>在了解到IntersectionObserver这个新特性后，觉得挺有意思的，便决定应用到本站。这个API的<a href="https://caniuse.com/#search=IntersectionObserver">兼容性</a>不是很好，目前知道的可以应用的地方主要有两个：一个是替代传统的图片懒加载，不仅性能有了很大的提升，代码也优雅了很多；另一个就是滚动到窗口底部时加载更多数据。</p>
 <p>我在<a href="/blog">博客首页</a>实现了第二种效果，Chrome和Firefox都没有问题，但是在Edge15上测试时发现没有任何效果，代码也不报错，就是没有发fetch请求数据，感觉很奇怪。先看代码：</p>
 <pre><code class="lang-html">&lt;div class=&quot;container&quot;&gt;
@@ -68,6 +68,7 @@
 <p>既然无法观察到空元素，那我就让元素有1px的大小，运行后一切正常。</p>
 <p>至此，问题得到了解决。至于Chrome和Firefox为什么能够观察到空元素，或许是因为毕竟有一个div在那，它们能够检测到div的存在和位置。对于Edge来说，这或许是个bug，或许它的本意就是这样。</p>
 </div>
+<!--#include file="/common/footer.html"-->
 <script src="/js/vendor/prism.js"></script>
 </body>
 </html>
