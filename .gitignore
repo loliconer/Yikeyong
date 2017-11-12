@@ -6,9 +6,16 @@ dist
 www
 node_modules
 public/js/*.bundle.js
+public/js/data/novels
+public/js/data/videos
+public/js/data/audios
+public/js/novel.js
 public/css/*.css
 !public/css/global.css
-/public/media
+/public/video
+/public/audio
 html/coin.html
 html/novel
+html/video
 src/js/coin.js
+src/md-novel

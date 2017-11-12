@@ -2,20 +2,51 @@
 @import (reference) "Bootstrapping/Mixins";
 @import "Layout/Blog";
 
-.page-novel {
-  .encrypt {
-    .hvcenter;
-    position: absolute;
-    top: 50px;
-    width: 100%;
-    height: calc(100% - 50px);
-    background-color: @main-color;
+.container {
+  .mixin-content-width;
 
-    .input {
-      background-color: @white-color;
+  .section {
+    h3 {
+      background-color: #E9FAFF;
+      font-weight: normal;
+      line-height: 40px;
+      padding-left: 10px;
+    }
+
+    > .list {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: @small-font;
+      padding-bottom: 20px;
+
+      li {
+        width: 50%;
+        line-height: 32px;
+        padding-left: 20px;
+        border-bottom: 1px dashed @border-color;
+      }
     }
   }
+}
 
+.encrypt {
+  .hvcenter;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  height: calc(100% - 50px);
+  background-color: @main-color;
+
+  &.disnone {
+    display: none;
+  }
+
+  .input {
+    background-color: @white-color;
+  }
+}
+
+.page-novel {
   header.header {
     .mixin-content-width;
     padding-top: 60px;
@@ -40,17 +71,7 @@
   }
 
   .container {
-    .mixin-content-width;
-
-    > .novels {
-      li {
-        line-height: 32px;
-        padding-left: 20px;
-        border-bottom: 1px dashed @border-color;
-      }
-    }
-
-    > .chapters {
+    .chapters {
       > .above {
         position: relative;
         border-bottom: 1px solid @border-color;
@@ -78,10 +99,10 @@
         > ul.list {
           display: flex;
           flex-wrap: wrap;
+          font-size: @small-font;
 
           li {
             width: 33%;
-            flex-grow: 1;
             line-height: 36px;
             border-bottom: 1px dashed @border-color;
           }
@@ -98,12 +119,56 @@
   background-color: #FAFAD2;
 
   .container {
-    .mixin-content-width;
     padding-top: 60px;
     padding-bottom: 1px;
 
+    .post-title {
+      text-align: center;
+    }
+
     p {
       line-height: 1.5;
+    }
+
+    .b-footer {
+      display: flex;
+      justify-content: space-between;
+      line-height: 60px;
+      border-top: 1px solid @border-color;
+    }
+  }
+}
+
+.page-video {
+  .video-player {
+    .icon-close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: @white-color;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+    }
+
+    video {
+      max-height: calc(100vh - 20px);
+    }
+  }
+}
+
+.page-club {
+  .container {
+    padding: 40px 0;
+
+    .list {
+      .btn {
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        margin-bottom: 40px;
+        font-size: @normal-font;
+      }
     }
   }
 }
