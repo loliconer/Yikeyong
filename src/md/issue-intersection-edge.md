@@ -1,4 +1,4 @@
-### IntersectionObserver在Edge15中无法观察空元素
+# IntersectionObserver在Edge15中无法观察空元素
 
 在了解到IntersectionObserver这个新特性后，觉得挺有意思的，便决定应用到本站。这个API的[兼容性](https://caniuse.com/#search=IntersectionObserver)不是很好，目前知道的可以应用的地方主要有两个：一个是替代传统的图片懒加载，不仅性能有了很大的提升，代码也优雅了很多；另一个就是滚动到窗口底部时加载更多数据。
 

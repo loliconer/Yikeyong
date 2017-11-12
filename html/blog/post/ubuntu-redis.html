@@ -6,8 +6,8 @@
 </head>
 <body class="page-post">
 <div class="container blog">
-<h3 class="post-title">Ubuntu安装Redis</h3>
-<h4>安装</h4>
+<h1 class="post-title">Ubuntu安装Redis</h1>
+<h2>安装</h2>
 <ol>
   <li><a href="http://redis.io/download">官网</a>下载tar.gz安装包安装
     <pre><code class="lang-bash">tar -zxvf redis-4.0.2.tar.gz
@@ -39,11 +39,11 @@ sudo mv redis.log /var/log
 </code></pre>
   </li>
 </ol>
-<h4>配置</h4>
+<h2>配置</h2>
 <blockquote>
   <p>//后台运行<br>daemonize yes<br>//日志<br>logfile &quot;/var/log/redis.log&quot;</p>
 </blockquote>
-<h4>设置开机自动启动</h4>
+<h2>设置开机自动启动</h2>
 <pre><code class="lang-bash">chmod +x /etc/init.d/redis
 vim /etc/init.d/redis
 </code></pre>
@@ -99,6 +99,7 @@ esac
 <pre><code class="lang-bash">update-rc.d redis-server defaults
 </code></pre>
 </div>
+<!--#include file="/common/footer.html"-->
 <script src="/js/vendor/prism.js"></script>
 </body>
 </html>

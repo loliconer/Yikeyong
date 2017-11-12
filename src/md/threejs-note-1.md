@@ -1,6 +1,6 @@
-### Three.js学习笔记（一）
+# Three.js学习笔记（一）
 
-#### 一、概念单词
+## 一、概念单词
 
 * Scene
 * Camera
@@ -11,9 +11,9 @@
 * Shader
 * Light
 
-#### 二、基础框架
+## 二、基础框架
 
-##### Scene
+### Scene
 
 所有的对象都需要加到场景中，如Camera，Mesh，Light等。
 
@@ -21,14 +21,14 @@
 let scene = new THREE.Scene()
 ```
 
-##### Camera
+### Camera
 
 ```js
 //PerspectiveCamera
 let camera = new THREE.PerspectiveCamera(angle, width/height, near, far)
 ```
 
-##### Renderer
+### Renderer
 
 ```js
 //WebGLRenderer
@@ -37,7 +37,7 @@ renderer.setSize(width, height)
 document.body.appendChild(renderer.domElement)
 ```
 
-##### Material
+### Material
 
 ```js
 //MeshBasicMaterial
@@ -46,20 +46,20 @@ let material = new THREE.MeshBashMaterial({
 })
 ```
 
-##### Geometry
+### Geometry
 
 ```js
 //CubeGeometry
 let geometry = new THREE.CubeGeometry(x, y, z, [segmentsX], [segmentsY], [segmentsZ], [materials], [sides])
 ```
 
-##### Mesh
+### Mesh
 
 ```js
 let mesh = new THREE.Mesh(geometry, material)
 ```
 
-##### Light
+### Light
 
 ```js
 //DirectionalLight
@@ -67,7 +67,7 @@ let light= new THREE.DirectionalLight(color, intensity)
 light.position.set(x, y, z)
 ```
 
-##### 渲染
+### 渲染
 
 ```js
 renderer.render(scene, camera, [renderTarget], [forceClear])
@@ -75,7 +75,7 @@ renderer.render(scene, camera, [renderTarget], [forceClear])
 
 renderTarget：渲染的目标，默认是渲染到前面定义的render中。 forceClear：每次绘制之前都将画布的内容清除，即使autoClear设置为false，也会清除。
 
-##### 完整的代码如下：
+### 完整的代码如下：
 
 ```js
 let scene, camera, renderer

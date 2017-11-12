@@ -1,6 +1,6 @@
-### Ubuntu安装Nginx
+# Ubuntu安装Nginx
 
-#### 官方包安装
+## 官方包安装
 添加Nginx签名
 > wget <a href="http://nginx.org/keys/nginx_signing.key">http://nginx.org/keys/nginx_signing.key</a>  
 apt-key add nginx_signing.key

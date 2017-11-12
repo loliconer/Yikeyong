@@ -1,6 +1,6 @@
-### Let's encrypt 实现全站https访问
+# Let's encrypt 实现全站https访问
 
-#### 1、使用Certbot客户端安装并配置Let's Encrypt
+## 1、使用Certbot客户端安装并配置Let's Encrypt
 
 ```bash
 sudo add-apt-repository ppa:certbot/certbot
@@ -16,7 +16,7 @@ sudo certbot --nginx
 30 2 * * 1 letsencrypt renew  
 systemctl restart cron
 
-#### 2、修改nginx.conf
+## 2、修改nginx.conf
 
 ```nginx
 server {
@@ -36,4 +36,4 @@ server {
 }
 ```
 
-#### 3、重启Nginx
+## 3、重启Nginx
