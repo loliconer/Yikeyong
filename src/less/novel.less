@@ -5,7 +5,21 @@
 .container {
   .mixin-content-width;
 
+  .tags {
+    position: sticky;
+    top: 0;
+    padding-top: 10px;
+    background-color: @white-color;
+
+    .btn {
+      border-radius: @border-radius-small;
+      margin-right: 10px;
+    }
+  }
+
   .section {
+    padding-top: 30px;
+
     h3 {
       background-color: #E9FAFF;
       font-weight: normal;
@@ -17,7 +31,6 @@
       display: flex;
       flex-wrap: wrap;
       font-size: @small-font;
-      padding-bottom: 20px;
 
       li {
         width: 50%;
