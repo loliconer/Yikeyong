@@ -46,7 +46,12 @@ body {
 .container {
   font-size: @normal-font;
   padding: 1px 0;
-  min-height: calc(~"100vh - 120px");
+  min-height: calc(100vh - 120px);
+
+  @media (max-width: 544px) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
 .footer {

@@ -10,33 +10,30 @@
     font-size: @big-font;
   }
 
-  .blog {
-    padding: 0 10px;
-  }
-  
   .container {
     .mixin-content-width;
     padding-top: 40px;
-    display: flex;
-    flex-wrap: wrap;
 
-    > .cell {
-      width: 50%;
-      margin-bottom: 20px;
+    .works {
+      display: flex;
+      flex-wrap: wrap;
 
-      .link {
-        display: block;
-        text-align: center;
-        border: 1px solid @border-color;
-        width: 80%;
-        padding: 10px 0;
-        margin: 0 auto;
-      }
-    }
+      .cell {
+        width: 50%;
+        margin-bottom: 20px;
 
-    @media (max-width: 544px) {
-      > .cell {
-        width: 100%;
+        .link {
+          display: block;
+          text-align: center;
+          border: 1px solid @border-color;
+          width: 80%;
+          padding: 10px 0;
+          margin: 0 auto;
+        }
+
+        @media (max-width: 544px) {
+          width: 100%;
+        }
       }
     }
   }

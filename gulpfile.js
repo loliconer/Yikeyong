@@ -62,7 +62,7 @@ gulp.task('js', () => {
 })
 
 gulp.task('html', () => {
-  gulp.src('html/**/*.*')
+  gulp.src(['html/**/*.*', '!html/novel/**/*.*', '!html/blog/**/*.*'])
     .pipe(cached('html'))
     .pipe(livereload())
 })
@@ -128,7 +128,7 @@ gulp.task('watch', ['less'], () => {
     })
   })
   gulp.watch('public/js/*.*', ['js'])
-  gulp.watch('html/**/*.*', ['html'])
+  gulp.watch(['html/**/*.*', '!html/novel/**/*.*', '!html/blog/**/*.*'], ['html'])
 })
 
 gulp.task('default', () => gulp.start('watch'))
