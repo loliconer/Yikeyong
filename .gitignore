@@ -17,5 +17,6 @@ public/css/*.css
 html/coin.html
 html/novel
 html/video
+html/audio
 src/js/coin.js
 src/md-novel
