@@ -66,17 +66,94 @@
   }
 }
 
+.hexagon {
+  position: relative;
+  width: 100px;
+  height: 55px;
+  background-color: red;
+}
+
+.hexagon:before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 25px solid red;
+}
+
+.hexagon:after {
+  content: '';
+  position: absolute;
+  bottom: -25px;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 25px solid red;
+}
+
 .page-club {
   .container {
+    padding-top: 40px;
+
     .list {
-      padding: 40px 0;
+      padding: 50px 0;
+      height: 370px;
+      display: flex;
+      overflow: hidden;
+
+      li {
+        //flex: 1;
+        text-align: center;
+
+        &:nth-child(1), &:nth-child(3) {
+          align-self: flex-start;
+        }
+
+        &:nth-child(2), &:nth-child(4) {
+          align-self: flex-end;
+        }
+
+        &:nth-child(2) {
+          transform: translateX(-99px) translateY(1px);
+        }
+
+        &:nth-child(3) {
+          transform: translateX(-199px);
+        }
+
+        &:nth-child(4) {
+          transform: translateX(-298px) translateY(1px);
+        }
+      }
 
       .btn {
-        width: 100%;
-        height: 60px;
-        line-height: 60px;
-        margin-bottom: 40px;
         font-size: @normal-font;
+
+        position: relative;
+        width: 200px;
+        height: 110px;
+        line-height: 110px;
+        background-color: @blue-color;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: -50px;
+          border-left: 100px solid transparent;
+          border-right: 100px solid transparent;
+          border-bottom: 50px solid @blue-color;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -50px;
+          border-left: 100px solid transparent;
+          border-right: 100px solid transparent;
+          border-top: 50px solid @blue-color;
+        }
       }
     }
   }

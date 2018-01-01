@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Ripple</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="//guomy.oss-cn-shenzhen.aliyuncs.com/css/vendor/lovue.css">
+  <link rel="stylesheet" href="/css/ripple.css">
+  <script src="/js/vendor/vue.js"></script>
+  <script src="//guomy.oss-cn-shenzhen.aliyuncs.com/js/vendor/lovue.min.js"></script>
+  <script src="//guomy.oss-cn-shenzhen.aliyuncs.com/js/vendor/lovue-utils.js"></script>
+  <script src="/js/ripple.bundle.js" defer></script>
+</head>
+<body>
+<div id="app">
+  <input type="hidden" v-if="trigger">
+  <div class="container">
+    <div class="m-balances">
+      <span>余额：</span>
+      <span>XRP: {{balances.XRP}}</span>
+      <span>CNY: {{balances.CNY}}</span>
+      <span>Fee: {{kdb.fee}}</span>
+      <span>总资产：{{asset}}</span>
+    </div>
+
+    <div class="m-openorders">
+      <table class="table bordered">
+        <thead>
+        <tr>
+          <th>Direction</th>
+          <th>Price</th>
+          <th>Amount</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr v-for="o of kdb.orders">
+          <td>{{o.direction}}</td>
+          <td>{{o.direction === 'buy' ? (1 / Number(o.price)).toFixed(5) : o.price}}</td>
+          <td>{{o.amount}}</td>
+          <td><button class="btn" type="button" @click="cancelOrder(o.sequence)">Cancel</button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="m-buy-sell">
+      <div class="m-buy">
+        <input class="input" placeholder="数量" v-model.number="amount">
+        <input class="input" placeholder="价格" v-model.number="price">
+        <button class="btn" type="button" @click="openOrder('buy')">买</button>
+      </div>
+
+      <div class="m-buy">
+        <input class="input" placeholder="数量" v-model.number="amount">
+        <input class="input" placeholder="价格" v-model.number="price">
+        <button class="btn" type="button" @click="openOrder('sell')">卖</button>
+      </div>
+    </div>
+
+    <div class="m-orderbook">
+      <div class="o-bids">
+        <table class="table bordered">
+          <thead>
+          <tr>
+            <th>Address</th>
+            <th>Size</th>
+            <th>Price</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr v-for="bid of kdb.orderbooks.bids">
+            <td>{{bid.address}}</td>
+            <td>{{bid.size}}</td>
+            <td>{{bid.price}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="o-asks">
+        <table class="table bordered">
+          <thead>
+          <tr>
+            <th>Price</th>
+            <th>Size</th>
+            <th>Address</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr v-for="ask of kdb.orderbooks.asks">
+            <td>{{ask.price}}</td>
+            <td>{{ask.size}}</td>
+            <td>{{ask.address}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+@import "Bootstrapping/Variables";
+@import (reference) "Bootstrapping/Mixins";
+
+.container {
+  padding: 10px;
+}
+
+.m-balances {
+  padding: 10px 0;
+  margin-bottom: 10px;
+  text-align: center;
+  border: 1px solid @border-color;
+
+  span {
+    margin-left: 20px;
+  }
+}
+
+.m-openorders {
+  margin-bottom: 10px;
+}
+
+.m-orderbook {
+  display: flex;
+  justify-content: space-between;
+
+  .o-bids,
+  .o-asks {
+    width: 45%;
+  }
+}
+
+.m-buy-sell {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
