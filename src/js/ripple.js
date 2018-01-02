@@ -93,6 +93,7 @@ new Vue({
   watch: {
     orderCount() {
       this.warn('有更新')
+      this.sendEmail()
     }
   },
   methods: {
@@ -151,6 +152,19 @@ new Vue({
         this.amount = 200
         this.price = 0
       })
+    },
+    sendEmail() {
+      _fetch({
+        type: 'post',
+        url: 'ripple/email',
+        data: {
+          xrp: this.balances.XRP,
+          cny: this.balances.CNY,
+          asset: this.asset,
+          bid: this.kdb.orderbooks.bids[0].price,
+          ask: this.kdb.orderbooks.asks[0].price
+        }
+      }).then(() => {})
     }
   },
   mounted() {
