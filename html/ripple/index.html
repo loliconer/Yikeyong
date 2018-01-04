@@ -48,12 +48,14 @@
 
     <div class="m-buy-sell">
       <div class="m-buy">
+        <button class="btn" type="button" @click="fastOrder('buy')">快速挂单</button>
         <input class="input" placeholder="数量" v-model.number="amount">
         <input class="input" placeholder="价格" v-model.number="price">
         <button class="btn" type="button" @click="openOrder('buy')">买</button>
       </div>
 
       <div class="m-buy">
+        <button class="btn" type="button" @click="fastOrder('sell')">快速挂单</button>
         <input class="input" placeholder="数量" v-model.number="amount">
         <input class="input" placeholder="价格" v-model.number="price">
         <button class="btn" type="button" @click="openOrder('sell')">卖</button>

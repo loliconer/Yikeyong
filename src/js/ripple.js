@@ -153,6 +153,32 @@ new Vue({
         this.price = 0
       })
     },
+    fastOrder(dir) {
+      let price
+      if (dir === 'buy') {
+        price = this.kdb.orderbooks.bids[0].price
+      }
+      if (dir === 'sell') {
+        price = this.kdb.orderbooks.asks[0].price
+      }
+      if (!dir) {
+        this.warn('价格为空')
+        return
+      }
+      _fetch({
+        type: 'post',
+        url: 'ripple/order',
+        data: {
+          direction: dir,
+          amount: 200,
+          price
+        }
+      }).then(() => {
+        this.success('提交成功')
+        this.amount = 200
+        this.price = 0
+      })
+    },
     sendEmail() {
       _fetch({
         type: 'post',
