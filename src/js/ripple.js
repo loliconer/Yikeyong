@@ -66,11 +66,13 @@ const _fetch = option => {
       if (body.code === 0) {
         resolve(body.data);
       } else {
-        throw config$1.errorMsg[body.code] || body.msg || body
+        throw body.data || body.msg || body
       }
     }).catch(err => reject(err));
   })
 };
+
+const KEY = ''
 
 new Vue({
   el: '#app',
@@ -120,6 +122,8 @@ new Vue({
           this.triggerUpdate()
 
           setTimeout(() => this.getBalances(), 6000)
+        }).catch(error => {
+          setTimeout(() => this.getBalances(), 6000)
         })
     },
     getKdb() {
@@ -133,10 +137,13 @@ new Vue({
     cancelOrder(sequence) {
       _fetch({
         type: 'delete',
-        url: `ripple/orders/${sequence}`
+        url: `ripple/orders/${sequence}`,
+        data: {
+          key: KEY
+        }
       }).then(() => {
         this.success('取消成功')
-      })
+      }).catch(this.error)
     },
     openOrder(dir) {
       _fetch({
@@ -145,13 +152,14 @@ new Vue({
         data: {
           direction: dir,
           amount: this.amount,
-          price: this.price
+          price: this.price,
+          key: KEY
         }
       }).then(() => {
         this.success('提交成功')
         this.amount = 200
         this.price = 0
-      })
+      }).catch(this.error)
     },
     fastOrder(dir) {
       let price
@@ -171,13 +179,14 @@ new Vue({
         data: {
           direction: dir,
           amount: 200,
-          price
+          price,
+          key: KEY
         }
       }).then(() => {
         this.success('提交成功')
         this.amount = 200
         this.price = 0
-      })
+      }).catch(this.error)
     },
     sendEmail() {
       _fetch({
