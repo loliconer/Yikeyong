@@ -1,3 +1,5 @@
+const KEY = ''
+
 const _fetch = option => {
   if (typeof option === 'string') {
     option = {
@@ -13,26 +15,15 @@ const _fetch = option => {
     post: {
       method: 'post',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Auth-Key': KEY
       },
       body: JSON.stringify(option.data)
-    },
-    form: {
-      method: 'post',
-      body: option.data
-    },
-    put: {
-      method: 'put',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(option.data)
-    },
-    putForm: {
-      method: 'put',
-      body: option.data
     },
     delete: {
+      headers: {
+        'Auth-Key': KEY
+      },
       method: 'delete'
     }
   };
@@ -42,9 +33,6 @@ const _fetch = option => {
   requestOption.credentials = 'same-origin';
   requestOption.headers = requestOption.headers || {};
   requestOption.headers['Accept'] = 'application/json';
-  if (option.type !== 'get') {
-    requestOption.headers['X-CSRFToken'] = sessionStorage.csrf;
-  }
 
   let url;
   if (option.url.startsWith('/') || option.url.startsWith('http')) {
@@ -71,8 +59,6 @@ const _fetch = option => {
     }).catch(err => reject(err));
   })
 };
-
-const KEY = ''
 
 new Vue({
   el: '#app',
@@ -127,7 +113,7 @@ new Vue({
         })
     },
     getKdb() {
-      _fetch(`ripple/kdb`)
+      _fetch('ripple/kdb')
         .then(body => {
           this.kdb = body
           this.orderCount = body.orders.length
