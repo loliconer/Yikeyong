@@ -1,4 +1,4 @@
-const KEY = ''
+let KEY = ''
 
 const _fetch = option => {
   if (typeof option === 'string') {
@@ -76,7 +76,9 @@ new Vue({
     amount: 200,
     price: 0,
     orderCount: 0,
-    asset: 0
+    asset: 0,
+    tab: 0,
+    showContainer: false
   },
   watch: {
     orderCount() {
@@ -87,6 +89,14 @@ new Vue({
   methods: {
     triggerUpdate() {
       this.trigger = !this.trigger
+    },
+    enter(ev) {
+      KEY = ev.target.value
+      sessionStorage.authKey = KEY
+      this.showContainer = true
+
+      this.getBalances()
+      this.getKdb()
     },
     getBalances() {
       _fetch('https://data.ripple.com/v2/accounts/rHJ9vCnbfF2VzMBoaQnTA2J6stWZGNeJun/balances')
@@ -164,7 +174,7 @@ new Vue({
         url: 'ripple/order',
         data: {
           direction: dir,
-          amount: 200,
+          amount: 50,
           price,
           key: KEY
         }
@@ -186,10 +196,18 @@ new Vue({
           ask: this.kdb.orderbooks.asks[0].price
         }
       }).then(() => {})
+    },
+    selectTab(i) {
+      this.tab = i
     }
   },
-  mounted() {
-    this.getBalances()
-    this.getKdb()
+  created() {
+    if (sessionStorage.authKey) {
+      KEY = sessionStorage.authKey
+      this.showContainer = true
+
+      this.getBalances()
+      this.getKdb()
+    }
   }
 })

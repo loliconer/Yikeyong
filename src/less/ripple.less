@@ -35,3 +35,42 @@
   justify-content: space-around;
   margin-bottom: 10px;
 }
+
+.mobile {
+  .vue-tab {
+    box-shadow: none;
+    width: 100%;
+  }
+
+  .m-balances {
+    padding-left: 10px;
+
+    div {
+      text-align: left;
+      line-height: 1.5em;
+    }
+  }
+
+  .m-orderbook {
+    .o-bids,
+    .o-asks {
+      width: 48%;
+    }
+  }
+
+  .m-buy {
+    > * {
+      margin-bottom: 10px;
+    }
+  }
+
+  .bg {
+    text-align: center;
+    padding: 20px 0;
+    background-color: @first-level-color;
+
+    .input {
+      background-color: @white-color;
+    }
+  }
+}
