@@ -20,7 +20,10 @@
 <body>
 <div id="app">
   <input type="hidden" v-if="trigger">
-  <div class="container">
+  <div class="bg" v-if="!showContainer">
+    <input type="text" class="input" @keypress.enter="enter">
+  </div>
+  <div class="container" v-else>
     <div class="m-balances">
       <span>余额：</span>
       <span>XRP: {{balances.XRP}}</span>
@@ -45,7 +48,7 @@
           <td>{{o.direction}}</td>
           <td>{{o.direction === 'buy' ? (1 / Number(o.price)).toFixed(5) : o.price}}</td>
           <td>{{o.amount}}</td>
-          <td><button class="btn" type="button" @click="cancelOrder(o.sequence)">Cancel</button></td>
+          <td><vue-submit-button text="撤单" type="button" :loading="o.loading" @click.native="cancelOrder(o)"></vue-submit-button></td>
         </tr>
         </tbody>
       </table>
@@ -53,17 +56,17 @@
 
     <div class="m-buy-sell">
       <div class="m-buy">
-        <button class="btn" type="button" @click="fastOrder('buy')">快速挂单</button>
+        <vue-submit-button text="快速挂单" type="button" :loading="loadings.fastBuy" @click.native="fastOrder('buy')"></vue-submit-button>
         <input class="input" placeholder="数量" v-model.number="amount">
         <input class="input" placeholder="价格" v-model.number="price">
-        <button class="btn" type="button" @click="openOrder('buy')">买</button>
+        <vue-submit-button text="买" type="button" :loading="loadings.buy" @click.native="openOrder('buy')"></vue-submit-button>
       </div>
 
       <div class="m-buy">
-        <button class="btn" type="button" @click="fastOrder('sell')">快速挂单</button>
+        <vue-submit-button text="快速挂单" type="button" :loading="loadings.fastSell" @click.native="fastOrder('sell')"></vue-submit-button>
         <input class="input" placeholder="数量" v-model.number="amount">
         <input class="input" placeholder="价格" v-model.number="price">
-        <button class="btn" type="button" @click="openOrder('sell')">卖</button>
+        <vue-submit-button text="卖" type="button" :loading="loadings.sell" @click.native="openOrder('sell')"></vue-submit-button>
       </div>
     </div>
 

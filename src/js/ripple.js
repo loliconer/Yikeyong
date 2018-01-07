@@ -78,7 +78,13 @@ new Vue({
     orderCount: 0,
     asset: 0,
     tab: 0,
-    showContainer: false
+    showContainer: false,
+    loadings: {
+      fastBuy: false,
+      fastSell: false,
+      buy: false,
+      sell: false
+    }
   },
   watch: {
     orderCount() {
@@ -130,18 +136,35 @@ new Vue({
           setTimeout(() => this.getKdb(), 2000)
         })
     },
-    cancelOrder(sequence) {
+    cancelOrder(order) {
+      if (order.loading) return
+      order.loading = true
+      this.triggerUpdate()
       _fetch({
         type: 'delete',
-        url: `ripple/orders/${sequence}`,
+        url: `ripple/orders/${order.sequence}`,
         data: {
           key: KEY
         }
       }).then(() => {
         this.success('取消成功')
-      }).catch(this.error)
+        order.loading = false
+        this.triggerUpdate()
+      }).catch(error => {
+        this.error(error)
+        order.loading = false
+        this.triggerUpdate()
+      })
     },
     openOrder(dir) {
+      if (dir === 'buy') {
+        if (this.loadings.buy) return
+        this.loadings.buy = true
+      }
+      if (dir === 'sell') {
+        if (this.loadings.sell) return
+        this.loadings.sell = true
+      }
       _fetch({
         type: 'post',
         url: 'ripple/order',
@@ -155,15 +178,33 @@ new Vue({
         this.success('提交成功')
         this.amount = 200
         this.price = 0
-      }).catch(this.error)
+        if (dir === 'buy') {
+          this.loadings.buy = false
+        }
+        if (dir === 'sell') {
+          this.loadings.sell = false
+        }
+      }).catch(error => {
+        this.error(error)
+        if (dir === 'buy') {
+          this.loadings.buy = false
+        }
+        if (dir === 'sell') {
+          this.loadings.sell = false
+        }
+      })
     },
     fastOrder(dir) {
       let price
       if (dir === 'buy') {
-        price = this.kdb.orderbooks.bids[0].price
+        if (this.loadings.fastBuy) return
+        this.loadings.fastBuy = true
+        price = +this.kdb.orderbooks.bids[0].price + 0.0001
       }
       if (dir === 'sell') {
-        price = this.kdb.orderbooks.asks[0].price
+        if (this.loadings.fastSell) return
+        this.loadings.fastSell = true
+        price = +this.kdb.orderbooks.asks[0].price - 0.0001
       }
       if (!dir) {
         this.warn('价格为空')
@@ -182,7 +223,21 @@ new Vue({
         this.success('提交成功')
         this.amount = 200
         this.price = 0
-      }).catch(this.error)
+        if (dir === 'buy') {
+          this.loadings.fastBuy = false
+        }
+        if (dir === 'sell') {
+          this.loadings.fastSell = false
+        }
+      }).catch(error => {
+        this.error(error)
+        if (dir === 'buy') {
+          this.loadings.fastBuy = false
+        }
+        if (dir === 'sell') {
+          this.loadings.fastSell = false
+        }
+      })
     },
     sendEmail() {
       _fetch({
