@@ -57,15 +57,15 @@
     <div class="m-buy-sell">
       <div class="m-buy">
         <vue-submit-button text="快速挂单" type="button" :loading="loadings.fastBuy" @click.native="fastOrder('buy')"></vue-submit-button>
-        <input class="input" placeholder="数量" v-model.number="amount">
-        <input class="input" placeholder="价格" v-model.number="price">
+        <input class="input" type="number" placeholder="数量" v-model.number="amount">
+        <input class="input" type="number" placeholder="价格" v-model.number="price">
         <vue-submit-button text="买" type="button" :loading="loadings.buy" @click.native="openOrder('buy')"></vue-submit-button>
       </div>
 
       <div class="m-buy">
         <vue-submit-button text="快速挂单" type="button" :loading="loadings.fastSell" @click.native="fastOrder('sell')"></vue-submit-button>
-        <input class="input" placeholder="数量" v-model.number="amount">
-        <input class="input" placeholder="价格" v-model.number="price">
+        <input class="input" type="number" placeholder="数量" v-model.number="amount">
+        <input class="input" type="number" placeholder="价格" v-model.number="price">
         <vue-submit-button text="卖" type="button" :loading="loadings.sell" @click.native="openOrder('sell')"></vue-submit-button>
       </div>
     </div>
