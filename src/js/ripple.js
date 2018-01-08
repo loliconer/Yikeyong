@@ -89,10 +89,10 @@ new Vue({
   },
   watch: {
     orderCount() {
-      this.warn('有更新')
       if (firstQuery) {
         firstQuery = false
       } else {
+        this.warn('有更新')
         this.sendEmail()
       }
     }
