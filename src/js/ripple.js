@@ -1,4 +1,5 @@
 let KEY = ''
+let firstQuery = true
 
 const _fetch = option => {
   if (typeof option === 'string') {
@@ -89,7 +90,11 @@ new Vue({
   watch: {
     orderCount() {
       this.warn('有更新')
-      this.sendEmail()
+      if (firstQuery) {
+        firstQuery = false
+      } else {
+        this.sendEmail()
+      }
     }
   },
   methods: {
