@@ -161,88 +161,67 @@ new Vue({
         this.triggerUpdate()
       })
     },
-    openOrder(dir) {
-      if (dir === 'buy') {
-        if (this.loadings.buy) return
-        this.loadings.buy = true
-      }
-      if (dir === 'sell') {
-        if (this.loadings.sell) return
-        this.loadings.sell = true
-      }
-      _fetch({
+    submitOrder(options) {
+      return _fetch({
         type: 'post',
         url: 'ripple/order',
         data: {
-          direction: dir,
-          amount: this.amount,
-          price: this.price,
+          direction: options.direction,
+          amount: options.amount || this.amount,
+          price: options.price || this.price,
           key: KEY
         }
       }).then(() => {
         this.success('提交成功')
         this.amount = 200
         this.price = 0
-        if (dir === 'buy') {
-          this.loadings.buy = false
-        }
-        if (dir === 'sell') {
-          this.loadings.sell = false
-        }
-      }).catch(error => {
-        this.error(error)
-        if (dir === 'buy') {
-          this.loadings.buy = false
-        }
-        if (dir === 'sell') {
-          this.loadings.sell = false
-        }
-      })
+      }).catch(this.error)
+    },
+    buy() {
+      if (this.loadings.buy) return
+      this.loadings.buy = true
+      this.submitOrder({ direction: 'buy' })
+        .then(() => this.loadings.buy = false)
+        .catch(() => this.loadings.buy = false)
+    },
+    sell() {
+      if (this.loadings.sell) return
+      this.loadings.sell = true
+      this.submitOrder({ direction: 'sell' })
+        .then(() => this.loadings.sell = false)
+        .catch(() => this.loadings.sell = false)
+    },
+    openOrder(dir) {
+      if (dir === 'buy') this.buy()
+      if (dir === 'sell') this.sell()
+    },
+    fastBuy() {
+      if (this.loadings.fastBuy) return
+      this.loadings.fastBuy = true
+      let price = +this.kdb.orderbooks.bids[0].price + 0.0001
+
+      this.submitOrder({
+        direction: 'buy',
+        amount: 50,
+        price
+      }).then(() => this.loadings.fastBuy = false)
+        .catch(() => this.loadings.fastBuy = false)
+    },
+    fastSell() {
+      if (this.loadings.fastSell) return
+      this.loadings.fastSell = true
+      let price = +this.kdb.orderbooks.asks[0].price - 0.0001
+
+      this.submitOrder({
+        direction: 'sell',
+        amount: 50,
+        price
+      }).then(() => this.loadings.fastSell = false)
+        .catch(() => this.loadings.fastSell = false)
     },
     fastOrder(dir) {
-      let price
-      if (dir === 'buy') {
-        if (this.loadings.fastBuy) return
-        this.loadings.fastBuy = true
-        price = +this.kdb.orderbooks.bids[0].price + 0.0001
-      }
-      if (dir === 'sell') {
-        if (this.loadings.fastSell) return
-        this.loadings.fastSell = true
-        price = +this.kdb.orderbooks.asks[0].price - 0.0001
-      }
-      if (!dir) {
-        this.warn('价格为空')
-        return
-      }
-      _fetch({
-        type: 'post',
-        url: 'ripple/order',
-        data: {
-          direction: dir,
-          amount: 50,
-          price,
-          key: KEY
-        }
-      }).then(() => {
-        this.success('提交成功')
-        this.amount = 200
-        this.price = 0
-        if (dir === 'buy') {
-          this.loadings.fastBuy = false
-        }
-        if (dir === 'sell') {
-          this.loadings.fastSell = false
-        }
-      }).catch(error => {
-        this.error(error)
-        if (dir === 'buy') {
-          this.loadings.fastBuy = false
-        }
-        if (dir === 'sell') {
-          this.loadings.fastSell = false
-        }
-      })
+      if (dir === 'buy') this.fastBuy()
+      if (dir === 'sell') this.fastSell()
     },
     sendEmail() {
       _fetch({
