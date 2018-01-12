@@ -50,7 +50,7 @@
     "less-loader": "^4.0.4",
     "lovue-utils": "^1.0.0",
     "lozad": "^1.0.4",
-    "marked": "^0.3.6",
+    "marked": "^0.3.12",
     "mocha": "^3.5.3",
     "nprogress": "^0.2.0",
     "sinon": "^2.4.1",
