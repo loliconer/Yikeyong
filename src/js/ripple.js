@@ -138,8 +138,12 @@ new Vue({
         .then(body => {
           this.kdb = body
           this.orderCount = body.orders.length
+          this.setTitle()
           setTimeout(() => this.getKdb(), 2000)
         })
+    },
+    setTitle() {
+      document.title = `${this.kdb.orderbooks.bids[0].price} / ${this.kdb.orderbooks.asks[0].price} | Ripple`
     },
     cancelOrder(order) {
       if (order.loading) return
