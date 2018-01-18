@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Rich | Ripple</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="//guomy.oss-cn-shenzhen.aliyuncs.com/css/vendor/lovue.css">
+  <link rel="stylesheet" href="/css/ripple.css">
+  <script>
+    if (/Mobi/i.test(navigator.userAgent)) {
+      location.href = '/ripple/mobile.html'
+    }
+  </script>
+  <script src="/js/vendor/vue.js"></script>
+  <script src="//guomy.oss-cn-shenzhen.aliyuncs.com/js/vendor/lovue.min.js"></script>
+  <script src="//guomy.oss-cn-shenzhen.aliyuncs.com/js/vendor/lovue-utils.js"></script>
+  <script src="/js/ripple-rich.bundle.js" defer></script>
+</head>
+<body class="page-rich">
+<div id="app">
+  <input type="hidden" v-if="trigger">
+  <div class="container">
+    <div class="panel" v-for="(info, addr) of balances">
+      <div class="p-head">{{addr}}</div>
+      <div class="p-body">
+        <div class="row balance">XRP: {{info.XRP}}, CNY: {{info.CNY}}</div>
+        <div class="row openorders">
+          <table class="table bordered">
+            <thead>
+            <tr>
+              <th>Direction</th>
+              <th>Price</th>
+              <th>Amount</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr v-for="o of info.openorders">
+              <td>{{o.direction}}</td>
+              <td>{{o.direction === 'buy' ? (1 / Number(o.price)).toFixed(5) : o.price}}</td>
+              <td>{{o.amount}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+</body>
+</html>
