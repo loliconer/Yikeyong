@@ -53,7 +53,7 @@
         </tr>
         </tbody>
       </table>
-    </div>
+    </div><!-- end openorders -->
 
     <div class="m-buy-sell">
       <div class="m-buy">
@@ -69,7 +69,7 @@
         <input class="input" type="number" placeholder="价格" v-model.number="price">
         <vue-submit-button text="卖" type="button" :loading="loadings.sell" @click.native="openOrder('sell')"></vue-submit-button>
       </div>
-    </div>
+    </div><!-- end buy sell -->
 
     <div class="m-orderbook">
       <div class="o-bids">
@@ -110,6 +110,33 @@
           </tbody>
         </table>
       </div>
+    </div><!-- end orderbook -->
+
+    <div class="m-transactions" style="margin-top: 20px;">
+      <button class="btn" style="margin-bottom: 20px;" type="button" @click="getTransactions">Refresh</button>
+      <table class="table bordered">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Type</th>
+            <th>XRP</th>
+            <th>CNY</th>
+            <th>Price</th>
+            <th>Fee</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr v-for="t of transactions">
+            <td>{{t.time}}</td>
+            <td>{{t.type}}</td>
+            <td>{{t.xrp}}</td>
+            <td>{{t.cny}}</td>
+            <td>{{(t.cny / t.xrp).toFixed(2)}}</td>
+            <td>{{t.fee}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

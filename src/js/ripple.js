@@ -85,7 +85,8 @@ new Vue({
       fastSell: false,
       buy: false,
       sell: false
-    }
+    },
+    transactions: []
   },
   watch: {
     orderCount() {
@@ -108,6 +109,7 @@ new Vue({
 
       this.getBalances()
       this.getKdb()
+      this.getTransactions()
     },
     getBalances() {
       _fetch('https://data.ripple.com/v2/accounts/rHJ9vCnbfF2VzMBoaQnTA2J6stWZGNeJun/balances')
@@ -131,6 +133,35 @@ new Vue({
           setTimeout(() => this.getBalances(), 6000)
         }).catch(error => {
           setTimeout(() => this.getBalances(), 6000)
+        })
+    },
+    getTransactions() {
+      _fetch('https://data.ripple.com/v2/accounts/rHJ9vCnbfF2VzMBoaQnTA2J6stWZGNeJun/transactions?start=2018-01-23')
+        .then(body => {
+          this.transactions = []
+          body.transactions.forEach(t => {
+            let pays = t.tx.TakerPays
+            let gets = t.tx.TakerGets
+            let type, xrp = 0, cny = 0
+            if (typeof pays === 'string') {
+              type = 'Sell'
+              xrp = Number((Number(pays) / 1000000).toFixed(2))
+              cny = Number(Number(gets.value).toFixed(2))
+            } else {
+              type = 'Buy'
+              xrp = Number((Number(gets) / 1000000).toFixed(2))
+              cny = Number(Number(pays.value).toFixed(2))
+            }
+            this.transactions.push({
+              time: t.date,
+              fee: t.tx.Fee,
+              type,
+              xrp,
+              cny
+            })
+          })
+
+          this.triggerUpdate()
         })
     },
     getKdb() {
@@ -251,6 +282,7 @@ new Vue({
 
       this.getBalances()
       this.getKdb()
+      this.getTransactions()
     }
   }
 })
