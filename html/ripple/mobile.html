@@ -101,10 +101,10 @@
               </thead>
 
               <tbody>
-              <tr v-for="o of kdb.orders">
+              <tr v-for="o of openOrders">
                 <td>{{o.direction}}</td>
-                <td>{{o.direction === 'buy' ? (1 / Number(o.price)).toFixed(5) : o.price}}</td>
-                <td>{{o.amount}}</td>
+                <td>{{o.rate}}</td>
+                <td>{{o.xrp}}</td>
                 <td>
                   <vue-submit-button text="撤单" type="button" :loading="o.loading" @click.native="cancelOrder(o)"></vue-submit-button>
                 </td>
