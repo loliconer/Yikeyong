@@ -111,7 +111,6 @@ new Vue({
       this.getBalances()
       this.getKdb()
       this.getTransactions()
-      this.getOpenOrders()
     },
     getBalances() {
       _fetch('https://data.ripple.com/v2/accounts/rHJ9vCnbfF2VzMBoaQnTA2J6stWZGNeJun/balances')
@@ -135,37 +134,6 @@ new Vue({
           setTimeout(() => this.getBalances(), 6000)
         }).catch(error => {
           setTimeout(() => this.getBalances(), 6000)
-        })
-    },
-    getOpenOrders() {
-      _fetch('https://data.ripple.com/v2/accounts/rHJ9vCnbfF2VzMBoaQnTA2J6stWZGNeJun/orders')
-        .then(body => {
-          this.openOrders = []
-          body.orders.forEach(o => {
-            const sequence = o.properties.sequence
-            const xrp = Number(o.specification.quantity.value)
-            const cny = Number(o.specification.totalPrice.value)
-            let rate = Number(Number(o.properties.makerExchangeRate).toFixed(6))
-            let direction
-            if (rate < 1) {
-              direction = 'buy'
-              rate = Number((1 / rate).toFixed(3))
-            } else {
-              direction = 'sell'
-              rate = Number(rate)
-            }
-            this.openOrders.push({
-              direction,
-              xrp,
-              cny,
-              rate,
-              sequence
-            })
-          })
-          this.openOrders.sort((a, b) => {
-            return a.sequence - b.sequence
-          })
-          this.triggerUpdate()
         })
     },
     getTransactions() {
@@ -316,7 +284,6 @@ new Vue({
       this.getBalances()
       this.getKdb()
       this.getTransactions()
-      this.getOpenOrders()
     }
   }
 })
