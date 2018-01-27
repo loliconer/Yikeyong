@@ -1,6 +1,6 @@
-### Three.js学习笔记（二）
+# Three.js学习笔记（二）
 
-#### 一、点与线
+## 一、点与线
 
 **点**
 
@@ -36,7 +36,7 @@ let line = new THREE.Line(geometry, material, THREE.LinePieces)
 scene.add(line)
 ```
 
-#### 二、性能监视器的使用
+## 二、性能监视器的使用
 
 1. 引入js文件
 2. 初始化
@@ -50,7 +50,7 @@ document.body.appendChild(stats.domElement)
 ```
 3. 在animation函数中调用update()
 
-#### 三、使用Tween引擎创建动画
+## 三、使用Tween引擎创建动画
 
 1. 引入min.js文件
 2. 初始化

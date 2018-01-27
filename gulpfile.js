@@ -8,7 +8,9 @@ const cached = require('gulp-cached')
 const replace = require('gulp-replace')
 const fs = require('fs')
 const path = require('path')
-let md = require('./src/js/lib/md.js')
+const md = require('./src/js/lib/md.js')
+const novels = require('./src/md-novel/novels')
+const mdNovel = require('./src/js/lib/md-novel')
 
 gulp.task('build', ['less', 'md', 'md-diy'], () => {
   gulp.src(['public/js/*.*', 'public/js/@(data)/*.*'])
@@ -60,7 +62,7 @@ gulp.task('js', () => {
 })
 
 gulp.task('html', () => {
-  gulp.src('html/**/*.*')
+  gulp.src(['html/**/*.*', '!html/novel/**/*.*', '!html/blog/**/*.*'])
     .pipe(cached('html'))
     .pipe(livereload())
 })
@@ -90,7 +92,29 @@ gulp.task('md-diy', () => {
   })
 })
 
+gulp.task('md-novel', () => {
+  const {long, short} = novels
 
+  short.forEach(n => {
+    mdNovel(`./src/md-novel/${n.value}.md`, {
+      dest: './html/novel/short',
+      title: n.name
+    })
+  })
+
+  long.forEach(n => {
+    const len = n.chapters.length
+    n.chapters.forEach((c, i) => {
+      mdNovel(`./src/md-novel/${n.value}/${i+1}.md`, {
+        dest: `./html/novel/${n.value}`,
+        index: i + 1,
+        title: c,
+        first: i === 0,
+        last: i === len - 1
+      })
+    })
+  })
+})
 
 gulp.task('watch', ['less'], () => {
   livereload.listen({
@@ -104,7 +128,7 @@ gulp.task('watch', ['less'], () => {
     })
   })
   gulp.watch('public/js/*.*', ['js'])
-  gulp.watch('html/**/*.*', ['html'])
+  gulp.watch(['html/**/*.*', '!html/novel/**/*.*', '!html/blog/**/*.*'], ['html'])
 })
 
 gulp.task('default', () => gulp.start('watch'))

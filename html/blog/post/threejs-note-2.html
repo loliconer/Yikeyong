@@ -2,12 +2,12 @@
 <html lang="zh">
 <head>
   <!--#include file="/common/head.html"-->
-  <title>Three.js学习笔记（二）</title>
+  <title>Three.js学习笔记（二） | 亦可用</title>
 </head>
 <body class="page-post">
 <div class="container blog">
-<h3 class="post-title">Three.js学习笔记（二）</h3>
-<h4>一、点与线</h4>
+<h1 class="post-title">Three.js学习笔记（二）</h1>
+<h2>一、点与线</h2>
 <p><strong>点</strong></p>
 <p>Three.js中使用的是右手坐标系，空间中的点可以用一个向量来表示。</p>
 <p>定义方法1：</p>
@@ -33,7 +33,7 @@ geometry.colors.push(color1, color2)
 let line = new THREE.Line(geometry, material, THREE.LinePieces)
 scene.add(line)
 </code></pre>
-<h4>二、性能监视器的使用</h4>
+<h2>二、性能监视器的使用</h2>
 <ol>
   <li>引入js文件</li>
   <li>初始化
@@ -47,7 +47,7 @@ document.body.appendChild(stats.domElement)
   </li>
   <li>在animation函数中调用update()</li>
 </ol>
-<h4>三、使用Tween引擎创建动画</h4>
+<h2>三、使用Tween引擎创建动画</h2>
 <ol>
   <li>引入min.js文件</li>
   <li>初始化
@@ -57,6 +57,7 @@ document.body.appendChild(stats.domElement)
   <li>在animation函数中调用update()</li>
 </ol>
 </div>
+<!--#include file="/common/footer.html"-->
 <script src="/js/vendor/prism.js"></script>
 </body>
 </html>

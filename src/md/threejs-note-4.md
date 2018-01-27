@@ -1,6 +1,6 @@
-### Three.js学习笔记（四）
+# Three.js学习笔记（四）
 
-#### 一、Collada模型文件
+## 一、Collada模型文件
 
 后缀：dae，使用ColladaLoader.js
 
@@ -29,11 +29,11 @@ function init() {
 }
 ```
 
-#### 二、DDS文件
+## 二、DDS文件
 
 Direct Draw Surface，用photoshop打开
 
-#### 三、MTL文件
+## 三、MTL文件
 
 材质库文件，使用DDSLoader.js, MTLLoader.js, OBJMTLLoader.js
 
@@ -45,7 +45,7 @@ loader.load('name.obj', 'name.mtl', object =>{
 }, onProgress, onError)
 ```
 
-#### 四、OBJ文件
+## 四、OBJ文件
 
 3D模型文件，不包含动画、材质、贴图、粒子、动力学信息，使用OBJLoader.js
 
@@ -69,7 +69,7 @@ loader.load('name.obj', object => {
 }, onProgress, onError)
 ```
 
-#### 五、PLY文件
+## 五、PLY文件
 
 3D Mesh模型数据文件，使用PLYLoader.js
 
@@ -82,7 +82,7 @@ loader.addEventListener('load', event => {
 loader.load('name.ply')
 ```
 
-#### 六、STL文件
+## 六、STL文件
 
 3D模型文件，使用STLLoader.js
 
@@ -95,7 +95,7 @@ loader.addEventListener('load', event => {
 loader.load('name.stl')
 ```
 
-#### 七、VRML文件
+## 七、VRML文件
 
 使用VRMLLoader.js
 
@@ -107,7 +107,7 @@ loader.addEventListener('load', event => {
 loader.load('name.wrl')
 ```
 
-#### 八、VTK文件
+## 八、VTK文件
 
 使用VTLLoader.js
 
@@ -116,7 +116,7 @@ let loader = new THREE.VTKLoader()
 loader.load('name.vtk', geometry => {})
 ```
 
-#### 九、UTF8
+## 九、UTF8
 
 使用UTF8Loader.js, MTLLoader.js, DDSLoader.js
 
@@ -126,7 +126,7 @@ let loader = new THREE.UTF8Loader()
 loader.load('utf8/name.js', object => {})
 ```
 
-#### 十、PDB文件
+## 十、PDB文件
 
 使用PDBLoader.js, CSS2DRenderer.js
 
@@ -135,11 +135,11 @@ let loader = new THREE.PDBLoader()
 loader.load('name.pdb')
 ```
 
-#### 十一、CTM文件
+## 十一、CTM文件
 
 使用lzma.js, ctm.js, CTMLoader.js
 
-#### 十二、AWD文件
+## 十二、AWD文件
 
 使用AWDLoader.js
 

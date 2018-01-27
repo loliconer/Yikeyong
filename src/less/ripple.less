@@ -1,0 +1,104 @@
+@import "Bootstrapping/Variables";
+@import (reference) "Bootstrapping/Mixins";
+
+.container {
+  padding: 10px;
+}
+
+.m-balances {
+  padding: 10px 0;
+  margin-bottom: 10px;
+  text-align: center;
+  border: 1px solid @border-color;
+
+  span {
+    margin-left: 20px;
+  }
+}
+
+.m-openorders {
+  margin-bottom: 10px;
+}
+
+.m-orderbook {
+  display: flex;
+  justify-content: space-between;
+
+  .o-bids,
+  .o-asks {
+    width: 45%;
+  }
+}
+
+.m-buy-sell {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.mobile {
+  .vue-tab {
+    box-shadow: none;
+    width: 100%;
+  }
+
+  .m-balances {
+    padding-left: 10px;
+
+    div {
+      text-align: left;
+      line-height: 1.5em;
+    }
+  }
+
+  .m-orderbook {
+    .o-bids,
+    .o-asks {
+      width: 48%;
+    }
+  }
+
+  .m-buy {
+    > * {
+      margin-bottom: 10px;
+    }
+
+    .input {
+      width: 80%;
+    }
+  }
+}
+
+.bg {
+  text-align: center;
+  padding: 20px 0;
+  background-color: @first-level-color;
+
+  .input {
+    background-color: @white-color;
+  }
+}
+
+.page-rich {
+  .panel {
+    border: 1px solid @border-color;
+    margin-bottom: 20px;
+
+    .p-head {
+      line-height: 40px;
+      background-color: @bg-color;
+      padding-left: 10px;
+    }
+
+    .p-body {
+      .row {
+        margin-bottom: 10px;
+      }
+
+      .balance {
+        line-height: 40px;
+        text-align: center;
+      }
+    }
+  }
+}

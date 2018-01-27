@@ -1,6 +1,6 @@
-### Three.js学习笔记（三）
+# Three.js学习笔记（三）
 
-#### 一、Camera分类
+## 一、Camera分类
 
 1. 正交投影Camera
 ```js
@@ -23,7 +23,7 @@ CombinedCamera(width, height, fov, near, far, orthoNear, orthoFar)
 Camerahelper(camera)
 ```
 
-#### 二、Light分类
+## 二、Light分类
 
 1. Light
 ```js
@@ -64,7 +64,7 @@ AreaLight(hex, intensity)
 ```
 只用于deferredrenderer。
 
-#### 三、Geometry分类
+## 三、Geometry分类
 
 1. Geometry
 ```js
@@ -146,7 +146,7 @@ TorusKnotGeometry(radius=100, tube=40, radialSegments=8, tubularSegments=6, p=2,
 ```
 p、q：互质的整数
 
-#### 四、Material分类
+## 四、Material分类
 
 1. Material
 ```js

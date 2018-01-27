@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Ripple</title>
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="//guomy.oss-cn-shenzhen.aliyuncs.com/css/vendor/lovue.css">
+  <link rel="stylesheet" href="/css/ripple.css">
+  <script src="/js/vendor/vue.js"></script>
+  <script src="//guomy.oss-cn-shenzhen.aliyuncs.com/js/vendor/lovue.min.js"></script>
+  <script src="//guomy.oss-cn-shenzhen.aliyuncs.com/js/vendor/lovue-utils.js"></script>
+  <script src="/js/ripple.bundle.js" defer></script>
+</head>
+<body class="mobile">
+<div id="app">
+  <input type="hidden" v-if="trigger">
+  <vue-tab :titles="['资产','交易','订单']" @select="selectTab"></vue-tab>
+
+  <div class="bg" v-if="!showContainer">
+    <input type="text" class="input" @keypress.enter="enter">
+  </div>
+
+  <div class="container" v-else>
+
+    <div class="panel panel-1" v-show="tab === 0">
+      <div class="m-balances">
+        <div>XRP: {{balances.XRP}}</div>
+        <div>CNY: {{balances.CNY}}</div>
+        <div>Fee: {{kdb.fee}}</div>
+        <div>总资产：{{asset}}</div>
+      </div>
+    </div>
+
+    <div class="panel panel-2" v-show="tab === 1">
+      <div class="m-buy-sell">
+        <div class="m-buy">
+          <vue-submit-button text="快速挂单" type="button" :loading="loadings.fastBuy" @click.native="fastOrder('buy')"></vue-submit-button>
+          <input class="input" type="number" placeholder="数量" v-model.number="amount">
+          <input class="input" type="number" placeholder="价格" v-model.number="price">
+          <vue-submit-button text="买" type="button" :loading="loadings.buy" @click.native="openOrder('buy')"></vue-submit-button>
+        </div>
+
+        <div class="m-buy">
+          <vue-submit-button text="快速挂单" type="button" :loading="loadings.fastSell" @click.native="fastOrder('sell')"></vue-submit-button>
+          <input class="input" type="number" placeholder="数量" v-model.number="amount">
+          <input class="input" type="number" placeholder="价格" v-model.number="price">
+          <vue-submit-button text="卖" type="button" :loading="loadings.sell" @click.native="openOrder('sell')"></vue-submit-button>
+        </div>
+      </div>
+
+      <div class="m-orderbook">
+        <div class="o-bids">
+          <table class="table bordered">
+            <thead>
+            <tr>
+              <th>Size</th>
+              <th>Price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr v-for="bid of kdb.orderbooks.bids">
+              <td>{{Number(bid.size).toFixed(1)}}</td>
+              <td @click="price = Number(bid.price)">{{Number(bid.price).toFixed(4)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="o-asks">
+          <table class="table bordered">
+            <thead>
+            <tr>
+              <th>Price</th>
+              <th>Size</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr v-for="ask of kdb.orderbooks.asks">
+              <td @click="price = Number(ask.price)">{{Number(ask.price).toFixed(4)}}</td>
+              <td>{{Number(ask.size).toFixed(1)}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-3" v-show="tab === 2">
+        <div class="m-openorders">
+            <table class="table bordered">
+              <thead>
+              <tr>
+                <th>Direction</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr v-for="o of kdb.orders">
+                <td>{{o.direction}}</td>
+                <td>{{o.direction === 'buy' ? (1 / Number(o.price)).toFixed(5) : o.price}}</td>
+                <td>{{o.amount}}</td>
+                <td>
+                  <vue-submit-button text="撤单" type="button" :loading="o.loading" @click.native="cancelOrder(o)"></vue-submit-button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

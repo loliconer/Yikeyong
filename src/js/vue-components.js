@@ -1,3 +1,7 @@
+if (!NodeList.prototype.forEach) {
+  NodeList.prototype.forEach = Array.prototype.forEach
+}
+
 function createMenu() {
   const panels = document.querySelectorAll('.panel[id]')
   const aside = document.querySelector('aside.c-left')

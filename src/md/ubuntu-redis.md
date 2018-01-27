@@ -1,25 +1,37 @@
-### Ubuntu安装Redis
+# Ubuntu安装Redis
 
-#### 安装
+## 安装
 1. [官网](http://redis.io/download)下载tar.gz安装包安装
   ```bash
-  tar -zxvf redis.tar.gz
-  cd redis
+  tar -zxvf redis-4.0.2.tar.gz
+  cd redis-4.0.2
   make
-  make install
+  sudo make install
   ```
 2. 复制redis.conf到/etc/redis
+  ```bash
+  cd ~
+  mkdir redis
+  cp redis-4.0.2/redis.conf redis
+  sudo mv redis /etc
+  ```
 3. 修改配置
-4. 启动
+4. 创建日志文件
+  ```bash
+  cd ~
+  touch redis.log
+  sudo mv redis.log /var/log
+  ```
+5. 启动
 ```bash
 redis-server /etc/redis/redis.conf
 ```
-5. 连接
+6. 连接
 ```bash
 redis-cli -a password
 ```
 
-#### 配置
+## 配置
 > //后台运行  
 daemonize yes  
 //日志  
@@ -30,7 +42,7 @@ requirepass password
 dbfilename dump.rdb  
 dir /home/user/redis
 
-#### 设置开机自动启动
+## 设置开机自动启动
 ```bash
 chmod +x /etc/init.d/redis
 vim /etc/init.d/redis
