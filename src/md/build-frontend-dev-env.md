@@ -11,6 +11,9 @@ sudo vi /etc/apt/sources.list
 #deb-src http://nginx.org/packages/ubuntu/ zesty nginx
 sudo apt update
 sudo apt install nginx
+# start on boot
+sudo systemctl unmask nginx
+sudo systemctl enable nginx
 ```
 修改nginx.conf配置，启动nginx：`sudo nginx`。
 #### 安装Node.js

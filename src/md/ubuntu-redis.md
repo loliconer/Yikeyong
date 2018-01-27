@@ -16,14 +16,19 @@ redis-server /etc/redis/redis.conf
 ```
 5. 连接
 ```bash
-redis-cli
+redis-cli -a password
 ```
 
 #### 配置
 > //后台运行  
 daemonize yes  
 //日志  
-logfile "/var/log/redis.log"
+logfile "/var/log/redis.log"  
+//password  
+requirepass password  
+//dbfile  
+dbfilename dump.rdb  
+dir /home/user/redis
 
 #### 设置开机自动启动
 ```bash

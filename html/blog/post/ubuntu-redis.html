@@ -23,13 +23,13 @@ make install
 </code></pre>
   </li>
   <li>连接
-    <pre><code class="lang-bash">redis-cli
+    <pre><code class="lang-bash">redis-cli -a password
 </code></pre>
   </li>
 </ol>
 <h4>配置</h4>
 <blockquote>
-  <p>//后台运行<br>daemonize yes<br>//日志<br>logfile &quot;/var/log/redis.log&quot;</p>
+  <p>//后台运行<br>daemonize yes<br>//日志<br>logfile &quot;/var/log/redis.log&quot;<br>//password<br>requirepass password<br>//dbfile<br>dbfilename dump.rdb<br>dir /home/user/redis</p>
 </blockquote>
 <h4>设置开机自动启动</h4>
 <pre><code class="lang-bash">chmod +x /etc/init.d/redis
