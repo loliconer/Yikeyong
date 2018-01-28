@@ -72,7 +72,8 @@ new Vue({
         asks: []
       },
       fee: 0,
-      orders: []
+      orders: [],
+      connected: true
     },
     openOrders: [],
     amount: 200,
@@ -110,7 +111,7 @@ new Vue({
 
       this.getBalances()
       this.getKdb()
-      this.getTransactions()
+      // this.getTransactions()
     },
     getBalances() {
       _fetch('https://data.ripple.com/v2/accounts/rHJ9vCnbfF2VzMBoaQnTA2J6stWZGNeJun/balances')
@@ -137,10 +138,12 @@ new Vue({
         })
     },
     getTransactions() {
-      _fetch('https://data.ripple.com/v2/accounts/rHJ9vCnbfF2VzMBoaQnTA2J6stWZGNeJun/transactions?start=2018-01-23')
+      _fetch('https://data.ripple.com/v2/accounts/rHJ9vCnbfF2VzMBoaQnTA2J6stWZGNeJun/transactions?start=2018-01-25')
         .then(body => {
           this.transactions = []
           body.transactions.forEach(t => {
+            if (t.tx.TransactionType !== 'OfferCreate') return
+
             let pays = t.tx.TakerPays
             let gets = t.tx.TakerGets
             let type, xrp = 0, cny = 0
@@ -172,6 +175,10 @@ new Vue({
           this.orderCount = body.orders.length
           this.setTitle()
           setTimeout(() => this.getKdb(), 2000)
+        })
+        .catch(error => {
+          this.error(error)
+          this.kdb.connected = false
         })
     },
     setTitle() {
@@ -274,6 +281,11 @@ new Vue({
     },
     selectTab(i) {
       this.tab = i
+    },
+    restart() {
+      _fetch('ripple/restart')
+        .then(() => {})
+        .catch(this.error)
     }
   },
   created() {
@@ -283,7 +295,7 @@ new Vue({
 
       this.getBalances()
       this.getKdb()
-      this.getTransactions()
+      // this.getTransactions()
     }
   }
 })

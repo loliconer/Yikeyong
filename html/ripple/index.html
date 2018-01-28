@@ -26,6 +26,11 @@
   </div>
   <div class="container" v-else>
     <div class="m-balances">
+      <button class="btn" type="button" @click="restart">重启</button>
+      <span>
+        <svg class="icon-link" v-show="kdb.connected"><use xlink:href="/img/icons.svg#icon-fa-link"></use></svg>
+        <svg class="icon-unlink" v-show="!kdb.connected"><use xlink:href="/img/icons.svg#icon-fa-unlink"></use></svg>
+      </span>
       <span>余额：</span>
       <span>XRP: {{balances.XRP}}</span>
       <span>CNY: {{balances.CNY}}</span>
@@ -112,7 +117,7 @@
       </div>
     </div><!-- end orderbook -->
 
-    <div class="m-transactions" style="margin-top: 20px;">
+    <div class="m-transactions" style="margin-top: 20px;" v-if="transactions.length">
       <button class="btn" style="margin-bottom: 20px;" type="button" @click="getTransactions">Refresh</button>
       <table class="table bordered">
         <thead>
