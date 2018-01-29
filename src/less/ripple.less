@@ -5,24 +5,24 @@
   padding: 10px;
 }
 
+svg {
+  width: 20px;
+  height: 20px;
+
+  &.icon-link {
+    color: @success-color;
+  }
+
+  &.icon-unlink {
+    color: @error-color;
+  }
+}
+
 .m-balances {
   padding: 10px 0;
   margin-bottom: 10px;
   text-align: center;
   border: 1px solid @border-color;
-
-  svg {
-    width: 20px;
-    height: 20px;
-
-    &.icon-link {
-      color: @success-color;
-    }
-
-    &.icon-unlink {
-      color: @error-color;
-    }
-  }
 
   span {
     margin-left: 20px;
@@ -53,6 +53,18 @@
   .vue-tab {
     box-shadow: none;
     width: 100%;
+  }
+
+  .status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid @border-color;
+
+    > button {
+      margin-right: 10px;
+    }
   }
 
   .m-balances {

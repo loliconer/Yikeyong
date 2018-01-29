@@ -26,7 +26,9 @@
   </div>
   <div class="container" v-else>
     <div class="m-balances">
-      <button class="btn" type="button" @click="restart">重启</button>
+      <button :class="gateway === 'china' ? 'btn' : 'btn-ghost'" type="button" @click="gateway = 'china'">China</button>
+      <button :class="gateway === 'fox' ? 'btn' : 'btn-ghost'" type="button" @click="gateway = 'fox'">Fox</button>
+      <button class="btn" type="button" v-show="!kdb.connected" @click="restart">重启</button>
       <span>
         <svg class="icon-link" v-show="kdb.connected"><use xlink:href="/img/icons.svg#icon-fa-link"></use></svg>
         <svg class="icon-unlink" v-show="!kdb.connected"><use xlink:href="/img/icons.svg#icon-fa-unlink"></use></svg>

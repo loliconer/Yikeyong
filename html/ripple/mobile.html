@@ -16,6 +16,13 @@
 <body class="mobile">
 <div id="app">
   <input type="hidden" v-if="trigger">
+  <div class="status">
+      <button :class="gateway === 'china' ? 'btn' : 'btn-ghost'" type="button" @click="gateway = 'china'">China</button>
+      <button :class="gateway === 'fox' ? 'btn' : 'btn-ghost'" type="button" @click="gateway = 'fox'">Fox</button>
+    <button class="btn" type="button" v-show="!kdb.connected" @click="restart">重启</button>
+    <svg class="icon-link" v-show="kdb.connected"><use xlink:href="/img/icons.svg#icon-fa-link"></use></svg>
+    <svg class="icon-unlink" v-show="!kdb.connected"><use xlink:href="/img/icons.svg#icon-fa-unlink"></use></svg>
+  </div>
   <vue-tab :titles="['资产','交易','订单']" @select="selectTab"></vue-tab>
 
   <div class="bg" v-if="!showContainer">

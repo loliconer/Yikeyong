@@ -65,6 +65,7 @@ new Vue({
   el: '#app',
   data: {
     trigger: false,
+    gateway: 'china',
     balances: {},
     kdb: {
       orderbooks: {
@@ -169,7 +170,7 @@ new Vue({
         })
     },
     getKdb() {
-      _fetch('ripple/kdb')
+      _fetch(`ripple/kdb?gateway=${this.gateway}`)
         .then(body => {
           this.kdb = body
           this.orderCount = body.orders.length
@@ -212,7 +213,8 @@ new Vue({
           direction: options.direction,
           amount: options.amount || this.amount,
           price: options.price || this.price,
-          key: KEY
+          key: KEY,
+          gateway: this.gateway
         }
       }).then(() => {
         this.success('提交成功')
