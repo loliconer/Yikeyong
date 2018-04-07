@@ -15,6 +15,7 @@ public/css/*.css
 !public/css/global.css
 /public/video
 /public/audio
+/public/pictures
 /public/img/beauty
 html/coin.html
 html/novel
