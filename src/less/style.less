@@ -81,6 +81,8 @@ body {
 }
 
 .vue-popup-viewer {
+  background-color: rgba(0, 0, 0, .9);
+
   > .v-canvas {
     width: 100%;
     height: 100%;
@@ -88,6 +90,7 @@ body {
 
     .img-wrap {
       height: 100%;
+      transition: background .2s;
     }
   }
 
@@ -102,7 +105,7 @@ body {
     cursor: pointer;
 
     &:hover {
-      color: @black-color;
+      color: @error-color;
     }
   }
 
@@ -122,29 +125,29 @@ body {
       >li {
         .non-select;
         width: 60px;
-        height: 60px;
+        height: 40px;
         cursor: pointer;
 
         &:hover {
-          color: @black-color;
+          color: @error-color;
         }
       }
 
       .icon {
-        padding: 10px;
+        text-align: center;
+        line-height: 40px;
 
         >svg {
-          width: 40px;
-          height: 40px;
+          width: 20px;
+          height: 20px;
         }
-
 
       }
 
       .icon-text {
         text-align: center;
-        line-height: 60px;
-        font-size: @title-font;
+        line-height: 40px;
+        font-size: @big-font;
       }
     }
 

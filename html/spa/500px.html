@@ -1,51 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!--#include file="/common/head.html"-->
   <title>500px布局 | 亦可用</title>
-  <link rel="stylesheet" href="/css/global.css">
-  <link rel="stylesheet" href="/css/style.css">
   <script src="/js/vendor/vue.js"></script>
 </head>
 <body>
 <div id="app">
   <div class="container">
     <div class="px-500">
-      <div class="cell" v-for="n of 9"><img :src=`/pictures/sexy/av/封面/美人搜查官00${n}.jpg`></div>
-      <div class="cell"><img src="/pictures/sexy/av/さくらえな.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/愛乃なみ.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/本田岬.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/本田岬2.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/倉持結愛.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/長谷川.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/大場ゆい.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/大槻ひびき.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/河合紗里.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/鈴木心春.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/秋山祥子.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/山川青空.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/西川ゆいが.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/夏希アンジュ.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/緒川りお.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/桜木凛.jpg"></div>
-      <div class="cell"><img src="/pictures/sexy/av/永瀬里美.jpg"></div>
+      <template v-for="item of items">
+        <template v-if="item.count">
+          <div class="cell" v-for="n of item.count">
+            <img :src=`/pictures/${item.path}/${item.prefix}${('000'+n).slice(-item.digits)}.jpg`>
+          </div>
+        </template>
+        <template v-if="item.files">
+          <div class="cell" v-for="file of item.files">
+            <img :src=`/pictures/${item.path}/${file}`>
+          </div>
+        </template>
+      </template>
 
-      <div class="cell" v-for="n of 9"><img :src=`/pictures/favorite/favorite000${n}.jpg`></div>
-      <div class="cell"><img src="/pictures/favorite/白井黑子.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/北方工业大学校花奉奉.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/程琳.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/傅颖.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/高雅拉.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/何琢言.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/三井麻由.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/深田恭子.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/深渊传说COS.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/台湾超清秀校花璇璇.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/覃霓.jpg"></div>
-      <div class="cell"><img src="/pictures/favorite/诛仙陆雪琪COS.jpg"></div>
-
-      <div class="cell" v-for="n of 142"><img :src=`/pictures/sexy/lesbian/lesbian${('000'+n).slice(-4)}.jpg`></div>
       <div class="cell-last"></div>
     </div>
   </div>
@@ -53,12 +29,59 @@
 <script>
   new Vue({
     el: '#app',
+    data: {
+      items: [
+        { path: 'sexy/av/封面', prefix: '美人搜查官', count: 9, digits: 3 },
+        {
+          path: 'sexy/av',
+          files: [
+            'さくらえな.jpg',
+            '愛乃なみ.jpg',
+            '本田岬.jpg',
+            '本田岬2.jpg',
+            '倉持結愛.jpg',
+            '長谷川.jpg',
+            '大場ゆい.jpg',
+            '大槻ひびき.jpg',
+            '河合紗里.jpg',
+            '鈴木心春.jpg',
+            '秋山祥子.jpg',
+            '山川青空.jpg',
+            '西川ゆいが.jpg',
+            '夏希アンジュ.jpg',
+            '緒川りお.jpg',
+            '桜木凛.jpg',
+            '永瀬里美.jpg'
+          ]
+        },
+        { path: 'favorite', prefix: 'favorite', count: 9, digits: 4 },
+        {
+          path: 'favorite',
+          files: [
+            '白井黑子.jpg',
+            '北方工业大学校花奉奉.jpg',
+            '程琳.jpg',
+            '傅颖.jpg',
+            '高雅拉.jpg',
+            '何琢言.jpg',
+            '三井麻由.jpg',
+            '深田恭子.jpg',
+            '深渊传说COS.jpg',
+            '台湾超清秀校花璇璇.jpg',
+            '覃霓.jpg',
+            '诛仙陆雪琪COS.jpg'
+          ]
+        },
+        { path: 'sexy/lesbian', prefix: 'lesbian', count: 142, digits: 4 }
+      ]
+    },
     methods: {
       updateCell(elem, width, height) {
+        elem.style.width = width / height * 200 + 'px'
         elem.style.flexGrow = width / height
-        setTimeout(() => {
+        this.$nextTick(() => {
           elem.style.height = elem.offsetWidth * height / width + 'px'
-        }, 100)
+        })
       }
     },
     mounted() {

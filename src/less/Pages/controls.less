@@ -230,6 +230,16 @@
   }
 }
 
+@keyframes move-bg {
+  0% {
+    background-position: 0 center;
+  }
+
+  100% {
+    background-position: -5586px center;
+  }
+}
+
 .fiction-loader {
   /*animation: 2s steps(49, end) 0s normal none infinite play;*/
   /*animation: duration, , delay, direction, fill-mode, iteration-count, name*/
@@ -247,12 +257,30 @@
   text-align: center;
 }
 
-@keyframes move-bg {
+@keyframes stripes {
   0% {
-    background-position: 0 center;
+    background-position: 0 0;
   }
 
   100% {
-    background-position: -5586px center;
+    background-position: 60px 30px;
+  }
+}
+
+.pretty-btn {
+  width: 200px;
+  height: 60px;
+  border: none;
+  padding: 1px;
+  background-color: @white-color;
+  background-size: 30px 30px;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, @black-color 25%, @white-color 25%, @white-color 50%, @black-color 50%, @black-color 75%, @white-color 75%, @white-color);
+  animation: stripes .3s linear infinite;
+
+  span {
+    display: block;
+    line-height: 58px;
+    background-color: @white-color;
   }
 }

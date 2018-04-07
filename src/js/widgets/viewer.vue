@@ -30,13 +30,13 @@
 </template>
 
 <script>
-  import { fetch as _fetch } from 'lovue-utils'
+  import { fetch as _fetch, getype } from 'lovue-utils'
 
   let prototype = {}
-  let EVENT_MOUSEDOWN = "mousedown touchstart pointerdown MSPointerDown",
-    EVENT_MOUSEMOVE = "mousemove touchmove pointermove MSPointerMove",
-    EVENT_MOUSEUP = "mouseup touchend touchcancel pointerup pointercancel MSPointerUp MSPointerCancel",
-    EVENT_WHEEL = "wheel mousewheel DOMMouseScroll"
+  let EVENT_MOUSEDOWN = 'mousedown touchstart pointerdown MSPointerDown',
+    EVENT_MOUSEMOVE = 'mousemove touchmove pointermove MSPointerMove',
+    EVENT_MOUSEUP = 'mouseup touchend touchcancel pointerup pointercancel MSPointerUp MSPointerCancel',
+    EVENT_WHEEL = 'wheel mousewheel DOMMouseScroll'
 
   export default{
     data() {
@@ -44,10 +44,11 @@
         bShowViewer: false,
         index: 0,
         jsonData: null,
-        type: "",
+        type: '',
         images: {
-          base: "beauty/校园女生",
-          files: ["nvsheng0001.jpg"]
+          base: '',
+          files: [],
+          parsed: []
         },
         ratio: 1,
         degree: 0
@@ -55,25 +56,47 @@
     },
     computed: {
       imgStyle() {
+        if (!this.images.parsed.length) return
+
         return {
           transform: `scale(${this.ratio}) rotate(${this.degree}deg)`,
-          background: `url(/pictures/${this.images.base}/${this.images.files[this.index]}) no-repeat center`
+          background: `url(/pictures/${this.images.base}/${this.images.parsed[this.index]}) no-repeat center`
         }
       }
     },
     methods: {
+      parseFiles() {
+        const parsed = []
+        this.images.files.forEach(item => {
+          if (getype(item) === 'string') {
+            parsed.push(item)
+            return
+          }
+
+          const ext = item[2] || 'jpg'
+          let start = item[3] || 1
+
+          for (let i = 0; i < item[1]; i++) {
+            parsed.push(`${item[0]}${('000' + start).slice(-4)}.${ext}`)
+            start++
+          }
+        })
+        this.images.parsed = parsed
+      },
       show(type) {
         this.type = type;
         if (this.jsonData) {
-          this.images = this.jsonData[this.type];
+          this.images = this.jsonData[type]
+          this.parseFiles()
         } else {
           _fetch('/js/data/images.json')
             .then(body => {
               this.jsonData = body
               this.images = body[type]
+              this.parseFiles()
             }).catch(error => {
               console.log(error)
-          })
+            })
         }
 
         this.bShowViewer = true
@@ -90,7 +113,7 @@
         this.index--
       },
       next () {
-        if (this.index === this.images.files.length - 1) return
+        if (this.index === this.images.parsed.length - 1) return
 
         this.reset()
         this.index++
