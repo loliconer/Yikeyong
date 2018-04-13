@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>Hexagon</title>
+  <style>
+    body {
+      margin-bottom: 0;
+    }
+
+    canvas {
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+  !function () {
+    let width = window.innerWidth, height = window.innerHeight
+    const canvas = document.querySelector('canvas')
+    canvas.width = width
+    canvas.height = height
+    const ctx = canvas.getContext('2d')
+    ctx.fillStyle = 'black'
+    ctx.fillRect(0, 0, width, height)
+
+    const options = {
+      color: 'hsl(hue,100%,light%)',
+      cx: width / 2,
+      cy: height / 2
+    }
+
+    let tick = 0, lines = [], dieX = width / 2, dieY = height / 2, baseRad = Math.PI * 2 /6
+
+    function Line() {
+      this.reset()
+    }
+
+    Line.prototype.reset = function () {
+      this.x = 0
+      this.y = 0
+      this.addedX = 0
+      this.addedY = 0
+      this.rad = 0
+
+      if (Math.random() < 0.5) {
+        if (window.innerWidth <= 1024) {
+          this.x = 0
+        }
+        if (window.innerWidth > 1024 && window.innerWidth <= 1440) {
+          this.x = 6
+        }
+        if (window.innerWidth > 1440 && window.innerWidth <= 2560) {
+          this.x = 12
+        }
+        if (window.innerWidth > 2560 && window.innerWidth <= 4000) {
+          this.x = 18
+        }
+        if (window.innerWidth > 4000) {
+          this.x = 24
+        }
+      } else {
+        if (window.innerWidth <= 1024) {
+          this.x = 0
+        }
+        if (window.innerWidth > 1024 && window.innerWidth <= 1440) {
+          this.x = -6
+        }
+        if (window.innerWidth > 1440 && window.innerWidth <= 2560) {
+          this.x = -12
+        }
+        if (window.innerWidth > 2560 && window.innerWidth <= 4000) {
+          this.x = -18
+        }
+        if (window.innerWidth > 4000) {
+          this.x = -24
+        }
+      }
+
+      this.lightInputMultiplier = 0.01 + 0.02 * Math.random()
+      this.color = options.color.replace('hue', tick * 0.07)
+      this.cumulativeTime = 0
+
+      this.beginPhase()
+    }
+
+    Line.prototype.beginPhase = function () {
+      this.x += this.addedX
+      this.y += this.addedY
+
+      this.time = 0
+      this.targetTime = (10 + 10 * Math.random()) | 0
+
+      this.rad += baseRad * (Math.random() < 0.5 ? 1 : -1)
+      this.addedX = Math.cos(this.rad)
+      this.addedY = Math.sin(this.rad)
+
+      if (Math.random() < 0.01 || this.x > dieX || this.x < -dieX || this.y > dieY || this.y < -dieY) {
+        this.reset()
+      }
+    }
+
+    Line.prototype.step = function () {
+      this.time++
+      this.cumulativeTime++
+
+      if (this.time >= this.targetTime) {
+        this.beginPhase()
+      }
+
+      let prop = this.time / this.targetTime,
+        wave = Math.sin(prop * Math.PI / 2),
+        x = this.addedX * wave,
+        y = this.addedY * wave
+
+      ctx.fillStyle = ctx.shadowBlur = this.color.replace('light', 50 + 10 * Math.sin(this.cumulativeTime * this.lightInputMultiplier))
+      ctx.fillRect(options.cx + ( this.x + x ) * 45, options.cy + ( this.y + y ) * 45, 2, 2)
+
+      if (Math.random() < 0.1) {
+        ctx.fillRect(options.cx + ( this.x + x ) * 45 + Math.random() * 20 * ( Math.random() < 0.5 ? 1 : -1 ) - 2 / 2, options.cy + ( this.y + y ) * 45 + Math.random() * 20 * ( Math.random() < 0.5 ? 1 : -1 ) - 2 / 2, 2, 2)
+      }
+    }
+
+    function loop() {
+      tick++
+
+      ctx.globalCompositeOperation = 'source-over'
+      ctx.shadowBlur = 0
+      ctx.fillStyle = 'rgba(0,0,0,alp)'.replace('alp', 0.04)
+      ctx.fillRect(0, 0, width, height)
+      ctx.globalCompositeOperation = 'lighter'
+
+      if (lines.length < 300 && Math.random() < 1) {
+        lines.push(new Line())
+      }
+      lines.map(line => line.step())
+
+      requestAnimationFrame(loop)
+    }
+
+    loop()
+
+    window.addEventListener('resize', function () {
+      width = window.innerWidth
+      height = window.innerHeight
+      canvas.width = width
+      canvas.height = height
+      ctx.fillStyle = 'black'
+      ctx.fillRect(0, 0, width, height)
+
+      options.cx = width / 2
+      options.cy = height / 2
+
+      dieX = width / 2 / 45
+      dieY = height / 2 / 45
+    })
+  }()
+</script>
+</body>
+</html>

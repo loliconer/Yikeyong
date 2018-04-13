@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>RetroDots</title>
+  <style>
+    body {
+      overflow: hidden;
+      background: #C7262E;
+      background: -webkit-radial-gradient(circle, #C7262E, #DD7F28, #EECD86, #94A465, #586D1E, #448FA2, #18384D, #9F5683);
+      background: -o-radial-gradient(circle, #C7262E, #DD7F28, #EECD86, #94A465, #586D1E, #448FA2, #18384D, #9F5683);
+      background: -moz-radial-gradient(circle, #C7262E, #DD7F28, #EECD86, #94A465, #586D1E, #448FA2, #18384D, #9F5683);
+      background: radial-gradient(circle, #C7262E, #DD7F28, #EECD86, #94A465, #586D1E, #448FA2, #18384D, #9F5683);
+    }
+  </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+  !function () {
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas.getContext('2d')
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+
+    const dot = {
+      size: 25,
+      color: '#18384D'
+    }
+
+    dot.distX = dot.size * 4
+    dot.distY = Math.sqrt(dot.size * dot.size * 16 - (dot.size * dot.size * 4))
+
+    let dots = []
+    const mouse = {
+      posX: canvas.width / 2,
+      posY: canvas.height / 2,
+      scroll: 350
+    }
+
+    function init() {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      for (let i = 0; i < canvas.width + dot.size * 4; i += dot.distX) {
+        for (let j = 0, k = 0; j < canvas.height + dot.size * 4; j += dot.distY, k++) {
+          dots.push({
+            posX: k % 2 === 0 ? i : i + dot.distX / 2,
+            posY: j
+          })
+        }
+      }
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      for (let i = 0; i < dots.length; i++) {
+        const dist = Math.sqrt(Math.pow(mouse.posX - dots[i].posX, 2) + Math.pow(mouse.posY - dots[i].posY, 2))
+        const size = dist / mouse.scroll * dot.size * 3
+
+        ctx.beginPath()
+        ctx.arc(dots[i].posX, dots[i].posY, size, 0, 2 * Math.PI)
+        ctx.fillStyle = 'rgba(24, 56, 77, 0.5)'
+        ctx.fill()
+      }
+    }
+
+    document.onmousemove = function (ev) {
+      mouse.posX = ev.pageX - canvas.offsetLeft
+      mouse.posY = ev.pageY - canvas.offsetTop
+
+      requestAnimationFrame(render)
+    }
+
+    init()
+    render()
+
+    window.addEventListener('resize', function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      dots = []
+      init()
+      render()
+    }, false)
+  }()
+</script>
+</body>
+</html>

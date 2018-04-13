@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>Matrix</title>
+  <style>
+    body {
+      margin-bottom: 0;
+    }
+    canvas {
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+  !function () {
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas.getContext('2d')
+    let w = window.innerWidth, h = window.innerHeight
+    canvas.width = w
+    canvas.height = h
+
+    const fontSize = 16
+    const columns = Math.floor(w / fontSize)
+    const drops = []
+
+    for (let i = 0; i < columns; i++) {
+      drops.push(0)
+    }
+
+    const words = 'javascript html5 canvas'
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0,0,0,0.05)'
+      ctx.fillRect(0, 0, w, h)
+      ctx.font = `700 ${fontSize}px 微软雅黑`
+      ctx.fillStyle = '#00cc33'
+
+      for (let i = 0; i < columns; i++) {
+        const index = Math.floor(Math.random() * words.length)
+        let x = i * fontSize, y = drops[i] * fontSize
+        ctx.fillText(words[index], x, y)
+        if (y >= canvas.height && Math.random() > 0.99) {
+          drops[i] = 0
+        }
+        drops[i]++
+      }
+      requestAnimationFrame(draw)
+    }
+
+    draw()
+  }()
+</script>
+</body>
+</html>
