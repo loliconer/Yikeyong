@@ -96,7 +96,8 @@ gulp.task('md-novel', () => {
   const {long, short} = novels
 
   short.forEach(n => {
-    mdNovel(`./src/md-novel/${n.value}.md`, {
+    if (!n.value) return
+    mdNovel(`./src/md-novel/short/${n.value}.md`, {
       dest: './html/novel/short',
       title: n.name
     })

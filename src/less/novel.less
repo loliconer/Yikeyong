@@ -2,6 +2,26 @@
 @import (reference) "Bootstrapping/Mixins";
 @import "Layout/Blog";
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .2s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.mask {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  filter: blur(30px);
+  opacity: .3;
+}
+
 .container {
   .mixin-content-width;
 
@@ -39,7 +59,7 @@
       font-size: @small-font;
 
       li {
-        width: 20%;
+        width: 50%;
         line-height: 32px;
         padding-left: 20px;
         border-bottom: 1px dashed @border-color;
@@ -173,6 +193,15 @@
 }
 
 .page-novel {
+  margin-bottom: 0;
+  height: 100vh;
+  background-color: rgba(80, 80, 80, 0.65);
+
+  .mask {
+    background-image: url(/img/beauty/novel-bg.jpg);
+    height: calc(100vh - 50px);
+  }
+
   header.header {
     .mixin-content-width;
     padding-top: 60px;
@@ -197,6 +226,65 @@
   }
 
   .container {
+    position: relative;
+    padding-bottom: 20px;
+
+    .tags {
+      margin-bottom: 20px;
+      background-color: transparent;
+
+      .btn {
+        min-width: 122px;
+        height: 40px;
+        line-height: 38px;
+        background-color: transparent;
+        margin-right: 10px;
+        border: 1px solid rgba(255, 255, 255, .2);
+        opacity: .8;
+        cursor: pointer;
+
+        &:hover {
+          border-color: @border-color;
+        }
+
+        &.focus {
+          border-color: @border-color;
+          color: @white-color;
+        }
+      }
+    }
+
+    .section {
+      padding-right: 10px;
+      max-height: calc(100vh - 141px);
+      overflow-y: auto;
+      color: rgba(225, 225, 225, .8);
+
+      &::-webkit-scrollbar-track {
+        box-shadow: none;
+        background-color: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, .1);
+      }
+
+      > .list {
+        li {
+          width: 20%;
+          line-height: 50px;
+
+          .link {
+            &:hover {
+              color: @white-color;
+            }
+          }
+        }
+      }
+    }
+
     .chapters {
       > .above {
         position: relative;
@@ -219,7 +307,7 @@
       }
 
       > .below {
-        padding: 10px;
+        padding: 10px 0;
 
         > ul.list {
           display: flex;
@@ -228,8 +316,15 @@
 
           li {
             width: 33%;
-            line-height: 36px;
+            line-height: 50px;
             border-bottom: 1px dashed @border-color;
+            padding-left: 20px;
+
+            .link {
+              &:hover {
+                color: @white-color;
+              }
+            }
 
             @media (max-width: 544px) {
               width: 50%;
@@ -269,6 +364,50 @@
 }
 
 .page-video {
+  .previews {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: @bg-color;
+
+    .p-head {
+      line-height: 40px;
+      text-align: center;
+      cursor: pointer;
+      border-bottom: 1px solid @border-color;
+      transition: color .2s;
+
+      &:hover {
+        color: @error-color;
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    li {
+      width: 20%;
+      border-bottom: none;
+      margin-bottom: 20px;
+      text-align: center;
+
+      &:last-child {
+        flex-grow: 1000;
+      }
+    }
+
+    video {
+      .shadow-light;
+      height: 600px;
+      cursor: pointer;
+    }
+  }
+
   .video-player {
     .icon-close {
       position: absolute;
@@ -292,14 +431,7 @@
   background-color: rgba(80, 80, 80, 0.65);
 
   .mask {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    background: url(/img/beauty/nvshen0004.jpg) no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    filter: blur(30px);
-    opacity: .3;
+    background-image: url(/img/beauty/nvshen0004.jpg);
   }
 
   .container {
