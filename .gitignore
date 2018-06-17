@@ -17,9 +17,7 @@ public/css/*.css
 /public/audio
 /public/pictures
 /public/img/beauty
-html/coin.html
-html/novel
-html/video
-html/audio
+html/novels
+html/club
 src/js/coin.js
 src/md-novel

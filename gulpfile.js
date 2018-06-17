@@ -122,7 +122,7 @@ gulp.task('md-novel', () => {
   short.forEach(n => {
     if (!n.value) return
     mdNovel(`./src/md-novel/short/${n.value}.md`, {
-      dest: './html/novel/short',
+      dest: './html/novels/short',
       title: n.name
     })
   })
@@ -131,7 +131,7 @@ gulp.task('md-novel', () => {
     const len = n.chapters.length
     n.chapters.forEach((c, i) => {
       mdNovel(`./src/md-novel/${n.value}/${i+1}.md`, {
-        dest: `./html/novel/${n.value}`,
+        dest: `./html/novels/${n.value}`,
         index: i + 1,
         title: c,
         first: i === 0,

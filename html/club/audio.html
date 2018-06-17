@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!--#include file="/common/head.html"-->
+  <title>MP3</title>
+  <link rel="stylesheet" href="/css/novel.css">
+  <script src="/js/vendor/vue.js"></script>
+</head>
+<body class="page-mp3">
+<div class="mask"></div>
+
+<div id="app" v-cloak>
+  <div class="container">
+    <section class="above">
+      <div class="left">
+        <div class="category" @click="select">
+          <button class="btn tool-btn" type="button" data-sec="normals">流行音乐</button>
+          <button class="btn tool-btn" type="button" data-sec="mimiviyb">靡靡之音</button>
+          <button class="btn tool-btn" type="button" data-sec="tingshu">听书</button>
+          <button class="btn tool-btn" type="button" data-sec="xkbadmtd">性吧电台</button>
+          <button class="btn tool-btn" type="button" data-sec="asmrs">ASMR</button>
+        </div>
+        <div class="play-list">
+          <div class="list-item">
+            <div class="i-index"></div>
+            <div class="i-name">歌曲</div>
+            <!--<div class="i-author">歌手</div>-->
+            <!--<div class="i-duration">时长</div>-->
+          </div>
+          <div class="list-item" v-for="(list, i) of lists" @click="listen(list, i)">
+            <div class="i-index">{{i+1}}</div>
+            <div class="i-name">{{list.substring(0, list.lastIndexOf('.'))}}</div>
+            <!--<div class="i-author">未知</div>-->
+            <!--<div class="i-duration">06:57</div>-->
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="s-head"></div>
+        <div class="s-body"></div>
+      </div>
+    </section>
+    <section class="below">
+      <canvas class="analyser" width="160" height="100"></canvas>
+      <div class="mp3-player">
+        <audio ref="audio" :src="playing" controls oncontextmenu="return false" @ended="next" controlsList="nodownload">浏览器不支持HTML5播放器</audio>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script type="module">
+  import audios from '/js/data/audios/index.js'
+
+  let audioCtx, analyser, audioSrc, canvas, ctx
+  const meterWidth = 3, gap = 4, capHeight = 1, capStyle = '#fff', meterNum = 40, capYPositionArray = []
+
+  new Vue({
+    el: '#app',
+    data: {
+      audios,
+      currentCat: 'normals',
+      playing: '',
+      index: 0,
+      sections: [
+        { name: '流行音乐', value: 'normals' },
+        { name: '靡靡之音', value: 'mimiviyb' },
+        { name: '听书', value: 'tingshu' },
+        { name: '性吧电台', value: 'xkbadmtd' },
+        { name: 'ASMR', value: 'asmrs' }
+      ]
+    },
+    computed: {
+      lists() {
+        return this.audios[this.currentCat]
+      }
+    },
+    methods: {
+      listen(list, i) {
+        this.index = i
+        this.play(list)
+      },
+      select(ev) {
+        this.currentCat = ev.target.dataset.sec
+      },
+      next() {
+        if (this.index === this.lists.length - 1) {
+          this.index = 0
+        } else {
+          this.index++
+        }
+        this.play(this.lists[this.index])
+      },
+      play(list) {
+        this.playing = `/audio/${this.currentCat}/${list}`
+        setTimeout(() => {
+          this.analyser()
+          this.$refs.audio.play()
+        }, 400)
+      },
+      analyser() {
+        const array = new Uint8Array(analyser.frequencyBinCount)
+        analyser.getByteFrequencyData(array)
+        const step = Math.round(array.length / meterNum)
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        for (let i = 0; i < meterNum; i++) {
+          let value = array[i * step] / 2
+          if (capYPositionArray.length < Math.round(meterNum)) {
+            capYPositionArray.push(value)
+          }
+          ctx.fillStyle = capStyle
+          if (value < capYPositionArray[i]) {
+            ctx.fillRect(i * (meterWidth + gap), canvas.height - (--capYPositionArray[i]), meterWidth, capHeight)
+          } else {
+            ctx.fillRect(i * (meterWidth + gap), canvas.height - value, meterWidth, capHeight)
+            capYPositionArray[i] = value
+          }
+          ctx.fillStyle = '#90c400'
+          ctx.fillRect(i * (meterWidth + gap), canvas.height - value + capHeight, meterWidth, value)
+        }
+
+        requestAnimationFrame(this.analyser)
+      }
+    },
+    mounted() {
+      audioCtx = new AudioContext()
+      analyser = audioCtx.createAnalyser()
+      audioSrc = audioCtx.createMediaElementSource(this.$refs.audio)
+      audioSrc.connect(analyser)
+      analyser.connect(audioCtx.destination)
+
+      canvas = document.querySelector('canvas')
+      ctx = canvas.getContext('2d')
+    }
+  })
+</script>
+</body>
+</html>
