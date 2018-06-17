@@ -33,7 +33,7 @@
     </form>
 
     <vue-table :source="blogs" :columns="columns">
-      <template slot="op" scope="scope">
+      <template slot="op" slot-scope="scope">
         <button class="btn" type="button" @click="deleteBlog(scope.value.rowid)">删除</button>
         <button class="btn" type="button" @click="startEdit(scope.value)">编辑</button>
       </template>

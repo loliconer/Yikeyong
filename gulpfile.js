@@ -6,11 +6,19 @@ const less = require('gulp-less')
 const livereload = require('gulp-livereload')
 const cached = require('gulp-cached')
 const replace = require('gulp-replace')
+const gzip = require('gulp-gzip')
 const fs = require('fs')
 const path = require('path')
 const md = require('./src/js/lib/md.js')
 const novels = require('./src/md-novel/novels')
 const mdNovel = require('./src/js/lib/md-novel')
+
+const gzipOption = {
+  threshold: '1kb',
+  gzipOptions: {
+    level: 9
+  }
+}
 
 gulp.task('build', ['less', 'md', 'md-diy'], () => {
   gulp.src(['public/js/*.*', 'public/js/@(data)/*.*'])
@@ -18,15 +26,29 @@ gulp.task('build', ['less', 'md', 'md-diy'], () => {
       hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/public/js'))
+    .pipe(gulp(gzipOption))
+    .pipe(gulp.dest('www/public/js'))
+
+  gulp.src('public/js/*.js.map')
+    .pipe(changed('www/public/js', {
+      hasChanged: changed.compareContents
+    }))
+    .pipe(gulp.dest('www/public/js'))
+    .pipe(gulp(gzipOption))
+    .pipe(gulp.dest('www/public/js'))
 
   gulp.src('public/js/vendor/*.js')
     .pipe(changed('www/public/js/vendor'))
+    .pipe(gulp.dest('www/public/js/vendor'))
+    .pipe(gulp(gzipOption))
     .pipe(gulp.dest('www/public/js/vendor'))
 
   gulp.src('public/css/*.css')
     .pipe(changed('www/public/css', {
       hasChanged: changed.compareContents
     }))
+    .pipe(gulp.dest('www/public/css'))
+    .pipe(gulp(gzipOption))
     .pipe(gulp.dest('www/public/css'))
 
   gulp.src('public/img/**/*')
@@ -41,6 +63,8 @@ gulp.task('build', ['less', 'md', 'md-diy'], () => {
     .pipe(changed('www/html', {
       hasChanged: changed.compareContents
     }))
+    .pipe(gulp.dest('www/html'))
+    .pipe(gulp(gzipOption))
     .pipe(gulp.dest('www/html'))
 })
 
