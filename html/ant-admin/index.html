@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="//guomy.oss-cn-shenzhen.aliyuncs.com/css/global.css">
+  <link rel="stylesheet" href="/css/ant-admin.css">
+  <title>中后台系统</title>
+  <script src="/js/vendor/vue.js"></script>
+  <script src="/js/vendor/vue-router.min.js"></script>
+  <script src="/js/vendor/vuex.min.js"></script>
+  <script src="/js/ant-admin.bundle.js" defer></script>
+</head>
+<body>
+<app>
+  <input type="hidden" v-if="trigger">
+  <v-custom-svg></v-custom-svg>
+  <div class="v-layout horizontal" :class="{collapsed: asideCollapsed}">
+    <div class="vl-item left">
+      <aside class="aside" :class="{collapsed: asideCollapsed}">
+        <div class="logo">
+          <a href="#/">
+            <img src="/img/ant-admin/logo.svg" alt="logo">
+            <span>Ant Design Pro</span>
+          </a>
+        </div>
+        <div class="menus">
+          <ul class="list">
+            <li class="item" v-for="menu of menus" :style="`height: ${menu.height}px`">
+              <div class="i-title" @click="toggleMenu(menu)">
+                <div class="it-left"><v-icon :icon="menu.icon"></v-icon><span>{{menu.title}}</span></div>
+                <div class="it-right"><v-icon icon="down-wide" :class="{'dir-up': menu._expand}"></v-icon></div>
+              </div>
+              <ul class="list" v-show="menu._expand">
+                <li class="item" v-for="sub of menu.subs"><router-link :to="sub.url">{{sub.title}}</router-link></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+    <div class="vl-item right">
+      <nav class="nav">
+        <div class="toggle-aside" @click="asideCollapsed = !asideCollapsed"><v-icon :icon="`double-${asideCollapsed?'right':'left'}`"></v-icon></div>
+        <div class="nav-items">
+          <div class="ni-search">
+            <v-icon icon="search"></v-icon>
+          </div>
+          <div class="ni-notify">
+            <v-icon icon="bell"></v-icon>
+          </div>
+          <div class="ni-user">
+            <div class="user-name"><img src="/img/ant-admin/BiazfanxmamNRoxxVxka.png">Serati Ma</div>
+            <div class="v-dropdown">
+              <ul class="list">
+                <li class="item"><v-icon icon="setting"></v-icon>个人中心</li>
+                <li class="item"><v-icon icon="setting"></v-icon>设置</li>
+                <li class="item item-divider"></li>
+                <li class="item"><v-icon icon="setting"></v-icon>退出登录</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="content"></div>
+    </div>
+  </div>
+</app>
+</body>
+</html>
