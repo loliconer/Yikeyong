@@ -52,7 +52,6 @@
     "lovue-utils": "^1.0.0",
     "lozad": "^1.4.0",
     "marked": "^0.4.0",
-    "mocha": "^3.5.3",
     "nprogress": "^0.2.0",
     "sinon": "^2.4.1",
     "sinon-chai": "^2.13.0",
