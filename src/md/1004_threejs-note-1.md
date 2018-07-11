@@ -1,3 +1,9 @@
+---
+title: Three.js学习笔记（一）
+date: 2016/09/27
+intro: Three.js的基本概念以及一个简单的例子。
+---
+
 # Three.js学习笔记（一）
 
 ## 一、概念单词

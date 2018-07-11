@@ -1,3 +1,9 @@
+---
+title: JavaScript的一些面试题
+date: 2017/08/13
+intro: 收集了一些经典的JavaScript基础知识的面试题。
+---
+
 # JavaScript的一些面试题
 
 ```js

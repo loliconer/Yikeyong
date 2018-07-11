@@ -5,31 +5,27 @@
   <title>NodeList的forEach方法的兼容性处理 | 亦可用</title>
 </head>
 <body class="page-post">
+<!--#include file="/common/nav.html"-->
 <div class="container blog">
-<h1 class="post-title">NodeList的forEach方法的兼容性处理</h1>
+<h1>NodeList的forEach方法的兼容性处理</h1>
 <p>我们经常需要遍历<code>document.querySelectorAll</code>返回的结果，最理想的情况是直接使用forEach方法遍历，但是该结果是一个NodeList对象，而目前支持NodeList对象的forEach方法的浏览器只有：Chrome51+, Firefox50+, Safari10+，IE和Edge浏览器都不支持。对于这些浏览器，我们需要做一些兼容性处理，具体的方法有以下几种：</p>
-<pre><code class="lang-js">const elems = document.querySelectorAll(&#39;selector&#39;)
-</code></pre>
-<pre><code class="lang-js">[...elems].forEach(elem =&gt; {
+<pre><code class="language-js">const elems = document.querySelectorAll(&#39;selector&#39;)</code></pre>
+<pre><code class="language-js">[...elems].forEach(elem =&gt; {
   console.log(elem)
-})
-</code></pre>
-<pre><code class="lang-js">for (let elem of elems) {
+})</code></pre>
+<pre><code class="language-js">for (let elem of elems) {
   console.log(elem)
-}
-</code></pre>
-<pre><code class="lang-js">const elemsArr = Array.from(elems)
+}</code></pre>
+<pre><code class="language-js">const elemsArr = Array.from(elems)
 elemsArr.forEach(elem =&gt; {
   console.log(elem)
-})
-</code></pre>
-<pre><code class="lang-js">if (!NodeList.prototype.forEach) {
+})</code></pre>
+<pre><code class="language-js">if (!NodeList.prototype.forEach) {
   NodeList.prototype.forEach = Array.prototype.forEach
 }
 elems.forEach(elem =&gt; {
   console.log(elem)
-})
-</code></pre>
+})</code></pre>
 <p>类似地，childNodes也是NodeList对象，同样可以用上面的方法处理。</p>
 </div>
 <!--#include file="/common/footer.html"-->

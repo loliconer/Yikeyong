@@ -5,16 +5,16 @@
   <title>IntersectionObserver在Edge15中无法观察空元素 | 亦可用</title>
 </head>
 <body class="page-post">
+<!--#include file="/common/nav.html"-->
 <div class="container blog">
-<h1 class="post-title">IntersectionObserver在Edge15中无法观察空元素</h1>
+<h1>IntersectionObserver在Edge15中无法观察空元素</h1>
 <p>在了解到IntersectionObserver这个新特性后，觉得挺有意思的，便决定应用到本站。这个API的<a href="https://caniuse.com/#search=IntersectionObserver">兼容性</a>不是很好，目前知道的可以应用的地方主要有两个：一个是替代传统的图片懒加载，不仅性能有了很大的提升，代码也优雅了很多；另一个就是滚动到窗口底部时加载更多数据。</p>
 <p>我在<a href="/blog">博客首页</a>实现了第二种效果，Chrome和Firefox都没有问题，但是在Edge15上测试时发现没有任何效果，代码也不报错，就是没有发fetch请求数据，感觉很奇怪。先看代码：</p>
-<pre><code class="lang-html">&lt;div class=&quot;container&quot;&gt;
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;block-posts&quot; id=&quot;posts&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;observer-target&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<pre><code class="lang-js">  let offset = 0, hasMore = true
+&lt;/div&gt;</code></pre>
+<pre><code class="language-js">  let offset = 0, hasMore = true
   const limit = 10
 
   const observer = new IntersectionObserver((records, _observer) =&gt; {
@@ -34,27 +34,24 @@
     })
   })
 
-  observer.observe(document.querySelector(&#39;.observer-target&#39;))
-</code></pre>
+  observer.observe(document.querySelector(&#39;.observer-target&#39;))</code></pre>
 <p>在Edge上调试之后发现IntersectionObserver中的回调函数没有执行，不知为何，百思不得其解。</p>
 <p>接着尝试运行以下代码：</p>
-<pre><code class="lang-js">  const observer = new IntersectionObserver((records, _observer) =&gt; {
+<pre><code class="language-js">  const observer = new IntersectionObserver((records, _observer) =&gt; {
     records.forEach(record =&gt; {
       console.log(record)
     })
   })
 
-  observer.observe(document.body)
-</code></pre>
+  observer.observe(document.body)</code></pre>
 <p>没问题，有打印结果。看来问题出现在<code>document.querySelector(&#39;.observer-target&#39;)</code>这个元素上，也就是说，能观察body元素，但是观察不了这个元素，这是为什么呢？</p>
 <p>对比后发现两个元素的主要区别就是observer-target没有任何内容，是一个空元素，会不会是这个原因呢？难道Edge无法观察空元素？想一想是挺有这个可能性的，空元素在页面上不占据任何空间，都不知道元素在哪，自然就可能无法检测到它是否进入视野。那么就给它加点东西吧：</p>
-<pre><code class="lang-html">&lt;div class=&quot;container&quot;&gt;
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;block-posts&quot; id=&quot;posts&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;observer-target&quot;&gt;test&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
+&lt;/div&gt;</code></pre>
 <p>OK，完美运行。看来确实如我所想，但是observer-target元素的作用就是一个占位符，这样写就会干涉到页面的内容了，再改：</p>
-<pre><code class="lang-html">&lt;style&gt;
+<pre><code class="language-html">&lt;style&gt;
   .observer-target {
     width: 1px;
     height: 1px;
@@ -63,8 +60,7 @@
 &lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;block-posts&quot; id=&quot;posts&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;observer-target&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
+&lt;/div&gt;</code></pre>
 <p>既然无法观察到空元素，那我就让元素有1px的大小，运行后一切正常。</p>
 <p>至此，问题得到了解决。至于Chrome和Firefox为什么能够观察到空元素，或许是因为毕竟有一个div在那，它们能够检测到div的存在和位置。对于Edge来说，这或许是个bug，或许它的本意就是这样。</p>
 </div>

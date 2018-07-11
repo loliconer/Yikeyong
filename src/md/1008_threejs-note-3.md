@@ -1,3 +1,9 @@
+---
+title: Three.js学习笔记（三）
+date: 2016/10/05
+intro: 三大基本要素的分类。
+---
+
 # Three.js学习笔记（三）
 
 ## 一、Camera分类

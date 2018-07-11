@@ -5,15 +5,16 @@
   <title>Web-linker技术点 | 亦可用</title>
 </head>
 <body class="page-post">
+<!--#include file="/common/nav.html"-->
 <div class="container blog">
-<h1 class="post-title">Web-linker技术点</h1>
+<h1>Web-linker技术点</h1>
 <ul>
   <li>CSS3：linear-gradient，IE10+</li>
   <li>CSS3：transform，IE9+</li>
   <li>CSS3：box-shadow，IE9+，IE9对于设置了collapse的table元素使用投影无效。</li>
   <li>
     <p>图片垂直居中显示：img标签自带一个空行</p>
-    <pre><code class="lang-less">div {
+    <pre><code class="language-less">div {
   height: 200px;
   overflow: hidden;
   text-align: center;
@@ -22,12 +23,11 @@
   img {
     vertical-align: middle;
   }
-}
-</code></pre>
+}</code></pre>
   </li>
   <li>
     <p>JavaScript：语句优先级，function和let定义优先执行，不管语句在哪里定义。</p>
-    <pre><code class="lang-js">//1.
+    <pre><code class="language-js">//1.
 console.log(tmp)   //error
 
 //2.
@@ -46,8 +46,7 @@ let tmp = 1    //=== let tmp; tmp = 1;
 
 //5.
 console.log(tmp)   //function tmp(){}
-function tmp() {}
-</code></pre>
+function tmp() {}</code></pre>
   </li>
   <li>float元素撑开父容器的高度：父容器设置：overflow:hidden;</li>
   <li>CSS：inline：多个inline属性的元素会尽量在同一行显示；block：具有该属性的元素可以定义大小。</li>
@@ -68,20 +67,18 @@ function tmp() {}
   <li>鼠标滚轮事件的浏览器兼容性</li>
   <li>Recalculate，Layout，Paint渲染事件。<br>Layout：计算元素的布局，即在文档中的位置和大小。<br>Recalculate Style：计算元素的样式。<br>Paint：绘制，任何界面上的显示变化都会触发Paint事件。</li>
   <li>往元素中添加文本的几种方法：
-    <pre><code class="lang-js">element.innerHTML = &#39;text&#39; //IE8+
+    <pre><code class="language-js">element.innerHTML = &#39;text&#39; //IE8+
 element.textContent = &#39;text&#39; //IE9+
 element.innerText = &#39;text&#39; //IE8+,FF45+
 document.createTextNode( &#39;text&#39; ) //效率最高，全兼容
-document.createTextNode(&#39;&#39;).data = &#39;text&#39;
-</code></pre>
+document.createTextNode(&#39;&#39;).data = &#39;text&#39;</code></pre>
   </li>
   <li>触屏设备的touch事件：
-    <pre><code class="lang-js">elem.ontouchstart = function(e) {
+    <pre><code class="language-js">elem.ontouchstart = function(e) {
     console.log(e.touches)
 }
 elem.ontouchend = function(e) {}
-window.ontouchmove = function(e) {}
-</code></pre>
+window.ontouchmove = function(e) {}</code></pre>
   </li>
   <li>beforeunload事件：关闭页面时触发的事件，函数的返回值作为显示的内容，但是Firefox不显示。</li>
   <li>undefined：声明变量后没有初始化的值，是一个全局变量，且无法被用户修改。
@@ -104,21 +101,19 @@ window.ontouchmove = function(e) {}
   <li>caller：Function实例的对象，指函数被调用期间的调用者，没被调用时为null。</li>
   <li>delete：删除对象的属性，返回是否删除成功。直接用let声明的变量无法删除，部分对象自带的属性无法删除，比如length。</li>
   <li>强类型数组：Int8Array、Uint8Array、Int16Array、Uint16Array、Int32Array、Uint32Array、Float32Array、Float64Array。
-    <pre><code class="lang-js">let a = new Uint8Array( 3 ) //3个元素的数组，初始值为0
+    <pre><code class="language-js">let a = new Uint8Array( 3 ) //3个元素的数组，初始值为0
 let b = new Uint8Array( [1,2,3] )
 let buf = new ArrayBuffer( 4 ) //4个字节的内存空间
-let c = new Uint16Array( buf ) //数组有2个元素
-</code></pre>
+let c = new Uint16Array( buf ) //数组有2个元素</code></pre>
   </li>
   <li>btoa和atob，Base64的编解码，IE10+</li>
   <li>postMessage跨域通信</li>
   <li>FileReader，IE10+，IE10、IE11不支持readAsBinaryString</li>
   <li>querySelector与querySelectorAll：前者返回一个元素，后者返回一个列表，IE8+</li>
   <li>function的语法问题
-    <pre><code class="lang-js">let a = function b() {} //error, b is not defined
+    <pre><code class="language-js">let a = function b() {} //error, b is not defined
 (function() {}) //warning
-function() {} //warning
-</code></pre>
+function() {} //warning</code></pre>
   </li>
   <li>CSS：text-overflow:ellipsis; 溢出文本显示省略号</li>
   <li>
@@ -134,20 +129,18 @@ function() {} //warning
       <li>八进制数字无法使用</li>
       <li>普通模式下的一些无效操作变成错误，比如delete不能删除的属性</li>
     </ol>
-    <pre><code class="lang-js">&quot;use strict&quot;; //全局严格模式
+    <pre><code class="language-js">&quot;use strict&quot;; //全局严格模式
 function f(){ &quot;use strict&quot;; } //局部严格模式
-; &quot;use strict&quot;; //无效
-</code></pre>
+; &quot;use strict&quot;; //无效</code></pre>
   </li>
   <li>时间格式：
-    <pre><code class="lang-js">new Date( &#39;2016-1-1 00:00:00&#39; ) //仅Chrome支持
+    <pre><code class="language-js">new Date( &#39;2016-1-1 00:00:00&#39; ) //仅Chrome支持
 new Date( &#39;2016/1/1 00:00:00&#39; )
 new Date( &#39;Jan 1 2013 00:00:00&#39; )
 new Date( &#39;2013 Jan 1 00:00:00&#39; )
 new Date( &#39;2013(年) Jan(月) 1(日) 00:00:00 (时间)&#39; ) //Chrome下，00与时间之间必须有空格
 new Date( &#39;2013 Jan 1 00:00:00 GMT&#39; )
-new Date( &#39;2013/1/1 00:00:00 UTC&#39; )
-</code></pre>
+new Date( &#39;2013/1/1 00:00:00 UTC&#39; )</code></pre>
   </li>
   <li>避免使用多端口同时做HTTP服务器</li>
   <li>客户端操作SessinID实现用户切换</li>
@@ -156,9 +149,8 @@ new Date( &#39;2013/1/1 00:00:00 UTC&#39; )
   <li>交错格式保存的图片加载时会从模糊到清晰加载</li>
   <li>indexedDB</li>
   <li>把canvas数据下载到本地，IE不支持
-    <pre><code class="lang-js">a.download = &#39;test.png&#39; //仅Chrome支持设置文件名
-a.href = canvas.toDataURL().replace(&#39;png&#39;,&#39;octet-stream&#39;)
-</code></pre>
+    <pre><code class="language-js">a.download = &#39;test.png&#39; //仅Chrome支持设置文件名
+a.href = canvas.toDataURL().replace(&#39;png&#39;,&#39;octet-stream&#39;)</code></pre>
   </li>
   <li>使用document.styleSheets操作样式表</li>
   <li>函数的bind方法</li>

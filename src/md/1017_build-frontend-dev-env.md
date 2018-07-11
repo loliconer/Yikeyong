@@ -1,3 +1,9 @@
+---
+title: Ubuntu下快速搭建前端开发环境
+date: 2017/09/29
+intro: 整个开发环境包括：Web服务器Nginx、Node.js、Git、IDE（VSCode）、代码仓库。
+---
+
 # Ubuntu下快速搭建前端开发环境
 
 整个开发环境包括：Web服务器Nginx、Node.js、Git、IDE（VSCode）、代码仓库。

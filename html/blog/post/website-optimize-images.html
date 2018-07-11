@@ -5,43 +5,39 @@
   <title>网站图片的优化 | 亦可用</title>
 </head>
 <body class="page-post">
+<!--#include file="/common/nav.html"-->
 <div class="container blog">
-<h1 class="post-title">网站图片的优化</h1>
+<h1>网站图片的优化</h1>
 <ol>
   <li>使用相对尺寸，保证不会溢出父元素
-    <pre><code class="lang-css"> img, embed, object, video {
+    <pre><code class="language-css"> img, embed, object, video {
    max-width: 100%;
- }
-</code></pre>
+ }</code></pre>
   </li>
   <li>为img元素的提供有意义的alt属性描述，以提高网站的可用性</li>
   <li>高DPI设备使用srcset增强img
-    <pre><code class="lang-html"> &lt;img src=&quot;photo.png&quot; srcset=&quot;photo@2x.png 2x&quot;&gt;
-</code></pre> 支持 srcset 的话，逗号分隔的图片/条件列表会先于任何请求发出前分析，然后只有最合适的图片被下载然后显示。虽说条件可以包含从像素密度到宽度和高度的种种，但目前只有像素密度的支持度最好。为平衡现在的行为和未来的特性，在属性中请还是继续只提供 2x 图片。</li>
+    <pre><code class="language-html"> &lt;img src=&quot;photo.png&quot; srcset=&quot;photo@2x.png 2x&quot;&gt;</code></pre> 支持 srcset 的话，逗号分隔的图片/条件列表会先于任何请求发出前分析，然后只有最合适的图片被下载然后显示。虽说条件可以包含从像素密度到宽度和高度的种种，但目前只有像素密度的支持度最好。为平衡现在的行为和未来的特性，在属性中请还是继续只提供 2x 图片。</li>
   <li>使用picture元素实现响应式图片
-    <pre><code class="lang-html"> &lt;picture&gt;
+    <pre><code class="language-html"> &lt;picture&gt;
    &lt;source media=&quot;(min-width: 800px)&quot; srcset=&quot;head.jpg, head-2x.jpg 2x&quot;&gt;
    &lt;source media=&quot;(min-width: 450px)&quot; srcset=&quot;head-small.jpg, head-small-2x.jpg 2x&quot;&gt;
    &lt;img src=&quot;head-fb.jpg&quot; srcset=&quot;head-fb-2x.jpg 2x&quot; &gt;
- &lt;/picture&gt;
-</code></pre>
+ &lt;/picture&gt;</code></pre>
   </li>
   <li>使用相对大小的图片
-    <pre><code class="lang-html"> &lt;img src=&quot;lighthouse-200.jpg&quot; sizes=&quot;50vw&quot;
+    <pre><code class="language-html"> &lt;img src=&quot;lighthouse-200.jpg&quot; sizes=&quot;50vw&quot;
    srcset=&quot;lighthouse-100.jpg 100w, lighthouse-200.jpg 200w,
      lighthouse-400.jpg 400w, lighthouse-800.jpg 800w,
      lighthouse-1000.jpg 1000w, lighthouse-1400.jpg 1400w,
-     lighthouse-1800.jpg 1800w&quot;&gt;
-</code></pre>
-    <pre><code class="lang-html"> &lt;img src=&quot;400.png&quot;
+     lighthouse-1800.jpg 1800w&quot;&gt;</code></pre>
+    <pre><code class="language-html"> &lt;img src=&quot;400.png&quot;
    sizes=&quot;(min-width: 600px) 25vw, (min-width: 500px) 50vw, 100vw&quot;
    srcset=&quot;100.png 100w, 200.png 200w, 400.png 400w,
-     800.png 800w, 1600.png 1600w, 2000.png 2000w&quot;&gt;
-</code></pre>
+     800.png 800w, 1600.png 1600w, 2000.png 2000w&quot;&gt;</code></pre>
   </li>
   <li>
     <p>使用媒体查询有条件地加载图片</p>
-    <pre><code class="lang-css"> .example {
+    <pre><code class="language-css"> .example {
    height: 400px;
    background-image: url(small.png);
    background-repeat: no-repeat;
@@ -56,19 +52,17 @@
    .example {
      background-image: url(large.png);
    }
- }
-</code></pre>
+ }</code></pre>
   </li>
   <li>使用image-set提供高分辨率图片
-    <pre><code class="lang-css"> background-image: image-set(
+    <pre><code class="language-css"> background-image: image-set(
    url(icon1x.jpg) 1x,
    url(icon2x.jpg) 2x
- );
-</code></pre>
+ );</code></pre>
   </li>
   <li>
     <p>使用媒体查询提供高分辨率图片</p>
-    <pre><code class="lang-css"> .sample {
+    <pre><code class="language-css"> .sample {
    width: 128px;
    height: 128px;
    background-image: url(icon1x.png);
@@ -81,14 +75,12 @@
      background-size: contain;
      background-image: url(icon2x.png);
    }
- }
-</code></pre>
-    <pre><code class="lang-css"> @media (min-width: 500px) {
+ }</code></pre>
+    <pre><code class="language-css"> @media (min-width: 500px) {
    body {
      background-image: url(bg.png);
    }
- }
-</code></pre>
+ }</code></pre>
   </li>
   <li>用unicode字符代替简单图标</li>
   <li>用svg代替复杂图标</li>

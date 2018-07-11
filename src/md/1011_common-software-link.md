@@ -1,3 +1,9 @@
+---
+title: 常用软件下载地址
+date: 2017/04/16
+intro: 一些常用且好用的软件的官网或者下载地址，如迅雷极速版、TIM、QQ、百度输入法、Chrome、Foxmail、WinRAR、稻壳搜搜、TeamViewer、WebStorm、Node.js、Git、Nginx、Ubuntu等。
+---
+
 # 常用软件下载地址
 
 ## 日常应用

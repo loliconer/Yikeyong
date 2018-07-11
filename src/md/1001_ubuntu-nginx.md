@@ -1,3 +1,9 @@
+---
+title: Ubuntu安装Nginx
+date: 2016/09/25
+intro: Ubuntu系统从下载到启动Nginx的整个操作过程，简单明了，一看就懂，直接执行命令即可。
+---
+
 # Ubuntu安装Nginx
 
 ## 官方包安装

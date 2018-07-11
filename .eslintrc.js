@@ -4,6 +4,7 @@ module.exports = {
   },
   root: true,
   parserOptions: {
+    ecmaVersion: 2017,
     sourceType: 'module'
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
@@ -15,7 +16,6 @@ module.exports = {
   // add your custom rules here
   rules: {
     'for-direction': 'error',
-    'no-await-in-loop': 'warn',
     'no-extra-parens': 'warn',
     'accessor-pairs': 'error',
     'default-case': 'error',

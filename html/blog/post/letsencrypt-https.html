@@ -5,20 +5,20 @@
   <title>Let's encrypt 实现全站https访问 | 亦可用</title>
 </head>
 <body class="page-post">
+<!--#include file="/common/nav.html"-->
 <div class="container blog">
-<h1 class="post-title">Let&#39;s encrypt 实现全站https访问</h1>
+<h1>Let&#39;s encrypt 实现全站https访问</h1>
 <h2>1、使用Certbot客户端安装并配置Let&#39;s Encrypt</h2>
-<pre><code class="lang-bash">sudo add-apt-repository ppa:certbot/certbot
+<pre><code class="language-bash">sudo add-apt-repository ppa:certbot/certbot
 sudo apt update
 sudo apt install python-certbot-nginx
-sudo certbot --nginx
-</code></pre>
+sudo certbot --nginx</code></pre>
 <p>添加自动刷新授权定时任务</p>
 <blockquote>
-  <p>crontab -e<br>//每周一2:30分执行命令<br>30 2 <em> </em> 1 letsencrypt renew<br>systemctl restart cron</p>
+  <p>crontab -e<br>//每周一2:30分执行命令<br>30 2 * * 1 letsencrypt renew<br>systemctl restart cron</p>
 </blockquote>
 <h2>2、修改nginx.conf</h2>
-<pre><code class="lang-nginx">server {
+<pre><code class="language-nginx">server {
     listen 443;
     server_name  localhost;
 
@@ -32,8 +32,7 @@ sudo certbot --nginx
 server {
     listen 80;
     rewrite (.*)  https://$hsot$uri;
-}
-</code></pre>
+}</code></pre>
 <h2>3、重启Nginx</h2>
 </div>
 <!--#include file="/common/footer.html"-->

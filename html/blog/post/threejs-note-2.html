@@ -5,21 +5,20 @@
   <title>Three.js学习笔记（二） | 亦可用</title>
 </head>
 <body class="page-post">
+<!--#include file="/common/nav.html"-->
 <div class="container blog">
-<h1 class="post-title">Three.js学习笔记（二）</h1>
+<h1>Three.js学习笔记（二）</h1>
 <h2>一、点与线</h2>
 <p><strong>点</strong></p>
 <p>Three.js中使用的是右手坐标系，空间中的点可以用一个向量来表示。</p>
 <p>定义方法1：</p>
-<pre><code class="lang-js">let point = new THREE.Vector3(x, y, z)
-</code></pre>
+<pre><code class="language-js">let point = new THREE.Vector3(x, y, z)</code></pre>
 <p>定义方法2：</p>
-<pre><code class="lang-js">let point = new THREE.Vector3()
-point.set(x, y, z)
-</code></pre>
+<pre><code class="language-js">let point = new THREE.Vector3()
+point.set(x, y, z)</code></pre>
 <p><strong>线</strong></p>
 <p>线由点组成。</p>
-<pre><code class="lang-js">let geometry = new THREE.Geometry()
+<pre><code class="language-js">let geometry = new THREE.Geometry()
 let material = new THREE.LineBasicMaterial({
     vertexColor: THREE.VertexColors
 })
@@ -31,19 +30,17 @@ geometry.vertices.push(point1)
 geometry.vertices.push(point2)
 geometry.colors.push(color1, color2)
 let line = new THREE.Line(geometry, material, THREE.LinePieces)
-scene.add(line)
-</code></pre>
+scene.add(line)</code></pre>
 <h2>二、性能监视器的使用</h2>
 <ol>
   <li>引入js文件</li>
   <li>初始化
-    <pre><code class="lang-js">let stats = new Stats()
+    <pre><code class="language-js">let stats = new Stats()
 stats.setMode(0) //0:fps mode 1:ms mode
 stats.domElement.style.position = &#39;absolute&#39;
 stats.domElement.style.left = &#39;0px&#39;
 stats.domElement.style.top = &#39;0px&#39;
-document.body.appendChild(stats.domElement)
-</code></pre>
+document.body.appendChild(stats.domElement)</code></pre>
   </li>
   <li>在animation函数中调用update()</li>
 </ol>
@@ -51,8 +48,7 @@ document.body.appendChild(stats.domElement)
 <ol>
   <li>引入min.js文件</li>
   <li>初始化
-    <pre><code class="lang-js">new TWEEN.Tween(mesh.position).to({x: -400}, 3000).repeat(Infinity).start()
-</code></pre>
+    <pre><code class="language-js">new TWEEN.Tween(mesh.position).to({x: -400}, 3000).repeat(Infinity).start()</code></pre>
   </li>
   <li>在animation函数中调用update()</li>
 </ol>

@@ -1,3 +1,9 @@
+---
+title: Three.js学习笔记（四）
+date: 2016/10/05
+intro: Three.js中可以使用的3D模型文件类型。
+---
+
 # Three.js学习笔记（四）
 
 ## 一、Collada模型文件

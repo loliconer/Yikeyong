@@ -5,11 +5,12 @@
   <title>Three.js学习笔记（四） | 亦可用</title>
 </head>
 <body class="page-post">
+<!--#include file="/common/nav.html"-->
 <div class="container blog">
-<h1 class="post-title">Three.js学习笔记（四）</h1>
+<h1>Three.js学习笔记（四）</h1>
 <h2>一、Collada模型文件</h2>
 <p>后缀：dae，使用ColladaLoader.js</p>
-<pre><code class="lang-js">let loader = new THREE.ColladaLoader()
+<pre><code class="language-js">let loader = new THREE.ColladaLoader()
 loader.options.convertUpAxis = true
 loader.load( &#39;name.dae&#39;, collada =&gt;  {
     dae = collada.scene
@@ -30,21 +31,19 @@ function init() {
         //
     })
     scene.add(dae)
-}
-</code></pre>
+}</code></pre>
 <h2>二、DDS文件</h2>
 <p>Direct Draw Surface，用photoshop打开</p>
 <h2>三、MTL文件</h2>
 <p>材质库文件，使用DDSLoader.js, MTLLoader.js, OBJMTLLoader.js</p>
-<pre><code class="lang-js">THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader())
+<pre><code class="language-js">THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader())
 let loader = new THREE.OBJMTLLoader()
 loader.load(&#39;name.obj&#39;, &#39;name.mtl&#39;, object =&gt;{
     scene.add(object)
-}, onProgress, onError)
-</code></pre>
+}, onProgress, onError)</code></pre>
 <h2>四、OBJ文件</h2>
 <p>3D模型文件，不包含动画、材质、贴图、粒子、动力学信息，使用OBJLoader.js</p>
-<pre><code class="lang-js">let manager = new THREE.LoadingManager()
+<pre><code class="language-js">let manager = new THREE.LoadingManager()
 manager.onProgress = function() {}
 
 let loader = new THREE.ImageLoader(manager)
@@ -60,55 +59,48 @@ loader.load(&#39;name.obj&#39;, object =&gt; {
         }
     })
     scene.add(object)
-}, onProgress, onError)
-</code></pre>
+}, onProgress, onError)</code></pre>
 <h2>五、PLY文件</h2>
 <p>3D Mesh模型数据文件，使用PLYLoader.js</p>
-<pre><code class="lang-js">let loader = new THREE.PLYLoader()
+<pre><code class="language-js">let loader = new THREE.PLYLoader()
 loader.addEventListener(&#39;load&#39;, event =&gt; {
     let geometry = event.content
     //
 })
-loader.load(&#39;name.ply&#39;)
-</code></pre>
+loader.load(&#39;name.ply&#39;)</code></pre>
 <h2>六、STL文件</h2>
 <p>3D模型文件，使用STLLoader.js</p>
-<pre><code class="lang-js">let loader = new THREE.STLLoader()
+<pre><code class="language-js">let loader = new THREE.STLLoader()
 loader.addEventListener(&#39;load&#39;, event =&gt; {
     let geometry = event.content
     //
 })
-loader.load(&#39;name.stl&#39;)
-</code></pre>
+loader.load(&#39;name.stl&#39;)</code></pre>
 <h2>七、VRML文件</h2>
 <p>使用VRMLLoader.js</p>
-<pre><code class="lang-js">let loader = new THREE.VRMLLoader()
+<pre><code class="language-js">let loader = new THREE.VRMLLoader()
 loader.addEventListener(&#39;load&#39;, event =&gt; {
     scene.add(event.content)
 })
-loader.load(&#39;name.wrl&#39;)
-</code></pre>
+loader.load(&#39;name.wrl&#39;)</code></pre>
 <h2>八、VTK文件</h2>
 <p>使用VTLLoader.js</p>
-<pre><code class="lang-js">let loader = new THREE.VTKLoader()
-loader.load(&#39;name.vtk&#39;, geometry =&gt; {})
-</code></pre>
+<pre><code class="language-js">let loader = new THREE.VTKLoader()
+loader.load(&#39;name.vtk&#39;, geometry =&gt; {})</code></pre>
 <h2>九、UTF8</h2>
 <p>使用UTF8Loader.js, MTLLoader.js, DDSLoader.js</p>
-<pre><code class="lang-js">THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader())
+<pre><code class="language-js">THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader())
 let loader = new THREE.UTF8Loader()
-loader.load(&#39;utf8/name.js&#39;, object =&gt; {})
-</code></pre>
+loader.load(&#39;utf8/name.js&#39;, object =&gt; {})</code></pre>
 <h2>十、PDB文件</h2>
 <p>使用PDBLoader.js, CSS2DRenderer.js</p>
-<pre><code class="lang-js">let loader = new THREE.PDBLoader()
-loader.load(&#39;name.pdb&#39;)
-</code></pre>
+<pre><code class="language-js">let loader = new THREE.PDBLoader()
+loader.load(&#39;name.pdb&#39;)</code></pre>
 <h2>十一、CTM文件</h2>
 <p>使用lzma.js, ctm.js, CTMLoader.js</p>
 <h2>十二、AWD文件</h2>
 <p>使用AWDLoader.js</p>
-<pre><code class="lang-js">let loader = new THREE.AWDLoader()
+<pre><code class="language-js">let loader = new THREE.AWDLoader()
 loader.materialFactory = createMaterial
 loader.load(&#39;name.awd&#39;, _trunk =&gt; {
     trunk = _trunk
@@ -119,8 +111,7 @@ function createMaterial(name) {
 }
 function init() {
     scene.add(trunk)
-}
-</code></pre>
+}</code></pre>
 </div>
 <!--#include file="/common/footer.html"-->
 <script src="/js/vendor/prism.js"></script>

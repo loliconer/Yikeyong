@@ -5,38 +5,34 @@
   <title>Ubuntu安装Redis | 亦可用</title>
 </head>
 <body class="page-post">
+<!--#include file="/common/nav.html"-->
 <div class="container blog">
-<h1 class="post-title">Ubuntu安装Redis</h1>
+<h1>Ubuntu安装Redis</h1>
 <h2>安装</h2>
 <ol>
   <li><a href="http://redis.io/download">官网</a>下载tar.gz安装包安装
-    <pre><code class="lang-bash">tar -zxvf redis-4.0.2.tar.gz
+    <pre><code class="language-bash">tar -zxvf redis-4.0.2.tar.gz
 cd redis-4.0.2
 make
-sudo make install
-</code></pre>
+sudo make install</code></pre>
   </li>
   <li>复制redis.conf到/etc/redis
-    <pre><code class="lang-bash">cd ~
+    <pre><code class="language-bash">cd ~
 mkdir redis
 cp redis-4.0.2/redis.conf redis
-sudo mv redis /etc
-</code></pre>
+sudo mv redis /etc</code></pre>
   </li>
   <li>修改配置</li>
   <li>创建日志文件
-    <pre><code class="lang-bash">cd ~
+    <pre><code class="language-bash">cd ~
 touch redis.log
-sudo mv redis.log /var/log
-</code></pre>
+sudo mv redis.log /var/log</code></pre>
   </li>
   <li>启动
-    <pre><code class="lang-bash">redis-server /etc/redis/redis.conf
-</code></pre>
+    <pre><code class="language-bash">redis-server /etc/redis/redis.conf</code></pre>
   </li>
   <li>连接
-    <pre><code class="lang-bash">redis-cli -a password
-</code></pre>
+    <pre><code class="language-bash">redis-cli -a password</code></pre>
   </li>
 </ol>
 <h2>配置</h2>
@@ -44,10 +40,9 @@ sudo mv redis.log /var/log
   <p>//后台运行<br>daemonize yes<br>//日志<br>logfile &quot;/var/log/redis.log&quot;<br>//password<br>requirepass password<br>//dbfile<br>dbfilename dump.rdb<br>dir /home/user/redis</p>
 </blockquote>
 <h2>设置开机自动启动</h2>
-<pre><code class="lang-bash">chmod +x /etc/init.d/redis
-vim /etc/init.d/redis
-</code></pre>
-<pre><code class="lang-bash"># chkconfig: 2345 10 90
+<pre><code class="language-bash">chmod +x /etc/init.d/redis
+vim /etc/init.d/redis</code></pre>
+<pre><code class="language-bash"># chkconfig: 2345 10 90
 # description: Start and Stop Redis
 
 PATH=/usr/local/bin:/sbin:/usr/bin:/bin
@@ -94,10 +89,8 @@ case &quot;$1&quot; in
     *)
         echo &quot;Usage: /etc/init.d/redis {start|stop|restart|force-reload}&quot;
         exit 1
-esac
-</code></pre>
-<pre><code class="lang-bash">update-rc.d redis-server defaults
-</code></pre>
+esac</code></pre>
+<pre><code class="language-bash">update-rc.d redis-server defaults</code></pre>
 </div>
 <!--#include file="/common/footer.html"-->
 <script src="/js/vendor/prism.js"></script>

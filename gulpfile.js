@@ -52,7 +52,7 @@ gulp.task('build', ['less'], () => {
     .pipe(changed('www/public/img'))
     .pipe(gulp.dest('www/public/img'))
 
-  gulp.src('html/**/*')
+  gulp.src('html/**/*.html')
     .pipe(clean('www/html', {
       force: true
     }))

@@ -5,11 +5,12 @@
   <title>Ubuntu下快速搭建前端开发环境 | 亦可用</title>
 </head>
 <body class="page-post">
+<!--#include file="/common/nav.html"-->
 <div class="container blog">
-<h1 class="post-title">Ubuntu下快速搭建前端开发环境</h1>
+<h1>Ubuntu下快速搭建前端开发环境</h1>
 <p>整个开发环境包括：Web服务器Nginx、Node.js、Git、IDE（VSCode）、代码仓库。</p>
 <h2>安装Nginx</h2>
-<pre><code class="lang-sh">wget http://nginx.org/keys/nginx_signing.key
+<pre><code class="language-sh">wget http://nginx.org/keys/nginx_signing.key
 sudo apt-key add nginx_signing.key
 sudo vi /etc/apt/sources.list
 #deb http://nginx.org/packages/ubuntu/ zesty nginx
@@ -18,29 +19,24 @@ sudo apt update
 sudo apt install nginx
 # start on boot
 sudo systemctl unmask nginx
-sudo systemctl enable nginx
-</code></pre>
+sudo systemctl enable nginx</code></pre>
 <p>修改nginx.conf配置，启动nginx：<code>sudo nginx</code>。</p>
 <h2>安装Node.js</h2>
 <p>下载Node.js安装包</p>
-<pre><code class="lang-sh">tar -xvf node.tar.gz
+<pre><code class="language-sh">tar -xvf node.tar.gz
 sudo mv node /usr/local
 sudo vi /etc/environment
 #:/usr/local/bin
-reboot
-</code></pre>
+reboot</code></pre>
 <h2>安装Git</h2>
-<pre><code class="lang-sh">sudo apt install git
-</code></pre>
+<pre><code class="language-sh">sudo apt install git</code></pre>
 <h2>安装VSCode</h2>
 <p>下载安装包</p>
-<pre><code class="lang-sh">sudo dpkg -i code.deb
-</code></pre>
+<pre><code class="language-sh">sudo dpkg -i code.deb</code></pre>
 <h2>克隆GitHub仓库</h2>
-<pre><code class="lang-sh">git clone foo.git
+<pre><code class="language-sh">git clone foo.git
 cd foo
-npm install
-</code></pre>
+npm install</code></pre>
 </div>
 <!--#include file="/common/footer.html"-->
 <script src="/js/vendor/prism.js"></script>

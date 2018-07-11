@@ -1,3 +1,9 @@
+---
+title: Ubuntu安装Redis
+date: 2017/08/13
+intro: Ubuntu系统从下载到启动Redis的整个操作过程，简单明了，一看就懂，直接执行命令即可。
+---
+
 # Ubuntu安装Redis
 
 ## 安装
