@@ -23,7 +23,7 @@ gulp.task('build', ['less'], () => {
       hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/public/js'))
-    .pipe(gulp(gzipOption))
+    .pipe(gzip(gzipOption))
     .pipe(gulp.dest('www/public/js'))
 
   gulp.src('public/js/*.js.map')
@@ -31,13 +31,13 @@ gulp.task('build', ['less'], () => {
       hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/public/js'))
-    .pipe(gulp(gzipOption))
+    .pipe(gzip(gzipOption))
     .pipe(gulp.dest('www/public/js'))
 
   gulp.src('public/js/vendor/*.js')
     .pipe(changed('www/public/js/vendor'))
     .pipe(gulp.dest('www/public/js/vendor'))
-    .pipe(gulp(gzipOption))
+    .pipe(gzip(gzipOption))
     .pipe(gulp.dest('www/public/js/vendor'))
 
   gulp.src('public/css/*.css')
@@ -45,7 +45,7 @@ gulp.task('build', ['less'], () => {
       hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/public/css'))
-    .pipe(gulp(gzipOption))
+    .pipe(gzip(gzipOption))
     .pipe(gulp.dest('www/public/css'))
 
   gulp.src('public/img/**/*')
@@ -61,7 +61,7 @@ gulp.task('build', ['less'], () => {
       hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/html'))
-    .pipe(gulp(gzipOption))
+    .pipe(gzip(gzipOption))
     .pipe(gulp.dest('www/html'))
 })
 
