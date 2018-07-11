@@ -61,8 +61,6 @@ gulp.task('build', ['less'], () => {
       hasChanged: changed.compareContents
     }))
     .pipe(gulp.dest('www/html'))
-    .pipe(gzip(gzipOption))
-    .pipe(gulp.dest('www/html'))
 })
 
 gulp.task('less', () => {
