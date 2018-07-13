@@ -39,6 +39,7 @@ if (argv.mode === 'development') {
 if (argv.mode === 'production') {
   devtool = 'cheap-module-source-map'
   plugins = [
+    new VueLoaderPlugin(),
     new UglifyJSPlugin({ sourceMap: true }),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify('production')}
