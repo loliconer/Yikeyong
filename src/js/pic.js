@@ -36,7 +36,6 @@ new Vue({
       ['beauty/网络红人/SNH48鞠婧祎0001.jpg', ''],
       ['beauty/自拍/zipai0001.jpg', ''],
       ['beauty/街拍/jiepai0001.jpg', ''],
-      ['beauty/caogen0701.jpg', ''],
       ['favorite/favorite0001.jpg', ''],
       ['cos/cosplay0401.jpg', ''],
       ['cos/miyuko/coser0001.jpg', ''],

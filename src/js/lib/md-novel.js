@@ -61,6 +61,7 @@ function md(filePath, option) {
 </head>
 <body class="page-novel-chapter">
 <article class="container blog">
+<h1>${option.title}</h1>
 ${content}
 ${footers}
 </article>
