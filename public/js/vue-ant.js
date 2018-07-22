@@ -2,7 +2,7 @@
   if (!NodeList.prototype.forEach) {
     NodeList.prototype.forEach = Array.prototype.forEach
   }
-  
+
   function createMenu() {
     const panels = document.querySelectorAll('.panel[id]')
     const aside = document.querySelector('aside.c-left')
@@ -10,10 +10,10 @@
     list.classList.add('list')
     const frag = document.createDocumentFragment()
     const offsetTops = []
-  
+
     panels.forEach(panel => {
       offsetTops.push(panel.offsetTop)
-  
+
       const li = document.createElement('li')
       const a = document.createElement('a')
       a.href = `#${panel.id}`
@@ -25,10 +25,10 @@
     aside.appendChild(list)
     return offsetTops
   }
-  
+
   function updateLinks(links) {
     let hash = location.hash
-  
+
     links.forEach(link => {
       link.classList.remove('focus')
       if (link.getAttribute('href') === hash) {
@@ -36,7 +36,7 @@
       }
     })
   }
-  
+
   new Vue({
     el: '#app',
     data: {
@@ -172,9 +172,33 @@
             { name: '基金返账管理', url: '/otc/anti-settlement.html' }
           ]
         }
+      ],
+      tabTitles: [
+        { name: 'Vue', icon: 'heart' },
+        { name: 'React', icon: 'setting' },
+        { name: 'Angular', icon: 'home' }
+      ],
+      currentStep: 0,
+      allSteps: [
+        { title: '第一步', icon: 'heart' },
+        { title: '第二步', icon: 'heart' },
+        { title: '第三步', icon: 'heart' }
+      ],
+      allSteps2: [
+        { title: '第一步' },
+        { title: '第二步' },
+        { title: '第三步' }
       ]
     },
     methods: {
+      previousStep() {
+        if (this.currentStep === 0) return
+        this.currentStep--
+      },
+      nextStep() {
+        if (this.currentStep === this.allSteps.length - 1) return
+        this.currentStep++
+      },
       alertOne () {
         this.$refs.alert.show('这是提示内容')
       },
@@ -222,16 +246,24 @@
       unselectItem(items) {
         console.log(items)
         this.trigger = !this.trigger
+      },
+      startSearch(text) {
+        this.info(`searching ${text}`)
+      },
+      selectFiles(files) {
+        const names = [];
+        [].forEach.call(files, file => names.push(file.name))
+        this.info(`选择了 ${names.join(',')}`)
       }
     },
     mounted() {
       setTimeout(() => {
         const offsetTops = createMenu()
         const links = document.querySelectorAll('aside.c-left ul.list a')
-  
+
         updateLinks(links)
         window.onhashchange = () => updateLinks(links)
-  
+
         window.addEventListener('scroll', () => {
           for (let i = 0; i < offsetTops.length - 1; i++) {
             if (offsetTops[i] - 100 < pageYOffset && pageYOffset < offsetTops[i + 1] - 100) {
@@ -244,5 +276,5 @@
         })
       }, 400)
     }
-  })  
+  })
 }()

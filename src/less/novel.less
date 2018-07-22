@@ -274,7 +274,8 @@
       > .list {
         li {
           width: 20%;
-          line-height: 50px;
+          line-height: 1.5;
+          padding: 10px 0 10px 20px;
 
           .link {
             &:hover {
@@ -359,6 +360,14 @@
       justify-content: space-between;
       line-height: 60px;
       border-top: 1px solid @border-color;
+    }
+  }
+
+  @media(max-width: 576px) {
+    font-size: @normal-font;
+
+    .container {
+      padding: 20px 10px;
     }
   }
 }
