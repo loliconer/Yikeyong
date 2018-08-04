@@ -1,0 +1,154 @@
+@import "../Bootstrapping/Variables";
+@import (reference) "../Bootstrapping/Mixins";
+
+
+/*Desktop first*/
+@media (max-width: 3840px) {
+
+}
+
+@media (max-width: 1920px) {
+
+}
+
+@media (max-width: 1366px) {
+
+}
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 576px) {
+  .visible-pc {
+    display: none;
+  }
+
+  .page-club {
+    .container {
+      padding-top: 10px;
+    }
+  }
+
+  .page-novel {
+    .container {
+      .section {
+        padding-top: 0;
+        color: @white-color;
+
+        > .list {
+          li {
+            width: 50%;
+          }
+        }
+      }
+
+      .chapters {
+        .ul-li {
+          width: inherit;
+          min-width: 50%;
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+
+  .page-mp3 {
+    .container {
+      padding-top: 10px;
+    }
+
+    .above {
+      > .left {
+        width: calc(100vw - 10px);
+
+        .category {
+          .tool-btn {
+            min-width: 80px;
+            height: 32px;
+            line-height: 30px;
+            margin-right: 4px;
+            margin-bottom: 8px;
+          }
+        }
+
+        .play-list {
+          color: @white-color;
+          max-height: calc(100vh - 300px);
+
+          .list-item {
+            height: 32px;
+            line-height: 31px;
+
+            .i-name {
+              .truncate;
+            }
+          }
+        }
+      }
+    }
+
+    .below {
+      flex-direction: column;
+      height: auto;
+      left: 0;
+      bottom: 10px;
+      padding: 0 5px;
+
+      canvas {
+        margin-right: 0;
+      }
+
+      .mp3-player {
+        line-height: 0;
+        margin-top: 8px;
+
+        audio {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .page-video {
+    .section {
+      > .list {
+        li {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+
+/*Mobile first*/
+@media (min-width: 577px) {
+  .visible-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+
+}
+
+@media (min-width: 1025px) {
+
+}
+
+@media (min-width: 1367px) {
+
+}
+
+@media (min-width: 1921px) {
+
+}
+
+@media (min-width: 3841px) {
+
+}
