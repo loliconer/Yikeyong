@@ -56,7 +56,7 @@ gulp.task('build', ['less'], () => {
     .pipe(clean('www/html', {
       force: true
     }))
-    .pipe(replace(/js\/vendor\/(echarts|vue|three|yikeyong)\.js/g, 'js/vendor/$1.min.js'))
+    .pipe(replace(/js\/vendor\/(echarts|vue|three)\.js/g, 'js/vendor/$1.min.js'))
     .pipe(changed('www/html', {
       hasChanged: changed.compareContents
     }))
