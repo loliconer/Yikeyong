@@ -1,0 +1,51 @@
+@import (reference) "~src/less/Bootstrapping/Mixins";
+
+.view-login {
+  min-height: 100vh;
+  background: url(/img/grey_wash_wall.png) repeat center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .l-title {
+    .title-font;
+    color: var(--white);
+    margin-top: 10vh;
+    margin-bottom: 18vh;
+    letter-spacing: .2em;
+  }
+
+  .l-form {
+    width: 300px;
+
+    .v-row {
+      margin-bottom: 40px;
+
+      > .v-input {
+        width: 100%;
+
+        .input {
+          background-color: transparent;
+          color: var(--white);
+
+          &::-webkit-input-placeholder {
+            color: var(--light-white);
+          }
+        }
+      }
+
+      &.row-submit {
+        .v-btn {
+          width: 100%;
+          height: 42px;
+          border-radius: 20px;
+          background-color: rgba(32, 150, 255, .75);
+
+          &:hover {
+            background-color: rgb(32, 150, 255);
+          }
+        }
+      }
+    }
+  }
+}

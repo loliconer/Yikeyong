@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content="常用的使用CSS绘制的几何图形">
+  <title>CSS Shapes | 亦可用</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="//guomy.oss-cn-shenzhen.aliyuncs.com/css/global.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/vendor/prism.js"></script>
+</head>
+<body class="page-css-shape">
+<div class="container blog">
+  <section class="cell">
+    <header class="title">Square</header>
+    <div class="shape-box">
+      <div class="shape square"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.square {
+    width: 100px;
+    height: 100px;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Rectangle</header>
+    <div class="shape-box">
+      <div class="shape rectangle"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.rectangle {
+  width: 200px;
+  height: 100px;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Circle</header>
+    <div class="shape-box">
+      <div class="shape circle"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Oval</header>
+    <div class="shape-box">
+      <div class="shape oval"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.oval {
+  width: 200px;
+  height: 100px;
+  border-radius: 50%;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Triangle Up</header>
+    <div class="shape-box">
+      <div class="shape triangle-up"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid red;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Triangle Top Left</header>
+    <div class="shape-box">
+      <div class="shape triangle-top-left"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.triangle-top-left {
+  width: 0;
+  height: 0;
+  border-top: 100px solid red;
+  border-right: 100px solid transparent;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Curved Tail Arrow</header>
+    <div class="shape-box">
+      <div class="shape curved-tail-arrow"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.curved-tail-arrow{
+  position: relative;
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-right: 9px solid red;
+  transform: rotate(10deg);
+}
+.curved-tail-arrow:after{
+  content: '';
+  position: absolute;
+  border: 0 solid transparent;
+  border-top: 3px solid red;
+  border-radius: 20px 0 0 0;
+  top: -12px;
+  left: -9px;
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Trapezoid</header>
+    <div class="shape-box">
+      <div class="shape trapezoid"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.trapezoid{
+  width: 100px;
+  height: 0;
+  border-bottom: 100px solid red;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  box-sizing: content-box;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Parallelogram</header>
+    <div class="shape-box">
+      <div class="shape parallelogram"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.parallelogram{
+  width: 150px;
+  height: 100px;
+  transform: skew(20deg);
+  background-color: red;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Star-6points</header>
+    <div class="shape-box">
+      <div class="shape star-6points"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.star-6points{
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid red;
+}
+.star-6points:after{
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: -50px;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 100px solid red;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Star-5points</header>
+    <div class="shape-box">
+      <div class="shape star-5points"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.star-5points{
+  position: relative;
+  width: 0;
+  height: 0;
+  border-right: 100px solid transparent;
+  border-bottom: 70px solid red;
+  border-left: 100px solid transparent;
+  transform: rotate(35deg);
+}
+.star-5points:before{
+  content: '';
+  position: absolute;
+  top: -45px;
+  left: -65px;
+  border-bottom: 80px solid red;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  transform: rotate(-35deg);
+}
+.star-5points:after{
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: -105px;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 70px solid red;
+  transform: rotate(-70deg);
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Pentagon</header>
+    <div class="shape-box">
+      <div class="shape pentagon"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.pentagon{
+  position: relative;
+  width: 54px;
+  border-width: 50px 18px 0;
+  border-style: solid;
+  border-color: red transparent;
+  box-sizing: content-box;
+}
+.pentagon:before{
+  content: '';
+  position: absolute;
+  top: -85px;
+  left: -18px;
+  width: 0;
+  height: 0;
+  border-width: 0 45px 35px;
+  border-style: solid;
+  border-color: transparent transparent red;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Hexagon</header>
+    <div class="shape-box">
+      <div class="shape hexagon"></div>
+    </div>
+    <footer class="css-code">
+    <pre><code class="lang-css">.hexagon{
+  position: relative;
+  width: 100px;
+  height: 55px;
+  background-color: red;
+}
+.hexagon:before{
+  content: '';
+  position: absolute;
+  top: -25px;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 25px solid red;
+}
+.hexagon:after{
+  content: '';
+  position: absolute;
+  bottom: -25px;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 25px solid red;
+}</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Octagon</header>
+    <div class="shape-box">
+      <div class="shape octagon"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.octagon{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.octagon:before{
+  content: '';
+  position: absolute;
+  border-bottom: 29px solid red;
+  border-left: 29px solid #fff;
+  border-right: 29px solid #fff;
+  width: 42px;
+  box-sizing: content-box;
+}
+.octagon:after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  border-top: 29px solid red;
+  border-left: 29px solid #fff;
+  border-right: 29px solid #fff;
+  width: 42px;
+  box-sizing: content-box;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Heart</header>
+    <div class="shape-box">
+      <div class="shape heart"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.heart{
+  position: relative;
+  width: 100px;
+  height: 90px;
+}
+.heart:before,
+.heart:after{
+  content: '';
+  position: absolute;
+  left: 50px;
+  width: 50px;
+  height: 80px;
+  background-color: red;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+.heart:after{
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Infinity</header>
+    <div class="shape-box">
+      <div class="shape infinity"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.infinity{
+  position: relative;
+  width: 212px;
+  height: 100px;
+}
+.infinity:before,
+.infinity:after{
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 20px solid red;
+  border-radius: 50px 50px 0 50px;
+  transform: rotate(-45deg);
+  box-sizing: content-box;
+}
+.infinity:after{
+  right: 0;
+  border-radius: 50px 50px 50px 0;
+  transform: rotate(45deg);
+  box-sizing: content-box;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Diamond Shield</header>
+    <div class="shape-box">
+      <div class="shape diamond-shield"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.diamond-shield{
+  width: 0;
+  height: 0;
+  position: relative;
+  top: -50px;
+  border: 50px solid transparent;
+  border-bottom: 20px solid red;
+}
+.diamond-shield:after{
+  content: '';
+  position: absolute;
+  left: -50px;
+  top: 20px;
+  border: 50px solid transparent;
+  border-top: 70px solid red;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Egg</header>
+    <div class="shape-box">
+      <div class="shape egg"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.egg{
+  width: 126px;
+  height: 180px;
+  background-color: red;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Pac Man</header>
+    <div class="shape-box">
+      <div class="shape pac-man"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.pac-man{
+  width: 0;
+  border: 60px solid;
+  border-color: red transparent red red;
+  border-radius: 60px;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Talk Bubble</header>
+    <div class="shape-box">
+      <div class="shape talk-bubble"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.talk-bubble{
+  position: relative;
+  width: 120px;
+  height: 80px;
+  background-color: red;
+  border-radius: 10px;
+}
+.talk-bubble:before{
+  content: '';
+  position: absolute;
+  top: 26px;
+  right: 100%;
+  border-top: 13px solid transparent;
+  border-right: 26px solid red;
+  border-bottom: 13px solid transparent;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">12 Point Burst</header>
+    <div class="shape-box">
+      <div class="shape burst-12"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.burst-12{
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-color: red;
+}
+.burst-12:before,
+.burst-12:after{
+  content: '';
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  background-color: red;
+}
+.burst-12:before{
+  transform: rotate(30deg);
+}
+.burst-12:after{
+  transform: rotate(60deg);
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Yin Yang</header>
+    <div class="shape-box">
+      <div class="shape yin-yang"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.yin-yang{
+  position: relative;
+  width: 96px;
+  height: 48px;
+  border: 2px solid red;
+  border-bottom-width: 50px;
+  border-radius: 100%;
+  box-sizing: content-box;
+}
+.yin-yang:before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  background-color: #fff;
+  border: 18px solid red;
+  border-radius: 100%;
+  width: 12px;
+  height: 12px;
+  box-sizing: content-box;
+}
+.yin-yang:after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: red;
+  border: 18px solid #fff;
+  border-radius: 100%;
+  width: 12px;
+  height: 12px;
+  box-sizing: content-box;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Badge Ribbon</header>
+    <div class="shape-box">
+      <div class="shape badge-ribbon"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.badge-ribbon{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 100%;
+}
+.badge-ribbon:before,
+.badge-ribbon:after{
+  content: '';
+  position: absolute;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 70px solid red;
+  top: 70px;
+  left: -10px;
+  transform: rotate(-140deg);
+}
+.badge-ribbon:after{
+  left: auto;
+  right: -10px;
+  transform: rotate(140deg);
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Space Invader</header>
+    <div class="shape-box">
+      <div class="shape space-invader"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.space-invader{
+  box-shadow:
+    0 0 0 14px red,
+    0 14px 0 14px red,
+    -35px 21px 0 7px red,
+    35px 21px 0 7px red,
+    -42px -42px 0 0 red,
+    42px -42px 0 0 red,
+    -28px -28px 0 0 red,
+    28px -28px 0 0 red,
+    -42px -14px 0 0 red,
+    -28px -14px 0 0 red,
+    28px -14px 0 0 red,
+    42px -14px 0 0 red,
+    -56px 0 0 0 red,
+    -42px 0 0 0 red,
+    42px 0 0 0 red,
+    56px 0 0 0 red,
+    -70px 14px 0 0 red,
+    -56px 14px 0 0 red,
+    56px 14px 0 0 red,
+    70px 14px 0 0 red,
+    -70px 28px 0 0 red,
+    70px 28px 0 0 red,
+    -70px 42px 0 0 red,
+    -42px 42px 0 0 red,
+    42px 42px 0 0 red,
+    70px 42px 0 0 red,
+    -28px 56px 0 0 red,
+    -14px 56px 0 0 red,
+    14px 56px 0 0 red,
+    28px 56px 0 0 red;
+  width: 14px;
+  height: 14px;
+  background-color: red;
+  overflow: hidden;
+  margin: 50px 0 70px 170px;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">TV Screen</header>
+    <div class="shape-box">
+      <div class="shape tv-screen"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.tv-screen {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  background-color: red;
+  border-radius: 50% / 10%;
+}
+.tv-screen:before{
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%;
+  background-color: red;
+  border-radius: 5% / 50%;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Moon</header>
+    <div class="shape-box">
+      <div class="shape moon"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.moon{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 15px 15px 0 0 red;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Cone</header>
+    <div class="shape-box">
+      <div class="shape cone"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.cone{
+  width: 0;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-top: 100px solid red;
+  border-radius: 50%;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Cross</header>
+    <div class="shape-box">
+      <div class="shape cross"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.cross{
+  position: relative;
+  width: 20px;
+  height: 100px;
+  background-color: red;
+}
+.cross:after{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: -40px;
+  width: 100px;
+  height: 20px;
+  background-color: red;
+}
+</code></pre>
+    </footer>
+  </section>
+  <section class="cell">
+    <header class="title">Base</header>
+    <div class="shape-box">
+      <div class="shape base"></div>
+    </div>
+    <footer class="css-code">
+<pre><code class="lang-css">.base{
+  position: relative;
+  width: 100px;
+  height: 55px;
+  background-color: red;
+}
+.base:before{
+  content: '';
+  position: absolute;
+  top: -35px;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 35px solid red;
+}
+</code></pre>
+    </footer>
+  </section>
+
+  <section class="cell-last"></section>
+</div>
+</body>
+</html>

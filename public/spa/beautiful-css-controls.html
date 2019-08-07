@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>漂亮的纯CSS绘制的图形 | 亦可用</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="//guomy.oss-cn-shenzhen.aliyuncs.com/css/global.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .container {
+      width: 60vw;
+      min-width: 1200px;
+      margin: 0 auto;
+      padding-top: 100px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .container > .cell {
+      width: 50%;
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media (max-width: 1200px) {
+      .container {
+        width: 90%;
+        min-width: inherit;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 100%;
+      }
+
+      .container > .cell {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="cell">
+    <div class="circle-cross">
+      <div class="arc arc-left">
+        <div class="arc-under"></div>
+      </div>
+      <div class="arc arc-right">
+        <div class="arc-under"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell">
+    <div class="circle-rotate">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <div class="cell">
+    <div class="fiction-loader"></div>
+  </div>
+
+  <div class="cell">
+    <button class="pretty-btn" type="button"><span>这是一个按钮</span></button>
+  </div>
+</div>
+</body>
+</html>

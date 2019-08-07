@@ -1,0 +1,42 @@
+@import (reference) "~src/less/Bootstrapping/Mixins";
+
+.container {
+  .container;
+  padding-top: var(--5unit);
+}
+
+.works {
+  display: flex;
+  flex-wrap: wrap;
+
+  .cell {
+    width: 50%;
+    margin-bottom: 20px;
+
+    .link {
+      .border;
+      display: block;
+      text-align: center;
+      width: 80%;
+      padding: 10px 0;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 544px) {
+      width: 100%;
+    }
+  }
+}
+
+.works-sub-domain {
+  .cell {
+    .link {
+      .flex-center;
+
+      img {
+        max-height: 40px;
+        margin-right: var(--2unit);
+      }
+    }
+  }
+}

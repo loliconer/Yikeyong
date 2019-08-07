@@ -1,0 +1,25 @@
+@import (reference) "~src/less/Bootstrapping/Mixins";
+
+.view-main {
+  .nav-bar {
+    padding: 0 10px;
+    background-color: #4A5064;
+  }
+
+  .container {
+    display: flex;
+
+    .c-left {
+      width: 180px;
+      height: calc(100vh - 50px);
+      margin-right: 0;
+    }
+
+    .c-right {
+      padding: 10px;
+      max-height: calc(100vh - 50px);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
+}

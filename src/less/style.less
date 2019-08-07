@@ -6,43 +6,6 @@ body {
   background-color: @white-color;
 }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: @normal-font;
-  height: @bar-height;
-  border-bottom: 1px solid @border-color;
-  padding: 0 10px;
-  background-color: @white-color;
-  overflow-x: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  .logo {
-    flex-shrink: 0;
-
-    .link {
-      > img {
-        width: 32px;
-      }
-    }
-  }
-
-  > .list {
-    display: flex;
-    align-items: center;
-
-    .link {
-      display: block;
-      min-width: 100px;
-      text-align: center;
-    }
-  }
-}
-
 .container {
   font-size: @normal-font;
   padding: 1px 0;
@@ -54,118 +17,11 @@ body {
   }
 }
 
-.footer {
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: -1;
-
-  > .below {
-    line-height: 40px;
-    background-color: @black-color;
-    color: @white-color;
-    font-size: @small-font;
-
-    @media (max-width: 544px) {
-      font-size: @tiny-font;
-    }
-  }
-}
-
-#cnzz_stat_icon_1268687357 {
-  display: block;
-  text-align: center;
-  font-size: @tiny-font;
-  padding: 6px 0;
-}
-
-.vue-popup-viewer {
-  background-color: rgba(0, 0, 0, .9);
-
-  > .v-canvas {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-
-    .img-wrap {
-      height: 100%;
-      transition: background .2s;
-    }
-  }
-
-  > .icon-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 60px;
-    height: 60px;
-    padding: 10px;
-    color: @white-color;
-    cursor: pointer;
-
-    &:hover {
-      color: @error-color;
-    }
-  }
-
-  > .v-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    > .v-toolbar {
-      display: flex;
-      justify-content: center;
-      color: @white-color;
-
-      >li {
-        .non-select;
-        width: 60px;
-        height: 40px;
-        cursor: pointer;
-
-        &:hover {
-          color: @error-color;
-        }
-      }
-
-      .icon {
-        text-align: center;
-        line-height: 40px;
-
-        >svg {
-          width: 20px;
-          height: 20px;
-        }
-
-      }
-
-      .icon-text {
-        text-align: center;
-        line-height: 40px;
-        font-size: @big-font;
-      }
-    }
-
-    > .v-navbar {
-      height: 52px;
-      background-color: rgba(0,0,0,.5);
-    }
-  }
-}
-
 @import "Layout/Blog";
-@import "Layout/500px";
 @import "Pages/index";
 @import "Pages/blog";
-@import "Pages/article";
 @import "Pages/css-filter";
 @import "Pages/dockMenu";
 @import "Pages/controls";
 @import "Pages/shapes";
 @import "Pages/coin";
-@import "Pages/beauties";

@@ -1,0 +1,72 @@
+@import (reference) "~src/less/Bootstrapping/Mixins";
+
+.admin-sidebar {
+  .small-font;
+  width: 180px;
+  height: 100%;
+  top: 50px;
+  background-color: #293038;
+  overflow-y: auto;
+  color: var(--white);
+
+  .s-folder {
+    user-select: none;
+    height: 30px;
+    line-height: 30px;
+    background-color: #4A5064;
+    color: #aeb9c2;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    will-change: color;
+    transition: color .2s;
+
+    &:hover {
+      color: var(--white);
+    }
+  }
+
+  .n-title {
+    user-select: none;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    background-color: #42485B;
+    color: var(--white);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    padding-left: 20px;
+    will-change: background-color;
+    transition: background-color .2s;
+
+    &:hover {
+      background-color: #00C1DE;
+    }
+
+    span:first-of-type {
+      padding: 0 10px;
+    }
+  }
+
+  .n-items {
+    .n-item {
+      .n-link {
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 50px;
+        will-change: background-color;
+        transition: background-color .2s;
+
+        &:hover {
+          background-color: #42485B;
+        }
+
+        &.focus {
+          background-color: #00C1DE;
+        }
+      }
+    }
+  }
+}
