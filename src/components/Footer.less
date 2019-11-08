@@ -27,9 +27,25 @@
         margin-left: 8px;
       }
     }
+  }
 
-    @media (max-width: 544px) {
-      .tiny-font;
+  @media (max-width: 1024px) {
+    .below {
+      min-width: unset;
     }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 var(--2unit);
+
+    .below {
+      .tiny-font;
+      width: 100%;
+      min-width: unset;
+    }
+  }
+
+  @media (max-width: 375px) {
+    padding: 0 4px;
   }
 }

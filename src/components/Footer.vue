@@ -2,7 +2,7 @@
   <footer class="yky-footer">
     <div class="below">
       <div class="b-l">
-        Copyright © 2015-2019 版权所有 <a href="https://www.yikeyong.com">亦可用</a>&nbsp;<a href="http://www.miitbeian.gov.cn/">粤ICP备15030499号</a>
+        Copyright © 2015-2019 版权所有 <a href="https://www.yikeyong.com">亦可用</a>&nbsp;<a href="http://beian.miit.gov.cn">粤ICP备15030499号</a>
       </div>
       <div class="b-r">
         <a href="https://github.com/loliconer" target="_blank">
