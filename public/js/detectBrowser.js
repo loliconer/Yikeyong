@@ -11,7 +11,7 @@
     var orders = ['Edge', 'Firefox', 'CriOS', 'Version', 'Chrome']
 
     for (var i = 0; i < orders.length; i++) {
-      var regexp = new RegExp(`(${item})/(\\d+).`, 'i')
+      var regexp = new RegExp(`(${orders[i]})/(\\d+).`, 'i')
       browser = ua.match(regexp)
       if (browser) {
         if (orders[i] === 'Version' && /Android/i.test(ua)) continue
@@ -61,13 +61,13 @@
     document.head.appendChild(style)
   }
 
-  var browser = whichBrowser(ua)
+  var browser = whichBrowser(navigator.userAgent)
   var elem = document.createElement('div')
   elem.style.textAlign = 'center'
   elem.style.padding = '0 10px'
   elem.style.marginTop = '400px'
 
-  if (!browserSupported(navigator.userAgent)) {
+  if (!browserSupported(browser)) {
     elem.innerHTML = `<h3 style="font-size: 18px;">您的浏览器版本：${browser.vendor} ${browser.version}。</h3>\n<h3 style="font-size: 18px;">本站点支持浏览器：Firefox 65+, Safari 11+, Chrome 70+</h3>`
     document.body.appendChild(elem)
     hideApp()
