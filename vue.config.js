@@ -38,13 +38,6 @@ class ReplaceVendorsPlugin {
 }
 
 module.exports = {
-  css: {
-    loaderOptions: {
-      less: {
-        strictMath: 'on'
-      }
-    }
-  },
   pages: findEntries('./src/pages', 'app.js'),
   devServer: {
     proxy: {
