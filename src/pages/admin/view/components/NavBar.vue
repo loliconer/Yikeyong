@@ -15,25 +15,25 @@
   </nav>
 </template>
 <script>
-  import './NavBar.less'
-  import { mapState, mapMutations } from 'vuex'
+import './NavBar.less'
+import { mapState, mapMutations } from 'vuex'
 
-  export default {
-    name: 'nav-bar',
-    data() {
-      return {}
-    },
-    computed: mapState(['user']) ,
-    methods: {
-      ...mapMutations({
-        clearUserInfo: 'LOGOUT'
-      }),
-      async logout() {
-        await $fetch.delete('session')
+export default {
+  name: 'nav-bar',
+  data () {
+    return {}
+  },
+  computed: mapState(['user']),
+  methods: {
+    ...mapMutations({
+      clearUserInfo: 'LOGOUT'
+    }),
+    async logout () {
+      await $fetch.delete('session')
 
-        this.clearUserInfo()
-        this.$router.replace('/login.html')
-      }
+      this.clearUserInfo()
+      this.$router.replace('/login.html')
     }
   }
+}
 </script>

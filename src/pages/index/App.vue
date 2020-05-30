@@ -13,7 +13,7 @@
         <!-- <div class="cell"><a class="link" href="/spa/waterfall.html">瀑布流布局</a></div> -->
         <!-- <div class="cell"><a class="link" href="/spa/pic.html">极品美图展示</a></div> -->
         <div class="cell"><a class="link" href="/spa/webgl-scene.html">WebGL 初始化场景</a></div>
-<!--        <div class="cell"><a class="link" href="/diy/index.html">硬件DIY</a></div>-->
+        <!--        <div class="cell"><a class="link" href="/diy/index.html">硬件DIY</a></div>-->
         <div class="cell"><a class="link" href="/spa/whale.html">舞动的鲸鱼</a></div>
         <div class="cell"><a class="link" href="/spa/3dflower.html">3D Flower with canvas</a></div>
       </div>
@@ -22,7 +22,7 @@
       <div class="works">
         <div class="cell"><a class="link" href="/admin/" target="_blank">后台管理系统</a></div>
         <div class="cell"><a class="link" href="/works/beauty.html" target="_blank">美图欣赏</a></div>
-<!--        <div class="cell"><a class="link" href="/blog/index.html" target="_blank">博客</a></div>-->
+        <!--        <div class="cell"><a class="link" href="/blog/index.html" target="_blank">博客</a></div>-->
         <div class="cell"><a class="link" href="/works/rosetta.html" target="_blank">Rosetta 英语学习篇</a></div>
         <div class="cell"><a class="link" href="/works/mengme.html" target="_blank">萌蜜</a></div>
       </div>
@@ -47,9 +47,9 @@
 </template>
 
 <script>
-  import './app.less'
+import './app.less'
 
-  export default {
-    name: 'App'
-  }
+export default {
+  name: 'App'
+}
 </script>

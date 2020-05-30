@@ -16,16 +16,16 @@
   </div>
 </template>
 <script>
-  import './Main.less'
-  import NavBar from './components/NavBar.vue'
-  import Sidebar from './components/Sidebar.vue'
-  import NProgress from './components/NProgress.vue'
+import './Main.less'
+import NavBar from './components/NavBar.vue'
+import Sidebar from './components/Sidebar.vue'
+import NProgress from './components/NProgress.vue'
 
-  export default {
-    components: {
-      [NavBar.name]: NavBar,
-      [Sidebar.name]: Sidebar,
-      NProgress
-    }
+export default {
+  components: {
+    [NavBar.name]: NavBar,
+    [Sidebar.name]: Sidebar,
+    NProgress
   }
+}
 </script>

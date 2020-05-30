@@ -18,9 +18,9 @@
   </aside>
 </template>
 <script>
-  import './Sidebar.less'
+import './Sidebar.less'
 
-  export default {
-    name: 'admin-sidebar'
-  }
+export default {
+  name: 'admin-sidebar'
+}
 </script>

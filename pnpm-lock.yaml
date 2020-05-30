@@ -1,6 +1,7 @@
 dependencies:
   core-js: 3.6.5
 devDependencies:
+  '@lovue/utils': 1.0.0
   '@vue/cli-plugin-babel': 4.4.1_@vue+cli-service@4.4.1
   '@vue/cli-service': 4.4.1_d2835bfea847b2dfcb3e3069818a7fc3
   less-loader: 6.1.0
@@ -973,6 +974,13 @@ packages:
       webpack: ^4.0.0
     resolution:
       integrity: sha512-zN69TnSr0viRSU6cEDIcuPcP67QcpQ6uHACg58FiN9PDrU6SLyGW3MR4tiISbYxy1kDWAVPwD+XwQTWE5cigAA==
+  /@lovue/utils/1.0.0:
+    dev: true
+    engines:
+      node: '>= 10.0.0'
+      npm: '>= 6.0.0'
+    resolution:
+      integrity: sha512-RCvriI0OndFi+6IGDUkMTyR0g+yCrBFzdFQSvng0sHyXq28u15Yjc7MsKUaKcm144LVz3zAPdtJvREhXHSX2Uw==
   /@mrmlnc/readdir-enhanced/2.2.1:
     dependencies:
       call-me-maybe: 1.0.1
@@ -8252,6 +8260,7 @@ packages:
     resolution:
       integrity: sha512-92O1HWEjw27sBfgmXiixJWT5hRBp2eobqXicLtPBIDBhYB+1HpwZlXmbW2luivBJHBzki+7VyCLRtAkScbTBQA==
 specifiers:
+  '@lovue/utils': ^1.0.0
   '@vue/cli-plugin-babel': ~4.4.0
   '@vue/cli-service': ~4.4.0
   core-js: ^3.6.5

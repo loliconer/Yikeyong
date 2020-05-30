@@ -15,36 +15,36 @@
   </div>
 </template>
 <script>
-  import './Login.less'
-  import { mapMutations, mapGetters } from 'vuex'
+import './Login.less'
+import { mapMutations, mapGetters } from 'vuex'
 
-  export default {
-    name: 'Login',
-    data() {
-      return {}
-    },
-    computed: {
-      ...mapGetters(['isAdmin'])
-    },
-    methods: {
-      ...mapMutations({ setUserInfo: 'SET_USER_INFO' }),
-      async login(ev) {
-        Indicator.open()
-        const body = await $fetch.form('session', new FormData(ev.target)).catch(this.error)
-        Indicator.close()
-        if (body === undefined) return
+export default {
+  name: 'Login',
+  data () {
+    return {}
+  },
+  computed: {
+    ...mapGetters(['isAdmin'])
+  },
+  methods: {
+    ...mapMutations({ setUserInfo: 'SET_USER_INFO' }),
+    async login (ev) {
+      Indicator.open()
+      const body = await $fetch.form('session', new FormData(ev.target)).catch(this.error)
+      Indicator.close()
+      if (body === undefined) return
 
-        this.setUserInfo(body)
-        this.$router.push('/index.html')
-      }
-    },
-    mounted() {
-      /*_fetch({
-        type: 'get',
-        url: 'csrf'
-      }, body => {
-        sessionStorage.csrf = body
-      })*/
+      this.setUserInfo(body)
+      this.$router.push('/index.html')
     }
+  },
+  mounted () {
+    /*_fetch({
+      type: 'get',
+      url: 'csrf'
+    }, body => {
+      sessionStorage.csrf = body
+    })*/
   }
+}
 </script>

@@ -103,108 +103,110 @@
 </template>
 
 <script>
-  import './app.less'
-  import {$fetch} from 'lovue/dist/utils.esm'
+import './app.less'
+import { $fetch } from '@lovue/utils'
 
-  export default {
-    name: 'App',
-    data() {
-      return {
-        gateways: [
-          { name: 'China', value: 'china' },
-          { name: 'Fox', value: 'fox' }
-        ],
-        gateway: 'china',
-        balances: {},
-        kdb: {
-          orderbooks: {
-            bids: [],
-            asks: []
-          },
-          fee: 0,
-          orders: [],
-          connected: true
+$fetch.setHeader('auth-key', sessionStorage.authKey)
+
+export default {
+  name: 'App',
+  data () {
+    return {
+      gateways: [
+        { name: 'China', value: 'china' },
+        { name: 'Fox', value: 'fox' }
+      ],
+      gateway: 'china',
+      balances: {},
+      kdb: {
+        orderbooks: {
+          bids: [],
+          asks: []
         },
-        openOrders: [],
-        amount: 200,
-        price: 0,
-        orderCount: 0,
-        asset: 0,
-        tab: 0,
-        showContainer: false,
-        loadings: {
-          fastBuy: false,
-          fastSell: false,
-          buy: false,
-          sell: false
-        },
-        transactions: []
-      }
-    },
-    methods: {
-      async getBalances() {
-        const myAddress = 'rHJ9vCnbfF2VzMBoaQnTA2J6stWZGNeJun'
-        const counterparty = 'razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA'
-
-        // const body = await
+        fee: 0,
+        orders: [],
+        connected: true
       },
-      async getKdb() {
-        const body = await $fetch.get(`ripple/kdb?gateway=${this.gateway}`).catch(this.error)
-        if (body === undefined) return this.kdb.connected = false
-
-        this.kdb = body
-        this.orderCount = body.orders.length
-        this.setTitle()
-        setTimeout(() => this.getKdb(), 2000)
+      openOrders: [],
+      amount: 200,
+      price: 0,
+      orderCount: 0,
+      asset: 0,
+      tab: 0,
+      showContainer: false,
+      loadings: {
+        fastBuy: false,
+        fastSell: false,
+        buy: false,
+        sell: false
       },
-      setTitle() {
-        document.title = `${this.kdb.orderbooks.bids[0].price} / ${this.kdb.orderbooks.asks[0].price} | Ripple`
-      },
-      restart() {
-        $fetch.get('/api/ripple/restart').catch(this.error)
-      },
-      async cancelOrder(order) {
-        if (order.loading) return
-        order.loading = true
-
-        const body = await $fetch.delete(`/api/ripple/orders/${order.sequence}`).catch(this.error)
-        order.loading = false
-        if (body === undefined) return
-
-        this.success('取消成功')
-      },
-      fastOrder(dir) {
-        if (dir === 'buy') this.fastBuy()
-        if (dir === 'sell') this.fastSell()
-      },
-      fastBuy() {
-        if (this.loadings.fastBuy) return
-        this.loadings.fastBuy = true
-        let price = +this.kdb.orderbooks.bids[0].price + 0.0001
-
-        this.submitOrder({
-          direction: 'buy',
-          amount: 50,
-          price
-        }).then(() => this.loadings.fastBuy = false)
-            .catch(() => this.loadings.fastBuy = false)
-      },
-      fastSell() {
-        if (this.loadings.fastSell) return
-        this.loadings.fastSell = true
-        let price = +this.kdb.orderbooks.asks[0].price - 0.0001
-
-        this.submitOrder({
-          direction: 'sell',
-          amount: 50,
-          price
-        }).then(() => this.loadings.fastSell = false)
-            .catch(() => this.loadings.fastSell = false)
-      },
-    },
-    created() {
-      this.getBalances()
-      this.getKdb()
+      transactions: []
     }
+  },
+  methods: {
+    async getBalances () {
+      const myAddress = 'rHJ9vCnbfF2VzMBoaQnTA2J6stWZGNeJun'
+      const counterparty = 'razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA'
+
+      // const body = await
+    },
+    async getKdb () {
+      const body = await $fetch.get(`ripple/kdb?gateway=${this.gateway}`).catch(this.error)
+      if (body === undefined) return this.kdb.connected = false
+
+      this.kdb = body
+      this.orderCount = body.orders.length
+      this.setTitle()
+      setTimeout(() => this.getKdb(), 2000)
+    },
+    setTitle () {
+      document.title = `${this.kdb.orderbooks.bids[0].price} / ${this.kdb.orderbooks.asks[0].price} | Ripple`
+    },
+    restart () {
+      $fetch.get('/api/ripple/restart').catch(this.error)
+    },
+    async cancelOrder (order) {
+      if (order.loading) return
+      order.loading = true
+
+      const body = await $fetch.delete(`/api/ripple/orders/${order.sequence}`).catch(this.error)
+      order.loading = false
+      if (body === undefined) return
+
+      this.success('取消成功')
+    },
+    fastOrder (dir) {
+      if (dir === 'buy') this.fastBuy()
+      if (dir === 'sell') this.fastSell()
+    },
+    fastBuy () {
+      if (this.loadings.fastBuy) return
+      this.loadings.fastBuy = true
+      let price = +this.kdb.orderbooks.bids[0].price + 0.0001
+
+      this.submitOrder({
+        direction: 'buy',
+        amount: 50,
+        price
+      }).then(() => this.loadings.fastBuy = false)
+        .catch(() => this.loadings.fastBuy = false)
+    },
+    fastSell () {
+      if (this.loadings.fastSell) return
+      this.loadings.fastSell = true
+      let price = +this.kdb.orderbooks.asks[0].price - 0.0001
+
+      this.submitOrder({
+        direction: 'sell',
+        amount: 50,
+        price
+      }).then(() => this.loadings.fastSell = false)
+        .catch(() => this.loadings.fastSell = false)
+    },
+  },
+  created () {
+    this.getBalances()
+    this.getKdb()
   }
+}
 </script>

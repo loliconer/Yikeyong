@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  import './Footer.less'
+import './Footer.less'
 
-  export default {
-    name: 'yky-footer'
-  }
+export default {
+  name: 'yky-footer'
+}
 </script>

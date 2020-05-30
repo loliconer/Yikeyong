@@ -23,59 +23,59 @@
 </template>
 
 <script>
-  import './app.less'
-  import {$fetch} from 'lovue/dist/utils.esm'
+import './app.less'
+import { $fetch } from '@lovue/utils'
 
-  export default {
-    name: 'App',
-    data() {
-      return {
-        chapters: [],
-        chapter: '',
-        sections: {},
-        section: '',
-        contents: {}
-      }
-    },
-    computed: {
-      sectionsSource() {
-        return this.sections[this.chapter] || []
-      },
-      currentContent() {
-        return this.contents[this.section] || []
-      }
-    },
-    watch: {
-      sectionsSource(val) {
-        if (!val.length) return
-
-        this.section = val[0].name
-      }
-    },
-    methods: {
-      async getChapters() {
-        const body = await $fetch.get('/js/data/rosetta.json').catch(this.error)
-        if (body === undefined) return
-
-        const chapters = [], sections = {}, contents = {}
-        body.forEach((chapter, i) => {
-          const chapterValue = `chapter${i + 1}`
-          chapters.push({ name: chapter.name, value: chapterValue })
-
-          const tempSections = []
-          chapter.sections.forEach(section => {
-            tempSections.push({ name: section.name, value: section.name })
-            contents[section.name] = section.content
-          })
-          sections[chapterValue] = tempSections
-        })
-        this.chapters = chapters
-        this.sections = sections
-        this.contents = contents
-      }
-    },
-    created() {
-      this.getChapters()
+export default {
+  name: 'App',
+  data () {
+    return {
+      chapters: [],
+      chapter: '',
+      sections: {},
+      section: '',
+      contents: {}
     }
+  },
+  computed: {
+    sectionsSource () {
+      return this.sections[this.chapter] || []
+    },
+    currentContent () {
+      return this.contents[this.section] || []
+    }
+  },
+  watch: {
+    sectionsSource (val) {
+      if (!val.length) return
+
+      this.section = val[0].name
+    }
+  },
+  methods: {
+    async getChapters () {
+      const body = await $fetch.get('/js/data/rosetta.json').catch(this.error)
+      if (body === undefined) return
+
+      const chapters = [], sections = {}, contents = {}
+      body.forEach((chapter, i) => {
+        const chapterValue = `chapter${i + 1}`
+        chapters.push({ name: chapter.name, value: chapterValue })
+
+        const tempSections = []
+        chapter.sections.forEach(section => {
+          tempSections.push({ name: section.name, value: section.name })
+          contents[section.name] = section.content
+        })
+        sections[chapterValue] = tempSections
+      })
+      this.chapters = chapters
+      this.sections = sections
+      this.contents = contents
+    }
+  },
+  created () {
+    this.getChapters()
   }
+}
 </script>

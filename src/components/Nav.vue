@@ -7,7 +7,7 @@
       <li><a class="link" href="https://luowang.yikeyong.com">罗网</a></li>
       <li><a class="link" href="https://jiedao.yikeyong.com">接道</a></li>
       <li><a class="link" href="https://sodesine.yikeyong.com">搜的是内</a></li>
-<!--      <li><a class="link" href="/club/index.html">娱乐会所</a></li>-->
+      <!--<li><a class="link" href="/club/index.html">娱乐会所</a></li>-->
       <li><a class="link" href="/about.html">关于本站</a></li>
       <li>
         <a class="link" href="https://github.com/loliconer" target="_blank">
@@ -21,9 +21,9 @@
 </template>
 
 <script>
-  import './Nav.less'
+import './Nav.less'
 
-  export default {
-    name: 'yky-nav'
-  }
+export default {
+  name: 'yky-nav'
+}
 </script>
